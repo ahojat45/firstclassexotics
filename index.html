@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="referrer" content="no-referrer-when-downgrade"/>
+<title>First Class Exotics | #1 Family-Owned Exotic Car Rental – Orange County, LA & San Diego</title>
+<meta name="description" content="Southern California's #1 family-owned exotic car rental concierge. Lamborghini, Ferrari, McLaren, Rolls-Royce. Same-day delivery OC · LA · San Diego. Voted #1 customer service 10+ years. Family owned by Ali Hojat since 2013."/>
+<meta name="keywords" content="exotic car rental orange county, rent lamborghini OC, ferrari rental los angeles, luxury car rental san diego, family owned exotic rental, first class exotics costa mesa, McLaren rental OC, Rolls Royce rental LA"/>
+<meta property="og:title" content="First Class Exotics | #1 Family-Owned Exotic Car Rental SoCal"/>
+<meta property="og:description" content="Lamborghini. Ferrari. McLaren. Rolls-Royce. OC · LA · San Diego. Family-owned since 2013. Voted #1 in customer service."/>
+<meta property="og:type" content="website"/>
+<link rel="canonical" href="https://www.firstclassexotics.com"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#C9A84C;--gold-2:#E8CC7A;--gold-3:rgba(201,168,76,.12);
+  --black:#060606;--dark:#0E0E0E;--dark-2:#161616;--dark-3:#1E1E1E;--dark-4:#242424;
+  --gray:#777;--gray-2:#999;--gray-3:#bbb;
+  --white:#F4F1EC;
+  --red:#E84545;
+  --ff-title:'Bebas Neue',sans-serif;
+  --ff-serif:'Cormorant Garamond',serif;
+  --ff-body:'DM Sans',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--white);font-family:var(--ff-body);overflow-x:hidden;cursor:none}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;background:var(--dark-3)}
+button{font-family:var(--ff-body);cursor:none}
+
+/* ── CUSTOM CURSOR ── */
+.cursor{position:fixed;width:10px;height:10px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .25s var(--ease),height .25s var(--ease),background .25s;mix-blend-mode:normal}
+.cursor-ring{position:fixed;width:38px;height:38px;border:1.5px solid rgba(201,168,76,.5);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all .12s var(--ease)}
+body:has(a:hover) .cursor,.cursor.hover{width:20px;height:20px;background:var(--gold-2)}
+body:has(a:hover) .cursor-ring,.cursor-ring.hover{width:60px;height:60px;border-color:var(--gold);opacity:.6}
+
+/* ── TOP TICKER ── */
+.ticker-wrap{background:var(--gold);overflow:hidden;padding:.45rem 0;white-space:nowrap}
+.ticker{display:inline-flex;gap:3rem;animation:ticker 30s linear infinite}
+.ticker span{font-size:.65rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--black)}
+.ticker span::before{content:"✦";margin-right:1.5rem;opacity:.5}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{position:fixed;top:1.8rem;left:50%;transform:translateX(-50%);z-index:1000;width:calc(100% - 4rem);max-width:1400px;display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.8rem;background:rgba(6,6,6,.7);backdrop-filter:blur(24px) saturate(160%);border:1px solid rgba(201,168,76,.15);border-radius:2px;transition:all .4s var(--ease)}
+nav.scrolled{top:0;width:100%;max-width:100%;border-radius:0;background:rgba(6,6,6,.95)}
+.nav-logo{font-family:var(--ff-serif);font-size:1.3rem;font-weight:600;letter-spacing:.04em;color:var(--white)}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray-2);font-weight:500;transition:color .3s;position:relative;padding-bottom:2px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--gold);transition:width .3s var(--ease)}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--gold);color:var(--black)!important;padding:.55rem 1.3rem;font-size:.68rem!important;letter-spacing:.18em!important;font-weight:700!important;transition:background .3s,transform .2s!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--gold-2)!important;transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:none;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);transition:.3s}
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(6,6,6,.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--ff-title);font-size:3.5rem;color:var(--white);letter-spacing:.08em;transition:color .3s}
+.mob-menu a:hover{color:var(--gold)}
+.mob-close{position:absolute;top:2rem;right:2.5rem;background:none;border:none;color:var(--white);font-size:1.5rem}
+
+/* ── MOBILE STICKY BAR ── */
+.mobile-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:998;background:var(--gold);padding:1rem 1.5rem;align-items:center;justify-content:space-between}
+.mobile-cta-bar span{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--black)}
+.mobile-cta-bar a{background:var(--black);color:var(--gold);padding:.5rem 1.2rem;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+
+/* ── HERO ── */
+.hero{position:relative;height:100vh;min-height:680px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-reel{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s var(--ease);background-size:cover;background-position:center}
+.hero-slide.active{opacity:1}
+.hero-slide:nth-child(1){background-image:linear-gradient(120deg,rgba(6,6,6,.92) 0%,rgba(6,6,6,.5) 60%,rgba(6,6,6,.15) 100%),url('https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1800&q=85')}
+.hero-slide:nth-child(2){background-image:linear-gradient(120deg,rgba(6,6,6,.92) 0%,rgba(6,6,6,.5) 60%,rgba(6,6,6,.15) 100%),url('https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1800&q=85')}
+.hero-slide:nth-child(3){background-image:linear-gradient(120deg,rgba(6,6,6,.92) 0%,rgba(6,6,6,.5) 60%,rgba(6,6,6,.15) 100%),url('https://images.unsplash.com/photo-1621135802920-133df287f89c?w=1800&q=85')}
+.hero-slide:nth-child(4){background-image:linear-gradient(120deg,rgba(6,6,6,.92) 0%,rgba(6,6,6,.5) 60%,rgba(6,6,6,.15) 100%),url('https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=1800&q=85')}
+.hero-content{position:relative;z-index:2;width:100%;padding:0 5rem 5rem}
+.hero-eyebrow{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.hero-eyebrow-line{width:40px;height:1px;background:var(--gold)}
+.hero-eyebrow span{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);font-weight:500}
+.hero h1{font-family:var(--ff-title);font-size:clamp(5rem,11vw,13rem);line-height:.9;letter-spacing:.02em;color:var(--white);margin-bottom:2rem}
+.hero h1 .line-gold{color:var(--gold);display:block}
+.hero-meta{display:flex;gap:4rem;align-items:flex-end}
+.hero-sub{font-size:.82rem;line-height:1.85;color:var(--gray-2);max-width:400px;font-weight:300}
+.hero-actions{display:flex;gap:1rem;flex-shrink:0}
+.btn-gold{background:var(--gold);color:var(--black);padding:.9rem 2rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;border:none;transition:background .3s,transform .2s;display:inline-block;white-space:nowrap}
+.btn-gold:hover{background:var(--gold-2);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--white);padding:.9rem 2rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;border:1px solid rgba(255,255,255,.25);transition:border-color .3s,color .3s;display:inline-block;white-space:nowrap}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-dots{position:absolute;right:2.5rem;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:.5rem;z-index:3}
+.hero-dot{width:4px;height:4px;background:rgba(255,255,255,.25);border-radius:50%;transition:background .3s,transform .3s;cursor:none}
+.hero-dot.active{background:var(--gold);transform:scale(1.8)}
+.hero-scroll-cue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;z-index:3;opacity:.5}
+.hero-scroll-cue span{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gray-2)}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollDrop 2s ease infinite}
+@keyframes scrollDrop{0%,100%{opacity:.4;transform:scaleY(1) translateY(0)}50%{opacity:1;transform:scaleY(1.3) translateY(4px)}}
+
+/* ── MARQUEE TRUST ── */
+.trust-marquee{background:var(--dark-2);border-top:1px solid rgba(201,168,76,.15);border-bottom:1px solid rgba(201,168,76,.15);padding:1.3rem 0;overflow:hidden}
+.trust-track{display:flex;gap:4rem;animation:ticker 40s linear infinite;white-space:nowrap}
+.trust-item{display:flex;align-items:center;gap:.7rem;flex-shrink:0}
+.trust-icon{color:var(--gold);font-size:1rem}
+.trust-label{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gray-3)}
+.trust-label em{color:var(--white);font-style:normal}
+
+/* ── SECTIONS ── */
+.section{padding:8rem 5rem}
+.s-eyebrow{font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;font-weight:500;display:flex;align-items:center;gap:.8rem}
+.s-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--gold)}
+.s-title{font-family:var(--ff-title);font-size:clamp(3rem,6vw,7rem);line-height:.92;letter-spacing:.02em;color:var(--white);margin-bottom:1.5rem}
+.s-title .gold{color:var(--gold)}
+.s-sub{font-size:.84rem;line-height:1.9;color:var(--gray-2);max-width:480px;font-weight:300}
+
+/* ── STATS COUNTER ── */
+.stats-section{background:var(--dark);padding:5rem}
+.stats-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(255,255,255,.05)}
+.stat-box{background:var(--dark);padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden}
+.stat-box::after{content:'';position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--gold);transition:width .6s var(--ease)}
+.stat-box:hover::after{width:100%}
+.stat-n{font-family:var(--ff-title);font-size:4.5rem;color:var(--gold);line-height:1;display:block}
+.stat-l{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);margin-top:.5rem}
+
+/* ── OCCASIONS ── */
+.occasions-section{background:var(--black)}
+.occ-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;margin-top:4rem}
+.occ-card{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:none}
+.occ-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.5);transition:transform .8s var(--ease),filter .8s}
+.occ-card:hover img{transform:scale(1.08);filter:brightness(.35)}
+.occ-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.95) 0%,rgba(6,6,6,.2) 60%,transparent 100%)}
+.occ-card-body{position:absolute;bottom:0;left:0;right:0;padding:2.5rem}
+.occ-num{font-family:var(--ff-title);font-size:5rem;color:rgba(201,168,76,.15);line-height:1;margin-bottom:-.5rem}
+.occ-title{font-family:var(--ff-serif);font-size:1.8rem;font-weight:400;color:var(--white);margin-bottom:.5rem}
+.occ-desc{font-size:.72rem;color:var(--gray-2);line-height:1.6;max-height:0;overflow:hidden;transition:max-height .5s var(--ease),opacity .4s}
+.occ-card:hover .occ-desc{max-height:100px;opacity:1}
+.occ-tag{display:inline-block;background:var(--gold);color:var(--black);font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;padding:.25rem .7rem;margin-bottom:.5rem}
+
+/* ── FLEET ── */
+.fleet-section{background:var(--dark-2)}
+.fleet-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:1rem;flex-wrap:wrap;gap:1.5rem}
+.fleet-notice{background:var(--gold-3);border-left:3px solid var(--gold);padding:1rem 1.5rem;margin-bottom:2rem;display:flex;align-items:center;gap:1rem}
+.fleet-notice p{font-size:.76rem;color:var(--gray-3);line-height:1.6}
+.fleet-notice strong{color:var(--white)}
+.fleet-notice a{color:var(--gold)}
+.fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.fleet-card{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:none}
+.fleet-card.wide{grid-column:span 2}
+.fleet-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.65);transition:transform .8s var(--ease),filter .8s}
+.fleet-card:hover img{transform:scale(1.06);filter:brightness(.4)}
+.fleet-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.98) 0%,rgba(6,6,6,.2) 55%,transparent 100%)}
+.fleet-card-body{position:absolute;bottom:0;left:0;right:0;padding:2rem}
+.fleet-brand{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem}
+.fleet-name{font-family:var(--ff-serif);font-size:2rem;font-weight:400;color:var(--white);margin-bottom:.4rem;line-height:1.1}
+.fleet-specs{display:flex;gap:1rem;margin-bottom:.8rem}
+.fleet-spec{font-size:.6rem;letter-spacing:.1em;color:var(--gray-2)}
+.fleet-spec strong{color:var(--gray-3);font-weight:500}
+.fleet-price{font-size:.72rem;color:var(--gray-2);margin-bottom:.8rem}
+.fleet-cta{display:inline-block;background:var(--gold);color:var(--black);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;padding:.4rem 1rem;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .3s}
+.fleet-card:hover .fleet-cta{opacity:1;transform:translateY(0)}
+.fleet-custom{background:linear-gradient(135deg,var(--dark-3),var(--dark));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1rem;padding:2rem}
+.fleet-footer-note{text-align:center;margin-top:2rem;font-size:.7rem;color:var(--gray);letter-spacing:.08em;line-height:1.9}
+.fleet-footer-note a{color:var(--gold)}
+
+/* ── WHY US TABLE ── */
+.compare-section{background:var(--black);overflow:hidden}
+.compare-table{width:100%;border-collapse:collapse;margin-top:3.5rem}
+.compare-table th{padding:1.2rem 1.5rem;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;border-bottom:1px solid rgba(255,255,255,.08);text-align:center}
+.compare-table th:first-child{text-align:left;color:var(--gray)}
+.compare-table th.us{color:var(--gold);background:rgba(201,168,76,.06);position:relative}
+.compare-table th.us::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold)}
+.compare-table td{padding:1rem 1.5rem;font-size:.8rem;border-bottom:1px solid rgba(255,255,255,.05);text-align:center;color:var(--gray-2)}
+.compare-table td:first-child{text-align:left;color:var(--gray-3);font-size:.76rem}
+.compare-table td.us{background:rgba(201,168,76,.04);color:var(--white)}
+.compare-table tr:hover td{background:rgba(255,255,255,.02)}
+.check{color:#4ADE80;font-size:1rem}
+.cross{color:var(--gray);font-size:1rem;opacity:.4}
+.partial{color:var(--gold-2);font-size:.7rem;letter-spacing:.05em}
+
+/* ── FAMILY ── */
+.family-section{background:var(--dark-2)}
+.family-layout{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.family-visual{position:relative;min-height:600px;overflow:hidden}
+.family-visual img{width:100%;height:100%;object-fit:cover;filter:brightness(.6)}
+.family-visual-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 40%,var(--dark-2))}
+.family-copy{padding:5rem;display:flex;flex-direction:column;justify-content:center}
+.family-copy p{font-size:.84rem;line-height:2;color:var(--gray-2);margin-bottom:1.2rem}
+.family-copy strong{color:var(--white);font-weight:500}
+.family-pillars{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:2.5rem}
+.f-pillar{background:var(--dark-3);padding:1.5rem;border-top:1px solid rgba(255,255,255,.05)}
+.f-pillar-icon{font-size:1.4rem;margin-bottom:.6rem}
+.f-pillar-title{font-size:.72rem;font-weight:600;color:var(--white);letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem}
+.f-pillar-desc{font-size:.7rem;color:var(--gray);line-height:1.6}
+
+/* ── HOW IT WORKS ── */
+.how-section{background:var(--black)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:5rem;position:relative}
+.steps::before{content:'';position:absolute;top:2rem;left:2rem;right:2rem;height:1px;background:linear-gradient(to right,var(--gold),transparent);z-index:0}
+.step{position:relative;padding:0 2rem 0 0;z-index:1}
+.step-num{font-family:var(--ff-title);font-size:6rem;color:rgba(201,168,76,.07);line-height:1;margin-bottom:.5rem}
+.step-dot{width:12px;height:12px;border:2px solid var(--gold);border-radius:50%;background:var(--black);margin-bottom:1.5rem;position:relative;z-index:2}
+.step-title{font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:.6rem}
+.step-desc{font-size:.76rem;line-height:1.8;color:var(--gray-2)}
+
+/* ── BOOKING ── */
+.booking-section{background:var(--dark-2);border-top:1px solid rgba(201,168,76,.1)}
+.booking-layout{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.booking-left{padding:5rem;background:var(--dark-3)}
+.booking-right{padding:5rem;background:var(--dark-2)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2rem}
+.fg{display:flex;flex-direction:column;gap:.35rem}
+.fg.full{grid-column:1/-1}
+.fg label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);font-weight:500}
+.fg input,.fg select,.fg textarea{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);color:var(--white);padding:.85rem 1rem;font-family:var(--ff-body);font-size:.8rem;outline:none;transition:border-color .3s;border-radius:0;appearance:none;width:100%}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold)}
+.fg select option{background:var(--dark-2)}
+.fg textarea{resize:vertical;min-height:90px}
+.form-note{font-size:.65rem;color:var(--gray);line-height:1.7;margin-top:.8rem}
+.whatsapp-cta{display:flex;align-items:center;gap:.8rem;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2);padding:1rem 1.2rem;margin-top:1rem}
+.whatsapp-cta span{font-size:.72rem;color:var(--gray-3);line-height:1.5}
+.whatsapp-cta a{color:#25D366;font-weight:600}
+.booking-info-item{display:flex;gap:1rem;padding:1.2rem 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.booking-info-item:last-child{border-bottom:none}
+.bk-icon{color:var(--gold);flex-shrink:0;margin-top:2px}
+.bk-title{font-size:.76rem;font-weight:600;color:var(--white);margin-bottom:.3rem}
+.bk-desc{font-size:.72rem;color:var(--gray-2);line-height:1.7}
+.bk-desc a{color:var(--gold)}
+.success-msg{display:none;background:rgba(201,168,76,.1);border:1px solid var(--gold);padding:1.5rem;margin-top:1rem;font-size:.8rem;color:var(--gold-2);line-height:1.7}
+.promo-strip{background:var(--gold-3);border:1px solid rgba(201,168,76,.2);padding:.8rem 1.2rem;display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem}
+.promo-strip span{font-size:.7rem;color:var(--gray-3);line-height:1.5}
+.promo-strip strong{color:var(--gold-2)}
+
+/* ── TESTIMONIALS ── */
+.reviews-section{background:var(--dark)}
+.reviews-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;flex-wrap:wrap;gap:1.5rem}
+.review-score{text-align:right}
+.score-big{font-family:var(--ff-title);font-size:6rem;color:var(--gold);line-height:1}
+.score-stars{font-size:.85rem;color:var(--gold);letter-spacing:.15em;margin-bottom:.3rem}
+.score-label{font-size:.65rem;color:var(--gray);letter-spacing:.1em}
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px}
+.review{background:var(--dark-3);padding:2rem;transition:background .3s}
+.review:hover{background:var(--dark-4)}
+.review-platform{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;font-weight:600}
+.review-stars{color:var(--gold);font-size:.75rem;margin-bottom:.8rem;letter-spacing:.1em}
+.review-q{font-family:var(--ff-serif);font-size:2.5rem;color:rgba(201,168,76,.2);line-height:1;margin-bottom:.6rem}
+.review-text{font-family:var(--ff-serif);font-size:1.05rem;font-weight:300;font-style:italic;line-height:1.9;color:var(--gray-3);margin-bottom:1.2rem}
+.review-author{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--white);font-weight:600}
+.review-location{font-size:.62rem;color:var(--gray);margin-top:.2rem}
+
+/* ── FAQ ── */
+.faq-section{background:var(--black)}
+.faq-layout{display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:start}
+.faq-list{margin-top:2rem}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.07)}
+.faq-question{width:100%;background:none;border:none;color:var(--white);text-align:left;padding:1.3rem 0;font-size:.82rem;font-weight:500;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:var(--ff-body);letter-spacing:.02em;transition:color .3s}
+.faq-question:hover{color:var(--gold)}
+.faq-icon{color:var(--gold);font-size:1.2rem;flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.faq-item.open .faq-answer{max-height:300px}
+.faq-answer p{font-size:.78rem;line-height:1.85;color:var(--gray-2);padding-bottom:1.3rem;font-weight:300}
+
+/* ── CITIES ── */
+.cities-section{background:var(--dark-2)}
+.cities-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;margin-top:3rem}
+.city-card{background:var(--dark-3);padding:2.5rem 2rem;text-decoration:none;position:relative;overflow:hidden;transition:background .3s}
+.city-card::before{content:'';position:absolute;left:0;bottom:0;width:3px;height:0;background:var(--gold);transition:height .4s var(--ease)}
+.city-card:hover::before{height:100%}
+.city-card:hover{background:var(--dark-4)}
+.city-name{font-family:var(--ff-serif);font-size:1.8rem;font-weight:400;color:var(--white);margin-bottom:.5rem}
+.city-areas{font-size:.7rem;color:var(--gray);line-height:1.7}
+.city-arrow{position:absolute;top:2rem;right:2rem;color:var(--gold);opacity:0;transform:translateX(-8px);transition:opacity .3s,transform .3s;font-size:1.2rem}
+.city-card:hover .city-arrow{opacity:1;transform:translateX(0)}
+
+/* ── BLOG ── */
+.blog-section{background:var(--black)}
+.blog-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem;flex-wrap:wrap;gap:1.5rem}
+.blog-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:2px}
+.blog-card{position:relative;overflow:hidden;cursor:none;text-decoration:none}
+.blog-card img{width:100%;object-fit:cover;filter:brightness(.6);transition:transform .7s var(--ease),filter .7s}
+.blog-card:hover img{transform:scale(1.06);filter:brightness(.4)}
+.blog-card.main img{height:480px}
+.blog-card.side img{height:236px}
+.blog-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.95) 0%,transparent 60%)}
+.blog-card-body{position:absolute;bottom:0;left:0;right:0;padding:1.8rem}
+.blog-card-tag{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;font-weight:600}
+.blog-card-title{font-family:var(--ff-serif);font-size:1.5rem;font-weight:400;color:var(--white);line-height:1.25;margin-bottom:.4rem}
+.blog-card.side .blog-card-title{font-size:1.1rem}
+.blog-card-meta{font-size:.62rem;color:var(--gray-2);letter-spacing:.06em}
+.blog-read{display:inline-block;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-top:.6rem;font-weight:600;opacity:0;transition:opacity .3s}
+.blog-card:hover .blog-read{opacity:1}
+
+/* ── FOOTER ── */
+footer{background:var(--dark-2);border-top:1px solid rgba(201,168,76,.12);padding:5rem 5rem 2.5rem}
+.footer-top{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:4rem;margin-bottom:4rem}
+.footer-brand{font-family:var(--ff-serif);font-size:1.6rem;font-weight:600;color:var(--white);margin-bottom:.8rem}
+.footer-brand span{color:var(--gold)}
+.footer-tagline{font-size:.76rem;line-height:1.8;color:var(--gray-2);max-width:280px;margin-bottom:1.8rem}
+.footer-social{display:flex;gap:.7rem}
+.footer-social a{width:38px;height:38px;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:var(--gray-2);transition:border-color .3s,color .3s}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
+.footer-col-title{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;font-weight:600}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.footer-links a{font-size:.76rem;color:var(--gray-2);transition:color .3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-contact-item{font-size:.74rem;color:var(--gray-2);margin-bottom:.65rem;display:flex;gap:.5rem;align-items:flex-start;line-height:1.5}
+.footer-contact-item .fi{color:var(--gold);flex-shrink:0}
+.footer-contact-item a{color:var(--gray-2);transition:color .3s}
+.footer-contact-item a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.64rem;color:var(--gray)}
+.footer-legal{display:flex;gap:2rem}
+.footer-legal a{font-size:.64rem;color:var(--gray);transition:color .3s}
+.footer-legal a:hover{color:var(--gold)}
+
+/* ── ANIMATIONS ── */
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-l{opacity:0;transform:translateX(-32px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal-l.in{opacity:1;transform:translateX(0)}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1100px){
+  nav{padding:.7rem 1.5rem}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .section{padding:5rem 2.5rem}
+  .hero-content{padding:0 2.5rem 4rem}
+  .hero h1{font-size:clamp(4rem,10vw,8rem)}
+  .fleet-grid{grid-template-columns:1fr 1fr}
+  .fleet-card.wide{grid-column:span 1}
+  .steps{grid-template-columns:1fr 1fr;gap:3rem}
+  .steps::before{display:none}
+  .booking-layout{grid-template-columns:1fr}
+  .family-layout{grid-template-columns:1fr}
+  .family-visual{min-height:350px}
+  .faq-layout{grid-template-columns:1fr;gap:2rem}
+  .blog-grid{grid-template-columns:1fr 1fr}
+  .blog-card.main img,.blog-card.side img{height:260px}
+  .cities-grid{grid-template-columns:1fr 1fr}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .compare-table{font-size:.75rem}
+  .occ-grid{grid-template-columns:1fr 1fr}
+  .reviews-grid{grid-template-columns:1fr 1fr}
+  .stats-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-top{gap:2.5rem}
+  .hero-meta{flex-direction:column;align-items:flex-start;gap:1.5rem}
+}
+@media(max-width:640px){
+  .ticker-wrap,.trust-marquee{font-size:.58rem}
+  .fleet-grid,.occ-grid,.reviews-grid,.steps,.cities-grid,.blog-grid{grid-template-columns:1fr}
+  .blog-card.main img,.blog-card.side img{height:220px}
+  .footer-top{grid-template-columns:1fr}
+  .compare-table th:not(:first-child):not(.us),.compare-table td:not(:first-child):not(.us){display:none}
+  .mobile-cta-bar{display:flex}
+  body{padding-bottom:72px}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .booking-left,.booking-right{padding:3rem 2rem}
+  .family-copy{padding:3rem 2rem}
+  .hero-content{padding:0 1.5rem 3rem}
+  nav{width:calc(100% - 2rem);top:1rem;padding:.7rem 1rem}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<!-- TICKER -->
+<div class="ticker-wrap" style="padding-top:80px">
+  <div class="ticker">
+    <span>Family Owned &amp; Operated Since 2013</span>
+    <span>Same-Day Delivery OC &bull; LA &bull; San Diego</span>
+    <span>Voted #1 Customer Service SoCal</span>
+    <span>Largest Exotic Network in Orange County</span>
+    <span>New Cars Added Weekly</span>
+    <span>First-Time Renter? Use Code FIRSTCLASS for 10% Off</span>
+    <span>Family Owned &amp; Operated Since 2013</span>
+    <span>Same-Day Delivery OC &bull; LA &bull; San Diego</span>
+    <span>Voted #1 Customer Service SoCal</span>
+    <span>Largest Exotic Network in Orange County</span>
+    <span>New Cars Added Weekly</span>
+    <span>First-Time Renter? Use Code FIRSTCLASS for 10% Off</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="/" class="nav-logo">First Class <span>Exotics</span></a>
+  <ul class="nav-links">
+    <li><a href="#fleet">Fleet</a></li>
+    <li><a href="#occasions">Occasions</a></li>
+    <li><a href="#family">Our Story</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="#booking" class="nav-cta">Reserve Now</a></li>
+  </ul>
+  <div class="hamburger" id="hmb" onclick="openMob()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()">&#x2715;</button>
+  <a href="#fleet" onclick="closeMob()">Fleet</a>
+  <a href="#occasions" onclick="closeMob()">Occasions</a>
+  <a href="#family" onclick="closeMob()">Our Story</a>
+  <a href="#booking" onclick="closeMob()">Reserve</a>
+  <a href="blog.html" onclick="closeMob()">Blog</a>
+  <a href="tel:9492945958" onclick="closeMob()" style="color:var(--gold);font-size:2rem">(949) 294-5958</a>
+</div>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mobile-cta-bar">
+  <span>Ready to Reserve?</span>
+  <a href="#booking">Book Now &rarr;</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-reel" id="heroReel">
+    <div class="hero-slide active"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+    <div class="hero-slide"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-line"></div>
+      <span>SoCal&rsquo;s #1 Family-Owned Exotic Concierge &mdash; Since 2013</span>
+    </div>
+    <h1>DRIVE<br>THE<br><span class="line-gold">DREAM.</span></h1>
+    <div class="hero-meta">
+      <p class="hero-sub">Lamborghini. Ferrari. McLaren. Rolls-Royce. Delivered anywhere in Orange County, Los Angeles &amp; San Diego. Same day. No drama. Family service.</p>
+      <div class="hero-actions">
+        <a href="#booking" class="btn-gold">Reserve Your Car</a>
+        <a href="#fleet" class="btn-ghost">View Fleet</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <div class="hero-dot active"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+    <div class="hero-dot"></div>
+  </div>
+  <div class="hero-scroll-cue">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TRUST MARQUEE -->
+<div class="trust-marquee">
+  <div class="trust-track">
+    <div class="trust-item"><span class="trust-icon">&#10084;</span><span class="trust-label"><em>Family Owned</em> &mdash; You Deal With Ali Directly</span></div>
+    <div class="trust-item"><span class="trust-icon">&#9889;</span><span class="trust-label"><em>Same-Day Delivery</em> &mdash; OC &middot; LA &middot; San Diego</span></div>
+    <div class="trust-item"><span class="trust-icon">&#11088;</span><span class="trust-label"><em>Voted #1</em> &mdash; Customer Service 10+ Years</span></div>
+    <div class="trust-item"><span class="trust-icon">&#128274;</span><span class="trust-label"><em>No Hidden Fees</em> &mdash; Transparent Pricing Always</span></div>
+    <div class="trust-item"><span class="trust-icon">&#127950;</span><span class="trust-label"><em>Largest OC Network</em> &mdash; New Cars Added Weekly</span></div>
+    <div class="trust-item"><span class="trust-icon">&#128222;</span><span class="trust-label"><em>2-Hour Response</em> &mdash; Real People, Real Fast</span></div>
+    <div class="trust-item"><span class="trust-icon">&#10084;</span><span class="trust-label"><em>Family Owned</em> &mdash; You Deal With Ali Directly</span></div>
+    <div class="trust-item"><span class="trust-icon">&#9889;</span><span class="trust-label"><em>Same-Day Delivery</em> &mdash; OC &middot; LA &middot; San Diego</span></div>
+    <div class="trust-item"><span class="trust-icon">&#11088;</span><span class="trust-label"><em>Voted #1</em> &mdash; Customer Service 10+ Years</span></div>
+    <div class="trust-item"><span class="trust-icon">&#128274;</span><span class="trust-label"><em>No Hidden Fees</em> &mdash; Transparent Pricing Always</span></div>
+    <div class="trust-item"><span class="trust-icon">&#127950;</span><span class="trust-label"><em>Largest OC Network</em> &mdash; New Cars Added Weekly</span></div>
+    <div class="trust-item"><span class="trust-icon">&#128222;</span><span class="trust-label"><em>2-Hour Response</em> &mdash; Real People, Real Fast</span></div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-grid">
+    <div class="stat-box reveal"><span class="stat-n" data-target="10">0</span><span class="stat-l">Years in Business</span></div>
+    <div class="stat-box reveal delay-1"><span class="stat-n">#1</span><span class="stat-l">Voted Customer Service</span></div>
+    <div class="stat-box reveal delay-2"><span class="stat-n" data-target="3">0</span><span class="stat-l">Counties Served</span></div>
+    <div class="stat-box reveal delay-3"><span class="stat-n">&#8734;</span><span class="stat-l">Fleet Access Network</span></div>
+    <div class="stat-box reveal delay-4"><span class="stat-n">100%</span><span class="stat-l">Family Operated</span></div>
+  </div>
+</div>
+
+<!-- OCCASIONS -->
+<section class="occasions-section section" id="occasions">
+  <div class="s-eyebrow reveal">Perfect for Every Moment</div>
+  <h2 class="s-title reveal delay-1">EVERY<br><span class="gold">OCCASION.</span></h2>
+  <div class="occ-grid">
+    <div class="occ-card reveal">
+      <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&q=80" alt="Birthday exotic car rental Orange County"/>
+      <div class="occ-card-overlay"></div>
+      <div class="occ-card-body">
+        <div class="occ-tag">Celebrate</div>
+        <div class="occ-num">01</div>
+        <div class="occ-title">Birthdays &amp; Milestones</div>
+        <p class="occ-desc">Turn your birthday into a story worth telling. Arrive in a Lamborghini, celebrate in a Ferrari. Our family team handles every detail so you can focus on the moment.</p>
+      </div>
+    </div>
+    <div class="occ-card reveal delay-1">
+      <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=700&q=80" alt="Wedding exotic car rental SoCal"/>
+      <div class="occ-card-overlay"></div>
+      <div class="occ-card-body">
+        <div class="occ-tag">Weddings</div>
+        <div class="occ-num">02</div>
+        <div class="occ-title">Weddings &amp; Events</div>
+        <p class="occ-desc">A Rolls-Royce Ghost for your entrance. A Bentley Continental GT for the reception. We coordinate with your venue and photographer for a seamless, unforgettable arrival.</p>
+      </div>
+    </div>
+    <div class="occ-card reveal delay-2">
+      <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?w=700&q=80" alt="Content creator exotic car rental OC"/>
+      <div class="occ-card-overlay"></div>
+      <div class="occ-card-body">
+        <div class="occ-tag">Content &amp; Film</div>
+        <div class="occ-num">03</div>
+        <div class="occ-title">Photo &amp; Video Shoots</div>
+        <p class="occ-desc">Music videos, Instagram content, YouTube thumbnails. We supply the car — you supply the creativity. Our network means you get exactly the right make, color, and spec.</p>
+      </div>
+    </div>
+    <div class="occ-card reveal delay-1">
+      <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=700&q=80" alt="Corporate exotic car rental OC LA"/>
+      <div class="occ-card-overlay"></div>
+      <div class="occ-card-body">
+        <div class="occ-tag">Corporate</div>
+        <div class="occ-num">04</div>
+        <div class="occ-title">Business &amp; Corporate</div>
+        <p class="occ-desc">Close deals, impress clients, reward your team. Corporate accounts available with flexible multi-car packages and priority sourcing through our network.</p>
+      </div>
+    </div>
+    <div class="occ-card reveal delay-2">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=700&q=80" alt="Weekend getaway exotic car rental"/>
+      <div class="occ-card-overlay"></div>
+      <div class="occ-card-body">
+        <div class="occ-tag">Adventure</div>
+        <div class="occ-num">05</div>
+        <div class="occ-title">Weekend Drives</div>
+        <p class="occ-desc">PCH at sunrise. Ortega Canyon at golden hour. Angeles Crest on a Tuesday. Every road becomes legendary in a car like this. Multi-day rentals discounted significantly.</p>
+      </div>
+    </div>
+    <div class="occ-card reveal delay-3">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80" alt="Surprise gift exotic car rental Orange County"/>
+      <div class="occ-card-overlay"></div>
+      <div class="occ-card-body">
+        <div class="occ-tag">Gifting</div>
+        <div class="occ-num">06</div>
+        <div class="occ-title">Gift an Experience</div>
+        <p class="occ-desc">The greatest gift you can give a car enthusiast. We offer gift certificates and can arrange surprise deliveries to any address in SoCal. They will never forget it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section class="fleet-section section" id="fleet">
+  <div class="fleet-header">
+    <div>
+      <div class="s-eyebrow reveal">Our Ever-Growing Collection</div>
+      <h2 class="s-title reveal delay-1">THE<br><span class="gold">FLEET.</span></h2>
+      <p class="s-sub reveal delay-2">11 flagship exotics shown below. Through our exclusive OC &amp; LA partner network, we can source virtually any car &mdash; often same day.</p>
+    </div>
+    <a href="#booking" class="btn-ghost reveal" style="align-self:flex-end">Request Any Car &rarr;</a>
+  </div>
+
+  <div class="fleet-notice reveal">
+    <span style="color:var(--gold);font-size:1.1rem">&#129309;</span>
+    <p><strong>Family Network Advantage:</strong> Through 10+ years of exclusive partnerships across OC &amp; LA, we source virtually any exotic within hours. Don&rsquo;t see your car? <a href="#booking">Request it now</a> &mdash; Bugatti, Koenigsegg, Aston Martin &mdash; just ask.</p>
+  </div>
+
+  <div class="fleet-grid">
+    <div class="fleet-card wide reveal">
+      <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1000&q=85" alt="Rent Lamborghini Huracan EVO Orange County"/>
+      <div class="fleet-card-overlay"></div>
+      <div class="fleet-card-body">
+        <div class="fleet-brand">Lamborghini</div>
+        <div class="fleet-name">Hurac&#225;n EVO</div>
+        <div class="fleet-specs">
+          <div class="fleet-spec"><strong>640</strong> HP</div>
+          <div class="fleet-spec"><strong>2.9s</strong> 0&ndash;60</div>
+          <div class="fleet-spec"><strong>V10</strong> N/A</div>
+        </div>
+        <div class="fleet-price">From $1,200 / day &middot; Pickup or White-Glove Delivery</div>
+        <a href="#booking" class="fleet-cta">Reserve Now</a>
+      </div>
+    </div>
+
+    <div class="fleet-card reveal delay-1">
+      <img src="https://images.unsplash.com/photo-1614200179396-2bdb77ebf81b?w=700&q=85" alt="Rent Lamborghini Urus S Orange County"/>
+      <div class="fleet-card-overlay"></div>
+      <div class="fleet-card-body">
+        <div class="fleet-brand">Lamborghini</div>
+        <div class="fleet-name">Urus S</div>
+        <div class="fleet-specs"><div class="fleet-spec"><strong>666</strong> HP</div><div class="fleet-spec"><strong>3.5s</strong> 0&ndash;60</div></div>
+        <div class="fleet-price">From $1,300 / day</div>
+        <a href="#booking" class="fleet-cta">Reserve Now</a>
+      </div>
+    </div>
+
+    <div class="fleet-card reveal">
+      <img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=700&q=85" alt="Rent Ferrari F8 Spider Los Angeles"/>
+      <div class="fleet-card-overlay"></div>
+      <div class="fleet-card-body">
+        <div class="fleet-brand">Ferrari</div>
+        <div class="fleet-name">F8 Spider</div>
+        <div class="fleet-specs"><div class="fleet-spec"><strong>710</strong> HP</div><div class="fleet-spec"><strong>2.8s</strong> 0&ndash;60</div></div>
+        <div class="fleet-price">From $1,400 / day</div>
+        <a href="#booking" class="fleet-cta">Reserve Now</a>
+      </div>
+    </div>
+
+    <div class="fleet-card reveal delay-1">
+      <img src="https://images.unsplash.com/photo-1621135802920-133df287f89c?w=700&q=85" alt="Rent McLaren 720S Spider San Diego"/>
+      <div class="fleet-card-overlay"></div>
+      <div class="fleet-card-body">
+        <div class="fleet-brand">McLaren</div>
+        <div class="fleet-name">720S Spider</div>
+        <div class="fleet-specs"><div class="fleet-spec"><strong>720</strong> HP</div><div class="fleet-spec"><strong>2.7s</strong> 0&ndash;60</div></div>
+        <div class="fleet-price">From $1,100 / day</div>
+        <a href="#booking" class="fleet-cta">Reserve Now</a>
+      </div>
+    </div>
+
+    <div class="fleet-card reveal delay-2">
+      <img src="https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=700&q=85" alt="Rent Rolls Royce Ghost Orange County"/>
+      <div class="fleet-card-overlay"></div>
+      <div class="fleet-card-body">
+        <div class="fleet-brand">Rolls-Royce</div>
+        <div class="fleet-name">Ghost</div>
+        <div class="fleet-specs"><div class="fleet-spec"><strong>563</strong> HP</div><div class="fleet-spec">V12 Biturbo</div></div>
+        <div class="fleet-price">From $1,500 / day</div>
+        <a href="#booking" class="fleet-cta">Reserve Now</a>
+      </div>
+    </div>
+
+    <div class="fleet-card reveal">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=700&q=85" alt="Rent Porsche 911 Turbo S Orange County"/>
+      <div class="fleet-card-overlay"></div>
+      <div class="fleet-card-body">
+        <div class="fleet-brand">Porsche</div>
+        <div class="fleet-name">911 Turbo S</div>
+        <div class="fleet-specs"><div class="fleet-spec"><strong>640</strong> HP</div><div class="fleet-spec"><strong>2.6s</strong> 0&ndash;60</div></div>
+        <div class="fleet-price">From $900 / day</div>
+        <a href="#booking" class="fleet-cta">Reserve Now</a>
+      </div>
+    </div>
+
+    <div class="fleet-card reveal delay-1">
+      <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=700&q=85" alt="Rent Bentley Continental GT Orange County"/>
+      <div class="fleet-card-overlay"></div>
+      <div class="fleet-card-body">
+        <div class="fleet-brand">Bentley</div>
+        <div class="fleet-name">Continental GT</div>
+        <div class="fleet-specs"><div class="fleet-spec"><strong>542</strong> HP</div><div class="fleet-spec">W12 Twin-Turbo</div></div>
+        <div class="fleet-price">From $1,100 / day</div>
+        <a href="#booking" class="fleet-cta">Reserve Now</a>
+      </div>
+    </div>
+
+    <div class="fleet-card reveal delay-2">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=85" alt="Rent Audi R8 Spyder Orange County"/>
+      <div class="fleet-card-overlay"></div>
+      <div class="fleet-card-body">
+        <div class="fleet-brand">Audi</div>
+        <div class="fleet-name">R8 Spyder</div>
+        <div class="fleet-specs"><div class="fleet-spec"><strong>570</strong> HP</div><div class="fleet-spec">V10 N/A</div></div>
+        <div class="fleet-price">From $850 / day</div>
+        <a href="#booking" class="fleet-cta">Reserve Now</a>
+      </div>
+    </div>
+
+    <div class="fleet-card fleet-custom reveal">
+      <div style="text-align:center;padding:2rem">
+        <p style="font-family:var(--ff-serif);font-size:2rem;color:var(--gold);font-weight:300;line-height:1.3;margin-bottom:1rem">Don&rsquo;t see your<br><em>dream car?</em></p>
+        <p style="font-size:.74rem;color:var(--gray-2);line-height:1.7;margin-bottom:1.5rem;max-width:200px;margin-inline:auto">Our family network sources Bugatti, Koenigsegg, Aston Martin, Ferrari Roma &mdash; anything. Just ask.</p>
+        <a href="#booking" class="btn-gold">Custom Request</a>
+      </div>
+    </div>
+
+  </div>
+  <p class="fleet-footer-note reveal">&#10022; New vehicles added weekly &bull; Follow <a href="https://www.instagram.com/1stclassexotics/" target="_blank" rel="noopener">@1stclassexotics</a> for latest additions &#10022;</p>
+</section>
+
+<!-- WHY US COMPARISON -->
+<section class="compare-section section">
+  <div class="s-eyebrow reveal">Honest Comparison</div>
+  <h2 class="s-title reveal delay-1">WHY<br><span class="gold">FIRST CLASS.</span></h2>
+  <p class="s-sub reveal delay-2">We let the facts speak. See exactly why our family-owned model beats the competition on every metric that actually matters.</p>
+  <div class="reveal">
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>What Matters</th>
+        <th class="us">First Class Exotics &#10024;</th>
+        <th>Monza Exotics</th>
+        <th>Jungle Exotics</th>
+        <th>BigTime Ridez</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Family Owned &amp; Operated</td>
+        <td class="us"><span class="check">&#10003;</span> 100% Family</td>
+        <td><span class="cross">&#10005;</span> Corporate</td>
+        <td><span class="cross">&#10005;</span></td>
+        <td><span class="cross">&#10005;</span></td>
+      </tr>
+      <tr>
+        <td>You Deal With the Owner</td>
+        <td class="us"><span class="check">&#10003;</span> Always</td>
+        <td><span class="cross">&#10005;</span> Staff</td>
+        <td><span class="cross">&#10005;</span></td>
+        <td><span class="cross">&#10005;</span></td>
+      </tr>
+      <tr>
+        <td>10+ Years in Business</td>
+        <td class="us"><span class="check">&#10003;</span> Since 2013</td>
+        <td><span class="cross">&#10005;</span> Est. 2020</td>
+        <td><span class="cross">&#10005;</span> Newer</td>
+        <td><span class="cross">&#10005;</span></td>
+      </tr>
+      <tr>
+        <td>Broker / Largest OC Network</td>
+        <td class="us"><span class="check">&#10003;</span> Unlimited Access</td>
+        <td><span class="partial">Fixed Fleet Only</span></td>
+        <td><span class="partial">Fixed Fleet Only</span></td>
+        <td><span class="partial">Fixed Fleet Only</span></td>
+      </tr>
+      <tr>
+        <td>Same-Day Delivery</td>
+        <td class="us"><span class="check">&#10003;</span> OC + LA + SD</td>
+        <td><span class="check">&#10003;</span></td>
+        <td><span class="check">&#10003;</span></td>
+        <td><span class="partial">Limited</span></td>
+      </tr>
+      <tr>
+        <td>No Hidden Fees</td>
+        <td class="us"><span class="check">&#10003;</span> Always Transparent</td>
+        <td><span class="check">&#10003;</span></td>
+        <td><span class="partial">Varies</span></td>
+        <td><span class="partial">Varies</span></td>
+      </tr>
+      <tr>
+        <td>2-Hour Personal Response</td>
+        <td class="us"><span class="check">&#10003;</span> Family Team</td>
+        <td><span class="partial">Automated</span></td>
+        <td><span class="partial">Varies</span></td>
+        <td><span class="cross">&#10005;</span></td>
+      </tr>
+      <tr>
+        <td>Community Giving</td>
+        <td class="us"><span class="check">&#10003;</span> Toy Drives + Nonprofits</td>
+        <td><span class="cross">&#10005;</span></td>
+        <td><span class="cross">&#10005;</span></td>
+        <td><span class="cross">&#10005;</span></td>
+      </tr>
+      <tr>
+        <td>First-Timer Discount</td>
+        <td class="us"><span class="check">&#10003;</span> Code FIRSTCLASS</td>
+        <td><span class="cross">&#10005;</span></td>
+        <td><span class="check">&#10003;</span> Code Jungle</td>
+        <td><span class="cross">&#10005;</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<!-- FAMILY STORY -->
+<section class="section" id="family" style="padding:0;background:var(--dark-2)">
+  <div class="family-layout">
+    <div class="family-visual">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=900&q=80" alt="Ali Hojat First Class Exotics founder Costa Mesa"/>
+      <div class="family-visual-overlay"></div>
+    </div>
+    <div class="family-copy">
+      <div class="s-eyebrow reveal">Founded by Ali Hojat</div>
+      <h2 class="s-title reveal delay-1" style="font-size:clamp(2.5rem,4vw,5rem)">MORE THAN<br>A RENTAL.<br><span class="gold">A FAMILY.</span></h2>
+      <p class="reveal delay-2">Ali Hojat started First Class Exotics in 2013 with nothing but a <strong>childhood obsession with Lamborghinis</strong> and an unshakeable belief that every client deserves to be treated like family. He was one of the first people in Southern California to build an exotic rental business from scratch &mdash; before it was trendy, before the influencers made it cool.</p>
+      <p class="reveal delay-3">Over a decade later, the original vision has never changed. <strong>Every rental is personal.</strong> Every client gets Ali&rsquo;s direct attention. Every car is sourced with care. Our exclusive partner network across OC and LA means we can deliver virtually any exotic on the market &mdash; and we are constantly adding new relationships to give you more options than anyone else.</p>
+      <p class="reveal delay-3">We also believe in giving back. <strong>Annual toy drives, local nonprofit partnerships</strong> &mdash; because community is not a marketing word for us. It&rsquo;s who we are.</p>
+      <div class="family-pillars reveal delay-2">
+        <div class="f-pillar"><div class="f-pillar-icon">&#129309;</div><div class="f-pillar-title">Owner-Direct</div><div class="f-pillar-desc">You deal with Ali and his family. No call centers, no scripts, no middlemen.</div></div>
+        <div class="f-pillar"><div class="f-pillar-icon">&#10084;</div><div class="f-pillar-title">Community First</div><div class="f-pillar-desc">Toy drives, nonprofits, local giving &mdash; it&rsquo;s built into our DNA.</div></div>
+        <div class="f-pillar"><div class="f-pillar-icon">&#127950;</div><div class="f-pillar-title">Obsessed</div><div class="f-pillar-desc">Exotic cars aren&rsquo;t our job. They&rsquo;re our passion. That difference shows.</div></div>
+        <div class="f-pillar"><div class="f-pillar-icon">&#128260;</div><div class="f-pillar-title">Unlimited Fleet</div><div class="f-pillar-desc">The largest sourcing network in SoCal &mdash; and it keeps growing every week.</div></div>
+      </div>
+      <a href="#booking" class="btn-gold reveal delay-3" style="margin-top:2rem;display:inline-block">Experience First Class</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section section" id="how">
+  <div class="s-eyebrow reveal">Dead Simple Process</div>
+  <h2 class="s-title reveal delay-1">HOW IT<br><span class="gold">WORKS.</span></h2>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <div class="step-dot"></div>
+      <div class="step-title">Submit Your Request</div>
+      <p class="step-desc">Fill in your details, pick your car, and tell us your occasion. Takes 2 minutes. Our family team gets notified instantly.</p>
+    </div>
+    <div class="step reveal delay-1">
+      <div class="step-num">02</div>
+      <div class="step-dot"></div>
+      <div class="step-title">We Source &amp; Confirm</div>
+      <p class="step-desc">Within 2 hours, Ali&rsquo;s team confirms your car from our exclusive OC &amp; LA network. We find an equal or better alternative if your first choice is unavailable.</p>
+    </div>
+    <div class="step reveal delay-2">
+      <div class="step-num">03</div>
+      <div class="step-dot"></div>
+      <div class="step-title">Lock It In</div>
+      <p class="step-desc">Approve your vehicle, sign the agreement, and secure with a deposit. We handle all logistics from here.</p>
+    </div>
+    <div class="step reveal delay-3">
+      <div class="step-num">04</div>
+      <div class="step-dot"></div>
+      <div class="step-title">Pick Up or We Deliver</div>
+      <p class="step-desc">Visit Costa Mesa or choose white-glove delivery to your hotel, home, or venue anywhere in OC, LA, or San Diego &mdash; same day available.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div class="booking-layout">
+    <div class="booking-left">
+      <div class="s-eyebrow reveal">Reserve Your Experience</div>
+      <h2 class="s-title reveal delay-1" style="font-size:clamp(2.5rem,4vw,5rem)">REQUEST<br><span class="gold">YOUR CAR.</span></h2>
+      <p class="s-sub reveal delay-2">Family team responds within 2 hours. No payment required to inquire.</p>
+
+      <div class="promo-strip reveal delay-2">
+        <span>&#127381;</span>
+        <span>First-time renter? Use code <strong>FIRSTCLASS</strong> for 10% off your first booking. Mention it in the notes below.</span>
+      </div>
+
+      <form class="form-grid" id="bookForm" onsubmit="submitForm(event)">
+        <div class="fg"><label>First Name</label><input type="text" placeholder="Your first name" required/></div>
+        <div class="fg"><label>Last Name</label><input type="text" placeholder="Your last name" required/></div>
+        <div class="fg"><label>Phone</label><input type="tel" placeholder="(949) 000-0000" required/></div>
+        <div class="fg"><label>Email</label><input type="email" placeholder="you@email.com" required/></div>
+        <div class="fg">
+          <label>Preferred Vehicle</label>
+          <select required>
+            <option value="" disabled selected>Select a car...</option>
+            <optgroup label="Lamborghini"><option>Hurac&#225;n EVO &mdash; From $1,200/day</option><option>Urus S &mdash; From $1,300/day</option><option>Aventador</option></optgroup>
+            <optgroup label="Ferrari"><option>F8 Spider &mdash; From $1,400/day</option><option>Roma</option><option>488 GTB</option></optgroup>
+            <optgroup label="McLaren"><option>720S Spider &mdash; From $1,100/day</option><option>570S</option></optgroup>
+            <optgroup label="Rolls-Royce"><option>Ghost &mdash; From $1,500/day</option><option>Cullinan</option><option>Wraith</option></optgroup>
+            <optgroup label="Other Luxury"><option>Bentley Continental GT</option><option>Porsche 911 Turbo S</option><option>Audi R8 Spyder</option><option>Mercedes-AMG GT 63 S</option><option>BMW M8 Competition</option><option>Range Rover Sport SVR</option></optgroup>
+            <option>Custom Request &mdash; Tell Us What You Want</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Pickup / Delivery</label>
+          <select><option value="" disabled selected>Select...</option><option>Self Pickup &mdash; Costa Mesa</option><option>Delivery &mdash; Orange County</option><option>Delivery &mdash; Los Angeles</option><option>Delivery &mdash; San Diego</option><option>Delivery &mdash; Inland Empire</option></select>
+        </div>
+        <div class="fg"><label>Start Date</label><input type="date" required/></div>
+        <div class="fg"><label>End Date</label><input type="date" required/></div>
+        <div class="fg full"><label>Occasion &amp; Special Requests</label><textarea placeholder="Birthday, wedding, anniversary, content shoot, corporate event, weekend drive... the more detail, the better we can serve you. Mention promo code FIRSTCLASS here if applicable."></textarea></div>
+        <div class="fg full">
+          <button type="submit" class="btn-gold" style="width:100%;padding:1rem;font-size:.75rem">Submit Reservation Request</button>
+          <p class="form-note">&#9889; 2-hour family response &bull; No payment to inquire &bull; Must be 25+ with valid license &amp; full coverage insurance &bull; Exemptions may be available</p>
+        </div>
+      </form>
+      <div class="success-msg" id="successMsg">&#10003; &nbsp; Request received! Ali and the First Class family team will contact you within 2 hours. Keep your phone close!</div>
+      <div class="whatsapp-cta">
+        <span style="font-size:1.4rem">&#128242;</span>
+        <span>Prefer to text? <a href="sms:9492945958">Text Ali directly at (949) 294-5958</a> or email <a href="mailto:ali@firstclassexotics.com">ali@firstclassexotics.com</a></span>
+      </div>
+    </div>
+    <div class="booking-right">
+      <div class="s-eyebrow reveal" style="margin-bottom:2rem">What to Expect</div>
+      <div class="booking-info-item reveal">
+        <span class="bk-icon">&#9889;</span>
+        <div><div class="bk-title">2-Hour Family Response</div><div class="bk-desc">Ali and his team personally handle every request. Real people, real fast &mdash; usually much less than 2 hours.</div></div>
+      </div>
+      <div class="booking-info-item reveal delay-1">
+        <span class="bk-icon">&#128260;</span>
+        <div><div class="bk-title">Best Match Guarantee</div><div class="bk-desc">If your first choice is unavailable, we source an equal or better car from our exclusive OC &amp; LA network. Always same quality, always First Class.</div></div>
+      </div>
+      <div class="booking-info-item reveal delay-2">
+        <span class="bk-icon">&#128663;</span>
+        <div><div class="bk-title">White-Glove Delivery</div><div class="bk-desc">We deliver to your hotel, home, office &mdash; anywhere in OC, LA, or San Diego. Same-day available for most requests submitted before noon.</div></div>
+      </div>
+      <div class="booking-info-item reveal delay-1">
+        <span class="bk-icon">&#128176;</span>
+        <div><div class="bk-title">Extended Rental Discounts</div><div class="bk-desc">3-day, weekly, or monthly? We reward longer bookings with 20&ndash;35% savings. Just mention your timeline.</div></div>
+      </div>
+      <div class="booking-info-item reveal delay-2">
+        <span class="bk-icon">&#127381;</span>
+        <div><div class="bk-title">First-Timer Offer</div><div class="bk-desc">New to exotic rentals? Use code <strong style="color:var(--gold)">FIRSTCLASS</strong> in your notes for 10% off your first booking. Our family team will confirm and apply it.</div></div>
+      </div>
+      <div class="booking-info-item reveal delay-3">
+        <span class="bk-icon">&#128222;</span>
+        <div>
+          <div class="bk-title">Direct Contact</div>
+          <div class="bk-desc">
+            <a href="tel:9492945958">(949) 294-5958</a> &bull; <a href="mailto:ali@firstclassexotics.com">ali@firstclassexotics.com</a><br/>
+            2060 Placentia Ave, Ste A4, Costa Mesa CA 92627<br/>
+            Mon&ndash;Fri 8am&ndash;6pm &bull; Sat 9am&ndash;6pm &bull; Sun 9am&ndash;5pm
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews-section section" id="reviews">
+  <div class="reviews-header">
+    <div>
+      <div class="s-eyebrow reveal">Real Clients. Real Experiences.</div>
+      <h2 class="s-title reveal delay-1">WHAT PEOPLE<br><span class="gold">SAY.</span></h2>
+    </div>
+    <div class="review-score reveal">
+      <div class="score-big">5.0</div>
+      <div class="score-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="score-label">#1 RATED OC &bull; YELP &bull; GOOGLE</div>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review reveal">
+      <div class="review-platform">Google Review &bull; Orange County</div>
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="review-q">"</div>
+      <p class="review-text">First Class Exotics is all about service. Ali was so friendly and professional &mdash; I felt like part of the family from the very first call. Absolutely unmatched experience anywhere in SoCal.</p>
+      <div class="review-author">S. Shirazi</div>
+      <div class="review-location">Orange County, CA</div>
+    </div>
+    <div class="review reveal delay-1">
+      <div class="review-platform">Yelp Review &bull; #1 OC Rating</div>
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="review-q">"</div>
+      <p class="review-text">You can tell it&rsquo;s a family-run business &mdash; they actually care. Best selection and service is outstanding. Not just another rental company. Highly recommend to everyone who wants the real deal.</p>
+      <div class="review-author">Todd J.</div>
+      <div class="review-location">Los Angeles, CA</div>
+    </div>
+    <div class="review reveal delay-2">
+      <div class="review-platform">Verified Customer</div>
+      <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <div class="review-q">"</div>
+      <p class="review-text">Extremely smooth experience with the R8. The whole team treated me like a VIP &mdash; not just a transaction. Already planning my next rental. Next time it&rsquo;s the Lambo. Thanks Ali!</p>
+      <div class="review-author">Tiffany J.</div>
+      <div class="review-location">San Diego, CA</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section section" id="faq">
+  <div class="faq-layout">
+    <div>
+      <div class="s-eyebrow reveal">Common Questions</div>
+      <h2 class="s-title reveal delay-1" style="font-size:clamp(2.5rem,4vw,5rem)">GOT<br><span class="gold">QUESTIONS.</span></h2>
+      <p class="s-sub reveal delay-2">We answer every question honestly. No fine print games, no surprises. That&rsquo;s what 10 years of family business looks like.</p>
+      <a href="#booking" class="btn-gold reveal delay-3" style="margin-top:2rem;display:inline-block">Still Have Questions? Ask Ali</a>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What are the requirements to rent? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>You must be 25 or older with a valid driver&rsquo;s license and full comprehensive &amp; collision insurance in your name. A major credit card is required for the security deposit. Exemptions may be available &mdash; contact our team directly to discuss your situation.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How does same-day delivery work? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Submit your request before noon and our family team will work to have your car delivered to any address in Orange County, Los Angeles, or San Diego that same day. We text you when we&rsquo;re on the way. Hotel valets, driveways, offices &mdash; we come to you.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What if the car I want isn&rsquo;t available? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Our exclusive partner network across OC and LA means we can almost always find what you&rsquo;re looking for. If your first choice is unavailable, we source an equal or better alternative at the same rate &mdash; always with your approval before we confirm.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Do I need additional insurance? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Your existing full coverage personal auto insurance typically extends to rental vehicles, including exotic rentals. We recommend calling your agent before you book to verify. We do not require you to purchase additional coverage if your existing policy qualifies.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Can I get a discount for a longer rental? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Absolutely. Multi-day, weekly, and monthly rentals receive significant discounts &mdash; typically 20&ndash;35% off the daily rate. Just mention your timeline in your booking request and our team will build you a custom package.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How does the first-timer discount work? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Simply mention code <strong>FIRSTCLASS</strong> in your booking notes. Our family team will verify and apply 10% off your first rental. This applies to all vehicles in our network. It&rsquo;s our way of welcoming new clients to the First Class family.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Can you source cars not shown on the website? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Yes &mdash; this is one of our biggest advantages as a broker. We have relationships with the largest exotic fleet owners across Orange County and Los Angeles. Bugatti, Koenigsegg, Aston Martin, Ferrari Roma, rare colorways, specialty builds &mdash; just ask and we&rsquo;ll tell you what we can find.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What is your cancellation policy? <span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>We handle cancellations on a case-by-case basis because we are a family business, not a faceless corporation. Contact our team directly and we will work with you. We believe in treating every client fairly, and our track record of 5-star reviews reflects that.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CITIES -->
+<section class="cities-section section" id="cities">
+  <div class="s-eyebrow reveal">White-Glove Delivery</div>
+  <h2 class="s-title reveal delay-1">WE COME<br><span class="gold">TO YOU.</span></h2>
+  <p class="s-sub reveal delay-2">Our family team delivers personally to every corner of SoCal. Same-day available.</p>
+  <div class="cities-grid">
+    <a href="#booking" class="city-card reveal"><span class="city-arrow">&rarr;</span><div class="city-name">Orange County</div><div class="city-areas">Newport Beach &middot; Irvine &middot; Costa Mesa &middot; Huntington Beach &middot; Laguna Beach &middot; Dana Point</div></a>
+    <a href="#booking" class="city-card reveal delay-1"><span class="city-arrow">&rarr;</span><div class="city-name">Los Angeles</div><div class="city-areas">Beverly Hills &middot; West Hollywood &middot; Malibu &middot; Santa Monica &middot; Downtown &middot; Calabasas</div></a>
+    <a href="#booking" class="city-card reveal delay-2"><span class="city-arrow">&rarr;</span><div class="city-name">San Diego</div><div class="city-areas">La Jolla &middot; Del Mar &middot; Coronado &middot; Downtown &middot; Carlsbad &middot; Rancho Santa Fe</div></a>
+    <a href="#booking" class="city-card reveal delay-3"><span class="city-arrow">&rarr;</span><div class="city-name">Inland Empire</div><div class="city-areas">Riverside &middot; Palm Springs &middot; Temecula &middot; Ontario &middot; Corona &middot; Murrieta</div></a>
+  </div>
+</section>
+
+<!-- BLOG -->
+<section class="blog-section section">
+  <div class="blog-header">
+    <div>
+      <div class="s-eyebrow reveal">Exotic Car Insights</div>
+      <h2 class="s-title reveal delay-1">FROM THE<br><span class="gold">BLOG.</span></h2>
+    </div>
+    <a href="blog.html" class="btn-ghost reveal">All Articles &rarr;</a>
+  </div>
+  <div class="blog-grid">
+    <a href="blog.html" class="blog-card main reveal">
+      <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=85" alt="Best roads to drive a Lamborghini OC"/>
+      <div class="blog-card-overlay"></div>
+      <div class="blog-card-body">
+        <div class="blog-card-tag">Orange County &bull; Driving Guide</div>
+        <div class="blog-card-title">Best Roads to Drive a Lamborghini in Orange County</div>
+        <div class="blog-card-meta">First Class Exotics &bull; 8 min read</div>
+        <span class="blog-read">Read Article &rarr;</span>
+      </div>
+    </a>
+    <div style="display:flex;flex-direction:column;gap:2px">
+      <a href="blog.html" class="blog-card side reveal delay-1">
+        <img src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=600&q=85" alt="Lamborghini vs Ferrari which to rent"/>
+        <div class="blog-card-overlay"></div>
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Comparison</div>
+          <div class="blog-card-title">Lamborghini vs Ferrari: Which to Rent?</div>
+          <div class="blog-card-meta">7 min read</div>
+          <span class="blog-read">Read &rarr;</span>
+        </div>
+      </a>
+      <a href="blog.html" class="blog-card side reveal delay-2">
+        <img src="https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=600&q=85" alt="Complete guide exotic car rental Los Angeles"/>
+        <div class="blog-card-overlay"></div>
+        <div class="blog-card-body">
+          <div class="blog-card-tag">LA Guide</div>
+          <div class="blog-card-title">Complete Guide to Renting an Exotic in LA</div>
+          <div class="blog-card-meta">9 min read</div>
+          <span class="blog-read">Read &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">First Class <span>Exotics</span></div>
+      <p class="footer-tagline">Southern California&rsquo;s #1 family-owned exotic car rental concierge. Voted #1 in customer service for 10+ years. Serving OC, LA &amp; San Diego with passion and personal care since 2013.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/1stclassexotics/" target="_blank" rel="noopener" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://www.facebook.com/pages/category/Exotic-Car-Rental/First-Class-Exotics-101849178232401/" target="_blank" rel="noopener" title="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.tiktok.com/@firstclassexotics" target="_blank" rel="noopener" title="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links"><li><a href="#fleet">Fleet</a></li><li><a href="#occasions">Occasions</a></li><li><a href="#family">Our Story</a></li><li><a href="#how">How It Works</a></li><li><a href="#faq">FAQ</a></li><li><a href="blog.html">Blog</a></li></ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Locations</div>
+      <ul class="footer-links"><li><a href="#booking">Orange County</a></li><li><a href="#booking">Los Angeles</a></li><li><a href="#booking">San Diego</a></li><li><a href="#booking">Inland Empire</a></li><li><a href="#booking">Same-Day Delivery</a></li></ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact-item"><span class="fi">&#128205;</span>2060 Placentia Ave, Ste A4<br>Costa Mesa, CA 92627</div>
+      <div class="footer-contact-item"><span class="fi">&#128222;</span><a href="tel:9492945958">(949) 294-5958</a></div>
+      <div class="footer-contact-item"><span class="fi">&#9993;</span><a href="mailto:ali@firstclassexotics.com">ali@firstclassexotics.com</a></div>
+      <div class="footer-contact-item"><span class="fi">&#9200;</span>Mon&ndash;Fri 8am&ndash;6pm<br>Sat 9am&ndash;6pm &middot; Sun 9am&ndash;5pm</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2025 First Class Exotics, LLC. Costa Mesa, California. Family Owned &amp; Operated. All rights reserved.</p>
+    <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Rental Agreement</a></div>
+  </div>
+</footer>
+
+<script>
+// ── CURSOR ──
+const cur = document.getElementById('cur');
+const curR = document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function ring(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(ring);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.classList.add('hover');curR.classList.add('hover');});el.addEventListener('mouseleave',()=>{cur.classList.remove('hover');curR.classList.remove('hover');});});
+
+// ── NAV ──
+const nb=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',window.scrollY>80));
+function openMob(){document.getElementById('mobMenu').classList.add('open');document.body.style.overflow='hidden';}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.body.style.overflow='';}
+
+// ── HERO SLIDESHOW ──
+const slides=document.querySelectorAll('.hero-slide');
+const dots=document.querySelectorAll('.hero-dot');
+let si=0;
+function nextSlide(){
+  slides[si].classList.remove('active');dots[si].classList.remove('active');
+  si=(si+1)%slides.length;
+  slides[si].classList.add('active');dots[si].classList.add('active');
+}
+setInterval(nextSlide,5000);
+dots.forEach((d,i)=>d.addEventListener('click',()=>{slides[si].classList.remove('active');dots[si].classList.remove('active');si=i;slides[si].classList.add('active');dots[si].classList.add('active');}));
+
+// ── COUNTERS ──
+function animateCount(el,target){
+  let cur=0;const dur=2000;const step=dur/target;
+  const t=setInterval(()=>{cur++;el.textContent=cur+(target>=10?'+':'');if(cur>=target)clearInterval(t);},step);
+}
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const t=e.target.dataset.target;if(t)animateCount(e.target,parseInt(t));obs.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>obs.observe(el));
+
+// ── REVEAL ON SCROLL ──
+const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.08});
+document.querySelectorAll('.reveal,.reveal-l').forEach(el=>revObs.observe(el));
+
+// ── FAQ ──
+function toggleFaq(btn){const item=btn.parentElement;item.classList.toggle('open');}
+
+// ── FORM ──
+function submitForm(e){e.preventDefault();document.getElementById('bookForm').style.display='none';document.getElementById('successMsg').style.display='block';}
+</script>
+</body>
+</html>
