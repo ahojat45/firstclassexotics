@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exotic Car Rental Blog | Tips, Guides & News – First Class Exotics</title>
+  <meta name="description" content="Expert tips, guides and insights on exotic car rentals in Orange County, Los Angeles and San Diego from Southern California's #1 family-owned exotic rental agency."/>
+  <meta name="referrer" content="no-referrer-when-downgrade"/>
+  <meta name="keywords" content="exotic car rental blog, rent a lamborghini tips, ferrari rental guide orange county, luxury car rental los angeles, exotic car blog socal"/>
+  <link rel="canonical" href="https://www.firstclassexotics.com/blog"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--gold:#9B0006;--gold-light:#C0000A;--black:#050505;--dark:#0D0D0D;--dark-2:#141414;--dark-3:#1C1C1C;--gray:#888;--gray-light:#aaa;--white:#F5F3EE;--font-display:'Cormorant Garamond',serif;--font-body:'Montserrat',sans-serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;background:var(--dark-3);color:transparent;font-size:0}
+    /* NAV */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 4rem;height:80px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(155,0,6,.15)}
+    .nav-logo{font-family:var(--font-display);font-size:1.4rem;font-weight:600;color:var(--white);text-decoration:none;letter-spacing:.05em}
+    .nav-logo span{color:var(--gold)}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+    .nav-links a{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-light);text-decoration:none;transition:color .3s;font-weight:500}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold)}
+    .nav-cta{border:1px solid var(--gold);color:var(--gold)!important;padding:.5rem 1.4rem;transition:background .3s,color .3s!important}
+    .nav-cta:hover{background:var(--gold)!important;color:var(--black)!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+    .hamburger span{display:block;width:24px;height:1.5px;background:var(--white)}
+    .mobile-menu{display:none;position:fixed;inset:0;background:rgba(5,5,5,.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--white);text-decoration:none;transition:color .3s}
+    .mobile-menu a:hover{color:var(--gold)}
+    .mobile-close{position:absolute;top:1.8rem;right:2rem;font-size:1.5rem;cursor:pointer;background:none;border:none;color:var(--white)}
+    /* HERO */
+    .blog-hero{padding:8rem 4rem 4rem;background:var(--dark-2);border-bottom:1px solid rgba(155,0,6,.12);text-align:center}
+    .eyebrow{font-size:.65rem;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:500}
+    .page-title{font-family:var(--font-display);font-size:clamp(2.5rem,5vw,4.5rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+    .page-title em{font-style:italic;color:var(--gold-light)}
+    .page-sub{font-size:.82rem;color:var(--gray);line-height:1.8;max-width:520px;margin:0 auto 2rem}
+    /* TAGS */
+    .tag-bar{display:flex;justify-content:center;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem}
+    .tag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:.4rem 1rem;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray-light);cursor:pointer;transition:all .3s}
+    .tag:hover,.tag.active{border-color:var(--gold);color:var(--gold);background:rgba(155,0,6,.08)}
+    /* FEATURED POST */
+    .featured{padding:4rem 4rem 0}
+    .featured-card{display:grid;grid-template-columns:1.2fr 1fr;overflow:hidden;border:1px solid rgba(255,255,255,.07);background:var(--dark-2)}
+    .featured-img{position:relative;min-height:480px;overflow:hidden}
+    .featured-img img{color:transparent;width:100%;height:100%;object-fit:cover;filter:brightness(.75);transition:transform .7s}
+    .featured-card:hover .featured-img img{color:transparent;transform:scale(1.05)}
+    .featured-img-label{position:absolute;top:1.5rem;left:1.5rem;background:var(--gold);color:var(--black);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:.35rem .8rem}
+    .featured-body{padding:3rem;display:flex;flex-direction:column;justify-content:center}
+    .post-tag{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;font-weight:500}
+    .post-title{font-family:var(--font-display);font-size:2.2rem;font-weight:400;color:var(--white);line-height:1.2;margin-bottom:1rem}
+    .post-excerpt{font-size:.8rem;color:var(--gray);line-height:1.85;margin-bottom:1.5rem}
+    .post-meta{font-size:.65rem;color:var(--gray);letter-spacing:.08em;margin-bottom:1.5rem}
+    .read-more{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);text-decoration:none;font-weight:600;transition:letter-spacing .3s}
+    .read-more:hover{letter-spacing:.25em}
+    /* GRID */
+    .blog-main{padding:3rem 4rem 6rem;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem}
+    .blog-card{background:var(--dark-2);border:1px solid rgba(255,255,255,.06);overflow:hidden;text-decoration:none;color:inherit;transition:border-color .3s,transform .3s;display:flex;flex-direction:column}
+    .blog-card:hover{border-color:rgba(155,0,6,.3);transform:translateY(-4px)}
+    .blog-card-img{width:100%;aspect-ratio:16/9;object-fit:cover;filter:brightness(.75);transition:filter .4s}
+    .blog-card:hover .blog-card-img{filter:brightness(.55)}
+    .blog-card-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+    .blog-card-tag{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem}
+    .blog-card-title{font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--white);margin-bottom:.6rem;line-height:1.3}
+    .blog-card-excerpt{font-size:.74rem;color:var(--gray);line-height:1.75;flex:1;margin-bottom:1rem}
+    .blog-card-meta{font-size:.62rem;color:var(--gray);letter-spacing:.08em;border-top:1px solid rgba(255,255,255,.06);padding-top:.8rem;margin-top:auto}
+    /* FULL ARTICLE */
+    .article-overlay{display:none;position:fixed;inset:0;background:rgba(5,5,5,.97);z-index:2000;overflow-y:auto;padding:2rem}
+    .article-overlay.open{display:block}
+    .article-inner{max-width:780px;margin:0 auto;padding:2rem 0 6rem}
+    .article-close{position:fixed;top:1.5rem;right:2rem;background:none;border:1px solid rgba(255,255,255,.15);color:var(--white);font-size:1.2rem;cursor:pointer;width:42px;height:42px;display:flex;align-items:center;justify-content:center;transition:border-color .3s}
+    .article-close:hover{border-color:var(--gold);color:var(--gold)}
+    .article-eyebrow{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+    .article-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);font-weight:300;line-height:1.15;margin-bottom:1rem;color:var(--white)}
+    .article-title em{font-style:italic;color:var(--gold-light)}
+    .article-meta{font-size:.68rem;color:var(--gray);letter-spacing:.08em;margin-bottom:2.5rem;padding-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.08)}
+    .article-img{width:100%;aspect-ratio:16/9;object-fit:cover;margin-bottom:2.5rem;filter:brightness(.8)}
+    .article-body h2{font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:var(--white);margin:2.5rem 0 1rem;line-height:1.2}
+    .article-body h2 em{font-style:italic;color:var(--gold-light)}
+    .article-body h3{font-size:.82rem;font-weight:600;color:var(--white);letter-spacing:.1em;text-transform:uppercase;margin:2rem 0 .8rem}
+    .article-body p{font-size:.84rem;line-height:1.95;color:var(--gray-light);margin-bottom:1.3rem}
+    .article-body strong{color:var(--white);font-weight:600}
+    .article-body ul{margin:1rem 0 1.5rem 1.5rem}
+    .article-body ul li{font-size:.82rem;line-height:1.8;color:var(--gray-light);margin-bottom:.4rem}
+    .article-body ul li::marker{color:var(--gold)}
+    .article-cta{background:rgba(155,0,6,.08);border:1px solid rgba(155,0,6,.25);padding:2rem;margin:3rem 0;text-align:center}
+    .article-cta p{font-size:.82rem;color:var(--gray);margin-bottom:1rem;line-height:1.7}
+    .article-cta strong{color:var(--white)}
+    .btn-primary{background:var(--gold);color:var(--black);padding:.9rem 2.2rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;font-weight:700;font-family:var(--font-body);border:none;cursor:pointer;transition:background .3s;display:inline-block}
+    .btn-primary:hover{background:var(--gold-light)}
+    /* NEWSLETTER */
+    .newsletter{padding:5rem 4rem;background:var(--dark-2);border-top:1px solid rgba(155,0,6,.12);text-align:center}
+    .newsletter h2{font-family:var(--font-display);font-size:2.5rem;font-weight:300;margin-bottom:.8rem}
+    .newsletter h2 em{font-style:italic;color:var(--gold-light)}
+    .newsletter p{font-size:.8rem;color:var(--gray);margin-bottom:2rem;line-height:1.7}
+    .newsletter-form{display:flex;gap:.5rem;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+    .newsletter-form input{flex:1;min-width:240px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--white);padding:.85rem 1rem;font-family:var(--font-body);font-size:.8rem;outline:none;border-radius:0}
+    .newsletter-form input:focus{border-color:var(--gold)}
+    .newsletter-success{display:none;color:var(--gold);font-size:.8rem;margin-top:1rem;letter-spacing:.05em}
+    /* FOOTER */
+    .blog-footer{background:var(--black);border-top:1px solid rgba(155,0,6,.15);padding:2.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .blog-footer-brand{font-family:var(--font-display);font-size:1.2rem;color:var(--white)}
+    .blog-footer-brand span{color:var(--gold)}
+    .blog-footer-copy{font-size:.68rem;color:var(--gray)}
+    .blog-footer-links{display:flex;gap:2rem}
+    .blog-footer-links a{font-size:.7rem;color:var(--gray);text-decoration:none;transition:color .3s}
+    .blog-footer-links a:hover{color:var(--gold)}
+    @media(max-width:1024px){nav{padding:0 2rem}.nav-links{display:none}.hamburger{display:flex}.featured{padding:3rem 2rem 0}.featured-card{grid-template-columns:1fr}.featured-img{min-height:280px}.blog-main{padding:2rem;grid-template-columns:1fr 1fr}.blog-hero{padding:7rem 2rem 3rem}.newsletter{padding:4rem 2rem}.blog-footer{padding:2rem}}
+    @media(max-width:640px){.blog-main{grid-template-columns:1fr}.blog-footer{flex-direction:column;text-align:center}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">First Class <span>Exotics</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#fleet">Fleet</a></li>
+    <li><a href="index.html#family">Our Story</a></li>
+    <li><a href="index.html#how">How It Works</a></li>
+    <li><a href="index.html#cities">Locations</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
+    <li><a href="index.html#booking" class="nav-cta">Reserve Now</a></li>
+  </ul>
+  <div class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMenu()">&#x2715;</button>
+  <a href="index.html#fleet" onclick="closeMenu()">Fleet</a>
+  <a href="index.html#family" onclick="closeMenu()">Our Story</a>
+  <a href="index.html#booking" onclick="closeMenu()">Reserve Now</a>
+  <a href="blog.html" onclick="closeMenu()">Blog</a>
+</div>
+
+<!-- BLOG HERO -->
+<div class="blog-hero">
+  <p class="eyebrow">Exotic Car Insights from SoCal's #1 Family-Owned Rental</p>
+  <h1 class="page-title">The First Class <em>Blog</em></h1>
+  <p class="page-sub">Expert tips, driving guides, comparison reviews, and insider knowledge on exotic car rentals in Orange County, Los Angeles, and San Diego. Published 2&ndash;3 times a week.</p>
+  <div class="tag-bar">
+    <span class="tag active">All Posts</span>
+    <span class="tag">Orange County</span>
+    <span class="tag">Los Angeles</span>
+    <span class="tag">San Diego</span>
+    <span class="tag">Car Comparisons</span>
+    <span class="tag">Driving Guides</span>
+    <span class="tag">Tips &amp; Advice</span>
+  </div>
+</div>
+
+<!-- FEATURED POST -->
+<div class="featured">
+  <div class="featured-card">
+    <div class="featured-img">
+      <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1000&q=80" alt="Best roads to drive a Lamborghini in Orange County California"/>
+      <span class="featured-img-label">&#9733; Featured Post</span>
+    </div>
+    <div class="featured-body">
+      <p class="post-tag">Orange County &middot; Driving Guide</p>
+      <h2 class="post-title">Best Roads to Drive a Lamborghini in Orange County</h2>
+      <p class="post-excerpt">From the winding cliffs of Pacific Coast Highway to the open sweepers of Ortega Highway, Orange County is home to some of the most breathtaking roads in all of California. We have driven them all in Lamborghinis, Ferraris, and McLarens. Here is our definitive guide to making the most of your exotic rental in OC.</p>
+      <p class="post-meta">By First Class Exotics Family Team &nbsp;&middot;&nbsp; 8 min read &nbsp;&middot;&nbsp; Orange County Driving</p>
+      <a href="#" class="read-more" onclick="openArticle('article1');return false;">Read Full Article &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG GRID -->
+<div class="blog-main">
+
+  <a href="#" class="blog-card" onclick="openArticle('article2');return false;">
+    <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=700&q=80" alt="Lamborghini vs Ferrari which should you rent in SoCal"/>
+    <div class="blog-card-body">
+      <div class="blog-card-tag">Car Comparison &middot; Expert Guide</div>
+      <div class="blog-card-title">Lamborghini vs Ferrari: Which Should You Rent in SoCal?</div>
+      <p class="blog-card-excerpt">Two legendary Italian brands. Two completely different personalities. One impossible decision. We break it all down so you can choose your perfect ride for Southern California.</p>
+      <div class="blog-card-meta">First Class Exotics &middot; 7 min read &middot; Car Comparisons</div>
+    </div>
+  </a>
+
+  <a href="#" class="blog-card" onclick="openArticle('article3');return false;">
+    <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=700&q=80" alt="Complete guide to renting an exotic car in Los Angeles"/>
+    <div class="blog-card-body">
+      <div class="blog-card-tag">Los Angeles &middot; Complete Guide</div>
+      <div class="blog-card-title">The Complete Guide to Renting an Exotic Car in Los Angeles</div>
+      <p class="blog-card-excerpt">Everything you need to know before you rent an exotic in LA &mdash; the best neighborhoods, routes, times of day, and how to avoid the common mistakes most first-timers make.</p>
+      <div class="blog-card-meta">First Class Exotics &middot; 9 min read &middot; Los Angeles</div>
+    </div>
+  </a>
+
+  <a href="#" class="blog-card" onclick="openArticle('article4');return false;">
+    <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://images.unsplash.com/photo-1621135802920-133df287f89c?w=700&q=80" alt="How much does it cost to rent a McLaren in Orange County"/>
+    <div class="blog-card-body">
+      <div class="blog-card-tag">Pricing &middot; Tips &amp; Advice</div>
+      <div class="blog-card-title">How Much Does It Cost to Rent an Exotic Car in Orange County?</div>
+      <p class="blog-card-excerpt">Transparent pricing breakdown for Lamborghinis, Ferraris, McLarens, Rolls-Royces and more. What is included, what costs extra, and how to get the best deal on your rental.</p>
+      <div class="blog-card-meta">First Class Exotics &middot; 6 min read &middot; Pricing Guide</div>
+    </div>
+  </a>
+
+  <a href="#" class="blog-card" onclick="openArticle('article5');return false;">
+    <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=700&q=80" alt="Renting an exotic car for a wedding in SoCal"/>
+    <div class="blog-card-body">
+      <div class="blog-card-tag">Events &middot; Weddings</div>
+      <div class="blog-card-title">How to Rent an Exotic Car for Your Wedding in SoCal</div>
+      <p class="blog-card-excerpt">Your wedding day deserves the perfect arrival. From Rolls-Royce Ghosts to Lamborghini Huracans &mdash; here is how to plan your exotic wedding car rental in Orange County and LA.</p>
+      <div class="blog-card-meta">First Class Exotics &middot; 5 min read &middot; Events</div>
+    </div>
+  </a>
+
+  <a href="#" class="blog-card" onclick="openArticle('article6');return false;">
+    <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=700&q=80" alt="Things to do in Newport Beach with an exotic car rental"/>
+    <div class="blog-card-body">
+      <div class="blog-card-tag">Newport Beach &middot; Lifestyle</div>
+      <div class="blog-card-title">Best Things to Do in Newport Beach with an Exotic Car Rental</div>
+      <p class="blog-card-excerpt">Crystal Cove, Fashion Island, PCH drives at sunset &mdash; Newport Beach is one of the most beautiful places in SoCal to experience in a Lamborghini or Ferrari. Here is your perfect day itinerary.</p>
+      <div class="blog-card-meta">First Class Exotics &middot; 5 min read &middot; Newport Beach</div>
+    </div>
+  </a>
+
+  <a href="#" class="blog-card" onclick="openArticle('article7');return false;">
+    <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=700&q=80" alt="What to know before renting a luxury car for the first time"/>
+    <div class="blog-card-body">
+      <div class="blog-card-tag">First-Timers &middot; Tips</div>
+      <div class="blog-card-title">Renting an Exotic Car for the First Time? Read This First.</div>
+      <p class="blog-card-excerpt">Your first exotic rental should be unforgettable for all the right reasons. We walk you through everything &mdash; insurance, deposits, age requirements, what to inspect, and how to drive safely.</p>
+      <div class="blog-card-meta">First Class Exotics &middot; 8 min read &middot; Beginner Guide</div>
+    </div>
+  </a>
+
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <p class="eyebrow">Stay in the Loop</p>
+  <h2>Get Weekly <em>Exotic Car Tips</em></h2>
+  <p>New blog posts every week. Driving guides, fleet updates, exclusive deals, and insider tips from Southern California's #1 family-owned exotic rental team. No spam &mdash; ever.</p>
+  <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+    <input type="email" placeholder="your@email.com" required/>
+    <button type="submit" class="btn-primary">Subscribe</button>
+  </form>
+  <p class="newsletter-success" id="nlSuccess">&#10003; &nbsp; You are in! Watch your inbox for the best exotic car content in SoCal.</p>
+</div>
+
+<!-- ==================== FULL ARTICLES ==================== -->
+
+<!-- ARTICLE 1: Best Roads in OC -->
+<div class="article-overlay" id="article1">
+  <button class="article-close" onclick="closeArticle('article1')">&#x2715;</button>
+  <div class="article-inner">
+    <p class="article-eyebrow">Orange County &middot; Driving Guide &middot; First Class Exotics</p>
+    <h1 class="article-title">Best Roads to Drive a Lamborghini<br>in <em>Orange County</em></h1>
+    <p class="article-meta">By Ali Hojat, Founder &mdash; First Class Exotics &nbsp;&middot;&nbsp; 8 min read &nbsp;&middot;&nbsp; Updated May 2025</p>
+    <img class="article-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='300px'" src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=1200&q=80" alt="Lamborghini driving on Pacific Coast Highway Orange County California"/>
+
+    <div class="article-body">
+      <p>Orange County is one of the most underrated driving destinations in all of California. While most people think of LA when they imagine exotic cars, OC has something LA cannot offer: <strong>clean roads, ocean views, and enough open stretches to actually feel what these machines can do.</strong> After more than a decade of delivering Lamborghinis, Ferraris, and McLarens across Southern California, our family team has driven every road worth driving. Here are the best.</p>
+
+      <h2>1. Pacific Coast Highway (PCH) &mdash; <em>Dana Point to Malibu</em></h2>
+      <p>There is no more iconic road to drive an exotic in California than PCH. Starting in Dana Point and heading north through Laguna Beach, Newport Beach, and eventually into Malibu, this coastal stretch offers <strong>ocean views on one side and California lifestyle on the other.</strong> The road is not particularly technical, but it is scenic beyond belief and guaranteed to turn every head on the route.</p>
+      <p><strong>Best time to drive:</strong> Early Sunday morning before 8am. The road is quiet, the light is golden, and you will have the PCH almost entirely to yourself. Avoid weekend afternoons when traffic through Laguna Beach can bring even a Lamborghini to a crawl.</p>
+      <p><strong>Pro tip from Ali:</strong> Start in Dana Point at the harbor, grab a coffee, then cruise north. Stop at Crystal Cove for photos &mdash; the bluffs behind a Hurac&#225;n or Ferrari F8 make for some of the best content you will ever post.</p>
+
+      <h2>2. Ortega Highway (SR-74) &mdash; <em>Lake Elsinore to San Juan Capistrano</em></h2>
+      <p>If PCH is the scenic drive, Ortega Highway is the driving drive. This mountain road connecting San Juan Capistrano to Lake Elsinore is packed with <strong>sweeping curves, elevation changes, and stunning canyon views</strong> that let you experience what an exotic car was actually engineered for. The road climbs into the Santa Ana Mountains before descending into the Inland Valley.</p>
+      <p><strong>Best time to drive:</strong> Weekday mornings. This road attracts motorcyclists and enthusiasts on weekends, so midweek is cleaner. Check for road conditions after rain &mdash; the road can have debris after winter storms.</p>
+      <p><strong>Caution:</strong> This is an active mountain road with real curves. Respect the speed limits, especially in a high-powered exotic you may not be familiar with. Always start slower than you think you need to.</p>
+
+      <h2>3. Newport Coast Drive</h2>
+      <p>This is the prestige drive. Newport Coast Drive winds through some of the most expensive real estate in Orange County, offering <strong>panoramic Pacific Ocean views and beautifully maintained roads.</strong> It connects PCH to the Pelican Hill area and Crystal Cove, and it is the kind of road where a Rolls-Royce Ghost or Bentley Continental feels perfectly at home.</p>
+      <p>The road is also conveniently close to excellent dining &mdash; the Pelican Hill Resort, The Ranch, and Crystal Cove Shake Shack are all along or near the route. Park the exotic, grab lunch, and enjoy the view before heading back out.</p>
+
+      <h2>4. Santiago Canyon Road</h2>
+      <p>Less trafficked than Ortega, Santiago Canyon Road runs through the foothills of Orange County connecting Irvine to the canyon areas near Orange and Anaheim Hills. <strong>It is one of the few roads in OC where you genuinely feel like you have escaped the city</strong> while still being minutes from everything. Rolling hills, ranches, and almost no traffic on weekday mornings make this a hidden gem for exotic drivers.</p>
+
+      <h2>5. Crown Valley Parkway to Laguna Niguel</h2>
+      <p>Crown Valley is one of the best-maintained boulevards in South Orange County. Wide lanes, clean pavement, and <strong>beautifully landscaped medians</strong> make it a joy to cruise in any exotic. It connects the 5 freeway to the Laguna Niguel hillside communities, ending near the Ritz-Carlton Laguna Niguel &mdash; a perfect stop for a photo with your rental.</p>
+
+      <h2>Our Recommended OC Exotic Day Route</h2>
+      <p>Start your day with a pickup from our Costa Mesa location. Head south on PCH through Laguna Beach to Dana Point for breakfast at The Fisherman&rsquo;s Restaurant. Then loop back through Newport Coast Drive for photos at Crystal Cove. Take MacArthur through Newport to Fashion Island for a midday cruise through one of OC&rsquo;s most scenic shopping districts. Finish with a sunset drive north on PCH back toward Newport Beach and Huntington Beach.</p>
+      <p><strong>Total drive time: 3&ndash;4 hours of actual driving. Memories: forever.</strong></p>
+
+      <div class="article-cta">
+        <p><strong>Ready to experience Orange County in a Lamborghini, Ferrari, or McLaren?</strong><br>Our family team at First Class Exotics can have your car ready today &mdash; pickup in Costa Mesa or delivered straight to you anywhere in OC.</p>
+        <a href="index.html#booking" class="btn-primary">Reserve Your OC Drive</a>
+      </div>
+
+      <h3>Frequently Asked Questions</h3>
+      <p><strong>Do I need a special license to drive a Lamborghini in California?</strong><br>No. A standard valid California driver&rsquo;s license (or out-of-state equivalent) is all you need. You must be 25+ to rent with us, with full coverage insurance. Exemptions may be available &mdash; contact our team.</p>
+      <p><strong>What is the best exotic car for driving PCH?</strong><br>For the ultimate open-air PCH experience, a convertible or spider model is unbeatable. The Lamborghini Hurac&#225;n EVO Spyder, Ferrari F8 Spider, or McLaren 720S Spider with the roof down on a clear SoCal morning is genuinely one of the best experiences you can have.</p>
+      <p><strong>How do I book a Lamborghini rental in Orange County?</strong><br>Simply fill out our reservation request form at First Class Exotics. Our family team responds within 2 hours to confirm availability, pricing, and delivery options anywhere in OC.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE 2: Lambo vs Ferrari -->
+<div class="article-overlay" id="article2">
+  <button class="article-close" onclick="closeArticle('article2')">&#x2715;</button>
+  <div class="article-inner">
+    <p class="article-eyebrow">Car Comparison &middot; Expert Guide &middot; First Class Exotics</p>
+    <h1 class="article-title">Lamborghini vs Ferrari:<br><em>Which Should You Rent in SoCal?</em></h1>
+    <p class="article-meta">By Ali Hojat, Founder &mdash; First Class Exotics &nbsp;&middot;&nbsp; 7 min read &nbsp;&middot;&nbsp; Updated May 2025</p>
+    <img class="article-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='300px'" src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=1200&q=80" alt="Ferrari vs Lamborghini exotic car rental comparison SoCal"/>
+
+    <div class="article-body">
+      <p>After more than a decade of delivering both Lamborghinis and Ferraris to clients across Orange County, Los Angeles, and San Diego, we have heard the same question thousands of times: <strong>&ldquo;Which one should I get?&rdquo;</strong> The honest answer is that they are both extraordinary &mdash; but they are extraordinary in completely different ways. Here is how to choose the right one for your day.</p>
+
+      <h2>The Personality Difference</h2>
+      <p>Before we get into specs and price, understand this: <strong>Lamborghini and Ferrari represent two different philosophies about what a car should be.</strong> Lamborghini is theater. It is aggression, spectacle, and drama. Ferrari is precision. It is a sports car first, a statement second. Both are world-class. Neither is wrong. But one will suit your day better than the other.</p>
+
+      <h2>Lamborghini Hurac&#225;n EVO &mdash; <em>For Drama, Attention and Raw Excitement</em></h2>
+      <p>The Hurac&#225;n is the car people stop their car to take a photo of. Its aggressive wedge shape, dramatic scissor door design on some variants, and the sound of its naturally aspirated V10 engine are designed to make a statement at every traffic light, every valet stand, and every stoplight on PCH.</p>
+      <ul>
+        <li>640 horsepower naturally aspirated V10</li>
+        <li>0&ndash;60 in under 2.9 seconds</li>
+        <li>Available in Spyder (convertible) for the ultimate open-air experience</li>
+        <li>Polarizing, aggressive design that generates maximum attention</li>
+        <li>Wider, more planted feel on canyon roads</li>
+      </ul>
+      <p><strong>Best for:</strong> Birthdays, special occasions, social media content, events where you want to make the biggest possible impression. The Urus SUV version is also perfect for groups of up to 4 who want the Lamborghini experience with more practicality.</p>
+
+      <h2>Ferrari F8 Spider &mdash; <em>For the Pure Driver&rsquo;s Experience</em></h2>
+      <p>The F8 Spider is a masterpiece of engineering refinement. Where the Lamborghini screams, the Ferrari whispers with authority. Its twin-turbocharged V8 produces 710 horsepower and delivers one of the most communicative, precise driving experiences available at any price point. On canyon roads, it is simply magical.</p>
+      <ul>
+        <li>710 horsepower twin-turbo V8</li>
+        <li>0&ndash;60 in 2.8 seconds</li>
+        <li>Convertible Spider roof that retracts in 14 seconds</li>
+        <li>More compact and nimble than the Lamborghini through tight corners</li>
+        <li>Ferrari&rsquo;s legendary steering feel and feedback</li>
+      </ul>
+      <p><strong>Best for:</strong> Driving enthusiasts who want a car that rewards skill and input. If you are going to spend real time on Ortega Highway or canyon roads, the Ferrari is the more engaging car of the two. It also tends to attract slightly more discerning admirers than the Lamborghini.</p>
+
+      <h2>Head-to-Head Summary</h2>
+      <p><strong>Choose the Lamborghini if:</strong> you want maximum attention, you are celebrating something big, you want the most recognizable silhouette in the world, or you simply want to feel like a superstar every time you pull up somewhere.</p>
+      <p><strong>Choose the Ferrari if:</strong> you are a driving enthusiast who wants the car to respond to your inputs, you value precision over spectacle, or you want a car that serious car people will respect as much as casual onlookers admire it.</p>
+      <p><strong>Cannot decide?</strong> Rent one for the first day and ask our family team about adding a second car to your booking at a discounted rate. We make it easy to experience both in the same trip.</p>
+
+      <div class="article-cta">
+        <p><strong>Our family team can help you choose the perfect exotic for your day in SoCal.</strong><br>Tell us what you are planning and we will recommend the ideal car from our exclusive network.</p>
+        <a href="index.html#booking" class="btn-primary">Get a Personalized Recommendation</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLE 3: LA Guide -->
+<div class="article-overlay" id="article3">
+  <button class="article-close" onclick="closeArticle('article3')">&#x2715;</button>
+  <div class="article-inner">
+    <p class="article-eyebrow">Los Angeles &middot; Complete Guide &middot; First Class Exotics</p>
+    <h1 class="article-title">The Complete Guide to Renting an<br><em>Exotic Car in Los Angeles</em></h1>
+    <p class="article-meta">By Ali Hojat, Founder &mdash; First Class Exotics &nbsp;&middot;&nbsp; 9 min read &nbsp;&middot;&nbsp; Updated May 2025</p>
+    <img class="article-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='300px'" src="https://images.unsplash.com/photo-1631295868223-63265b40d9e4?w=1200&q=80" alt="Exotic car rental Los Angeles Beverly Hills"/>
+
+    <div class="article-body">
+      <p>Los Angeles is one of the greatest cities in the world to drive an exotic car. The car culture runs deep, the roads range from legendary canyon passes to iconic coastal boulevards, and nowhere else on earth will you pull up to a valet in a Lamborghini and feel more at home. <strong>Here is everything you need to know to make your LA exotic rental perfect.</strong></p>
+
+      <h2>Best Neighborhoods to Be Seen</h2>
+      <p><strong>Beverly Hills:</strong> Rodeo Drive, Wilshire Boulevard, and the surrounding residential streets are the heart of LA luxury car culture. Valets here see everything &mdash; but a Lamborghini or Rolls-Royce still turns heads. Perfect for dinners, shopping, or hotel arrivals at the Peninsula or Beverly Wilshire.</p>
+      <p><strong>West Hollywood:</strong> Sunset Strip and Melrose Avenue are high-energy, high-visibility, and perfect for a vibrant Saturday night arrival. The energy here matches a Lamborghini perfectly.</p>
+      <p><strong>Malibu:</strong> For pure natural beauty and PCH driving, nothing beats Malibu. The stretch from Santa Monica to Point Dume is one of the most beautiful coastal drives in the world, and the Nobu Malibu valet with an exotic makes for unforgettable photos.</p>
+      <p><strong>Calabasas:</strong> The epicenter of luxury SUV culture in LA. The Lamborghini Urus is practically a neighborhood car here, and showing up in one feels completely natural.</p>
+
+      <h2>Best Drives in the LA Area</h2>
+      <p><strong>Mulholland Drive:</strong> The legendary canyon road running along the Santa Monica Mountains above the city. Winding, dramatic, and offering jaw-dropping views of both the San Fernando Valley and the LA Basin. Best driven on a clear weekday morning before traffic builds up.</p>
+      <p><strong>Malibu Canyon Road:</strong> Connects PCH to Agoura Hills through the Santa Monica Mountains. Technical, scenic, and relatively quiet. One of the best driving roads in all of Southern California.</p>
+      <p><strong>Angeles Crest Highway:</strong> For a more adventurous drive, Angeles Crest climbs into the San Gabriel Mountains above Pasadena. The scenery is breathtaking and the road is serious enough to truly appreciate what an exotic can do.</p>
+
+      <h2>When to Drive &mdash; Timing is Everything in LA</h2>
+      <p>Traffic in LA is real, and there is nothing worse than sitting in gridlock on the 405 in a Lamborghini. <strong>Here is how to plan your timing:</strong></p>
+      <ul>
+        <li>Canyon drives: Weekday mornings 7&ndash;10am are perfect</li>
+        <li>Beverly Hills cruising: Saturday or Sunday 10am&ndash;1pm before lunch crowds</li>
+        <li>PCH to Malibu: Early Sunday morning is magical &mdash; minimal traffic, golden hour light</li>
+        <li>Sunset Strip: Thursday&ndash;Saturday evenings after 7pm when the energy is at its peak</li>
+        <li>Avoid: Friday afternoon 2&ndash;7pm on any freeway. You will regret it.</li>
+      </ul>
+
+      <h2>How Our LA Delivery Works</h2>
+      <p>At First Class Exotics, we deliver directly to your hotel, Airbnb, or any address in Los Angeles County. <strong>You do not need to come to us &mdash; we come to you.</strong> Simply tell us your address and preferred time, and our team will arrive with your vehicle. Same-day delivery is available for most requests submitted before noon.</p>
+      <p>We serve all of LA &mdash; Beverly Hills, West Hollywood, Santa Monica, Malibu, Downtown, Hollywood, Calabasas, and everywhere in between. Our family team handles every LA delivery personally.</p>
+
+      <h2>What to Bring and Know Before You Drive</h2>
+      <ul>
+        <li>Valid driver&rsquo;s license (must be 25+, exemptions available)</li>
+        <li>Full coverage auto insurance (your personal policy typically covers rentals &mdash; verify first)</li>
+        <li>A credit card for the security deposit hold</li>
+        <li>Comfortable driving shoes &mdash; flip-flops are not ideal in a supercar</li>
+        <li>Phone mount if you want navigation (do not hold your phone while driving)</li>
+      </ul>
+
+      <div class="article-cta">
+        <p><strong>Ready to experience Los Angeles the way it was meant to be experienced?</strong><br>Our family team delivers Lamborghinis, Ferraris, McLarens, and more directly to your LA hotel or address. Same-day available.</p>
+        <a href="index.html#booking" class="btn-primary">Book LA Delivery Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLES 4-7: Placeholder overlays -->
+<div class="article-overlay" id="article4">
+  <button class="article-close" onclick="closeArticle('article4')">&#x2715;</button>
+  <div class="article-inner">
+    <p class="article-eyebrow">Pricing &middot; Tips &amp; Advice &middot; First Class Exotics</p>
+    <h1 class="article-title">How Much Does It Cost to Rent an<br><em>Exotic Car in Orange County?</em></h1>
+    <p class="article-meta">By First Class Exotics Team &nbsp;&middot;&nbsp; 6 min read &nbsp;&middot;&nbsp; Updated May 2025</p>
+    <img class="article-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='300px'" src="https://images.unsplash.com/photo-1621135802920-133df287f89c?w=1200&q=80" alt="Exotic car rental pricing Orange County"/>
+    <div class="article-body">
+      <p>One of the most common questions we get at First Class Exotics is: <strong>&ldquo;How much does it actually cost to rent a Lamborghini or Ferrari?&rdquo;</strong> The answer depends on the vehicle, duration, and any add-ons. Here is our transparent, no-nonsense pricing breakdown.</p>
+      <h2>Typical Daily Rates in <em>Orange County</em></h2>
+      <ul>
+        <li><strong>BMW M8 / AMG GT / Range Rover Sport:</strong> $600&ndash;$800/day</li>
+        <li><strong>Audi R8 Spyder / Porsche 911 Turbo S:</strong> $850&ndash;$950/day</li>
+        <li><strong>McLaren 720S / Bentley Continental GT:</strong> $1,000&ndash;$1,150/day</li>
+        <li><strong>Lamborghini Hurac&#225;n EVO:</strong> From $1,200/day</li>
+        <li><strong>Lamborghini Urus S:</strong> From $1,300/day</li>
+        <li><strong>Ferrari F8 Spider:</strong> From $1,400/day</li>
+        <li><strong>Rolls-Royce Ghost / Cullinan:</strong> From $1,500/day</li>
+      </ul>
+      <h2>What Is Included</h2>
+      <p>At First Class Exotics, our pricing is transparent. <strong>There are no surprise fees.</strong> Your daily rate includes the vehicle, a mileage allowance, and our concierge support throughout your rental. Delivery to your location in OC, LA, or San Diego is available for an additional flat fee depending on distance.</p>
+      <h2>How to Get the Best Deal</h2>
+      <p>The single best way to reduce your per-day cost is to <strong>rent for longer.</strong> We offer meaningful discounts for 3-day, weekly, and monthly rentals. Tell our family team your timeline in your request and we will build you the best possible package. Multi-day bookings can reduce your effective daily rate by 20&ndash;35%.</p>
+      <div class="article-cta">
+        <p><strong>Get a personalized quote from our family team today.</strong><br>No commitment required. We respond within 2 hours with exact pricing for your dates and preferred vehicle.</p>
+        <a href="index.html#booking" class="btn-primary">Get My Quote</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-overlay" id="article5">
+  <button class="article-close" onclick="closeArticle('article5')">&#x2715;</button>
+  <div class="article-inner">
+    <p class="article-eyebrow">Events &middot; Weddings &middot; First Class Exotics</p>
+    <h1 class="article-title">How to Rent an Exotic Car for<br><em>Your Wedding in SoCal</em></h1>
+    <p class="article-meta">By First Class Exotics Team &nbsp;&middot;&nbsp; 5 min read &nbsp;&middot;&nbsp; Updated May 2025</p>
+    <img class="article-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='300px'" src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1200&q=80" alt="Wedding exotic car rental Orange County Los Angeles"/>
+    <div class="article-body">
+      <p>Your wedding day is one of the most important days of your life, and your arrival should match the occasion. A Rolls-Royce Ghost, a Ferrari California, or a pristine white Bentley Continental GT as your wedding car creates an entrance that photos will capture forever. <strong>Here is everything you need to plan your wedding exotic rental.</strong></p>
+      <h2>Most Popular Wedding Cars</h2>
+      <ul>
+        <li><strong>Rolls-Royce Ghost:</strong> The classic choice. Timeless, elegant, and unmistakably luxurious. Perfect for formal ceremonies.</li>
+        <li><strong>Rolls-Royce Cullinan:</strong> For a grander entrance with the whole wedding party. The pinnacle of automotive luxury.</li>
+        <li><strong>Bentley Continental GT:</strong> A slightly sportier take on British luxury. Stunning in white or silver.</li>
+        <li><strong>Ferrari California / F8 Spider:</strong> For the couple who wants to make a statement and is not afraid to show their personality.</li>
+        <li><strong>Lamborghini Hurac&#225;n:</strong> For the boldest entrance possible. Your guests will never forget it.</li>
+      </ul>
+      <h2>Book Early &mdash; Very Early</h2>
+      <p>Wedding dates are fixed and non-negotiable. For popular dates (especially June, September, and October weekends in SoCal), <strong>we recommend booking your wedding exotic 3&ndash;6 months in advance.</strong> Our family team will work with your wedding planner to coordinate timing, delivery location, and any special requests.</p>
+      <h2>What We Handle</h2>
+      <p>From delivery to the venue, coordination with your photographer for arrival shots, to return pickup at the end of your evening &mdash; <strong>our family team handles every detail</strong> so you can focus on your day. We have worked with venues all across Orange County and Los Angeles.</p>
+      <div class="article-cta">
+        <p><strong>Planning a wedding in SoCal? Tell our family team your date and vision.</strong><br>We will help you select the perfect car and coordinate everything around your special day.</p>
+        <a href="index.html#booking" class="btn-primary">Plan My Wedding Car</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-overlay" id="article6">
+  <button class="article-close" onclick="closeArticle('article6')">&#x2715;</button>
+  <div class="article-inner">
+    <p class="article-eyebrow">Newport Beach &middot; Lifestyle &middot; First Class Exotics</p>
+    <h1 class="article-title">Best Things to Do in Newport Beach<br><em>with an Exotic Car Rental</em></h1>
+    <p class="article-meta">By First Class Exotics Team &nbsp;&middot;&nbsp; 5 min read &nbsp;&middot;&nbsp; Updated May 2025</p>
+    <img class="article-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='300px'" src="https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1200&q=80" alt="Newport Beach exotic car rental things to do"/>
+    <div class="article-body">
+      <p>Newport Beach is one of the crown jewels of Orange County &mdash; and one of the best places in Southern California to experience an exotic car. <strong>Here is your perfect Newport Beach exotic car day.</strong></p>
+      <h2>Start at Crystal Cove</h2>
+      <p>The Crystal Cove State Park bluffs overlooking the Pacific provide one of the most stunning backdrops for car photos anywhere in California. Arrive early, park your Ferrari or Lamborghini with the ocean behind it, and capture the moment before the crowds arrive. The Crystal Cove Beach Cottages are also a beautiful spot for breakfast.</p>
+      <h2>Fashion Island &mdash; Midday Arrival</h2>
+      <p>Newport Beach&rsquo;s upscale open-air shopping center is made for exotic car arrivals. Pull up to the Neiman Marcus valet in your Rolls-Royce Ghost or Bentley Continental GT and browse luxury retail while your car becomes part of the scenery. This is exactly what these cars were made for.</p>
+      <h2>PCH Lunch Run to Laguna Beach</h2>
+      <p>Take PCH south from Newport through Corona del Mar and into Laguna Beach for lunch. The 15-minute drive is one of the most beautiful coastal stretches in OC. Lumberyard, Nick&rsquo;s Laguna Beach, and Splashes at Surf &amp; Sand are excellent choices with parking close to the ocean.</p>
+      <h2>Sunset at Newport Harbor</h2>
+      <p>End your day cruising Balboa Peninsula and parking near Newport Harbor to watch the sunset. The combination of boats, ocean, and your exotic car creates an atmosphere that is uniquely Newport Beach. It is also one of the most photographed spots in OC.</p>
+      <div class="article-cta">
+        <p><strong>Ready to experience Newport Beach in a Lamborghini, Ferrari, or Rolls-Royce?</strong><br>Our family team delivers directly to your Newport Beach hotel or home. Same-day available.</p>
+        <a href="index.html#booking" class="btn-primary">Book Newport Beach Delivery</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article-overlay" id="article7">
+  <button class="article-close" onclick="closeArticle('article7')">&#x2715;</button>
+  <div class="article-inner">
+    <p class="article-eyebrow">First-Timers &middot; Tips &amp; Advice &middot; First Class Exotics</p>
+    <h1 class="article-title">Renting an Exotic Car for the First Time?<br><em>Read This First.</em></h1>
+    <p class="article-meta">By Ali Hojat, Founder &mdash; First Class Exotics &nbsp;&middot;&nbsp; 8 min read &nbsp;&middot;&nbsp; Updated May 2025</p>
+    <img class="article-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='300px'" src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?w=1200&q=80" alt="First time exotic car rental tips guide SoCal"/>
+    <div class="article-body">
+      <p>Renting an exotic car for the first time is genuinely one of the most exciting experiences you can have. But going in without preparation can turn excitement into stress. <strong>After 10+ years of walking first-time renters through the process, here is everything our family team wishes everyone knew before their first rental.</strong></p>
+      <h2>1. Understand Your Insurance</h2>
+      <p>This is the most important step. <strong>Check with your personal auto insurance provider before you rent.</strong> Many standard policies extend coverage to rental vehicles, including exotic rentals. Call your agent and ask specifically about high-value rental vehicles. If you are not covered, we can discuss options when you book.</p>
+      <h2>2. Give Yourself More Time Than You Think You Need</h2>
+      <p>Picking up an exotic car for the first time is not like picking up a regular rental. We walk you through the controls, go over the car together, answer all your questions, and make sure you feel completely comfortable before you leave. Budget an extra 30 minutes for this &mdash; it is worth it.</p>
+      <h2>3. Start Slow &mdash; Seriously</h2>
+      <p>A Lamborghini or Ferrari has more power than most people have ever experienced. <strong>The first 30 minutes of your rental should be about getting comfortable, not pushing limits.</strong> Get used to the throttle response, the braking, the steering weight. These cars reward respect and smooth inputs. Learn the car before you ask anything of it.</p>
+      <h2>4. Park Strategically</h2>
+      <p>Avoid tight parking structures if possible. Wide, open parking lots with plenty of space to maneuver are your friend. Ask our team for parking recommendations in whatever area you are heading to &mdash; we know all the best spots that will not give you anxiety about door dings.</p>
+      <h2>5. What to Inspect Before You Drive</h2>
+      <ul>
+        <li>Walk around the car with our team and confirm any pre-existing marks are noted</li>
+        <li>Understand the fuel type required (most exotics use premium 91+ octane)</li>
+        <li>Know where the fuel door release is before you need it</li>
+        <li>Understand how the parking brake and drive modes work</li>
+        <li>Confirm the emergency contact number for our team is in your phone</li>
+      </ul>
+      <h2>6. Enjoy Every Single Moment</h2>
+      <p>After 10 years, Ali&rsquo;s advice to every first-time renter is the same: <strong>slow down and be present.</strong> Notice the sound of the engine at idle. Feel the steering in your hands. Watch people&rsquo;s reactions. These cars are extraordinary machines and they deserve to be appreciated fully. The best rentals are the ones where you truly experience the car, not just drive it fast.</p>
+      <div class="article-cta">
+        <p><strong>First-time renter? Our family team will walk you through everything.</strong><br>We make it easy, comfortable, and unforgettable. No experience required &mdash; just a love for great cars.</p>
+        <a href="index.html#booking" class="btn-primary">Book My First Exotic Rental</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG FOOTER -->
+<div class="blog-footer">
+  <div class="blog-footer-brand">First Class <span>Exotics</span></div>
+  <p class="blog-footer-copy">&copy; 2025 First Class Exotics, LLC. Costa Mesa, CA. Family Owned &amp; Operated.</p>
+  <div class="blog-footer-links">
+    <a href="index.html">Home</a>
+    <a href="index.html#fleet">Fleet</a>
+    <a href="index.html#booking">Reserve Now</a>
+    <a href="tel:9492945958">(949) 294-5958</a>
+  </div>
+</div>
+
+<script>
+  function openMenu(){document.getElementById('mobileMenu').classList.add('open');document.body.style.overflow='hidden';}
+  function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow='';}
+  function openArticle(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+  function closeArticle(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.article-overlay.open').forEach(function(el){el.classList.remove('open');});document.body.style.overflow='';}});
+  function subscribeNewsletter(e){e.preventDefault();e.target.style.display='none';document.getElementById('nlSuccess').style.display='block';}
+  document.querySelectorAll('.tag').forEach(function(tag){tag.addEventListener('click',function(){document.querySelectorAll('.tag').forEach(function(t){t.classList.remove('active');});this.classList.add('active');});});
+  const obs=new IntersectionObserver(function(entries){entries.forEach(function(el){if(el.isIntersecting){el.target.style.opacity='1';el.target.style.transform='translateY(0)';}});},{threshold:0.1});
+  document.querySelectorAll('.blog-card').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el);});
+</script>
+
+<!-- STICKY CALL BAR -->
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:998;background:var(--dark-2);border-top:1px solid rgba(155,0,6,.3);display:flex;align-items:stretch;gap:1px">
+  <a href="tel:9492945958" style="background:#fff;color:#060606;flex:1;text-align:center;padding:.9rem .5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.4rem;text-decoration:none">&#128222; Call Now</a>
+  <a href="index.html#booking" style="background:var(--gold);color:#060606;flex:1;text-align:center;padding:.9rem .5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.4rem;text-decoration:none">&#128663; Reserve Now</a>
+</div>
+
+<!-- FLOATING CALL BUTTON -->
+<div style="position:fixed;right:1.5rem;bottom:5rem;z-index:997;display:flex;flex-direction:column;gap:.6rem">
+  <a href="tel:9492945958" style="width:52px;height:52px;background:#C9A84C;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(155,0,6,.4);font-size:1.3rem;text-decoration:none" title="Call Now">&#128222;</a>
+  <a href="sms:9492945958" style="width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.3);font-size:1.3rem;text-decoration:none" title="Text Us">&#128172;</a>
+</div>
+</body>
+</html>
