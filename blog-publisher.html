@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FCE Admin — Blog Publisher</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --gold:#9B0006;--gold-2:#D4AF37;
+    --black:#050505;--dark:#0A0A0A;--dark-2:#111111;--dark-3:#181818;
+    --gray:#666;--gray-2:#8A8A8A;--white:#F7F4EF;
+  }
+  body{background:var(--dark);color:var(--white);font-family:'Inter',system-ui,sans-serif;min-height:100vh}
+
+  /* ── LOGIN ─────────────────────────────────────────── */
+  #login-screen{
+    display:flex;align-items:center;justify-content:center;
+    min-height:100vh;padding:2rem;
+  }
+  .login-box{
+    width:100%;max-width:420px;
+    background:var(--dark-3);border:1px solid rgba(155,0,6,.25);
+    padding:3rem 2.5rem;text-align:center;
+  }
+  .login-box img{height:64px;margin-bottom:2rem;filter:brightness(1.1)}
+  .login-box h1{font-size:1.1rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2);margin-bottom:.4rem}
+  .login-box p{color:var(--gray-2);font-size:.82rem;margin-bottom:2rem}
+  .login-box input{
+    width:100%;background:var(--dark-2);border:1px solid rgba(155,0,6,.3);
+    color:var(--white);padding:.9rem 1.2rem;font-size:.9rem;margin-bottom:1rem;outline:none;
+    transition:border-color .2s;
+  }
+  .login-box input:focus{border-color:var(--gold)}
+  #login-error{color:#e55;font-size:.82rem;margin-bottom:1rem;display:none}
+
+  /* ── SHARED BUTTON ──────────────────────────────────── */
+  .btn{
+    display:inline-flex;align-items:center;gap:.5rem;
+    background:var(--gold);color:#fff;border:none;
+    padding:.85rem 2rem;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    cursor:pointer;transition:background .2s,transform .15s;font-family:inherit;
+  }
+  .btn:hover{background:#7a0004;transform:translateY(-1px)}
+  .btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+  .btn-outline{background:transparent;border:1px solid var(--gold-2);color:var(--gold-2)}
+  .btn-outline:hover{background:rgba(212,175,55,.08)}
+  .btn-full{width:100%;justify-content:center}
+
+  /* ── DASHBOARD LAYOUT ───────────────────────────────── */
+  #dashboard{display:none}
+  .top-bar{
+    background:var(--dark-3);border-bottom:1px solid rgba(155,0,6,.2);
+    padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;
+  }
+  .top-bar img{height:40px}
+  .top-bar span{color:var(--gray-2);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
+  #logout-btn{background:none;border:none;color:var(--gray-2);cursor:pointer;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;padding:.4rem .8rem;transition:color .2s}
+  #logout-btn:hover{color:var(--white)}
+
+  .dash-body{max-width:900px;margin:0 auto;padding:3rem 2rem}
+
+  /* ── STEPS ──────────────────────────────────────────── */
+  .step{display:none;animation:fadeIn .35s ease}
+  .step.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+  .step-label{
+    font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--gold-2);margin-bottom:.6rem;
+  }
+  .step h2{font-size:1.8rem;font-weight:300;letter-spacing:.04em;margin-bottom:.4rem}
+  .step > p{color:var(--gray-2);font-size:.88rem;margin-bottom:2.5rem;line-height:1.7}
+
+  /* ── TOPIC FORM ─────────────────────────────────────── */
+  .form-group{margin-bottom:1.5rem}
+  .form-group label{display:block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-2);margin-bottom:.6rem}
+  .form-group input,
+  .form-group select,
+  .form-group textarea{
+    width:100%;background:var(--dark-3);border:1px solid rgba(155,0,6,.25);
+    color:var(--white);padding:.9rem 1.2rem;font-size:.9rem;outline:none;
+    font-family:inherit;transition:border-color .2s;resize:vertical;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus{border-color:var(--gold)}
+  .form-group select option{background:var(--dark-3)}
+
+  .topic-chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
+  .chip{
+    padding:.45rem 1rem;border:1px solid rgba(155,0,6,.3);
+    background:transparent;color:var(--gray-2);font-size:.78rem;cursor:pointer;
+    transition:all .2s;letter-spacing:.06em;font-family:inherit;
+  }
+  .chip:hover,.chip.selected{background:var(--gold);border-color:var(--gold);color:#fff}
+
+  /* ── GENERATING SPINNER ─────────────────────────────── */
+  #generating-screen{
+    display:none;min-height:100vh;align-items:center;justify-content:center;flex-direction:column;gap:1.5rem;
+  }
+  #generating-screen.active{display:flex}
+  .spinner{
+    width:48px;height:48px;border:2px solid rgba(155,0,6,.2);
+    border-top-color:var(--gold);border-radius:50%;
+    animation:spin .8s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  #generating-screen p{color:var(--gray-2);font-size:.85rem;letter-spacing:.12em;text-transform:uppercase}
+
+  /* ── PREVIEW ────────────────────────────────────────── */
+  .preview-bar{
+    display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap;align-items:center;
+    padding-bottom:1.5rem;border-bottom:1px solid rgba(155,0,6,.15);
+  }
+  #preview-headline{font-size:1.4rem;font-weight:300;margin-bottom:1.5rem;line-height:1.4}
+  .preview-box{
+    background:var(--dark-3);border:1px solid rgba(155,0,6,.15);
+    padding:2.5rem;line-height:1.8;color:var(--white);font-size:.92rem;max-height:500px;overflow-y:auto;
+  }
+  .preview-box h1{font-size:1.5rem;font-weight:300;margin-bottom:1.2rem;color:var(--white)}
+  .preview-box h2{font-size:1.1rem;font-weight:500;color:var(--gold-2);margin:1.8rem 0 .8rem;letter-spacing:.06em}
+  .preview-box p{color:rgba(247,244,239,.85);margin-bottom:1rem}
+
+  /* ── SUCCESS ────────────────────────────────────────── */
+  .success-icon{font-size:3rem;color:var(--gold-2);margin-bottom:1rem}
+  #success-step h2{margin-bottom:1rem}
+  #success-step p{color:var(--gray-2);margin-bottom:2rem;line-height:1.7}
+  .success-links{display:flex;gap:1rem;flex-wrap:wrap}
+
+  /* ── ERROR TOAST ────────────────────────────────────── */
+  #toast{
+    position:fixed;bottom:2rem;right:2rem;
+    background:#7a0004;color:#fff;padding:1rem 1.5rem;
+    font-size:.85rem;max-width:360px;display:none;z-index:999;
+    border-left:3px solid var(--gold-2);
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <img src="FC_LOGO.png" alt="First Class Exotics">
+    <h1>Blog Admin</h1>
+    <p>Enter your admin password to access the blog publisher.</p>
+    <div id="login-error">Incorrect password. Please try again.</div>
+    <input type="password" id="pw-input" placeholder="Admin password" onkeydown="if(event.key==='Enter')doLogin()">
+    <button class="btn btn-full" onclick="doLogin()">Sign In</button>
+  </div>
+</div>
+
+<!-- GENERATING OVERLAY -->
+<div id="generating-screen">
+  <div class="spinner"></div>
+  <p id="generating-label">Writing your article...</p>
+</div>
+
+<!-- DASHBOARD -->
+<div id="dashboard">
+  <div class="top-bar">
+    <img src="FC_LOGO.png" alt="First Class Exotics">
+    <span>Blog Publisher</span>
+    <button id="logout-btn" onclick="logout()">Sign Out</button>
+  </div>
+
+  <div class="dash-body">
+
+    <!-- STEP 1: TOPIC -->
+    <div class="step active" id="step-topic">
+      <div class="step-label">Step 1 of 3</div>
+      <h2>Choose Your Topic</h2>
+      <p>Select a suggestion below or type your own topic. Claude will write a full SEO article tailored to First Class Exotics.</p>
+
+      <div class="topic-chips">
+        <button class="chip" onclick="selectChip(this,'Top 5 Exotic Cars to Rent in Scottsdale')">Top 5 Exotic Cars in Scottsdale</button>
+        <button class="chip" onclick="selectChip(this,'Why Rent a Lamborghini for Your Scottsdale Bachelor Party')">Lamborghini Bachelor Party</button>
+        <button class="chip" onclick="selectChip(this,'Ferrari vs Lamborghini: Which Exotic Should You Rent?')">Ferrari vs Lamborghini</button>
+        <button class="chip" onclick="selectChip(this,'The Ultimate Guide to Exotic Car Rentals in Phoenix')">Phoenix Rental Guide</button>
+        <button class="chip" onclick="selectChip(this,'How to Plan the Perfect Supercar Road Trip Through Arizona')">Arizona Supercar Road Trip</button>
+        <button class="chip" onclick="selectChip(this,'Rolls-Royce Rental: What to Expect from True Luxury')">Rolls-Royce Experience</button>
+        <button class="chip" onclick="selectChip(this,'McLaren vs Porsche: A Luxury Performance Comparison')">McLaren vs Porsche</button>
+        <button class="chip" onclick="selectChip(this,'Best Scenic Drives in Scottsdale for an Exotic Car')">Best Scenic Drives</button>
+        <button class="chip" onclick="selectChip(this,'Corporate Exotic Car Rentals: Impress Your Clients in Style')">Corporate Rentals</button>
+        <button class="chip" onclick="selectChip(this,'Exotic Car Rentals for Weddings and Special Events in Phoenix')">Weddings & Events</button>
+        <button class="chip" onclick="selectChip(this,'What It Actually Feels Like to Drive a Huracán')">Driving a Huracán</button>
+        <button class="chip" onclick="selectChip(this,'The Best Luxury Hotels in Scottsdale to Pair With an Exotic Rental')">Scottsdale Hotels + Exotics</button>
+      </div>
+
+      <div class="form-group">
+        <label>Your Topic (edit or type custom)</label>
+        <input type="text" id="topic-input" placeholder="e.g. Why Every Scottsdale Visit Needs an Exotic Car">
+      </div>
+
+      <div class="form-group">
+        <label>Category</label>
+        <select id="category-input">
+          <option value="Lifestyle">Lifestyle</option>
+          <option value="Fleet">Fleet</option>
+          <option value="Events">Events</option>
+          <option value="Travel">Travel</option>
+          <option value="Guides">Guides</option>
+          <option value="Performance">Performance</option>
+        </select>
+      </div>
+
+      <button class="btn" onclick="generatePost()">Generate Article &#8594;</button>
+    </div>
+
+    <!-- STEP 2: PREVIEW -->
+    <div class="step" id="step-preview">
+      <div class="step-label">Step 2 of 3</div>
+      <h2>Preview Your Article</h2>
+      <p>Review the article below. If you're happy with it, publish it to the blog. Otherwise go back and try a different angle.</p>
+
+      <div class="preview-bar">
+        <button class="btn btn-outline" onclick="goBack()">&#8592; New Topic</button>
+        <button class="btn btn-outline" onclick="regenerate()">Regenerate</button>
+        <button class="btn" onclick="publishPost()">Publish to Blog &#8594;</button>
+      </div>
+
+      <div id="preview-headline"></div>
+      <div class="preview-box" id="preview-body"></div>
+    </div>
+
+    <!-- STEP 3: SUCCESS -->
+    <div class="step" id="step-success" style="text-align:center;padding-top:3rem">
+      <div class="success-icon">&#10003;</div>
+      <div class="step-label">Published</div>
+      <h2>Article is Live!</h2>
+      <p>Your blog post has been committed to GitHub and will appear on the live site within 60 seconds as Vercel deploys automatically.</p>
+      <div class="success-links" style="justify-content:center">
+        <a href="https://www.firstclassexotics.com/blog.html" target="_blank" class="btn btn-outline">View Blog</a>
+        <button class="btn" onclick="writeAnother()">Write Another Post</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ERROR TOAST -->
+<div id="toast"></div>
+
+<script>
+let adminToken = '';
+let generatedCard = '';
+let generatedOverlay = '';
+let lastTopic = '';
+let lastCategory = '';
+
+// ── AUTH ──────────────────────────────────────────────
+async function doLogin() {
+  const pw = document.getElementById('pw-input').value;
+  if (!pw) return;
+  const btn = document.querySelector('#login-screen .btn');
+  btn.disabled = true; btn.textContent = 'Signing in…';
+
+  try {
+    const r = await fetch('/api/auth', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: pw })
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Failed');
+    adminToken = data.token;
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('dashboard').style.display = 'block';
+    document.getElementById('login-error').style.display = 'none';
+  } catch {
+    document.getElementById('login-error').style.display = 'block';
+  } finally {
+    btn.disabled = false; btn.textContent = 'Sign In';
+  }
+}
+
+function logout() {
+  adminToken = '';
+  document.getElementById('dashboard').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('pw-input').value = '';
+}
+
+// ── TOPIC CHIPS ───────────────────────────────────────
+function selectChip(el, topic) {
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+  el.classList.add('selected');
+  document.getElementById('topic-input').value = topic;
+}
+
+// ── GENERATE ──────────────────────────────────────────
+async function generatePost() {
+  const topic = document.getElementById('topic-input').value.trim();
+  if (!topic) { showToast('Please enter a topic first.'); return; }
+  lastTopic = topic;
+  lastCategory = document.getElementById('category-input').value;
+  await callGenerate(topic, lastCategory);
+}
+
+async function regenerate() {
+  await callGenerate(lastTopic, lastCategory);
+}
+
+async function callGenerate(topic, category) {
+  showGenerating('Claude is writing your article…');
+  try {
+    const r = await fetch('/api/generate-post', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken },
+      body: JSON.stringify({ topic, category })
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Generation failed');
+
+    generatedCard = data.cardHtml;
+    generatedOverlay = data.overlayHtml;
+
+    document.getElementById('preview-headline').innerHTML = `<p id="preview-headline" style="font-size:1.4rem;font-weight:300;margin-bottom:1.5rem;line-height:1.4">${data.headline}</p>`;
+    document.getElementById('preview-body').innerHTML = data.articleBody;
+
+    hideGenerating();
+    showStep('step-preview');
+  } catch (err) {
+    hideGenerating();
+    showToast('Error: ' + err.message);
+  }
+}
+
+// ── PUBLISH ───────────────────────────────────────────
+async function publishPost() {
+  showGenerating('Publishing to your blog…');
+  try {
+    const r = await fetch('/api/publish-post', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'x-admin-token': adminToken },
+      body: JSON.stringify({ cardHtml: generatedCard, overlayHtml: generatedOverlay })
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.error || 'Publish failed');
+    hideGenerating();
+    showStep('step-success');
+  } catch (err) {
+    hideGenerating();
+    showToast('Publish error: ' + err.message);
+  }
+}
+
+// ── NAV ───────────────────────────────────────────────
+function goBack() {
+  showStep('step-topic');
+}
+
+function writeAnother() {
+  document.querySelectorAll('.chip').forEach(c => c.classList.remove('selected'));
+  document.getElementById('topic-input').value = '';
+  generatedCard = ''; generatedOverlay = '';
+  showStep('step-topic');
+}
+
+function showStep(id) {
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ── UI HELPERS ────────────────────────────────────────
+function showGenerating(msg) {
+  document.getElementById('generating-label').textContent = msg;
+  document.getElementById('generating-screen').classList.add('active');
+  document.getElementById('generating-screen').style.display = 'flex';
+  document.getElementById('dashboard').style.opacity = '.3';
+  document.getElementById('dashboard').style.pointerEvents = 'none';
+}
+
+function hideGenerating() {
+  document.getElementById('generating-screen').classList.remove('active');
+  document.getElementById('generating-screen').style.display = 'none';
+  document.getElementById('dashboard').style.opacity = '';
+  document.getElementById('dashboard').style.pointerEvents = '';
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.style.display = 'block';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { t.style.display = 'none'; }, 5000);
+}
+</script>
+</body>
+</html>
