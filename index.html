@@ -152,20 +152,26 @@ nav.scrolled{top:0;width:100%;max-width:100%;border-radius:0;background:rgba(5,5
 .fleet-notice strong{color:var(--white)}
 .fleet-notice a{color:var(--gold-2)}
 .fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
-.fleet-card{position:relative;overflow:hidden;aspect-ratio:4/3;cursor:none}
-.fleet-card.wide{grid-column:span 2}
-.fleet-card img{width:100%;height:100%;object-fit:cover;filter:brightness(.6);transition:transform 1s var(--ease),filter 1s}
-.fleet-card:hover img{transform:scale(1.09);filter:brightness(.33)}
-.fleet-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,1) 0%,rgba(5,5,5,.18) 50%,transparent 100%)}
-.fleet-card-body{position:absolute;bottom:0;left:0;right:0;padding:2.2rem}
-.fleet-brand{font-size:.54rem;letter-spacing:.36em;text-transform:uppercase;color:var(--gold-2);margin-bottom:.3rem;font-weight:600}
-.fleet-name{font-family:var(--ff-serif);font-size:2.15rem;font-weight:400;color:var(--white);margin-bottom:.5rem;line-height:1.05;letter-spacing:.02em}
-.fleet-specs{display:flex;gap:1.2rem;margin-bottom:.9rem}
-.fleet-spec{font-size:.58rem;letter-spacing:.12em;color:var(--gray-2)}
-.fleet-spec strong{color:var(--gray-3);font-weight:500}
-.fleet-price{font-size:.7rem;color:var(--gray-2);margin-bottom:.9rem;letter-spacing:.03em}
-.fleet-cta{display:inline-block;background:var(--gold);color:var(--white);font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:.45rem 1.2rem;opacity:0;transform:translateY(10px);transition:opacity .35s,transform .35s,box-shadow .35s}
-.fleet-card:hover .fleet-cta{opacity:1;transform:translateY(0);box-shadow:0 4px 20px rgba(155,0,6,.4)}
+.fleet-card{position:relative;overflow:visible;cursor:none;display:flex;flex-direction:column;background:var(--dark-3);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.fleet-card:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(0,0,0,.55)}
+.fleet-card.wide{grid-column:span 2;flex-direction:row}
+.fleet-card.wide img{width:55%;min-height:300px;height:100%}
+.fleet-card.wide .fleet-card-overlay{width:55%;height:100%}
+.fleet-card.wide .fleet-card-body{flex:1;padding:2.8rem}
+.fleet-card.wide .fleet-name{font-size:2rem}
+.fleet-card img{width:100%;height:250px;object-fit:cover;filter:brightness(.88);transition:transform 1s var(--ease),filter 1s;flex-shrink:0;display:block}
+.fleet-card:hover img{transform:scale(1.05);filter:brightness(.7)}
+.fleet-card-overlay{position:absolute;left:0;right:0;top:0;height:250px;background:linear-gradient(to bottom,transparent 50%,rgba(5,5,5,.2) 100%);pointer-events:none}
+.fleet-card-body{position:static;background:var(--dark-3);padding:1.6rem 2rem 2.2rem;border-top:2px solid rgba(155,0,6,.18);display:flex;flex-direction:column;flex:1}
+.fleet-brand{font-size:.52rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold-2);margin-bottom:.45rem;font-weight:600}
+.fleet-name{font-family:var(--ff-serif);font-size:1.65rem;font-weight:400;color:var(--white);margin-bottom:.65rem;line-height:1.1;letter-spacing:.02em}
+.fleet-specs{display:flex;gap:1.5rem;margin-bottom:.65rem;padding-bottom:.65rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.fleet-spec{font-size:.58rem;letter-spacing:.1em;color:var(--gray-2)}
+.fleet-spec strong{color:var(--white);font-weight:600}
+.fleet-price{font-size:.68rem;color:var(--gray-2);margin-bottom:1rem;letter-spacing:.04em;margin-top:auto;padding-top:.8rem}
+.fleet-cta{display:inline-block;background:var(--gold);color:var(--white);font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:.58rem 1.4rem;opacity:1;transform:none;transition:background .3s,box-shadow .3s;align-self:flex-start;margin-top:.5rem}
+.fleet-cta:hover{background:#7a0004;box-shadow:0 4px 20px rgba(155,0,6,.4)}
+.fleet-card:hover .fleet-cta{opacity:1;transform:none}
 .fleet-custom{background:linear-gradient(135deg,var(--dark-3),var(--dark));display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.2rem;padding:2.5rem}
 .fleet-footer-note{text-align:center;margin-top:2.5rem;font-size:.68rem;color:var(--gray);letter-spacing:.1em;line-height:2}
 .fleet-footer-note a{color:var(--gold-2)}
@@ -386,7 +392,8 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
   .family-copy{padding:3rem 1.8rem}
 }
 
-.fleet-desc{max-height:none !important}
+.fleet-desc{max-height:none !important;overflow:visible !important;font-size:.72rem;color:var(--gray-2);line-height:1.75;margin-bottom:.5rem}
+.fleet-color{font-size:.6rem!important;letter-spacing:.14em!important;color:var(--gold-2)!important;font-weight:500;text-transform:uppercase;margin-bottom:.5rem!important}
 </style>
 </head>
 <body>

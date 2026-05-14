@@ -1,9 +1,42 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git version *)",
-      "Bash(gh --version)",
-      "Bash(brew --version)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(git init)",
+      "Bash(git remote *)",
+      "Bash(git config *)",
+      "Bash(brew install *)",
+      "Bash(gh auth *)",
+      "Bash(grep *)",
+      "Read(/Users/firstclassexotics/Desktop/First Class Exotics /**)",
+      "Edit(/Users/firstclassexotics/Desktop/First Class Exotics /**)",
+      "Write(/Users/firstclassexotics/Desktop/First Class Exotics /**)",
+      "Read(/Users/firstclassexotics/.claude/**)",
+      "Bash(open \"/Users/firstclassexotics/Desktop/First Class Exotics /index.html\")",
+      "Bash(npx vercel *)",
+      "Bash(npm --version)",
+      "Bash(brew --version)",
+      "Read(//usr/local/bin/**)",
+      "Read(//Users/firstclassexotics/.nvm/versions/**)",
+      "Bash(curl -fsSL https://fnm.vercel.app/install)",
+      "Bash(bash)",
+      "Bash(curl -o /tmp/node.pkg \"https://nodejs.org/dist/v20.11.0/node-v20.11.0.pkg\")",
+      "Bash(sudo installer -pkg /tmp/node.pkg -target /)",
+      "Bash(curl -o /tmp/node.tar.gz \"https://nodejs.org/dist/v20.11.0/node-v20.11.0-darwin-arm64.tar.gz\")",
+      "Bash(tar -xzf /tmp/node.tar.gz -C /tmp/)",
+      "Bash(/tmp/node-v20.11.0-darwin-arm64/bin/node --version)",
+      "Bash(/tmp/node-v20.11.0-darwin-arm64/bin/npm install *)",
+      "Bash(PATH=/tmp/node-v20.11.0-darwin-arm64/bin:__TRACKED_VAR__ npm install -g vercel)",
+      "Bash(PATH=/tmp/node-v20.11.0-darwin-arm64/bin:__TRACKED_VAR__ vercel --version)",
+      "Bash(chmod +x \"/Users/firstclassexotics/Desktop/SETUP-BLOG-ADMIN.command\")"
+    ],
+    "additionalDirectories": [
+      "/Users/firstclassexotics/Desktop/First Class Exotics /api",
+      "/Users/firstclassexotics/Desktop/First Class Exotics ",
+      "/Users/firstclassexotics/Desktop"
     ]
   }
 }
