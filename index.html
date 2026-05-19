@@ -192,13 +192,13 @@ nav.scrolled{top:0;width:100%;max-width:100%;border-radius:0;background:rgba(5,5
 .fleet-card{position:relative;overflow:visible;cursor:none;display:flex;flex-direction:column;background:var(--dark-3);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
 .fleet-card:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(0,0,0,.55)}
 .fleet-card.wide{grid-column:span 2;flex-direction:row}
-.fleet-card.wide img{width:55%;min-height:300px;height:100%}
+.fleet-card.wide img{width:55%;min-height:300px;height:100%;object-fit:contain;background:#0a0a0a}
 .fleet-card.wide .fleet-card-overlay{width:55%;height:100%}
 .fleet-card.wide .fleet-card-body{flex:1;padding:2.8rem}
 .fleet-card.wide .fleet-name{font-size:2rem}
-.fleet-card img{width:100%;height:250px;object-fit:cover;filter:brightness(.88);transition:transform 1s var(--ease),filter 1s;flex-shrink:0;display:block}
+.fleet-card img{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#0a0a0a;filter:brightness(.88);transition:transform 1s var(--ease),filter 1s;flex-shrink:0;display:block}
 .fleet-card:hover img{transform:scale(1.05);filter:brightness(.7)}
-.fleet-card-overlay{position:absolute;left:0;right:0;top:0;height:250px;background:linear-gradient(to bottom,transparent 50%,rgba(5,5,5,.2) 100%);pointer-events:none}
+.fleet-card-overlay{position:absolute;left:0;right:0;top:0;aspect-ratio:16/9;background:linear-gradient(to bottom,transparent 50%,rgba(5,5,5,.2) 100%);pointer-events:none}
 .fleet-card-body{position:static;background:var(--dark-3);padding:1.6rem 2rem 2.2rem;border-top:2px solid rgba(155,0,6,.18);display:flex;flex-direction:column;flex:1}
 .fleet-brand{font-size:.52rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold-2);margin-bottom:.45rem;font-weight:600}
 .fleet-name{font-family:var(--ff-serif);font-size:1.65rem;font-weight:400;color:var(--white);margin-bottom:.65rem;line-height:1.1;letter-spacing:.02em}
@@ -702,7 +702,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1C3_9p4JYYGkvO5sfpMj7EitLupQVL71a&sz=w800" alt="McLaren 750S Spider" style="object-position:center 65%" onerror="this.style.background='#1C1C1C'">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1C3_9p4JYYGkvO5sfpMj7EitLupQVL71a&sz=w800" alt="McLaren 750S Spider" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">McLaren</div>
@@ -766,7 +766,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1vy5bzx3HSIx8jmmOFg3ruHdCcIQ7u0ar&sz=w800" alt="Ferrari F8 Spider" style="object-position:center 80%" onerror="this.style.background='#1C1C1C'">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1vy5bzx3HSIx8jmmOFg3ruHdCcIQ7u0ar&sz=w800" alt="Ferrari F8 Spider" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">Ferrari</div>
@@ -782,7 +782,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1M7ph_AFOvPT49n7oIcYevJPzLqqcMhFj&sz=w800" alt="Ferrari F8 Tributo" style="object-position:center 45%" onerror="this.style.background='#1C1C1C'">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1M7ph_AFOvPT49n7oIcYevJPzLqqcMhFj&sz=w800" alt="Ferrari F8 Tributo" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">Ferrari</div>
@@ -830,7 +830,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1laTX4o7ZEEt4tMSsNSOe8iMprYQvmFpH&sz=w800" alt="Lamborghini Hurac&aacute;n" style="object-position:center 62%" onerror="this.style.background='#1C1C1C'">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1laTX4o7ZEEt4tMSsNSOe8iMprYQvmFpH&sz=w800" alt="Lamborghini Hurac&aacute;n" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">Lamborghini</div>
@@ -846,7 +846,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img loading="lazy" src="https://drive.google.com/thumbnail?id=17wTspuRvIM6CkewHtaMfsB5DOJv5qsBk&sz=w800" alt="Lamborghini Hurac&aacute;n EVO" style="object-position:center 78%" onerror="this.style.background='#1C1C1C'">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=17wTspuRvIM6CkewHtaMfsB5DOJv5qsBk&sz=w800" alt="Lamborghini Hurac&aacute;n EVO" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">Lamborghini</div>
@@ -910,7 +910,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1WLusQCI_angkyFRqPRMAi8Q2nfwiu-Ue&sz=w800" alt="Lamborghini Urus S" style="object-position:center 60%" onerror="this.style.background='#1C1C1C'">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1WLusQCI_angkyFRqPRMAi8Q2nfwiu-Ue&sz=w800" alt="Lamborghini Urus S" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">Lamborghini</div>
@@ -958,7 +958,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1ZhyqF4dfI6pw9HXkk1vVJ-rWHXCC1zFU&sz=w800" alt="Porsche 911 GT3 RS" style="object-position:center 65%" onerror="this.style.background='#1C1C1C'">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1ZhyqF4dfI6pw9HXkk1vVJ-rWHXCC1zFU&sz=w800" alt="Porsche 911 GT3 RS" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">Porsche</div>
@@ -974,7 +974,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1s79rc_71VNm1TN5OfQAS4EQFYxeVAf7b&sz=w800" alt="Porsche 911 GT3 RS" style="object-position:center 58%" onerror="this.style.background='#1C1C1C'">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1s79rc_71VNm1TN5OfQAS4EQFYxeVAf7b&sz=w800" alt="Porsche 911 GT3 RS" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">Porsche</div>
@@ -990,7 +990,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1EuQ9XWo0sbyJomGB4PljUoVH_fmMx0bg&sz=w800" alt="Porsche 911 Carrera 4S GTS" style="object-position:center 70%" onerror="this.style.background='#1C1C1C'">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1EuQ9XWo0sbyJomGB4PljUoVH_fmMx0bg&sz=w800" alt="Porsche 911 Carrera 4S GTS" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">Porsche</div>
@@ -1006,7 +1006,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1RdY8MZZ_NMZWxZl54lXZYeujBc-apXAc&sz=w800" alt="Porsche 911 Carrera 4S" style="object-position:center 65%" onerror="this.style.background='#1C1C1C'">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1RdY8MZZ_NMZWxZl54lXZYeujBc-apXAc&sz=w800" alt="Porsche 911 Carrera 4S" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">Porsche</div>
@@ -1102,7 +1102,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1loo3AGvZEUMGtjrhntN7WfBSDutIf1vu&sz=w800" alt="Mercedes-AMG G 63" style="object-position:center 60%" onerror="this.style.background='#1C1C1C'">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=1loo3AGvZEUMGtjrhntN7WfBSDutIf1vu&sz=w800" alt="Mercedes-AMG G 63" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">Mercedes-AMG</div>
