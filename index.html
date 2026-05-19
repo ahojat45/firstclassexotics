@@ -583,9 +583,9 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
 <!-- STATS -->
 <div class="stats-section">
   <div class="stats-grid">
-    <div class="stat-box reveal"><span class="stat-n" data-target="10">0</span><span class="stat-l">Years in Business</span></div>
+    <div class="stat-box reveal"><span class="stat-n" data-target="12">0</span><span class="stat-l">Years in Business</span></div>
     <div class="stat-box reveal delay-1"><span class="stat-n">#1</span><span class="stat-l">Voted Customer Service</span></div>
-    <div class="stat-box reveal delay-2"><span class="stat-n" data-target="3">0</span><span class="stat-l">Counties Served</span></div>
+    <div class="stat-box reveal delay-2"><span class="stat-n" data-target="4">0</span><span class="stat-l">Counties Served</span></div>
     <div class="stat-box reveal delay-3"><span class="stat-n">&#8734;</span><span class="stat-l">Fleet Access Network</span></div>
     <div class="stat-box reveal delay-4"><span class="stat-n">100%</span><span class="stat-l">Family Operated</span></div>
   </div>
@@ -1633,10 +1633,19 @@ dots.forEach((d,i)=>d.addEventListener('click',()=>{slides[si].classList.remove(
 
 // ── COUNTERS ──
 function animateCount(el,target){
-  let cur=0;const dur=2000;const step=dur/target;
-  const t=setInterval(()=>{cur++;el.textContent=cur+(target>=10?'+':'');if(cur>=target)clearInterval(t);},step);
+  var start=null,dur=1800;
+  function step(ts){
+    if(!start)start=ts;
+    var progress=Math.min((ts-start)/dur,1);
+    var ease=1-Math.pow(1-progress,3);
+    var val=Math.round(ease*target);
+    el.textContent=val+(target>=10?'+':'');
+    if(progress<1)requestAnimationFrame(step);
+    else el.textContent=target+(target>=10?'+':'');
+  }
+  requestAnimationFrame(step);
 }
-const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const t=e.target.dataset.target;if(t)animateCount(e.target,parseInt(t));obs.unobserve(e.target);}});},{threshold:.5});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){var t=e.target.dataset.target;if(t)animateCount(e.target,parseInt(t));obs.unobserve(e.target);}});},{threshold:0.1});
 document.querySelectorAll('[data-target]').forEach(el=>obs.observe(el));
 
 // ── REVEAL ON SCROLL ──
