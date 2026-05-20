@@ -1837,7 +1837,7 @@ function submitForm(e){
 
 <div id="fce-pop-ov" role="dialog" aria-modal="true" aria-labelledby="fce-pop-title">
   <div id="fce-pop">
-    <button class="fce-x" id="fce-pop-close" aria-label="Close">&#10005;</button>
+    <button class="fce-x" aria-label="Close" onclick="fceClose()">&#10005;</button>
     <p class="fce-eye">Exclusive Member Offer</p>
     <div class="fce-badge">&#9733;&nbsp; First Class Insider</div>
     <h2 class="fce-h" id="fce-pop-title">Get <em>15% Off</em><br>Your First Rental</h2>
@@ -1866,24 +1866,38 @@ function submitForm(e){
 </div>
 
 <script>
+// ── POPUP: global close function so onclick="fceClose()" is always reachable ──
+var FCE_SEEN_KEY = 'fce_popup_v1';
+
+function fceClose(){
+  var ov = document.getElementById('fce-pop-ov');
+  if(!ov) return;
+  ov.classList.remove('open');
+  localStorage.setItem(FCE_SEEN_KEY, '1');
+}
+
+// Close when clicking the dark backdrop
+document.getElementById('fce-pop-ov').addEventListener('click', function(e){
+  if(e.target === this) fceClose();
+});
+
+// Close on Escape key
+document.addEventListener('keydown', function(e){
+  if(e.key === 'Escape') fceClose();
+});
+
+// Auto-show after 3 seconds — only on first visit
 (function(){
-  var SEEN_KEY = 'fce_popup_v1';
-  var overlay  = document.getElementById('fce-pop-ov');
-  var closeBtn = document.getElementById('fce-pop-close');
+  if(localStorage.getItem(FCE_SEEN_KEY)) return;
+
+  setTimeout(function(){
+    document.getElementById('fce-pop-ov').classList.add('open');
+  }, 3000);
+
+  // Form submission → Brevo API
   var form     = document.getElementById('fce-lead-form');
   var formWrap = document.getElementById('fce-form-wrap');
   var success  = document.getElementById('fce-success');
-
-  if(localStorage.getItem(SEEN_KEY)) return; // already seen — skip
-
-  function openPopup(){ overlay.classList.add('open'); }
-  function closePopup(){ overlay.classList.remove('open'); localStorage.setItem(SEEN_KEY,'1'); }
-
-  setTimeout(openPopup, 3000);
-
-  closeBtn.addEventListener('click', closePopup);
-  overlay.addEventListener('click', function(e){ if(e.target === overlay) closePopup(); });
-  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && overlay.classList.contains('open')) closePopup(); });
 
   form.addEventListener('submit', function(e){
     e.preventDefault();
@@ -1897,8 +1911,8 @@ function submitForm(e){
 
     // ── BREVO API KEY ──────────────────────────────────────────────────────────
     // 1. Go to app.brevo.com → Settings → API Keys → Generate a new key
-    // 2. Replace the placeholder below with your actual key
-    // 3. Set listIds to the numeric ID of your Brevo list (found in Contacts → Lists)
+    // 2. Replace BREVO_API_KEY_HERE below with your actual key
+    // 3. Change listIds:[2] to your actual Brevo list ID (Contacts → Lists)
     var BREVO_API_KEY = 'BREVO_API_KEY_HERE';
     // ──────────────────────────────────────────────────────────────────────────
 
@@ -1912,19 +1926,19 @@ function submitForm(e){
       body: JSON.stringify({
         email: email,
         attributes: { FIRSTNAME: firstName },
-        listIds: [2],        // ← change to your actual Brevo list ID
+        listIds: [2],
         updateEnabled: true
       })
     })
-    .then(function(){ showSuccess(); })
-    .catch(function(){ showSuccess(); }); // still show success if API key not set yet
-  });
+    .then(function(){ fceShowSuccess(); })
+    .catch(function(){ fceShowSuccess(); });
 
-  function showSuccess(){
-    formWrap.style.display = 'none';
-    success.style.display  = 'block';
-    localStorage.setItem(SEEN_KEY, '1');
-  }
+    function fceShowSuccess(){
+      formWrap.style.display = 'none';
+      success.style.display  = 'block';
+      localStorage.setItem(FCE_SEEN_KEY, '1');
+    }
+  });
 })();
 </script>
 </body>
