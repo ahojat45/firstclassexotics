@@ -1796,137 +1796,30 @@ function submitForm(e){
 })();
 </script>
 
-<!-- ── EMAIL CAPTURE POPUP ── -->
-<style>
-#fce-pop-ov{display:none;position:fixed;inset:0;z-index:99999;background:rgba(5,5,5,.88);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1.5rem}
-#fce-pop{position:relative;background:#0D0D0D;border:1px solid rgba(212,175,55,.18);max-width:500px;width:100%;padding:3rem 3rem 2.4rem;box-shadow:0 40px 100px rgba(0,0,0,.8),inset 0 1px 0 rgba(212,175,55,.07);overflow:hidden}
-#fce-pop::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#9B0006 0%,#D4AF37 50%,#9B0006 100%)}
-#fce-pop::after{content:'★';position:absolute;bottom:-1.2rem;right:-.8rem;font-size:7rem;color:rgba(212,175,55,.035);pointer-events:none;line-height:1}
-.fce-x{position:absolute;top:1.1rem;right:1.1rem;background:none;border:1px solid rgba(255,255,255,.12);color:#666;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.75rem;transition:border-color .3s,color .3s;line-height:1;padding:0}
-.fce-x:hover{border-color:rgba(212,175,55,.45);color:#D4AF37}
-.fce-eye{font-size:.58rem;letter-spacing:.38em;text-transform:uppercase;color:#D4AF37;margin-bottom:.9rem;font-weight:600}
-.fce-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(155,0,6,.12);border:1px solid rgba(155,0,6,.3);color:#C0000A;font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:.28rem .75rem;margin-bottom:1.1rem;font-weight:700}
-.fce-h{font-family:var(--ff-display,'Bebas Neue',sans-serif);font-size:clamp(2.1rem,5vw,2.9rem);letter-spacing:.04em;color:var(--white,#F5F3EE);line-height:1.05;margin-bottom:.9rem}
-.fce-h em{color:#D4AF37;font-style:normal}
-.fce-p{font-size:.77rem;color:#777;line-height:1.88;margin-bottom:1.7rem}
-.fce-p strong{color:#aaa}
-.fce-form{display:flex;flex-direction:column;gap:.7rem}
-.fce-inp{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);color:var(--white,#F5F3EE);padding:.88rem 1rem;font-size:.8rem;outline:none;transition:border-color .3s,background .3s;font-family:var(--ff-body,'DM Sans',sans-serif);border-radius:0;width:100%;appearance:none}
-.fce-inp:focus{border-color:rgba(212,175,55,.4);background:rgba(255,255,255,.05)}
-.fce-inp::placeholder{color:#444}
-.fce-cta{background:#9B0006;color:#F5F3EE;border:none;padding:1.05rem 1.5rem;font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .3s,transform .15s;font-family:var(--ff-body,'DM Sans',sans-serif);width:100%;margin-top:.2rem}
-.fce-cta:hover{background:#C0000A;transform:translateY(-1px)}
-.fce-cta:active{transform:translateY(0)}
-.fce-cta:disabled{opacity:.6;cursor:default;transform:none}
-.fce-fine{font-size:.58rem;color:#444;text-align:center;margin-top:.65rem;line-height:1.65}
-.fce-fine a{color:#555;text-decoration:underline}
-/* Success */
-#fce-success{display:none;text-align:center;padding:.5rem 0 .2rem}
-.fce-code-lbl{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:#777;margin-bottom:.6rem}
-.fce-code{font-family:var(--ff-display,'Bebas Neue',sans-serif);font-size:2.6rem;letter-spacing:.14em;color:#D4AF37;border:1px dashed rgba(212,175,55,.35);padding:.55rem 1.6rem;display:inline-block;margin-bottom:1.1rem;background:rgba(212,175,55,.04)}
-.fce-ok{font-size:.78rem;color:#777;line-height:1.9}
-.fce-ok strong{color:var(--white,#F5F3EE)}
-.fce-divider{width:40px;height:1px;background:rgba(212,175,55,.25);margin:.9rem auto 1rem}
-@media(max-width:580px){
-  #fce-pop{padding:2.2rem 1.6rem 2rem;margin:.25rem}
-  .fce-h{font-size:2rem}
-}
-</style>
-
-<div id="fce-pop-ov" role="dialog" aria-modal="true" aria-labelledby="fce-pop-title" onclick="if(event.target===this){document.getElementById('fce-pop-ov').style.display='none';localStorage.setItem('fce_popup_v1','1')}">
-  <div id="fce-pop" onclick="event.stopPropagation()">
-    <button class="fce-x" aria-label="Close" onclick="document.getElementById('fce-pop-ov').style.display='none';localStorage.setItem('fce_popup_v1','1')">&#10005;</button>
-    <p class="fce-eye">Exclusive Member Offer</p>
-    <div class="fce-badge">&#9733;&nbsp; First Class Insider</div>
-    <h2 class="fce-h" id="fce-pop-title">Get <em>15% Off</em><br>Your First Rental</h2>
-    <p class="fce-p">Subscribe to get <strong>First Class Exotics insider access</strong> &mdash; new cars, special deals, and VIP offers delivered straight to you. No spam, ever. Unsubscribe any time.</p>
-
-    <div id="fce-form-wrap">
-      <form class="fce-form" id="fce-lead-form" novalidate>
-        <input class="fce-inp" type="text" name="firstName" placeholder="First Name" autocomplete="given-name" required/>
-        <input class="fce-inp" type="email" name="email" placeholder="Email Address" autocomplete="email" required/>
-        <button class="fce-cta" type="submit">Claim My 15% Off &rarr;</button>
-      </form>
-      <p class="fce-fine">By subscribing you agree to our <a href="privacy.html">Privacy Policy</a>. Offer valid for new bookings only.</p>
-    </div>
-
-    <div id="fce-success">
-      <p class="fce-code-lbl">Your exclusive discount code</p>
-      <div class="fce-code">FIRSTCLASS15</div>
-      <div class="fce-divider"></div>
-      <p class="fce-ok">
-        <strong>Welcome to First Class Exotics!</strong><br>
-        Use code <strong>FIRSTCLASS15</strong> when you book for 15% off.<br>
-        A confirmation is on its way to your inbox.
-      </p>
-    </div>
+<div id="mypopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:99999;justify-content:center;align-items:center;">
+  <div style="background:#111;border:1px solid #c0392b;padding:40px;max-width:420px;width:90%;position:relative;border-radius:4px;">
+    <button onclick="document.getElementById('mypopup').style.display='none'" style="position:absolute;top:10px;right:15px;background:none;border:none;color:white;font-size:24px;cursor:pointer;z-index:999999">✕</button>
+    <h2 style="color:#c0392b;font-family:Arial;text-align:center;margin-bottom:10px;">EXCLUSIVE OFFER</h2>
+    <p style="color:white;font-family:Arial;text-align:center;margin-bottom:20px;">Subscribe and get <strong>15% OFF</strong> your first exotic rental!</p>
+    <input type="text" placeholder="First Name" style="width:100%;padding:12px;margin-bottom:10px;background:#222;border:1px solid #444;color:white;font-size:14px;box-sizing:border-box;">
+    <input type="email" placeholder="Email Address" style="width:100%;padding:12px;margin-bottom:15px;background:#222;border:1px solid #444;color:white;font-size:14px;box-sizing:border-box;">
+    <button style="width:100%;padding:14px;background:#c0392b;color:white;border:none;font-size:16px;font-weight:bold;cursor:pointer;font-family:Arial;">CLAIM MY 15% OFF</button>
+    <p style="color:#888;font-family:Arial;text-align:center;font-size:12px;margin-top:15px;">Use code <strong style="color:white;">FIRSTCLASS15</strong> at booking</p>
   </div>
 </div>
-
 <script>
-// ── POPUP ──
-// Escape key closes popup
-document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') {
-    document.getElementById('fce-pop-ov').style.display = 'none';
-    localStorage.setItem('fce_popup_v1', '1');
+setTimeout(function(){
+  var p = document.getElementById('mypopup');
+  if(!localStorage.getItem('fce_popup')){
+    p.style.display='flex';
+  }
+}, 3000);
+document.getElementById('mypopup').addEventListener('click', function(e){
+  if(e.target===this){
+    this.style.display='none';
+    localStorage.setItem('fce_popup','1');
   }
 });
-
-// Auto-show after 3 seconds — only on first visit
-(function(){
-  if(localStorage.getItem('fce_popup_v1')) return;
-
-  setTimeout(function(){
-    document.getElementById('fce-pop-ov').style.display = 'flex';
-  }, 3000);
-
-  // Form submission → Brevo API
-  var form     = document.getElementById('fce-lead-form');
-  var formWrap = document.getElementById('fce-form-wrap');
-  var success  = document.getElementById('fce-success');
-
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var firstName = form.querySelector('[name="firstName"]').value.trim();
-    var email     = form.querySelector('[name="email"]').value.trim();
-    if(!firstName || !email) return;
-
-    var btn = form.querySelector('.fce-cta');
-    btn.textContent = 'One moment...';
-    btn.disabled = true;
-
-    // ── BREVO API KEY ──────────────────────────────────────────────────────────
-    // 1. Go to app.brevo.com → Settings → API Keys → Generate a new key
-    // 2. Replace BREVO_API_KEY_HERE below with your actual key
-    // 3. Change listIds:[2] to your actual Brevo list ID (Contacts → Lists)
-    var BREVO_API_KEY = 'BREVO_API_KEY_HERE';
-    // ──────────────────────────────────────────────────────────────────────────
-
-    fetch('https://api.brevo.com/v3/contacts', {
-      method: 'POST',
-      headers: {
-        'accept': 'application/json',
-        'content-type': 'application/json',
-        'api-key': BREVO_API_KEY
-      },
-      body: JSON.stringify({
-        email: email,
-        attributes: { FIRSTNAME: firstName },
-        listIds: [2],
-        updateEnabled: true
-      })
-    })
-    .then(function(){ showSuccess(); })
-    .catch(function(){ showSuccess(); });
-
-    function showSuccess(){
-      formWrap.style.display = 'none';
-      success.style.display  = 'block';
-      localStorage.setItem('fce_popup_v1', '1');
-    }
-  });
-})();
 </script>
 </body>
 </html>
