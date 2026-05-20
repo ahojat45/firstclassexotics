@@ -1798,10 +1798,8 @@ function submitForm(e){
 
 <!-- ── EMAIL CAPTURE POPUP ── -->
 <style>
-#fce-pop-ov{position:fixed;inset:0;z-index:99999;background:rgba(5,5,5,.88);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .45s ease,visibility .45s ease}
-#fce-pop-ov.open{opacity:1;pointer-events:auto;visibility:visible}
-#fce-pop{position:relative;background:#0D0D0D;border:1px solid rgba(212,175,55,.18);max-width:500px;width:100%;padding:3rem 3rem 2.4rem;box-shadow:0 40px 100px rgba(0,0,0,.8),inset 0 1px 0 rgba(212,175,55,.07);overflow:hidden;transform:scale(.96) translateY(12px);transition:transform .45s cubic-bezier(.16,1,.3,1)}
-#fce-pop-ov.open #fce-pop{transform:scale(1) translateY(0)}
+#fce-pop-ov{display:none;position:fixed;inset:0;z-index:99999;background:rgba(5,5,5,.88);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:1.5rem}
+#fce-pop{position:relative;background:#0D0D0D;border:1px solid rgba(212,175,55,.18);max-width:500px;width:100%;padding:3rem 3rem 2.4rem;box-shadow:0 40px 100px rgba(0,0,0,.8),inset 0 1px 0 rgba(212,175,55,.07);overflow:hidden}
 #fce-pop::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#9B0006 0%,#D4AF37 50%,#9B0006 100%)}
 #fce-pop::after{content:'★';position:absolute;bottom:-1.2rem;right:-.8rem;font-size:7rem;color:rgba(212,175,55,.035);pointer-events:none;line-height:1}
 .fce-x{position:absolute;top:1.1rem;right:1.1rem;background:none;border:1px solid rgba(255,255,255,.12);color:#666;width:30px;height:30px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.75rem;transition:border-color .3s,color .3s;line-height:1;padding:0}
@@ -1835,9 +1833,9 @@ function submitForm(e){
 }
 </style>
 
-<div id="fce-pop-ov" role="dialog" aria-modal="true" aria-labelledby="fce-pop-title">
-  <div id="fce-pop">
-    <button class="fce-x" aria-label="Close" onclick="fceClose()">&#10005;</button>
+<div id="fce-pop-ov" role="dialog" aria-modal="true" aria-labelledby="fce-pop-title" onclick="if(event.target===this){document.getElementById('fce-pop-ov').style.display='none';localStorage.setItem('fce_popup_v1','1')}">
+  <div id="fce-pop" onclick="event.stopPropagation()">
+    <button class="fce-x" aria-label="Close" onclick="document.getElementById('fce-pop-ov').style.display='none';localStorage.setItem('fce_popup_v1','1')">&#10005;</button>
     <p class="fce-eye">Exclusive Member Offer</p>
     <div class="fce-badge">&#9733;&nbsp; First Class Insider</div>
     <h2 class="fce-h" id="fce-pop-title">Get <em>15% Off</em><br>Your First Rental</h2>
@@ -1866,32 +1864,21 @@ function submitForm(e){
 </div>
 
 <script>
-// ── POPUP: global close function so onclick="fceClose()" is always reachable ──
-var FCE_SEEN_KEY = 'fce_popup_v1';
-
-function fceClose(){
-  var ov = document.getElementById('fce-pop-ov');
-  if(!ov) return;
-  ov.classList.remove('open');
-  localStorage.setItem(FCE_SEEN_KEY, '1');
-}
-
-// Close when clicking the dark backdrop
-document.getElementById('fce-pop-ov').addEventListener('click', function(e){
-  if(e.target === this) fceClose();
-});
-
-// Close on Escape key
+// ── POPUP ──
+// Escape key closes popup
 document.addEventListener('keydown', function(e){
-  if(e.key === 'Escape') fceClose();
+  if(e.key === 'Escape') {
+    document.getElementById('fce-pop-ov').style.display = 'none';
+    localStorage.setItem('fce_popup_v1', '1');
+  }
 });
 
 // Auto-show after 3 seconds — only on first visit
 (function(){
-  if(localStorage.getItem(FCE_SEEN_KEY)) return;
+  if(localStorage.getItem('fce_popup_v1')) return;
 
   setTimeout(function(){
-    document.getElementById('fce-pop-ov').classList.add('open');
+    document.getElementById('fce-pop-ov').style.display = 'flex';
   }, 3000);
 
   // Form submission → Brevo API
@@ -1930,13 +1917,13 @@ document.addEventListener('keydown', function(e){
         updateEnabled: true
       })
     })
-    .then(function(){ fceShowSuccess(); })
-    .catch(function(){ fceShowSuccess(); });
+    .then(function(){ showSuccess(); })
+    .catch(function(){ showSuccess(); });
 
-    function fceShowSuccess(){
+    function showSuccess(){
       formWrap.style.display = 'none';
       success.style.display  = 'block';
-      localStorage.setItem(FCE_SEEN_KEY, '1');
+      localStorage.setItem('fce_popup_v1', '1');
     }
   });
 })();
