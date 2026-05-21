@@ -221,8 +221,9 @@ function topicToKeywords(topic){
   return[...new Set(words)].join(',')||'exotic-car,luxury';
 }
 
+function kwToSeed(kw){return kw.split(',').slice(0,2).join('-').replace(/[^a-z0-9-]/g,'')||'luxury';}
 function imgTag(kw,alt){
-  return `<img src="https://source.unsplash.com/800x500/?${kw}" alt="${alt}" style="width:100%;height:auto;border-radius:4px;margin:2rem 0;display:block;" loading="lazy">`;
+  return `<img src="https://picsum.photos/seed/${kwToSeed(kw)}/800/500" alt="${alt}" style="width:100%;height:auto;border-radius:4px;margin:2rem 0;display:block;" loading="lazy">`;
 }
 
 function injectImages(html,topic){
@@ -253,8 +254,8 @@ async function generate(){
     const enriched=injectImages(body,topic);
     const headline=body.match(/<h1[^>]*>(.*?)<\/h1>/i)?.[1]||topic;
     const excerpt=(body.match(/<p[^>]*>(.*?)<\/p>/i)?.[1]||'').replace(/<[^>]+>/g,'').slice(0,160);
-    const heroKw=topicToKeywords(topic)+',luxury-car';
-    card=`\n        <article class="blog-card" onclick="openArticle('${slug}')">\n          <div class="blog-card-img" style="background:#0a0a0a;overflow:hidden;min-height:200px"><img src="https://source.unsplash.com/600x400/?${heroKw}" alt="${headline}" style="width:100%;height:200px;object-fit:cover;display:block;" loading="lazy"></div>\n          <div class="blog-card-body"><div class="blog-card-tag">${lcat}</div><div class="blog-card-title">${headline}</div><p class="blog-card-excerpt">${excerpt}…</p><div class="blog-card-meta">First Class Exotics &middot; ${today}</div></div>\n        </article>`;
+    const heroSeed=kwToSeed(topicToKeywords(topic));
+    card=`\n        <article class="blog-card" onclick="openArticle('${slug}')">\n          <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://picsum.photos/seed/${heroSeed}/600/400" alt="${headline} — First Class Exotics exotic car rental Southern California" loading="lazy">\n          <div class="blog-card-body"><div class="blog-card-tag">${lcat}</div><div class="blog-card-title">${headline}</div><p class="blog-card-excerpt">${excerpt}…</p><div class="blog-card-meta">First Class Exotics &middot; ${today}</div></div>\n        </article>`;
     overlay=`\n  <div class="article-overlay" id="${slug}">\n    <button class="article-close" onclick="closeArticle('${slug}')">&#x2715;</button>\n    <div class="article-inner"><p class="article-eyebrow">${lcat} &middot; ${today} &middot; First Class Exotics</p>${enriched}</div>\n  </div>`;
     document.getElementById('pbody').innerHTML=enriched;loadOff();showStep('st-preview');
   }catch(e){loadOff();toast('Error: '+e.message)}
