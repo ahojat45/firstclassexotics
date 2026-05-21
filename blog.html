@@ -28,9 +28,7 @@
     .nav-cta:hover{background:var(--gold)!important;color:var(--black)!important}
     .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
     .hamburger span{display:block;width:24px;height:1.5px;background:var(--white)}
-    .mobile-menu{display:none;position:fixed;inset:0;background:rgba(5,5,5,.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
-    .mobile-menu.open{display:flex}
-    .mobile-menu a{font-family:var(--font-display);font-size:2rem;font-weight:300;color:var(--white);text-decoration:none;transition:color .3s}
+    
     .mobile-menu a:hover{color:var(--gold)}
     .mobile-close{position:absolute;top:1.8rem;right:2rem;font-size:1.5rem;cursor:pointer;background:none;border:none;color:var(--white)}
     /* HERO */
@@ -111,29 +109,42 @@
     .blog-footer-links a:hover{color:var(--gold)}
     @media(max-width:1024px){nav{padding:0 2rem}.nav-links{display:none}.hamburger{display:flex}.featured{padding:3rem 2rem 0}.featured-card{grid-template-columns:1fr}.featured-img{min-height:280px}.blog-main{padding:2rem;grid-template-columns:1fr 1fr}.blog-hero{padding:7rem 2rem 3rem}.newsletter{padding:4rem 2rem}.blog-footer{padding:2rem}}
     @media(max-width:640px){.blog-main{grid-template-columns:1fr}.blog-footer{flex-direction:column;text-align:center}}
-  </style>
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.hamburger span{display:block;width:24px;height:1.5px;background:#F7F4EF}
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(6,6,6,.98);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#F7F4EF;letter-spacing:.08em;transition:color .3s;text-decoration:none}
+.mob-menu a:hover{color:#9B0006}
+.mob-close{position:absolute;top:2rem;right:2.5rem;background:none;border:none;color:#F7F4EF;font-size:1.5rem;cursor:pointer}
+</style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">First Class <span>Exotics</span></a>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="FC_LOGO.png" alt="First Class Exotics Logo" style="height:64px;width:auto;margin-right:.9rem;vertical-align:middle;background:transparent;">First Class <span>Exotics</span></a>
   <ul class="nav-links">
     <li><a href="index.html#fleet">Fleet</a></li>
+    <li><a href="index.html#occasions">Occasions</a></li>
     <li><a href="index.html#family">Our Story</a></li>
     <li><a href="index.html#how">How It Works</a></li>
-    <li><a href="index.html#cities">Locations</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="vinyl-wrap.html">Vinyl Wraps</a></li>
     <li><a href="blog.html" class="active">Blog</a></li>
     <li><a href="index.html#booking" class="nav-cta">Reserve Now</a></li>
   </ul>
-  <div class="hamburger" onclick="openMenu()"><span></span><span></span><span></span></div>
+  <div class="hamburger" id="hmb" onclick="openMob()"><span></span><span></span><span></span></div>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="closeMenu()">&#x2715;</button>
-  <a href="index.html#fleet" onclick="closeMenu()">Fleet</a>
-  <a href="index.html#family" onclick="closeMenu()">Our Story</a>
-  <a href="index.html#booking" onclick="closeMenu()">Reserve Now</a>
-  <a href="blog.html" onclick="closeMenu()">Blog</a>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()">&#x2715;</button>
+  <a href="index.html#fleet" onclick="closeMob()">Fleet</a>
+  <a href="index.html#occasions" onclick="closeMob()">Occasions</a>
+  <a href="index.html#family" onclick="closeMob()">Our Story</a>
+  <a href="index.html#faq" onclick="closeMob()">FAQ</a>
+  <a href="vinyl-wrap.html" onclick="closeMob()">Vinyl Wraps</a>
+  <a href="blog.html" onclick="closeMob()">Blog</a>
+  <a href="index.html#booking" onclick="closeMob()">Reserve</a>
+  <a href="tel:9492945958" onclick="closeMob()" style="color:#9B0006;font-size:2rem">(949) 294-5958</a>
 </div>
 
 <!-- BLOG HERO -->
@@ -573,8 +584,8 @@
 </div>
 
 <script>
-  function openMenu(){document.getElementById('mobileMenu').classList.add('open');document.body.style.overflow='hidden';}
-  function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow='';}
+  
+  
   function openArticle(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
   function closeArticle(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.article-overlay.open').forEach(function(el){el.classList.remove('open');});document.body.style.overflow='';}});
@@ -582,6 +593,8 @@
   document.querySelectorAll('.tag').forEach(function(tag){tag.addEventListener('click',function(){document.querySelectorAll('.tag').forEach(function(t){t.classList.remove('active');});this.classList.add('active');});});
   const obs=new IntersectionObserver(function(entries){entries.forEach(function(el){if(el.isIntersecting){el.target.style.opacity='1';el.target.style.transform='translateY(0)';}});},{threshold:0.1});
   document.querySelectorAll('.blog-card').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el);});
+function openMob(){document.getElementById('mobMenu').classList.add('open');document.body.style.overflow='hidden';}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.body.style.overflow='';}
 </script>
 
 <!-- STICKY CALL BAR -->

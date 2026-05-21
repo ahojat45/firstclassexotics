@@ -40,10 +40,13 @@ nav{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:1000;w
 .nav-back:hover{color:var(--white)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.3rem}
 .hamburger span{width:22px;height:1.5px;background:var(--white);transition:all .3s}
-.mob-menu{position:fixed;inset:0;background:rgba(5,5,5,.97);z-index:999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;opacity:0;pointer-events:none;transition:opacity .4s}
-.mob-menu.open{opacity:1;pointer-events:all}
-.mob-menu a{font-family:var(--ff-title);font-size:2.2rem;letter-spacing:.15em;color:var(--white)}
-.mob-close{position:absolute;top:2rem;right:2rem;background:none;border:none;color:var(--white);font-size:1.8rem;cursor:pointer}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.hamburger span{display:block;width:24px;height:1.5px;background:#F7F4EF}
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(6,6,6,.98);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#F7F4EF;letter-spacing:.08em;transition:color .3s;text-decoration:none}
+.mob-menu a:hover{color:#9B0006}
+.mob-close{position:absolute;top:2rem;right:2.5rem;background:none;border:none;color:#F7F4EF;font-size:1.5rem;cursor:pointer}
 
 /* HERO */
 .wrap-hero{min-height:90vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding-bottom:7rem}
@@ -178,12 +181,14 @@ footer{background:var(--dark-2);padding:3rem 6rem;border-top:1px solid rgba(255,
 <!-- MOBILE MENU -->
 <div class="mob-menu" id="mobMenu">
   <button class="mob-close" onclick="closeMob()">&#x2715;</button>
-  <a href="index.html" onclick="closeMob()">Home</a>
   <a href="index.html#fleet" onclick="closeMob()">Fleet</a>
-  <a href="vinyl-wrap.html" onclick="closeMob()" style="color:var(--gold)">Vinyl Wraps</a>
+  <a href="index.html#occasions" onclick="closeMob()">Occasions</a>
+  <a href="index.html#family" onclick="closeMob()">Our Story</a>
+  <a href="index.html#faq" onclick="closeMob()">FAQ</a>
+  <a href="vinyl-wrap.html" onclick="closeMob()">Vinyl Wraps</a>
   <a href="blog.html" onclick="closeMob()">Blog</a>
-  <a href="#quote" onclick="closeMob()">Get a Quote</a>
-  <a href="tel:9492945958" onclick="closeMob()" style="color:var(--gold);font-size:1.8rem">(949) 294-5958</a>
+  <a href="index.html#booking" onclick="closeMob()">Reserve</a>
+  <a href="tel:9492945958" onclick="closeMob()" style="color:#9B0006;font-size:2rem">(949) 294-5958</a>
 </div>
 
 <!-- MOBILE STICKY BAR -->
@@ -194,14 +199,16 @@ footer{background:var(--dark-2);padding:3rem 6rem;border-top:1px solid rgba(255,
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="index.html" class="nav-logo"><img src="FC_LOGO.png" alt="First Class Exotics Logo" style="height:56px;width:auto;background:transparent;vertical-align:middle;margin-right:.7rem">First Class <span>Exotics</span></a>
+  <a href="index.html" class="nav-logo"><img src="FC_LOGO.png" alt="First Class Exotics Logo" style="height:64px;width:auto;margin-right:.9rem;vertical-align:middle;background:transparent;">First Class <span>Exotics</span></a>
   <ul class="nav-links">
     <li><a href="index.html#fleet">Fleet</a></li>
-    <li><a href="vinyl-wrap.html" class="active">Vinyl Wraps</a></li>
+    <li><a href="index.html#occasions">Occasions</a></li>
     <li><a href="index.html#family">Our Story</a></li>
+    <li><a href="index.html#how">How It Works</a></li>
     <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="vinyl-wrap.html" class="active">Vinyl Wraps</a></li>
     <li><a href="blog.html">Blog</a></li>
-    <li><a href="#quote" class="nav-cta">Get a Quote</a></li>
+    <li><a href="index.html#booking" class="nav-cta">Reserve Now</a></li>
   </ul>
   <div class="hamburger" id="hmb" onclick="openMob()"><span></span><span></span><span></span></div>
 </nav>

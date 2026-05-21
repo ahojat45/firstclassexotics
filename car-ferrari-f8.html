@@ -116,16 +116,43 @@ footer{background:var(--black);border-top:1px solid rgba(155,0,6,.12);padding:2r
   .related-grid{grid-template-columns:1fr}
   .cta-btns{flex-direction:column;align-items:center}
 }
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.hamburger span{display:block;width:24px;height:1.5px;background:#F7F4EF}
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(6,6,6,.98);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#F7F4EF;letter-spacing:.08em;transition:color .3s;text-decoration:none}
+.mob-menu a:hover{color:#9B0006}
+.mob-close{position:absolute;top:2rem;right:2.5rem;background:none;border:none;color:#F7F4EF;font-size:1.5rem;cursor:pointer}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <a href="index.html" class="nav-logo">First Class <span>Exotics</span></a>
-  <a href="index.html#fleet" class="nav-back">&#8592; Back to Fleet</a>
-  <a href="index.html#booking" class="nav-cta">Reserve Now</a>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="FC_LOGO.png" alt="First Class Exotics Logo" style="height:64px;width:auto;margin-right:.9rem;vertical-align:middle;background:transparent;">First Class <span>Exotics</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#fleet">Fleet</a></li>
+    <li><a href="index.html#occasions">Occasions</a></li>
+    <li><a href="index.html#family">Our Story</a></li>
+    <li><a href="index.html#how">How It Works</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="vinyl-wrap.html">Vinyl Wraps</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="index.html#booking" class="nav-cta">Reserve Now</a></li>
+  </ul>
+  <div class="hamburger" id="hmb" onclick="openMob()"><span></span><span></span><span></span></div>
 </nav>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()">&#x2715;</button>
+  <a href="index.html#fleet" onclick="closeMob()">Fleet</a>
+  <a href="index.html#occasions" onclick="closeMob()">Occasions</a>
+  <a href="index.html#family" onclick="closeMob()">Our Story</a>
+  <a href="index.html#faq" onclick="closeMob()">FAQ</a>
+  <a href="vinyl-wrap.html" onclick="closeMob()">Vinyl Wraps</a>
+  <a href="blog.html" onclick="closeMob()">Blog</a>
+  <a href="index.html#booking" onclick="closeMob()">Reserve</a>
+  <a href="tel:9492945958" onclick="closeMob()" style="color:#9B0006;font-size:2rem">(949) 294-5958</a>
+</div>
 
 <!-- HERO -->
 <div class="car-hero">
@@ -303,6 +330,8 @@ document.addEventListener('keydown', e => {{
   if (e.key === 'ArrowLeft') prevPhoto();
   if (e.key === 'ArrowRight') nextPhoto();
 }});
+function openMob(){document.getElementById('mobMenu').classList.add('open');document.body.style.overflow='hidden';}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.body.style.overflow='';}
 </script>
 </body>
 </html>

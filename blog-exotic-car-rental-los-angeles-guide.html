@@ -23,6 +23,8 @@
   "dateModified":"2026-05-20",
   "url":"https://www.firstclassexotics.com/blog-exotic-car-rental-los-angeles-guide.html"
 }
+function openMob(){document.getElementById('mobMenu').classList.add('open');document.body.style.overflow='hidden';}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.body.style.overflow='';}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -83,20 +85,42 @@ h1 em{font-style:italic;color:var(--gold-light)}
 .blog-footer-links a{font-size:.68rem;color:var(--gray);transition:color .3s}
 .blog-footer-links a:hover{color:var(--gold)}
 @media(max-width:768px){nav{padding:0 1.5rem}.nav-links{display:none}.article-hero{padding:7rem 1.5rem 2.5rem}.article-wrap{padding:0 1.5rem 4rem}.related{padding:3rem 1.5rem}.related-grid{grid-template-columns:1fr}.blog-footer{flex-direction:column;padding:2rem 1.5rem;text-align:center}}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+.hamburger span{display:block;width:24px;height:1.5px;background:#F7F4EF}
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(6,6,6,.98);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#F7F4EF;letter-spacing:.08em;transition:color .3s;text-decoration:none}
+.mob-menu a:hover{color:#9B0006}
+.mob-close{position:absolute;top:2rem;right:2.5rem;background:none;border:none;color:#F7F4EF;font-size:1.5rem;cursor:pointer}
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">First Class <span>Exotics</span></a>
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="FC_LOGO.png" alt="First Class Exotics Logo" style="height:64px;width:auto;margin-right:.9rem;vertical-align:middle;background:transparent;">First Class <span>Exotics</span></a>
   <ul class="nav-links">
     <li><a href="index.html#fleet">Fleet</a></li>
+    <li><a href="index.html#occasions">Occasions</a></li>
     <li><a href="index.html#family">Our Story</a></li>
     <li><a href="index.html#how">How It Works</a></li>
-    <li><a href="blog.html">Blog</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="vinyl-wrap.html">Vinyl Wraps</a></li>
+    <li><a href="blog.html" class="active">Blog</a></li>
     <li><a href="index.html#booking" class="nav-cta">Reserve Now</a></li>
   </ul>
+  <div class="hamburger" id="hmb" onclick="openMob()"><span></span><span></span><span></span></div>
 </nav>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()">&#x2715;</button>
+  <a href="index.html#fleet" onclick="closeMob()">Fleet</a>
+  <a href="index.html#occasions" onclick="closeMob()">Occasions</a>
+  <a href="index.html#family" onclick="closeMob()">Our Story</a>
+  <a href="index.html#faq" onclick="closeMob()">FAQ</a>
+  <a href="vinyl-wrap.html" onclick="closeMob()">Vinyl Wraps</a>
+  <a href="blog.html" onclick="closeMob()">Blog</a>
+  <a href="index.html#booking" onclick="closeMob()">Reserve</a>
+  <a href="tel:9492945958" onclick="closeMob()" style="color:#9B0006;font-size:2rem">(949) 294-5958</a>
+</div>
 
 <div class="article-hero">
   <p class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="blog.html">Blog</a><span>/</span>Exotic Car Rental Los Angeles Guide</p>
