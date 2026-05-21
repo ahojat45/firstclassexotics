@@ -106,20 +106,18 @@ body{background:var(--dark);color:var(--white);font-family:'Inter',system-ui,san
       <h2>Choose a Topic</h2>
       <p>Pick a suggestion below or type your own. Claude writes a full SEO article for First Class Exotics.</p>
       <div class="chips">
-        <button class="chip" onclick="pick(this,'Top 5 Exotic Cars to Rent in Scottsdale This Year')">Top 5 Exotics in Scottsdale</button>
-        <button class="chip" onclick="pick(this,'Why Rent a Lamborghini for Your Scottsdale Bachelor Party')">Lamborghini Bachelor Party</button>
-        <button class="chip" onclick="pick(this,'Ferrari vs Lamborghini: Which Exotic Should You Rent?')">Ferrari vs Lamborghini</button>
-        <button class="chip" onclick="pick(this,'The Ultimate Guide to Exotic Car Rentals in Phoenix')">Phoenix Rental Guide</button>
-        <button class="chip" onclick="pick(this,'How to Plan a Supercar Road Trip Through Arizona')">Arizona Road Trip</button>
-        <button class="chip" onclick="pick(this,'Rolls-Royce Rental: What to Expect from True Luxury')">Rolls-Royce Experience</button>
-        <button class="chip" onclick="pick(this,'McLaren vs Porsche: A Luxury Performance Comparison')">McLaren vs Porsche</button>
-        <button class="chip" onclick="pick(this,'Best Scenic Drives Near Scottsdale in an Exotic Car')">Best Scenic Drives</button>
-        <button class="chip" onclick="pick(this,'Corporate Exotic Car Rentals: Impress Clients in Style')">Corporate Rentals</button>
-        <button class="chip" onclick="pick(this,'Exotic Car Rentals for Weddings and Special Events in Phoenix')">Weddings &amp; Events</button>
-        <button class="chip" onclick="pick(this,'What It Actually Feels Like to Drive a Lamborghini Huracán')">Driving a Huracán</button>
-        <button class="chip" onclick="pick(this,'Best Luxury Hotels in Scottsdale to Pair With an Exotic Rental')">Hotels + Exotics</button>
+        <button class="chip" onclick="pick(this,'Lamborghini Rental Newport Beach')">Lamborghini Rental Newport Beach</button>
+        <button class="chip" onclick="pick(this,'Ferrari Rental Laguna Beach Wedding')">Ferrari Rental Laguna Beach Wedding</button>
+        <button class="chip" onclick="pick(this,'Exotic Car PCH Road Trip Guide')">Exotic Car PCH Road Trip Guide</button>
+        <button class="chip" onclick="pick(this,'Rolls-Royce Rental Orange County')">Rolls-Royce Rental Orange County</button>
+        <button class="chip" onclick="pick(this,'McLaren vs Lamborghini Which to Rent')">McLaren vs Lamborghini Which to Rent</button>
+        <button class="chip" onclick="pick(this,'Exotic Car Music Video Shoot LA')">Exotic Car Music Video Shoot LA</button>
+        <button class="chip" onclick="pick(this,'Birthday Lamborghini Rental OC')">Birthday Lamborghini Rental OC</button>
+        <button class="chip" onclick="pick(this,'Corporate Exotic Car Rental Irvine')">Corporate Exotic Car Rental Irvine</button>
+        <button class="chip" onclick="pick(this,'Exotic Car Delivery Pelican Hill Resort')">Exotic Car Delivery Pelican Hill Resort</button>
+        <button class="chip" onclick="pick(this,'Best Exotic Car for Quinceañera SoCal')">Best Exotic Car for Quinceañera SoCal</button>
       </div>
-      <div class="fr"><label>Topic (edit or type your own)</label><input type="text" id="ti" placeholder="e.g. Why Scottsdale Visitors Love Exotic Car Rentals"></div>
+      <div class="fr"><label>Topic (edit or type your own)</label><input type="text" id="ti" placeholder="e.g. Best exotic car for a sunset drive on PCH"></div>
       <div class="fr"><label>Category</label>
         <select id="ci"><option>Lifestyle</option><option>Fleet</option><option>Events</option><option>Travel</option><option>Guides</option><option>Performance</option></select>
       </div>
@@ -200,7 +198,7 @@ async function generate(){
   load('Claude is writing your article…');
   const today=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
   const slug='article'+Date.now();
-  const prompt=`You are writing a luxury exotic car rental blog post for First Class Exotics, a premium exotic car rental company in the Phoenix/Scottsdale, Arizona area.\n\nWrite a complete SEO-optimized article about: "${topic}"\n\nRequirements:\n- 600-900 words\n- Aspirational luxury tone (Robb Report style)\n- Naturally include "exotic car rental Scottsdale", "luxury car rental Phoenix", "First Class Exotics" 2-3 times each\n- H1 headline, 3-4 H2 subheadings, strong opening, practical + aspirational content, closing CTA\n\nReturn ONLY valid HTML: <h1>...</h1><p>...</p><h2>...</h2><p>...</p> etc. No markdown, no code blocks.`;
+  const prompt=`You are writing a luxury exotic car rental blog post for First Class Exotics, a premium exotic car rental company serving Orange County and greater Southern California.\n\nWrite a complete SEO-optimized article about: "${topic}"\n\nRequirements:\n- 600-900 words\n- Aspirational luxury tone (Robb Report style)\n- Naturally weave in these keywords throughout the article (2-3 times each where relevant): "Orange County", "Newport Beach", "Irvine", "Costa Mesa", "Los Angeles", "SoCal", "First Class Exotics"\n- Also mention relevant OC landmarks and venues naturally where appropriate: PCH, Pelican Hill, Laguna Beach, Pendry Newport Beach, Montage, Balboa Island\n- H1 headline, 3-4 H2 subheadings, strong opening, practical + aspirational content, closing CTA directing readers to contact First Class Exotics\n\nReturn ONLY valid HTML: <h1>...</h1><p>...</p><h2>...</h2><p>...</p> etc. No markdown, no code blocks.`;
   try{
     const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':ant,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-opus-4-7',max_tokens:2000,messages:[{role:'user',content:prompt}]})});
     if(!r.ok){const e=await r.json();throw new Error(e.error?.message||'API error '+r.status)}
