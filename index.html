@@ -1799,27 +1799,58 @@ function submitForm(e){
 
 <div id="mypopup" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);z-index:99999;justify-content:center;align-items:center;">
   <div style="background:#111;border:1px solid #c0392b;padding:40px;max-width:420px;width:90%;position:relative;border-radius:4px;">
-    <button onclick="document.getElementById('mypopup').style.display='none'" style="position:absolute;top:10px;right:15px;background:none;border:none;color:white;font-size:24px;cursor:pointer;z-index:999999">✕</button>
-    <h2 style="color:#c0392b;font-family:Arial;text-align:center;margin-bottom:10px;">EXCLUSIVE OFFER</h2>
-    <p style="color:white;font-family:Arial;text-align:center;margin-bottom:20px;">Subscribe and get <strong>15% OFF</strong> your first exotic rental!</p>
-    <input type="text" placeholder="First Name" style="width:100%;padding:12px;margin-bottom:10px;background:#222;border:1px solid #444;color:white;font-size:14px;box-sizing:border-box;">
-    <input type="email" placeholder="Email Address" style="width:100%;padding:12px;margin-bottom:15px;background:#222;border:1px solid #444;color:white;font-size:14px;box-sizing:border-box;">
-    <button style="width:100%;padding:14px;background:#c0392b;color:white;border:none;font-size:16px;font-weight:bold;cursor:pointer;font-family:Arial;">CLAIM MY 15% OFF</button>
-    <p style="color:#888;font-family:Arial;text-align:center;font-size:12px;margin-top:15px;">Use code <strong style="color:white;">FIRSTCLASS15</strong> at booking</p>
+    <button onclick="fceClosePopup()" style="position:absolute;top:10px;right:15px;background:none;border:none;color:white;font-size:24px;cursor:pointer;z-index:999999">✕</button>
+    <div id="popup-form-wrap">
+      <h2 style="color:#c0392b;font-family:Arial;text-align:center;margin-bottom:10px;">EXCLUSIVE OFFER</h2>
+      <p style="color:white;font-family:Arial;text-align:center;margin-bottom:20px;">Subscribe and get <strong>15% OFF</strong> your first exotic rental!</p>
+      <input id="popup-name" type="text" placeholder="First Name" style="width:100%;padding:12px;margin-bottom:10px;background:#222;border:1px solid #444;color:white;font-size:14px;box-sizing:border-box;">
+      <input id="popup-email" type="email" placeholder="Email Address" style="width:100%;padding:12px;margin-bottom:10px;background:#222;border:1px solid #444;color:white;font-size:14px;box-sizing:border-box;">
+      <p id="popup-error" style="color:#ff6b6b;font-family:Arial;font-size:13px;margin-bottom:10px;display:none;">Please enter your name and email.</p>
+      <button id="popup-btn" onclick="fceSubmitPopup()" style="width:100%;padding:14px;background:#c0392b;color:white;border:none;font-size:16px;font-weight:bold;cursor:pointer;font-family:Arial;">CLAIM MY 15% OFF</button>
+      <p style="color:#888;font-family:Arial;text-align:center;font-size:12px;margin-top:15px;">Use code <strong style="color:white;">FIRSTCLASS15</strong> at booking</p>
+    </div>
+    <div id="popup-success" style="display:none;text-align:center;padding:10px 0;">
+      <p style="color:white;font-family:Arial;font-size:17px;line-height:1.6;">🎉 Welcome to First Class Exotics!<br>Use code <strong style="color:#D4AF37;">FIRSTCLASS15</strong> for 15% off your first rental!</p>
+    </div>
   </div>
 </div>
 <script>
-setTimeout(function(){
-  var p = document.getElementById('mypopup');
-  if(!localStorage.getItem('fce_popup')){
-    p.style.display='flex';
-  }
-}, 3000);
-document.getElementById('mypopup').addEventListener('click', function(e){
-  if(e.target===this){
-    this.style.display='none';
+function fceClosePopup(){
+  document.getElementById('mypopup').style.display='none';
+  localStorage.setItem('fce_popup','1');
+}
+function fceSubmitPopup(){
+  var name=document.getElementById('popup-name').value.trim();
+  var email=document.getElementById('popup-email').value.trim();
+  var err=document.getElementById('popup-error');
+  if(!name||!email){err.style.display='block';return;}
+  err.style.display='none';
+  var btn=document.getElementById('popup-btn');
+  btn.disabled=true;
+  btn.textContent='Sending...';
+  fetch('/.netlify/functions/subscribe',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:name,email:email})
+  }).then(function(r){
     localStorage.setItem('fce_popup','1');
+    document.getElementById('popup-form-wrap').style.display='none';
+    document.getElementById('popup-success').style.display='block';
+    setTimeout(fceClosePopup,3000);
+  }).catch(function(){
+    btn.disabled=false;
+    btn.textContent='CLAIM MY 15% OFF';
+    err.textContent='Something went wrong. Please try again.';
+    err.style.display='block';
+  });
+}
+setTimeout(function(){
+  if(!localStorage.getItem('fce_popup')){
+    document.getElementById('mypopup').style.display='flex';
   }
+},3000);
+document.getElementById('mypopup').addEventListener('click',function(e){
+  if(e.target===this) fceClosePopup();
 });
 </script>
 </body>
