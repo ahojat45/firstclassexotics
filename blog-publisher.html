@@ -223,13 +223,17 @@ function topicToKeywords(topic){
 
 function topicToLocalImg(topic){
   const t=topic.toLowerCase();
-  if(/ferrari|lamborghini|supercar/.test(t)) return 'fleet_ferrari_488.jpg';
+  if(/ferrari/.test(t)) return 'fleet_ferrari_488.jpg';
+  if(/lamborghini|huracan/.test(t)) return 'fleet_yellow_huracan.jpg';
   if(/porsche/.test(t)) return 'fleet_porsche_4s.jpg';
-  if(/huracan|spyder/.test(t)) return 'fleet_yellow_huracan.jpg';
-  if(/rolls|bentley|maybach|luxury/.test(t)) return 'fleet_satin_spyder.jpg';
+  if(/rolls|bentley|maybach/.test(t)) return 'fleet_satin_spyder.jpg';
+  if(/mclaren/.test(t)) return 'fleet_mclaren_720s.jpg';
   return 'fleet_ferrari_488.jpg';
 }
-function injectImages(html,topic){return html;}
+function injectImages(html,topic){
+  const img=`<img src="${topicToLocalImg(topic)}" alt="${topic.replace(/"/g,'')} — First Class Exotics exotic car rental Southern California" style="width:100%;height:auto;border-radius:4px;margin:1.5rem 0 2rem;display:block;" loading="lazy">`;
+  return html.replace(/(<\/h1>)/i,`$1\n${img}`);
+}
 
 async function generate(){
   const topic=document.getElementById('ti').value.trim();
