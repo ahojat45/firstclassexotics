@@ -221,44 +221,16 @@ function topicToKeywords(topic){
   return[...new Set(words)].join(',')||'exotic-car,luxury';
 }
 
-// Verified Unsplash photo IDs — confirmed to show luxury/exotic cars
-const PHOTO_IDS=[
-  'photo-1544636331-e26879cd4d9b', // exotic sports car — default
-  'photo-1583121274602-3e2820c69888', // red Ferrari
-  'photo-1614162692292-7ac56d7f7f1e', // white Porsche GT3 RS
-  'photo-1621135802920-133df287f89c', // McLaren orange
-  'photo-1592198084033-aade902d1aae', // Lamborghini Huracan
-  'photo-1631295868223-63265b40d9e4', // exotic on LA street
-  'photo-1519225421980-715cb0215aed', // wedding luxury car
-  'photo-1506905925346-21bda4d32df4', // Newport Beach coastal
-  'photo-1580274455191-1c62238fa333', // exotic car lifestyle
-];
-function topicToPhotoId(topic){
-  const t=topic.toLowerCase();
-  if(/porsche/.test(t)) return PHOTO_IDS[2];
-  if(/ferrari/.test(t)) return PHOTO_IDS[1];
-  if(/mclaren/.test(t)) return PHOTO_IDS[3];
-  if(/lamborghini/.test(t)) return PHOTO_IDS[4];
-  if(/wedding|bride/.test(t)) return PHOTO_IDS[6];
-  if(/newport|beach|coastal|pelican|laguna/.test(t)) return PHOTO_IDS[7];
-  if(/los angeles|beverly|malibu|hollywood|film|music video/.test(t)) return PHOTO_IDS[5];
-  if(/lifestyle|first.time|guide|tips/.test(t)) return PHOTO_IDS[8];
-  return PHOTO_IDS[0];
-}
-const LOCAL_FLEET_IMGS=['fleet_ferrari_488.jpg','fleet_porsche_4s.jpg','fleet_yellow_huracan.jpg','fleet_satin_spyder.jpg'];
 function topicToLocalImg(topic){
   const t=topic.toLowerCase();
-  if(/ferrari/.test(t)) return LOCAL_FLEET_IMGS[0];
-  if(/porsche/.test(t)) return LOCAL_FLEET_IMGS[1];
-  if(/lamborghini|huracan|aventador/.test(t)) return LOCAL_FLEET_IMGS[2];
-  if(/spyder|spider|convertible|newport|beach|coastal|wedding|bride/.test(t)) return LOCAL_FLEET_IMGS[3];
-  return LOCAL_FLEET_IMGS[Math.floor(Math.random()*LOCAL_FLEET_IMGS.length)];
+  if(/ferrari|lamborghini|supercar/.test(t)) return 'fleet_ferrari_488.jpg';
+  if(/porsche/.test(t)) return 'fleet_porsche_4s.jpg';
+  if(/huracan|spyder/.test(t)) return 'fleet_yellow_huracan.jpg';
+  if(/rolls|bentley|maybach|luxury/.test(t)) return 'fleet_satin_spyder.jpg';
+  return 'fleet_ferrari_488.jpg';
 }
 function imgTag(topic,alt,idx){
-  // idx offsets into PHOTO_IDS so the 3 article images each use a different verified photo
-  const base=PHOTO_IDS.indexOf(topicToPhotoId(topic));
-  const id=PHOTO_IDS[(base+(idx||0))%PHOTO_IDS.length];
-  return `<img src="https://images.unsplash.com/${id}?w=800&q=80" alt="${alt}" style="width:100%;height:auto;border-radius:4px;margin:2rem 0;display:block;" loading="lazy">`;
+  return `<img src="${topicToLocalImg(topic)}" alt="${alt}" style="width:100%;height:auto;border-radius:4px;margin:2rem 0;display:block;" loading="lazy">`;
 }
 
 function injectImages(html,topic){
