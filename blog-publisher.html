@@ -223,11 +223,12 @@ function topicToKeywords(topic){
 
 function topicToLocalImg(topic){
   const t=topic.toLowerCase();
-  if(/ferrari/.test(t)) return 'fleet_ferrari_488.jpg';
-  if(/lamborghini|huracan/.test(t)) return 'fleet_yellow_huracan.jpg';
-  if(/porsche/.test(t)) return 'fleet_porsche_4s.jpg';
-  if(/rolls|bentley|maybach/.test(t)) return 'fleet_satin_spyder.jpg';
-  if(/mclaren/.test(t)) return 'fleet_mclaren_720s.jpg';
+  if(/rolls|royce|cullinan/.test(t)) return 'fleet_rolls_cullinan.jpg';
+  if(/bentley|continental/.test(t)) return 'fleet_satin_spyder.jpg';
+  if(/mclaren|720/.test(t)) return 'fleet_mclaren_720s.jpg';
+  if(/porsche|gt3|911/.test(t)) return 'fleet_porsche_4s.jpg';
+  if(/lamborghini|huracan|aventador/.test(t)) return 'fleet_yellow_huracan.jpg';
+  if(/ferrari|sf90|296|f8/.test(t)) return 'fleet_ferrari_488.jpg';
   return 'fleet_ferrari_488.jpg';
 }
 function injectImages(html,topic){
