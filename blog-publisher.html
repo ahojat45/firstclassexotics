@@ -229,19 +229,7 @@ function topicToLocalImg(topic){
   if(/rolls|bentley|maybach|luxury/.test(t)) return 'fleet_satin_spyder.jpg';
   return 'fleet_ferrari_488.jpg';
 }
-function imgTag(topic,alt,idx){
-  return `<img src="${topicToLocalImg(topic)}" alt="${alt}" style="width:100%;height:auto;border-radius:4px;margin:2rem 0;display:block;" loading="lazy">`;
-}
-
-function injectImages(html,topic){
-  const alt=topic.replace(/"/g,'')+' — First Class Exotics exotic car rental Southern California';
-  html=html.replace(/(<\/h1>)/i,`$1\n${imgTag(topic,alt,0)}`);
-  let n=0;
-  html=html.replace(/<\/h2>/gi,m=>{n++;return n===2?`</h2>\n${imgTag(topic,alt,1)}`:m;});
-  const last=html.lastIndexOf('</p>');
-  if(last>-1)html=html.slice(0,last)+imgTag(topic,alt,2)+'\n'+html.slice(last);
-  return html;
-}
+function injectImages(html,topic){return html;}
 
 async function generate(){
   const topic=document.getElementById('ti').value.trim();
