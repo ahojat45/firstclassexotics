@@ -245,6 +245,15 @@ function topicToPhotoId(topic){
   if(/lifestyle|first.time|guide|tips/.test(t)) return PHOTO_IDS[8];
   return PHOTO_IDS[0];
 }
+const LOCAL_FLEET_IMGS=['fleet_ferrari_488.jpg','fleet_porsche_4s.jpg','fleet_yellow_huracan.jpg','fleet_satin_spyder.jpg'];
+function topicToLocalImg(topic){
+  const t=topic.toLowerCase();
+  if(/ferrari/.test(t)) return LOCAL_FLEET_IMGS[0];
+  if(/porsche/.test(t)) return LOCAL_FLEET_IMGS[1];
+  if(/lamborghini|huracan|aventador/.test(t)) return LOCAL_FLEET_IMGS[2];
+  if(/spyder|spider|convertible|newport|beach|coastal|wedding|bride/.test(t)) return LOCAL_FLEET_IMGS[3];
+  return LOCAL_FLEET_IMGS[Math.floor(Math.random()*LOCAL_FLEET_IMGS.length)];
+}
 function imgTag(topic,alt,idx){
   // idx offsets into PHOTO_IDS so the 3 article images each use a different verified photo
   const base=PHOTO_IDS.indexOf(topicToPhotoId(topic));
@@ -279,8 +288,8 @@ async function generate(){
     const enriched=injectImages(body,topic);
     const headline=body.match(/<h1[^>]*>(.*?)<\/h1>/i)?.[1]||topic;
     const excerpt=(body.match(/<p[^>]*>(.*?)<\/p>/i)?.[1]||'').replace(/<[^>]+>/g,'').slice(0,160);
-    const heroId=topicToPhotoId(topic);
-    card=`\n        <article class="blog-card" onclick="openArticle('${slug}')">\n          <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://images.unsplash.com/${heroId}?w=800&q=80" alt="${headline} — First Class Exotics exotic car rental Southern California" loading="lazy">\n          <div class="blog-card-body"><div class="blog-card-tag">${lcat}</div><div class="blog-card-title">${headline}</div><p class="blog-card-excerpt">${excerpt}…</p><div class="blog-card-meta">First Class Exotics &middot; ${today}</div></div>\n        </article>`;
+    const heroImg=topicToLocalImg(topic);
+    card=`\n        <article class="blog-card" onclick="openArticle('${slug}')">\n          <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="${heroImg}" alt="${headline} — First Class Exotics exotic car rental Southern California" loading="lazy">\n          <div class="blog-card-body"><div class="blog-card-tag">${lcat}</div><div class="blog-card-title">${headline}</div><p class="blog-card-excerpt">${excerpt}…</p><div class="blog-card-meta">First Class Exotics &middot; ${today}</div></div>\n        </article>`;
     overlay=`\n  <div class="article-overlay" id="${slug}">\n    <button class="article-close" onclick="closeArticle('${slug}')">&#x2715;</button>\n    <div class="article-inner"><p class="article-eyebrow">${lcat} &middot; ${today} &middot; First Class Exotics</p>${enriched}</div>\n  </div>`;
     document.getElementById('pbody').innerHTML=enriched;loadOff();showStep('st-preview');
   }catch(e){loadOff();toast('Error: '+e.message)}
