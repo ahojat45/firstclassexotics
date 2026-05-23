@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="referrer" content="no-referrer-when-downgrade"/>
+<title>Gift Certificates | First Class Exotics — Exotic Car Rental Orange County</title>
+<meta name="description" content="Give the gift of an exotic car experience. First Class Exotics gift certificates are redeemable on any car in our fleet — Lamborghini, Ferrari, McLaren & Rolls-Royce. Never expire."/>
+<meta property="og:title" content="Gift Certificates | First Class Exotics"/>
+<meta property="og:description" content="Give the gift of an exotic car experience. Redeemable on any car in our fleet. Never expires. Ali personally handles every request."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.firstclassexotics.com/gift.html"/>
+<meta property="og:image" content="https://www.firstclassexotics.com/fleet_rolls_cullinan.jpg"/>
+<link rel="canonical" href="https://www.firstclassexotics.com/gift.html"/>
+<link rel="sitemap" type="application/xml" href="/sitemap.xml"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --gold:#9B0006;--gold-2:#D4AF37;--gold-3:rgba(155,0,6,.10);
+  --black:#050505;--dark:#0A0A0A;--dark-2:#111111;--dark-3:#181818;--dark-4:#1F1F1F;
+  --gray:#666;--gray-2:#8A8A8A;--gray-3:#B5B5B5;
+  --white:#F7F4EF;
+  --red:#E84545;
+  --ff-title:'Bebas Neue',sans-serif;
+  --ff-serif:'Cormorant Garamond',serif;
+  --ff-body:'DM Sans',sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:var(--black)}
+::-webkit-scrollbar-thumb{background:var(--gold);border-radius:0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--black);color:var(--white);font-family:var(--ff-body);overflow-x:hidden;cursor:none;padding-bottom:72px}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%;background:var(--dark-3);color:transparent;font-size:0}
+button{font-family:var(--ff-body);cursor:none}
+
+/* ── CUSTOM CURSOR ── */
+.cursor{position:fixed;width:7px;height:7px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:width .2s var(--ease),height .2s var(--ease),background .2s;mix-blend-mode:normal}
+.cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(212,175,55,.45);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all .1s var(--ease)}
+body:has(a:hover) .cursor,.cursor.hover{width:16px;height:16px;background:var(--gold-2)}
+body:has(a:hover) .cursor-ring,.cursor-ring.hover{width:54px;height:54px;border-color:var(--gold-2);opacity:.5}
+
+/* ── TOP TICKER ── */
+.ticker-wrap{background:#080808;overflow:hidden;padding:.5rem 0;white-space:nowrap;border-bottom:1px solid rgba(155,0,6,.1)}
+.ticker{display:inline-flex;gap:3.5rem;animation:ticker 32s linear infinite}
+.ticker span{font-size:.58rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:#777}
+.ticker span::before{content:"◆";margin-right:1.5rem;color:#9B0006;opacity:.7;font-size:.45rem}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── NAV ── */
+nav{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:1000;width:calc(100% - 3rem);max-width:1480px;display:flex;align-items:center;justify-content:space-between;padding:.95rem 2.2rem;background:rgba(5,5,5,.78);backdrop-filter:blur(36px) saturate(180%);border:1px solid rgba(155,0,6,.16);border-radius:1px;transition:all .4s var(--ease)}
+nav.scrolled{top:0;width:100%;max-width:100%;border-radius:0;background:rgba(5,5,5,.98);border-left:none;border-right:none;border-top:none}
+.nav-logo{font-family:var(--ff-serif);font-size:1.45rem;font-weight:600;letter-spacing:.05em;color:var(--white);display:flex;align-items:center}
+.nav-logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.2rem;list-style:none;align-items:center}
+.nav-links a{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray-2);font-weight:500;transition:color .3s;position:relative;padding-bottom:3px}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:linear-gradient(to right,var(--gold),var(--gold-2));transition:width .3s var(--ease)}
+.nav-links a:hover{color:var(--white)}
+.nav-links a:hover::after{width:100%}
+.nav-links a.active{color:var(--gold-2)}
+.nav-links a.active::after{width:100%}
+.nav-cta{background:var(--gold);color:var(--white)!important;padding:.58rem 1.5rem;font-size:.63rem!important;letter-spacing:.2em!important;font-weight:600!important;transition:background .3s,transform .2s,box-shadow .3s!important}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:#7a0004!important;transform:translateY(-1px);box-shadow:0 6px 24px rgba(155,0,6,.35)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:none;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);transition:.3s}
+.mob-menu{display:none;position:fixed;inset:0;background:rgba(6,6,6,.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+.mob-menu.open{display:flex}
+.mob-menu a{font-family:var(--ff-title);font-size:3.5rem;color:var(--white);letter-spacing:.08em;transition:color .3s}
+.mob-menu a:hover{color:var(--gold)}
+.mob-close{position:absolute;top:2rem;right:2.5rem;background:none;border:none;color:var(--white);font-size:1.5rem}
+.mobile-cta-bar{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:998;background:var(--dark-2);border-top:1px solid rgba(155,0,6,.3);align-items:stretch;justify-content:stretch;gap:1px}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+.delay-1{transition-delay:.12s}
+.delay-2{transition-delay:.24s}
+.delay-3{transition-delay:.36s}
+
+/* ── SECTION BASE ── */
+.section{padding:8rem 6rem}
+.s-eyebrow{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-2);margin-bottom:1rem}
+.s-title{font-family:var(--ff-title);font-size:clamp(3rem,5vw,6.5rem);line-height:.9;letter-spacing:.04em;margin-bottom:1.5rem}
+.gold{color:var(--gold)}
+.gold-2{color:var(--gold-2)}
+.s-sub{font-size:.88rem;color:var(--gray-2);line-height:1.9;max-width:600px}
+.btn-gold{background:var(--gold);color:#fff;padding:.85rem 2.2rem;font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;border:none;cursor:none;transition:background .25s,transform .25s;display:inline-block}
+.btn-gold:hover{background:#7a0004;transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(255,255,255,.25);color:var(--white);padding:.85rem 2.2rem;font-size:.72rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;transition:border-color .25s,transform .25s;display:inline-block}
+.btn-ghost:hover{border-color:var(--white);transform:translateY(-2px)}
+
+/* ── HERO ── */
+.gift-hero{min-height:92vh;display:flex;align-items:flex-end;position:relative;overflow:hidden;padding-bottom:8rem}
+.gift-hero-bg{position:absolute;inset:0;background-image:url('fleet_rolls_cullinan.jpg');background-size:cover;background-position:center 35%;filter:brightness(.28)}
+.gift-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,5,5,1) 0%,rgba(5,5,5,.55) 45%,rgba(5,5,5,.08) 100%)}
+.gift-hero-content{position:relative;z-index:2;padding:0 6rem;max-width:900px}
+.hero-eyebrow{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-2);margin-bottom:1.4rem;display:flex;align-items:center;gap:.8rem}
+.hero-eyebrow::before{content:'';display:inline-block;width:32px;height:1px;background:var(--gold-2)}
+.gift-hero h1{font-family:var(--ff-title);font-size:clamp(4.5rem,9vw,9.5rem);line-height:.88;letter-spacing:.04em;color:var(--white);margin-bottom:1.6rem}
+.gift-hero h1 span{color:var(--gold-2)}
+.gift-hero-sub{font-size:1.05rem;color:var(--gray-3);max-width:560px;line-height:1.8;margin-bottom:2.8rem;font-family:var(--ff-serif);font-style:italic;font-size:1.2rem}
+.hero-actions{display:flex;gap:1.2rem;flex-wrap:wrap}
+
+/* ── GIFT TIERS ── */
+.tiers-section{background:var(--dark);padding:8rem 6rem}
+.tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:4rem}
+.tier-card{background:var(--dark-2);border:1px solid rgba(255,255,255,.06);padding:3rem 2.5rem;position:relative;transition:border-color .3s,transform .3s,box-shadow .3s;display:flex;flex-direction:column;align-items:flex-start}
+.tier-card:hover{border-color:rgba(212,175,55,.25);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.tier-card.featured{border-color:rgba(212,175,55,.35);background:var(--dark-3)}
+.tier-badge{position:absolute;top:1.5rem;right:1.5rem;background:var(--gold-2);color:#050505;font-size:.52rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:.35rem .8rem}
+.tier-icon{font-size:2rem;margin-bottom:1.5rem;line-height:1}
+.tier-price{font-family:var(--ff-title);font-size:4.5rem;letter-spacing:.04em;color:var(--white);line-height:1;margin-bottom:.5rem}
+.tier-price span{font-size:1.8rem;vertical-align:super;margin-right:.15rem;color:var(--gold-2)}
+.tier-name{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-2);margin-bottom:1.5rem;font-weight:600}
+.tier-desc{font-size:.84rem;color:var(--gray-2);line-height:1.8;margin-bottom:2rem;flex:1}
+.tier-btn{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white);font-weight:600;border:1px solid rgba(255,255,255,.2);padding:.65rem 1.6rem;transition:all .3s;display:inline-block;cursor:none}
+.tier-btn:hover,.tier-card.featured .tier-btn{background:var(--gold);border-color:var(--gold);color:#fff}
+.tier-custom{margin-top:2rem;background:var(--dark-3);border:1px solid rgba(255,255,255,.06);padding:2rem 2.5rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.tier-custom-text h3{font-family:var(--ff-serif);font-size:1.4rem;font-weight:300;color:var(--white);margin-bottom:.4rem}
+.tier-custom-text p{font-size:.8rem;color:var(--gray-2);line-height:1.7}
+
+/* ── OCCASIONS GRID ── */
+.occ-gift-section{background:var(--black);padding:8rem 6rem}
+.occ-gift-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:4rem}
+.occ-gift-card{background:var(--dark-2);border:1px solid rgba(255,255,255,.05);padding:2.5rem 2rem;text-align:center;transition:border-color .3s,background .3s}
+.occ-gift-card:hover{border-color:rgba(212,175,55,.2);background:var(--dark-3)}
+.occ-gift-icon{font-size:2.2rem;margin-bottom:1rem;line-height:1}
+.occ-gift-label{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gray-3);font-weight:500}
+
+/* ── HOW IT WORKS ── */
+.how-gift-section{background:var(--dark);padding:8rem 6rem}
+.how-gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4rem;margin-top:5rem;position:relative}
+.how-gift-grid::before{content:'';position:absolute;top:2.2rem;left:calc(16.66% + 1.5rem);right:calc(16.66% + 1.5rem);height:1px;background:linear-gradient(to right,transparent,rgba(212,175,55,.3),transparent)}
+.how-step{position:relative}
+.how-step-num{font-family:var(--ff-title);font-size:5rem;color:rgba(155,0,6,.2);line-height:1;margin-bottom:1.5rem;letter-spacing:.04em}
+.how-step h3{font-family:var(--ff-serif);font-size:1.5rem;font-weight:400;color:var(--white);margin-bottom:.9rem}
+.how-step p{font-size:.82rem;color:var(--gray-2);line-height:1.85}
+
+/* ── GIFT FORM ── */
+.gift-form-section{background:var(--black);padding:8rem 6rem}
+.gift-form-wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:7rem;align-items:start;max-width:1200px}
+.gift-form-left h2{font-family:var(--ff-title);font-size:clamp(3rem,4.5vw,5.5rem);line-height:.9;letter-spacing:.04em;margin-bottom:1.5rem}
+.gift-form-left p{font-size:.84rem;color:var(--gray-2);line-height:1.9;margin-bottom:2rem}
+.gift-fine-print{font-size:.72rem;color:var(--gray);line-height:1.9;border-top:1px solid rgba(255,255,255,.06);padding-top:1.8rem;margin-top:2rem}
+.gift-fine-print span{color:var(--gold-2)}
+.form-field{margin-bottom:1.5rem}
+.form-field label{display:block;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2);margin-bottom:.55rem;font-weight:600}
+.form-field input,.form-field select,.form-field textarea{width:100%;background:var(--dark-2);border:1px solid rgba(255,255,255,.08);color:var(--white);font-family:var(--ff-body);font-size:.84rem;padding:.9rem 1.1rem;transition:border-color .3s;-webkit-appearance:none;appearance:none;border-radius:0}
+.form-field input:focus,.form-field select:focus,.form-field textarea:focus{outline:none;border-color:rgba(212,175,55,.4)}
+.form-field input::placeholder,.form-field textarea::placeholder{color:var(--gray)}
+.form-field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.1rem center;padding-right:2.5rem;cursor:none}
+.form-field select option{background:var(--dark-2)}
+.form-field textarea{resize:vertical;min-height:110px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-submit-btn{width:100%;background:var(--gold);color:#fff;border:none;font-family:var(--ff-body);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;padding:1.15rem 2rem;cursor:none;transition:background .25s,transform .2s;display:flex;align-items:center;justify-content:center;gap:.6rem}
+.form-submit-btn:hover{background:#7a0004;transform:translateY(-1px)}
+#custom-amount-field{display:none}
+#form-success{display:none;background:var(--dark-3);border:1px solid rgba(212,175,55,.25);padding:2.5rem;text-align:center}
+#form-success h3{font-family:var(--ff-serif);font-size:1.8rem;font-weight:400;color:var(--gold-2);margin-bottom:.8rem}
+#form-success p{font-size:.85rem;color:var(--gray-3);line-height:1.8}
+
+/* ── FOOTER ── */
+footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.5rem 5.5rem 2.5rem}
+.footer-top{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:4.5rem;margin-bottom:4.5rem}
+.footer-brand{font-family:var(--ff-serif);font-size:1.75rem;font-weight:600;color:var(--white);margin-bottom:.9rem;letter-spacing:.04em}
+.footer-brand span{color:var(--gold-2)}
+.footer-tagline{font-size:.74rem;line-height:1.95;color:var(--gray-2);max-width:300px;margin-bottom:2rem}
+.footer-social{display:flex;gap:.8rem}
+.footer-social a{width:40px;height:40px;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:var(--gray);transition:border-color .3s,color .3s,background .3s}
+.footer-social a:hover{border-color:var(--gold-2);color:var(--gold-2);background:rgba(212,175,55,.06)}
+.footer-col-title{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-2);margin-bottom:1.4rem;font-weight:600}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.72rem}
+.footer-links a{font-size:.74rem;color:var(--gray-2);transition:color .3s}
+.footer-links a:hover{color:var(--white)}
+.footer-contact-item{font-size:.72rem;color:var(--gray-2);margin-bottom:.72rem;display:flex;gap:.5rem;align-items:flex-start;line-height:1.6}
+.footer-contact-item .fi{color:var(--gold-2);flex-shrink:0}
+.footer-contact-item a{color:var(--gray-2);transition:color .3s}
+.footer-contact-item a:hover{color:var(--gold-2)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+.footer-copy{font-size:.62rem;color:var(--gray);letter-spacing:.04em}
+.footer-legal{display:flex;gap:2.5rem}
+.footer-legal a{font-size:.62rem;color:var(--gray);transition:color .3s}
+.footer-legal a:hover{color:var(--gold-2)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .section,.tiers-section,.occ-gift-section,.how-gift-section,.gift-form-section{padding:6rem 4rem}
+  .gift-hero-content{padding:0 4rem}
+  .tiers-grid{grid-template-columns:repeat(3,1fr);gap:1rem}
+  .occ-gift-grid{grid-template-columns:repeat(4,1fr)}
+  .how-gift-grid::before{display:none}
+  .gift-form-wrap{grid-template-columns:1fr;gap:4rem}
+  .footer-top{grid-template-columns:1fr 1fr;gap:3rem}
+}
+@media(max-width:768px){
+  nav{padding:.7rem 1.5rem}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .gift-hero-content{padding:0 1.8rem}
+  .gift-hero h1{font-size:clamp(3.5rem,12vw,6rem)}
+  .section,.tiers-section,.occ-gift-section,.how-gift-section,.gift-form-section{padding:5rem 1.8rem}
+  .tiers-grid{grid-template-columns:1fr}
+  .occ-gift-grid{grid-template-columns:repeat(2,1fr)}
+  .how-gift-grid{grid-template-columns:1fr;gap:3rem}
+  .form-row{grid-template-columns:1fr}
+  .tier-custom{flex-direction:column;align-items:flex-start}
+  .footer-top{grid-template-columns:1fr}
+  footer{padding:4rem 2rem 2rem}
+}
+@media(max-width:480px){
+  nav{width:calc(100% - 2rem);top:1rem;padding:.7rem 1rem}
+  .occ-gift-grid{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+</head>
+<body>
+
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="curR"></div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span>Family Owned &amp; Operated Since 2013</span>
+    <span>Same-Day Delivery OC &bull; LA &bull; Riverside &bull; San Diego</span>
+    <span>Voted #1 Customer Service SoCal</span>
+    <span>Gift Certificates Never Expire</span>
+    <span>Redeemable on Any Car in Our Fleet</span>
+    <span>Ali Personally Handles Every Request</span>
+    <span>Family Owned &amp; Operated Since 2013</span>
+    <span>Same-Day Delivery OC &bull; LA &bull; Riverside &bull; San Diego</span>
+    <span>Voted #1 Customer Service SoCal</span>
+    <span>Gift Certificates Never Expire</span>
+    <span>Redeemable on Any Car in Our Fleet</span>
+    <span>Ali Personally Handles Every Request</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo"><img src="FC_LOGO.png" alt="First Class Exotics Logo" style="height:64px;width:auto;margin-right:.9rem;vertical-align:middle;background:transparent;">First Class <span>Exotics</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#fleet">Fleet</a></li>
+    <li><a href="index.html#occasions">Occasions</a></li>
+    <li><a href="index.html#family">Our Story</a></li>
+    <li><a href="index.html#how">How It Works</a></li>
+    <li><a href="index.html#faq">FAQ</a></li>
+    <li><a href="gift.html" class="active">Gift Cards</a></li>
+    <li><a href="vinyl-wrap.html">Vinyl Wraps</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="index.html#booking" class="nav-cta">Reserve Now</a></li>
+  </ul>
+  <div class="hamburger" id="hmb" onclick="openMob()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()">&#x2715;</button>
+  <a href="index.html#fleet" onclick="closeMob()">Fleet</a>
+  <a href="index.html#occasions" onclick="closeMob()">Occasions</a>
+  <a href="index.html#family" onclick="closeMob()">Our Story</a>
+  <a href="index.html#booking" onclick="closeMob()">Reserve</a>
+  <a href="gift.html" onclick="closeMob()">Gift Cards</a>
+  <a href="vinyl-wrap.html" onclick="closeMob()">Vinyl Wraps</a>
+  <a href="blog.html" onclick="closeMob()">Blog</a>
+  <a href="tel:9492945958" onclick="closeMob()" style="color:var(--gold);font-size:2rem">(949) 294-5958</a>
+</div>
+
+<!-- MOBILE STICKY BAR -->
+<div class="mobile-cta-bar">
+  <a href="tel:9492945958" style="background:#fff;color:#060606;flex:1;text-align:center;padding:.9rem .5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.4rem">
+    &#128222; Call Now
+  </a>
+  <a href="#gift-form" style="background:var(--gold);color:#fff;flex:1;text-align:center;padding:.9rem .5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.4rem">
+    &#127873; Get Gift Certificate
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="gift-hero">
+  <div class="gift-hero-bg"></div>
+  <div class="gift-hero-overlay"></div>
+  <div class="gift-hero-content">
+    <div class="hero-eyebrow reveal">The Ultimate Gift</div>
+    <h1 class="reveal delay-1">THE PERFECT<br>GIFT FOR<br><span>ANY OCCASION</span></h1>
+    <p class="gift-hero-sub reveal delay-2">Give someone the experience of a lifetime &mdash; a First Class Exotics gift certificate redeemable on any car in our fleet.</p>
+    <div class="hero-actions reveal delay-3">
+      <a href="#gift-form" class="btn-gold">Request a Gift Certificate &rarr;</a>
+      <a href="tel:9492945958" class="btn-ghost">Call Ali Directly</a>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT TIERS -->
+<section class="tiers-section">
+  <div class="s-eyebrow reveal">Choose Your Amount</div>
+  <h2 class="s-title reveal delay-1">GIFT<br><span class="gold-2">TIERS.</span></h2>
+  <p class="s-sub reveal delay-2">Every certificate is personally handled by Ali. Delivered as a beautiful PDF, ready to gift the same day.</p>
+
+  <div class="tiers-grid">
+    <div class="tier-card reveal">
+      <div class="tier-icon">&#127873;</div>
+      <div class="tier-price"><span>$</span>500</div>
+      <div class="tier-name">A Taste of First Class</div>
+      <p class="tier-desc">The perfect introduction to the world of exotic car rentals. Put toward any car in our fleet &mdash; Lamborghini, Ferrari, McLaren, or Rolls-Royce.</p>
+      <a href="#gift-form" class="tier-btn" onclick="setTier('$500')">Select This Tier</a>
+    </div>
+    <div class="tier-card featured reveal delay-1">
+      <div class="tier-badge">Most Popular</div>
+      <div class="tier-icon">&#127873;</div>
+      <div class="tier-price"><span>$</span>1,000</div>
+      <div class="tier-name">The Full Experience</div>
+      <p class="tier-desc">The most popular choice. Covers a full day in most cars in our fleet, with delivery included. This is the gift they will talk about for years.</p>
+      <a href="#gift-form" class="tier-btn" onclick="setTier('$1,000')">Select This Tier</a>
+    </div>
+    <div class="tier-card reveal delay-2">
+      <div class="tier-icon">&#127873;</div>
+      <div class="tier-price"><span>$</span>2,500</div>
+      <div class="tier-name">Go All Out</div>
+      <p class="tier-desc">For the car enthusiast who deserves everything. A multi-day adventure, a Rolls-Royce for a special event, or any combination they can dream of.</p>
+      <a href="#gift-form" class="tier-btn" onclick="setTier('$2,500')">Select This Tier</a>
+    </div>
+  </div>
+
+  <div class="tier-custom reveal" style="max-width:100%">
+    <div class="tier-custom-text">
+      <h3>Want a Different Amount?</h3>
+      <p>Just let us know in the form below. Ali will create a custom gift certificate for any amount you have in mind.</p>
+    </div>
+    <a href="#gift-form" class="btn-ghost" onclick="setTier('Custom')">Enter Custom Amount &rarr;</a>
+  </div>
+</section>
+
+<!-- OCCASIONS GRID -->
+<section class="occ-gift-section">
+  <div class="s-eyebrow reveal">Every Reason to Celebrate</div>
+  <h2 class="s-title reveal delay-1">PERFECT FOR<br><span class="gold-2">EVERY MOMENT.</span></h2>
+
+  <div class="occ-gift-grid">
+    <div class="occ-gift-card reveal">
+      <div class="occ-gift-icon">&#127874;</div>
+      <div class="occ-gift-label">Birthdays</div>
+    </div>
+    <div class="occ-gift-card reveal delay-1">
+      <div class="occ-gift-icon">&#128149;</div>
+      <div class="occ-gift-label">Anniversaries</div>
+    </div>
+    <div class="occ-gift-card reveal delay-2">
+      <div class="occ-gift-icon">&#128141;</div>
+      <div class="occ-gift-label">Weddings</div>
+    </div>
+    <div class="occ-gift-card reveal delay-3">
+      <div class="occ-gift-icon">&#128084;</div>
+      <div class="occ-gift-label">Father&#39;s Day</div>
+    </div>
+    <div class="occ-gift-card reveal">
+      <div class="occ-gift-icon">&#127891;</div>
+      <div class="occ-gift-label">Graduations</div>
+    </div>
+    <div class="occ-gift-card reveal delay-1">
+      <div class="occ-gift-icon">&#128188;</div>
+      <div class="occ-gift-label">Corporate Gifting</div>
+    </div>
+    <div class="occ-gift-card reveal delay-2">
+      <div class="occ-gift-icon">&#10024;</div>
+      <div class="occ-gift-label">Just Because</div>
+    </div>
+    <div class="occ-gift-card reveal delay-3" style="background:var(--dark-3);border-color:rgba(212,175,55,.15)">
+      <div class="occ-gift-icon" style="font-size:1.6rem;color:var(--gold-2)">&#10022;</div>
+      <div class="occ-gift-label" style="color:var(--gold-2)">Any Occasion</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-gift-section">
+  <div class="s-eyebrow reveal">Simple &amp; Personal</div>
+  <h2 class="s-title reveal delay-1">HOW IT<br><span class="gold-2">WORKS.</span></h2>
+
+  <div class="how-gift-grid">
+    <div class="how-step reveal">
+      <div class="how-step-num">01</div>
+      <h3>Fill Out the Form Below</h3>
+      <p>Share your details, the recipient&rsquo;s name, your chosen amount, and any personal message you&rsquo;d like included on the certificate. Takes two minutes.</p>
+    </div>
+    <div class="how-step reveal delay-1">
+      <div class="how-step-num">02</div>
+      <h3>Ali Emails You an Invoice</h3>
+      <p>Ali personally reviews every request and sends you a clean invoice within 2 hours. No automated systems &mdash; real, white-glove service from the start.</p>
+    </div>
+    <div class="how-step reveal delay-2">
+      <div class="how-step-num">03</div>
+      <h3>Receive Your PDF Certificate</h3>
+      <p>Once paid, you receive a beautiful, personalized PDF gift certificate by email &mdash; ready to present, print, or forward. The recipient redeems it whenever they&rsquo;re ready.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT REQUEST FORM -->
+<section class="gift-form-section" id="gift-form">
+  <div class="gift-form-wrap">
+    <div class="gift-form-left">
+      <div class="s-eyebrow reveal">Request Your Certificate</div>
+      <h2 class="reveal delay-1">REQUEST MY<br><span class="gold-2">GIFT<br>CERTIFICATE.</span></h2>
+      <p class="reveal delay-2">Fill out the form and Ali will personally email your invoice within 2 hours. Every certificate is custom-designed and delivered as a PDF ready to gift.</p>
+      <div class="gift-fine-print reveal delay-3">
+        <p><span>Gift certificates never expire</span> &middot; Redeemable on any vehicle in our fleet &middot; Questions? Call or text Ali directly at <a href="tel:9492945958" style="color:var(--gold-2)">(949) 294-5958</a></p>
+      </div>
+    </div>
+
+    <div class="reveal delay-1">
+      <form id="gift-request-form" name="gift-request" netlify netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="gift-request"/>
+        <p style="display:none"><label>Don&rsquo;t fill this out: <input name="bot-field"/></label></p>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="your-name">Your Name</label>
+            <input type="text" id="your-name" name="your-name" placeholder="Your full name" required/>
+          </div>
+          <div class="form-field">
+            <label for="recipient-name">Recipient&rsquo;s Name</label>
+            <input type="text" id="recipient-name" name="recipient-name" placeholder="Who is this for?" required/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="your-email">Your Email</label>
+            <input type="email" id="your-email" name="your-email" placeholder="your@email.com" required/>
+          </div>
+          <div class="form-field">
+            <label for="your-phone">Your Phone</label>
+            <input type="tel" id="your-phone" name="your-phone" placeholder="(949) 000-0000"/>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="gift-amount">Gift Amount</label>
+            <select id="gift-amount" name="gift-amount" required onchange="toggleCustom(this)">
+              <option value="" disabled selected>Select an amount</option>
+              <option value="$500">$500 — A Taste of First Class</option>
+              <option value="$1,000">$1,000 — The Full Experience</option>
+              <option value="$2,500">$2,500 — Go All Out</option>
+              <option value="Custom">Custom Amount</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="occasion">Occasion</label>
+            <select id="occasion" name="occasion" required>
+              <option value="" disabled selected>Select occasion</option>
+              <option value="Birthday">Birthday</option>
+              <option value="Anniversary">Anniversary</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Father's Day">Father&#39;s Day</option>
+              <option value="Graduation">Graduation</option>
+              <option value="Corporate">Corporate</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-field" id="custom-amount-field">
+          <label for="custom-amount">Custom Amount</label>
+          <input type="text" id="custom-amount" name="custom-amount" placeholder="Enter your desired amount (e.g. $750)"/>
+        </div>
+
+        <div class="form-field">
+          <label for="message">Message to Include on Certificate</label>
+          <textarea id="message" name="message" placeholder="A personal message to print on the gift certificate (optional)&#10;&#10;Example: Happy Birthday! May every road be yours."></textarea>
+        </div>
+
+        <button type="submit" class="form-submit-btn">
+          Request My Gift Certificate &rarr;
+        </button>
+      </form>
+
+      <div id="form-success">
+        <h3>Request Received &#10003;</h3>
+        <p id="success-msg">Ali will email your invoice within 2 hours. Check your inbox.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div style="margin-bottom:1rem"><img src="FC_LOGO.png" alt="First Class Exotics" style="height:76px;width:auto;background:transparent;"></div>
+      <div class="footer-brand">First Class <span>Exotics</span></div>
+      <p class="footer-tagline">Southern California&rsquo;s #1 family-owned exotic car rental concierge. Voted #1 in customer service for 10+ years. Delivering Lamborghinis, Ferraris, McLarens &amp; Rolls-Royces to Newport Beach, Irvine, Beverly Hills, and beyond &mdash; OC &middot; LA &middot; Riverside &middot; San Diego since 2013.</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/1stclassexotics/" target="_blank" rel="noopener" title="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+        <a href="https://www.facebook.com/pages/category/Exotic-Car-Rental/First-Class-Exotics-101849178232401/" target="_blank" rel="noopener" title="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        <a href="https://www.tiktok.com/@firstclassexotics" target="_blank" rel="noopener" title="TikTok"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html#fleet">Fleet</a></li>
+        <li><a href="index.html#occasions">Occasions</a></li>
+        <li><a href="index.html#family">Our Story</a></li>
+        <li><a href="index.html#how">How It Works</a></li>
+        <li><a href="index.html#faq">FAQ</a></li>
+        <li><a href="gift.html">Gift Cards</a></li>
+        <li><a href="vinyl-wrap.html">Vinyl Wraps</a></li>
+        <li><a href="blog.html">Blog</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Locations</div>
+      <ul class="footer-links">
+        <li><a href="index.html#booking">Orange County</a></li>
+        <li><a href="index.html#booking">Los Angeles</a></li>
+        <li><a href="index.html#booking">San Diego</a></li>
+        <li><a href="index.html#booking">Inland Empire</a></li>
+        <li><a href="index.html#booking">Same-Day Delivery</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact-item"><span class="fi">&#128205;</span>2060 Placentia Ave, Ste A4<br>Costa Mesa, CA 92627</div>
+      <div class="footer-contact-item"><span class="fi">&#128222;</span><a href="tel:9492945958">(949) 294-5958</a></div>
+      <div class="footer-contact-item"><span class="fi">&#9993;</span><a href="mailto:ali@firstclassexotics.com">ali@firstclassexotics.com</a></div>
+      <div class="footer-contact-item"><span class="fi">&#9200;</span>Mon&ndash;Fri 8am&ndash;6pm<br>Sat 9am&ndash;6pm &middot; Sun 9am&ndash;5pm</div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-copy">&copy; 2025 First Class Exotics, LLC. Costa Mesa, California. Family Owned &amp; Operated. All rights reserved.</p>
+    <div class="footer-legal"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="#">Rental Agreement</a></div>
+  </div>
+</footer>
+
+<!-- FLOATING CALL / WHATSAPP BUTTONS -->
+<div style="position:fixed;right:1.5rem;bottom:5rem;z-index:997;display:flex;flex-direction:column;gap:.6rem">
+  <a href="tel:9492945958" style="width:52px;height:52px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(155,0,6,.4);font-size:1.3rem;transition:transform .2s;text-decoration:none" title="Call Now">&#128222;</a>
+  <a href="https://wa.me/19492945958" target="_blank" rel="noopener" style="width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:transform .2s;text-decoration:none" title="WhatsApp Us"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="26" height="26"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  <a href="sms:9492945958" style="width:52px;height:52px;background:#555;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,.3);font-size:1.3rem;transition:transform .2s;text-decoration:none" title="Text Us Now">&#128172;</a>
+</div>
+
+<script>
+// ── CURSOR ──
+const cur = document.getElementById('cur');
+const curR = document.getElementById('curR');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function ring(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(ring);})();
+document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.classList.add('hover');curR.classList.add('hover');});el.addEventListener('mouseleave',()=>{cur.classList.remove('hover');curR.classList.remove('hover');});});
+
+// ── NAV ──
+const nb=document.getElementById('navbar');
+window.addEventListener('scroll',()=>nb.classList.toggle('scrolled',window.scrollY>80));
+function openMob(){document.getElementById('mobMenu').classList.add('open');document.body.style.overflow='hidden';}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.body.style.overflow='';}
+
+// ── REVEAL ──
+const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>revObs.observe(el));
+
+// ── CUSTOM AMOUNT TOGGLE ──
+function toggleCustom(sel){
+  const f=document.getElementById('custom-amount-field');
+  const inp=document.getElementById('custom-amount');
+  if(sel.value==='Custom'){f.style.display='block';inp.required=true;}
+  else{f.style.display='none';inp.required=false;}
+}
+
+// ── SET TIER FROM CTA CLICKS ──
+function setTier(amount){
+  const sel=document.getElementById('gift-amount');
+  for(let i=0;i<sel.options.length;i++){
+    if(sel.options[i].value===amount){sel.selectedIndex=i;break;}
+  }
+  toggleCustom(sel);
+}
+
+// ── FORM SUBMISSION (Netlify AJAX) ──
+const form=document.getElementById('gift-request-form');
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const data=new FormData(form);
+  const email=data.get('your-email')||'';
+  const btn=form.querySelector('.form-submit-btn');
+  btn.textContent='Sending...';
+  btn.disabled=true;
+  try{
+    await fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(data).toString()});
+    form.style.display='none';
+    const s=document.getElementById('form-success');
+    const m=document.getElementById('success-msg');
+    m.textContent='Ali will email your invoice within 2 hours. Check your inbox'+(email?' at '+email:'')+'.'
+    s.style.display='block';
+  }catch(err){
+    btn.textContent='Request My Gift Certificate →';
+    btn.disabled=false;
+    alert('Something went wrong. Please call Ali directly at (949) 294-5958.');
+  }
+});
+</script>
+
+</body>
+</html>
