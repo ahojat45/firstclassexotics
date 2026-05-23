@@ -169,6 +169,20 @@ nav.scrolled{top:0;width:100%;max-width:100%;border-radius:0;background:rgba(5,5
 #form-success h3{font-family:var(--ff-serif);font-size:1.8rem;font-weight:400;color:var(--gold-2);margin-bottom:.8rem}
 #form-success p{font-size:.85rem;color:var(--gray-3);line-height:1.8}
 
+/* ── FIND US / MAP ── */
+.findus-section{background:var(--black);padding:8rem 6rem;border-top:1px solid rgba(155,0,6,.1)}
+.findus-inner{max-width:1200px;margin:0 auto}
+.findus-map{width:100%;height:400px;border-radius:12px;overflow:hidden;margin-top:2rem}
+.findus-map iframe{width:100%;height:100%;border:0;display:block}
+.findus-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.findus-card{background:var(--dark-2);border:1px solid rgba(155,0,6,.1);padding:2rem 2.2rem;border-radius:4px;transition:border-color .3s}
+.findus-card:hover{border-color:rgba(212,175,55,.3)}
+.findus-card-icon{font-size:1.4rem;margin-bottom:.8rem}
+.findus-card-label{font-size:.52rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-2);font-weight:600;margin-bottom:.5rem}
+.findus-card-text{font-size:.8rem;color:var(--gray-3);line-height:1.75}
+.findus-btn{margin-top:3rem;text-align:center}
+@media(max-width:768px){.findus-section{padding:5rem 2rem}.findus-cards{grid-template-columns:1fr}}
+
 /* ── FOOTER ── */
 footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.5rem 5.5rem 2.5rem}
 .footer-top{display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:4.5rem;margin-bottom:4.5rem}
@@ -499,6 +513,43 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
         <h3>Request Received &#10003;</h3>
         <p id="success-msg">Ali will email your invoice within 2 hours. Check your inbox.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FIND US -->
+<section class="findus-section">
+  <div class="findus-inner">
+    <div class="s-eyebrow reveal">Find Us</div>
+    <h2 class="s-title reveal delay-1" style="font-size:clamp(2.5rem,5vw,6rem)">COME SEE US IN<br><span class="gold-2">COSTA MESA.</span></h2>
+    <p class="reveal delay-2" style="font-size:.85rem;color:var(--gold-2);letter-spacing:.08em;margin-bottom:0;font-weight:500">2060 Placentia Ave, Ste A4 &middot; Costa Mesa, CA 92627</p>
+    <div class="findus-map reveal delay-3">
+      <iframe
+        src="https://www.google.com/maps/embed?origin=mfe&pb=!1m2!2m1!1sFirst+Class+Exotics+2060+Placentia+Ave+Costa+Mesa+CA+92627"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+    <div class="findus-cards">
+      <div class="findus-card reveal">
+        <div class="findus-card-icon">&#128205;</div>
+        <div class="findus-card-label">Address</div>
+        <div class="findus-card-text">2060 Placentia Ave, Ste A4<br>Costa Mesa, CA 92627</div>
+      </div>
+      <div class="findus-card reveal delay-1">
+        <div class="findus-card-icon">&#128222;</div>
+        <div class="findus-card-label">Phone</div>
+        <div class="findus-card-text"><a href="tel:9492945958" style="color:inherit">(949) 294-5958</a></div>
+      </div>
+      <div class="findus-card reveal delay-2">
+        <div class="findus-card-icon">&#9200;</div>
+        <div class="findus-card-label">Hours</div>
+        <div class="findus-card-text">Mon&ndash;Fri 8am&ndash;6pm<br>Sat 9am&ndash;6pm &middot; Sun 9am&ndash;5pm</div>
+      </div>
+    </div>
+    <div class="findus-btn reveal delay-3">
+      <a href="https://maps.google.com/?q=First+Class+Exotics+2060+Placentia+Ave+Costa+Mesa+CA" target="_blank" rel="noopener" class="btn-gold">Get Directions &rarr;</a>
     </div>
   </div>
 </section>
