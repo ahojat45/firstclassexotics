@@ -104,7 +104,7 @@
 ::-webkit-scrollbar-track{background:var(--black)}
 ::-webkit-scrollbar-thumb{background:var(--gold);border-radius:0}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;font-size:16px}
+html{scroll-behavior:smooth;font-size:16px;overflow-x:hidden;max-width:100%}
 body{background:var(--black);color:var(--white);font-family:var(--ff-body);overflow-x:hidden;cursor:none;padding-bottom:72px}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%;background:var(--dark-3);color:transparent;font-size:0}
@@ -115,6 +115,7 @@ button{font-family:var(--ff-body);cursor:none}
 .cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(212,175,55,.45);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all .1s var(--ease)}
 body:has(a:hover) .cursor,.cursor.hover{width:16px;height:16px;background:var(--gold-2)}
 body:has(a:hover) .cursor-ring,.cursor-ring.hover{width:54px;height:54px;border-color:var(--gold-2);opacity:.5}
+@media(max-width:768px),(pointer:coarse){#cur,#curR,.cursor,.cursor-ring{display:none!important}body,button{cursor:auto!important}}
 
 /* ── TOP TICKER ── */
 .ticker-wrap{background:#080808;overflow:hidden;padding:.5rem 0;white-space:nowrap;border-bottom:1px solid rgba(155,0,6,.1)}
@@ -437,6 +438,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
   .hero-meta{flex-direction:column;align-items:flex-start;gap:1.5rem}
 }
 @media(max-width:640px){
+  .ticker-wrap{padding-top:105px!important}
   .ticker-wrap,.trust-marquee{font-size:.58rem}
   .fleet-grid,.occ-grid,.reviews-grid,.steps,.cities-grid,.blog-grid{grid-template-columns:1fr}
   .blog-card.main img,.blog-card.side img{height:220px}
@@ -1733,12 +1735,14 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
 
 <script>
 // ── CURSOR ──
+if(window.matchMedia('(pointer:fine)').matches){
 const cur = document.getElementById('cur');
 const curR = document.getElementById('curR');
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function ring(){rx+=(mx-rx)*.15;ry+=(my-ry)*.15;curR.style.left=rx+'px';curR.style.top=ry+'px';requestAnimationFrame(ring);})();
 document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{cur.classList.add('hover');curR.classList.add('hover');});el.addEventListener('mouseleave',()=>{cur.classList.remove('hover');curR.classList.remove('hover');});});
+}
 
 // ── NAV ──
 const nb=document.getElementById('navbar');
