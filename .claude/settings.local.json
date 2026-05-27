@@ -1,5 +1,6 @@
 {
   "permissions": {
+    "defaultMode": "bypassPermissions",
     "allow": [
       "Bash(git add *)",
       "Bash(git commit *)",
@@ -31,7 +32,16 @@
       "Bash(/tmp/node-v20.11.0-darwin-arm64/bin/npm install *)",
       "Bash(PATH=/tmp/node-v20.11.0-darwin-arm64/bin:__TRACKED_VAR__ npm install -g vercel)",
       "Bash(PATH=/tmp/node-v20.11.0-darwin-arm64/bin:__TRACKED_VAR__ vercel --version)",
-      "Bash(chmod +x \"/Users/firstclassexotics/Desktop/SETUP-BLOG-ADMIN.command\")"
+      "Bash(chmod +x \"/Users/firstclassexotics/Desktop/SETUP-BLOG-ADMIN.command\")",
+      "WebSearch",
+      "mcp__claude_ai_Google_Drive__search_files",
+      "mcp__claude_ai_Google_Drive__download_file_content",
+      "Bash(python3 -c ' *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" \"https://firstclassexotics.netlify.app\")",
+      "Bash(curl -sL \"https://drive.google.com/thumbnail?id=19R0xZQy8M7oYd8x8t4Y6bN25xDXW6N51&sz=w400\" -o /tmp/ali_1.jpg)",
+      "Bash(curl -sL \"https://drive.google.com/thumbnail?id=1RWY6dWS173zQcvKqGKOLQIAE9Iv81q-U&sz=w400\" -o /tmp/ali_2.jpg)",
+      "Bash(curl -sL \"https://drive.google.com/thumbnail?id=1iBLtG91BLfou_YqIN9x_ZWWFi2NIJmvm&sz=w400\" -o /tmp/ali_3.jpg)",
+      "Bash(curl -sL \"https://drive.google.com/thumbnail?id=1Luf03ZJzmE5a7Nj05bi1bZDKBiMOwwDH&sz=w400\" -o /tmp/ali_4.jpg)"
     ],
     "additionalDirectories": [
       "/Users/firstclassexotics/Desktop/First Class Exotics /api",
