@@ -80,6 +80,7 @@
     .blog-card-title{font-family:var(--font-display);font-size:1.3rem;font-weight:400;color:var(--white);margin-bottom:.6rem;line-height:1.3}
     .blog-card-excerpt{font-size:.74rem;color:var(--gray);line-height:1.75;flex:1;margin-bottom:1rem}
     .blog-card-meta{font-size:.62rem;color:var(--gray);letter-spacing:.08em;border-top:1px solid rgba(255,255,255,.06);padding-top:.8rem;margin-top:auto}
+    .hidden{display:none!important}
     /* FULL ARTICLE */
     .article-overlay{display:none;position:fixed;inset:0;background:rgba(5,5,5,.97);z-index:2000;overflow-y:auto;padding:2rem}
     .article-overlay.open{display:block}
@@ -166,14 +167,14 @@
   <p class="eyebrow">Exotic Car Insights from SoCal's #1 Family-Owned Rental</p>
   <h1 class="page-title">Exotic Car Rental <em>Blog</em></h1>
   <p class="page-sub">Expert tips, driving guides, comparison reviews, and insider knowledge on exotic car rentals in Orange County, Los Angeles, and San Diego. Published 2&ndash;3 times a week.</p>
-  <div class="tag-bar">
-    <span class="tag active">All Posts</span>
-    <span class="tag">Orange County</span>
-    <span class="tag">Los Angeles</span>
-    <span class="tag">San Diego</span>
-    <span class="tag">Car Comparisons</span>
-    <span class="tag">Driving Guides</span>
-    <span class="tag">Tips &amp; Advice</span>
+  <div class="tag-bar" role="tablist" aria-label="Blog categories">
+    <button class="tag active" data-filter="all" aria-pressed="true">All Posts</button>
+    <button class="tag" data-filter="orange-county">Orange County</button>
+    <button class="tag" data-filter="los-angeles">Los Angeles</button>
+    <button class="tag" data-filter="san-diego">San Diego</button>
+    <button class="tag" data-filter="car-comparisons">Car Comparisons</button>
+    <button class="tag" data-filter="driving-guides">Driving Guides</button>
+    <button class="tag" data-filter="tips">Tips &amp; Advice</button>
   </div>
 </div>
 
@@ -181,7 +182,7 @@
 <div class="featured">
   <div class="featured-card">
     <div class="featured-img">
-      <img src="fleet_yellow_huracan.jpg" alt="Lamborghini Huracan exotic car rental First Class Exotics"/>
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1400&q=80&auto=format&fit=crop" alt="Lamborghini Huracan on coastal road"/>
       <span class="featured-img-label">&#9733; Featured Post</span>
     </div>
     <div class="featured-body">
@@ -197,8 +198,8 @@
 <!-- BLOG GRID -->
 <div class="blog-main">
 
-  <a href="blog-lamborghini-vs-ferrari-rental-socal.html" class="blog-card">
-    <img src="fleet_ferrari_488.jpg" alt="Lamborghini vs Ferrari">
+  <a href="blog-lamborghini-vs-ferrari-rental-socal.html" class="blog-card" data-tags="car-comparisons">
+    <img class="blog-card-img" src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=800&q=80&auto=format&fit=crop" alt="Lamborghini vs Ferrari">
     <div class="blog-card-body">
       <div class="blog-card-tag">Car Comparison &middot; Expert Guide</div>
       <div class="blog-card-title">Lamborghini vs Ferrari: Which Should You Rent in SoCal?</div>
@@ -207,8 +208,8 @@
     </div>
   </a>
 
-  <a href="blog-exotic-car-rental-los-angeles-guide.html" class="blog-card">
-    <img src="fleet_porsche_4s.jpg" alt="Exotic car Los Angeles">
+  <a href="blog-exotic-car-rental-los-angeles-guide.html" class="blog-card" data-tags="los-angeles">
+    <img class="blog-card-img" src="https://images.unsplash.com/photo-1519643381401-22c77e60520e?w=800&q=80&auto=format&fit=crop" alt="Exotic car Los Angeles">
     <div class="blog-card-body">
       <div class="blog-card-tag">Los Angeles &middot; Complete Guide</div>
       <div class="blog-card-title">The Complete Guide to Renting an Exotic Car in Los Angeles</div>
@@ -217,8 +218,8 @@
     </div>
   </a>
 
-  <a href="blog-exotic-car-rental-cost-orange-county.html" class="blog-card">
-    <img src="fleet_yellow_huracan.jpg" alt="Exotic car rental cost">
+  <a href="blog-exotic-car-rental-cost-orange-county.html" class="blog-card" data-tags="tips">
+    <img class="blog-card-img" src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?w=800&q=80&auto=format&fit=crop" alt="Exotic car rental cost">
     <div class="blog-card-body">
       <div class="blog-card-tag">Pricing &middot; Tips &amp; Advice</div>
       <div class="blog-card-title">How Much Does It Cost to Rent an Exotic Car in Orange County?</div>
@@ -227,8 +228,8 @@
     </div>
   </a>
 
-  <a href="blog-exotic-car-rental-wedding-socal.html" class="blog-card">
-    <img src="fleet_rolls_cullinan.jpg" alt="Wedding exotic car">
+  <a href="blog-exotic-car-rental-wedding-socal.html" class="blog-card" data-tags="events">
+    <img class="blog-card-img" src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?w=800&q=80&auto=format&fit=crop" alt="Wedding exotic car">
     <div class="blog-card-body">
       <div class="blog-card-tag">Events &middot; Weddings</div>
       <div class="blog-card-title">How to Rent an Exotic Car for Your Wedding in SoCal</div>
@@ -237,8 +238,8 @@
     </div>
   </a>
 
-  <a href="blog-newport-beach-exotic-car.html" class="blog-card">
-    <img src="fleet_satin_spyder.jpg" alt="Newport Beach">
+  <a href="blog-newport-beach-exotic-car.html" class="blog-card" data-tags="orange-county">
+    <img class="blog-card-img" src="https://images.unsplash.com/photo-1502877338535-766e1452684a?w=800&q=80&auto=format&fit=crop" alt="Newport Beach with exotic car">
     <div class="blog-card-body">
       <div class="blog-card-tag">Newport Beach &middot; Lifestyle</div>
       <div class="blog-card-title">Best Things to Do in Newport Beach with an Exotic Car Rental</div>
@@ -247,8 +248,8 @@
     </div>
   </a>
 
-  <a href="blog-first-time-exotic-car-rental-guide.html" class="blog-card">
-    <img src="f8_1.jpg" alt="First time exotic rental">
+  <a href="blog-first-time-exotic-car-rental-guide.html" class="blog-card" data-tags="tips">
+    <img class="blog-card-img" src="https://images.unsplash.com/photo-1542362567-b07e54358753?w=800&q=80&auto=format&fit=crop" alt="First time exotic rental">
     <div class="blog-card-body">
       <div class="blog-card-tag">First-Timers &middot; Tips</div>
       <div class="blog-card-title">Renting an Exotic Car for the First Time? Read This First.</div>
@@ -258,22 +259,22 @@
   </a>
 
         
-        <article class="blog-card" onclick="openArticle('article1778788197194')">
+        <article class="blog-card" data-tags="lifestyle" onclick="openArticle('article1778788197194')">
           <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://images.unsplash.com/photo-1592198084033-aade902d1aae?w=800&q=80" alt="Ferrari vs Lamborghini exotic car rental Orange County SoCal First Class Exotics"/>
           <div class="blog-card-body"><div class="blog-card-tag">Lifestyle</div><div class="blog-card-title">Ferrari vs Lamborghini: Which Exotic Should You Rent?</div><p class="blog-card-excerpt">Pacific Coast Highway opens up ahead of you. Two Italian legends, two completely different personalities — we break down the ultimate SoCal exotic car debate so you can choose your perfect ride.</p><div class="blog-card-meta">First Class Exotics</div></div>
         </article>
-        <article class="blog-card" onclick="openArticle('article1779401785101')">
+        <article class="blog-card" data-tags="events" onclick="openArticle('article1779401785101')">
           <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://images.unsplash.com/photo-1614162692292-7ac56d7f7f1e?w=800&q=80" alt="Porsche GT3 RS sports car rental Los Angeles First Class Exotics"/>
           <div class="blog-card-body"><div class="blog-card-tag">Events</div><div class="blog-card-title">The Dangers of Exotic Car Rentals — What Happened with the Porsche GT3 RS in LA and Why Safety Matters</div><p class="blog-card-excerpt">The roar of a flat-six echoing down Pacific Coast Highway, the kiss of Pacific air through an open window, the unmistakable thrill of commanding 500-plus horsep…</p><div class="blog-card-meta">First Class Exotics &middot; May 21, 2026</div></div>
         </article>
         
-        <article class="blog-card" onclick="openArticle('article1779402393620')">
+        <article class="blog-card" data-tags="lifestyle" onclick="openArticle('article1779402393620')">
           <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&q=80" alt="Ferrari Arrival at Pelican Hill Resort Newport Beach First Class Exotics exotic car rental"/>
           <div class="blog-card-body"><div class="blog-card-tag">Lifestyle</div><div class="blog-card-title">Ferrari Arrival at Pelican Hill Resort Newport Beach: The Ultimate Coastal Luxury Statement</div><p class="blog-card-excerpt">Picture this: the sun is dipping low over Newport Harbor, casting a golden glow across the Tuscan-inspired colonnades of Pelican Hill Resort. The valet stand is…</p><div class="blog-card-meta">First Class Exotics &middot; May 21, 2026</div></div>
         </article>
         
-        <article class="blog-card" onclick="openArticle('article1779492540016')">
-          <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="fleet_rolls_cullinan.jpg" alt="Rolls-Royce for a Laguna Beach Wedding: The Ultimate Coastal Arrival — First Class Exotics exotic car rental Southern California" loading="lazy">
+        <article class="blog-card" data-tags="events" onclick="openArticle('article1779492540016')">
+          <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="https://images.unsplash.com/photo-1523986371872-9d3ba2e2f642?w=800&q=80&auto=format&fit=crop" alt="Rolls-Royce for a Laguna Beach Wedding: The Ultimate Coastal Arrival — First Class Exotics exotic car rental Southern California" loading="lazy">
           <div class="blog-card-body"><div class="blog-card-tag">Lifestyle</div><div class="blog-card-title">Rolls-Royce for a Laguna Beach Wedding: The Ultimate Coastal Arrival</div><p class="blog-card-excerpt">Picture this: the Pacific shimmering beyond the cliffs, white peonies cascading down an aisle of weathered driftwood, and a hand-polished Rolls-Royce gliding si…</p><div class="blog-card-meta">First Class Exotics &middot; May 22, 2026</div></div>
         </article>
         <!-- NEW-POSTS-INSERT -->
@@ -734,7 +735,7 @@
   function closeArticle(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
   document.addEventListener('keydown',function(e){if(e.key==='Escape'){document.querySelectorAll('.article-overlay.open').forEach(function(el){el.classList.remove('open');});document.body.style.overflow='';}});
   function subscribeNewsletter(e){e.preventDefault();e.target.style.display='none';document.getElementById('nlSuccess').style.display='block';}
-  document.querySelectorAll('.tag').forEach(function(tag){tag.addEventListener('click',function(){document.querySelectorAll('.tag').forEach(function(t){t.classList.remove('active');});this.classList.add('active');});});
+  document.querySelectorAll('.tag').forEach(function(tag){tag.addEventListener('click',function(){document.querySelectorAll('.tag').forEach(function(t){t.classList.remove('active');t.setAttribute('aria-pressed','false');});this.classList.add('active');this.setAttribute('aria-pressed','true');var filter=this.dataset.filter;document.querySelectorAll('.blog-card').forEach(function(card){var tags=(card.dataset.tags||'').toLowerCase();if(filter==='all'){card.classList.remove('hidden');card.setAttribute('aria-hidden','false');}else{if(tags.indexOf(filter)===-1){card.classList.add('hidden');card.setAttribute('aria-hidden','true');}else{card.classList.remove('hidden');card.setAttribute('aria-hidden','false');}}});});});
   const obs=new IntersectionObserver(function(entries){entries.forEach(function(el){if(el.isIntersecting){el.target.style.opacity='1';el.target.style.transform='translateY(0)';}});},{threshold:0.1});
   document.querySelectorAll('.blog-card').forEach(function(el){el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';obs.observe(el);});
 function openMob(){document.getElementById('mobMenu').classList.add('open');document.body.style.overflow='hidden';}
