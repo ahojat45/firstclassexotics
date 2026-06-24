@@ -32,7 +32,7 @@ body{background:var(--dark);color:var(--white);font-family:'Inter',system-ui,san
 .btn:disabled{opacity:.4;cursor:not-allowed}
 .btn-o{background:transparent;border:1px solid rgba(155,0,6,.35);color:var(--gray-2)}
 .btn-o:hover{background:rgba(155,0,6,.08);color:var(--white)}
-#dashboard{display:none}
+#dashboard{display:block}
 .topbar{background:var(--dark-3);border-bottom:1px solid rgba(155,0,6,.2);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
 .topbar img{height:38px}
 .topbar span{color:var(--gray-2);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
@@ -71,25 +71,12 @@ body{background:var(--dark);color:var(--white);font-family:'Inter',system-ui,san
 <div id="loader"><div class="spin"></div><p id="lmsg">Working...</p></div>
 <div id="toast"></div>
 
-<!-- LOGIN -->
-<div class="screen active" id="sl">
-  <div class="box">
-    <img src="FC_LOGO.png" alt="First Class Exotics">
-    <h1>Blog Admin</h1>
-    <p class="sub">Enter the publisher password to access the dashboard.</p>
-    <div class="field"><label>Password</label><input type="password" id="lp" placeholder="Admin password" onkeydown="if(event.key==='Enter')doLogin()"></div>
-    <div class="err" id="le">Incorrect password.</div>
-    <button class="btn" onclick="doLogin()">Sign In</button>
-  </div>
-</div>
-
 <!-- DASHBOARD -->
 <div id="dashboard">
   <div class="topbar">
     <img src="FC_LOGO.png" alt="">
     <div style="display:flex;align-items:center;gap:1.5rem">
       <span>Blog Publisher</span>
-      <button id="logout-btn" onclick="logout()">Sign Out</button>
     </div>
   </div>
   <div class="main">
@@ -156,26 +143,9 @@ async function sha256(s){const b=await crypto.subtle.digest('SHA-256',new TextEn
 function b64enc(s){return btoa(unescape(encodeURIComponent(s)))}
 function b64dec(s){return decodeURIComponent(escape(atob(s)))}
 
-window.onload=()=>{showS('sl')};
-
-function showS(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const e=document.getElementById(id);if(e)e.classList.add('active')}
+window.onload=()=>{document.getElementById('dashboard').style.display='block';}
 
 function showE(el,m){el.textContent=m;el.style.display='block'}
-
-function doLogin(){
-  const pw=document.getElementById('lp').value.trim().replace(/\s+/g,'');
-  const err=document.getElementById('le');
-  const valid='FCE2026';
-  if(pw!==valid){err.style.display='block';document.getElementById('lp').value='';return}
-  err.style.display='none';
-  document.getElementById('dashboard').style.display='block';
-  document.getElementById('sl').classList.remove('active');
-  showStep('st-topic');
-}
-
-function logout(){document.getElementById('dashboard').style.display='none';document.getElementById('lp').value='';showS('sl')}
-
-function doSetup(){showS('sl')}
 
 function pick(el,t){document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));el.classList.add('on');document.getElementById('ti').value=t;document.getElementById('su').value=slugify(t)}
 
