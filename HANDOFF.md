@@ -218,6 +218,25 @@ Each blog post includes:
 - API keys stored in LocalStorage (device-only)
 - Never expose API keys in commits
 - GitHub token should have minimal permissions (repo scope only)
+
+---
+
+## 🟢 Today’s Updates
+
+- Fixed `blog-publisher.html` so it renders correctly without raw JavaScript on the page.
+- Added a working password gate that shows a login screen first and only reveals the dashboard after the correct password: `FCE2026`.
+- Implemented `sessionStorage` login persistence for the browser session.
+- Confirmed `netlify/functions/blog-publisher.js` exists and checks environment variables:
+  - `process.env.ANTHROPIC_API_KEY`
+  - `process.env.GITHUB_TOKEN`
+- Committed and pushed the fix to `main`.
+
+## 🔄 Pending
+
+- Confirm Netlify deployment has `ANTHROPIC_API_KEY` and `GITHUB_TOKEN` configured in environment settings.
+- Test the full publisher workflow end-to-end on the deployed site to verify article generation and GitHub publishing.
+- Monitor the login behavior in the browser after deployment and adjust if session persistence needs refinement.
+
 - Consider rotating credentials quarterly
 
 ---
