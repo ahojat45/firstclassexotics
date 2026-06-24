@@ -71,27 +71,12 @@ body{background:var(--dark);color:var(--white);font-family:'Inter',system-ui,san
 <div id="loader"><div class="spin"></div><p id="lmsg">Working...</p></div>
 <div id="toast"></div>
 
-<!-- SETUP -->
-<div class="screen active" id="ss">
-  <div class="box">
-    <img src="FC_LOGO.png" alt="First Class Exotics">
-    <h1>First-Time Setup</h1>
-    <p class="sub">Create your password and enter your API keys. Saved on this device only — you do this once.</p>
-    <div class="field"><label>Create Admin Password</label><input type="password" id="sp1" placeholder="Choose a password"></div>
-    <div class="field"><label>Confirm Password</label><input type="password" id="sp2" placeholder="Type it again"></div>
-    <div class="field"><label>Anthropic API Key</label><input type="text" id="sa" placeholder="sk-ant-..."></div>
-    <div class="field"><label>GitHub Token</label><input type="text" id="sg" placeholder="ghp_..."></div>
-    <div class="err" id="se"></div>
-    <button class="btn" onclick="doSetup()">Save &amp; Continue</button>
-  </div>
-</div>
-
 <!-- LOGIN -->
-<div class="screen" id="sl">
+<div class="screen active" id="sl">
   <div class="box">
     <img src="FC_LOGO.png" alt="First Class Exotics">
     <h1>Blog Admin</h1>
-    <p class="sub">Enter your password to publish blog posts.</p>
+    <p class="sub">Enter the publisher password to access the dashboard.</p>
     <div class="field"><label>Password</label><input type="password" id="lp" placeholder="Admin password" onkeydown="if(event.key==='Enter')doLogin()"></div>
     <div class="err" id="le">Incorrect password.</div>
     <button class="btn" onclick="doLogin()">Sign In</button>
@@ -171,43 +156,33 @@ async function sha256(s){const b=await crypto.subtle.digest('SHA-256',new TextEn
 function b64enc(s){return btoa(unescape(encodeURIComponent(s)))}
 function b64dec(s){return decodeURIComponent(escape(atob(s)))}
 
-window.onload=()=>{localStorage.getItem('fce_h')?showS('sl'):showS('ss')};
+window.onload=()=>{showS('sl')};
 
 function showS(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));const e=document.getElementById(id);if(e)e.classList.add('active')}
 
-async function doSetup(){
-  const p1=document.getElementById('sp1').value.trim(),p2=document.getElementById('sp2').value.trim();
-  const ant=document.getElementById('sa').value.trim(),gh=document.getElementById('sg').value.trim();
-  const err=document.getElementById('se');err.style.display='none';
-  if(p1.length<6){showE(err,'Password must be at least 6 characters.');return}
-  if(p1!==p2){showE(err,'Passwords do not match.');return}
-  if(!ant){showE(err,'Please enter your Anthropic API key.');return}
-  if(!gh){showE(err,'Please enter your GitHub token.');return}
-  localStorage.setItem('fce_h',await sha256(p1));
-  localStorage.setItem('fce_a',ant);localStorage.setItem('fce_g',gh);
-  document.getElementById('dashboard').style.display='block';showS('');showStep('st-topic');
-}
-
 function showE(el,m){el.textContent=m;el.style.display='block'}
 
-async function doLogin(){
-  const pw=document.getElementById('lp').value;
+function doLogin(){
+  const pw=document.getElementById('lp').value.trim();
   const err=document.getElementById('le');
-  if(await sha256(pw)!==localStorage.getItem('fce_h')){err.style.display='block';document.getElementById('lp').value='';return}
+  if(pw!=='FCE2026'){err.style.display='block';document.getElementById('lp').value='';return}
   err.style.display='none';
   document.getElementById('dashboard').style.display='block';showS('');showStep('st-topic');
 }
 
 function logout(){document.getElementById('dashboard').style.display='none';document.getElementById('lp').value='';showS('sl')}
 
+function doSetup(){showS('sl')}
+
 function pick(el,t){document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));el.classList.add('on');document.getElementById('ti').value=t;document.getElementById('su').value=slugify(t)}
 
 function escapeHTML(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
-function slugify(s){return s.toLowerCase().trim().replace(/’/g,'').replace(/&/g,'and').replace(/[^ -]+/g,'').replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'')}
+function slugify(s){return s.toLowerCase().trim().replace(/’/g,'').replace(/&/g,'and').replace(/[^\u0000-\u007F]+/g,'').replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'')}
 function buildArticlePage(opts){
   const title=escapeHTML(opts.title);
   const desc=escapeHTML(opts.description);
   const kw=escapeHTML(opts.keywords);
+  const heroUrl = /^https?:\/\//i.test(opts.heroImg) ? opts.heroImg : `https://www.firstclassexotics.com${opts.heroImg}`;
   const url=`https://www.firstclassexotics.com/${opts.pagePath}`;
   const date=new Date().toISOString().split('T')[0];
   return `<!DOCTYPE html>
@@ -230,7 +205,7 @@ function buildArticlePage(opts){
   <meta property="og:description" content="${desc}">
   <meta property="og:type" content="article">
   <meta property="og:url" content="${url}">
-  <meta property="og:image" content="https://www.firstclassexotics.com${opts.heroImg}">
+  <meta property="og:image" content="${heroUrl}">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Article","headline":"${title}","description":"${desc}","author":{"@type":"Person","name":"Ali Hojat"},"publisher":{"@type":"Organization","name":"First Class Exotics","url":"https://www.firstclassexotics.com"},"datePublished":"${date}","dateModified":"${date}","url":"${url}"}
   </script>
@@ -275,7 +250,7 @@ function buildArticlePage(opts){
 </div>
 
 <div class="article-wrap">
-  <img class="article-img" src="https://www.firstclassexotics.com${opts.heroImg}" alt="${title} — First Class Exotics exotic car rental Southern California">
+  <img class="article-img" src="${heroUrl}" alt="${title} — First Class Exotics exotic car rental Southern California">
   <div class="article-body">
     ${opts.htmlBody}
     <div class="article-cta"><p><strong>Ready to experience a luxury exotic car in Southern California?</strong><br>Call or text Ali directly at (949) 294-5958 — First Class Exotics delivers to your hotel, venue, or event location across all of Southern California.</p><a href="../index.html#booking" class="btn-primary">Reserve Your Drive</a></div>
@@ -336,16 +311,13 @@ async function generate(){
   lslug=document.getElementById('su').value.trim()||slugify(topic);
   const keywords=document.getElementById('kw').value.trim()||topicToKeywords(topic);
   heroImg=document.getElementById('iu').value.trim()||topicToLocalImg(topic);
-  const ant=localStorage.getItem('fce_a');
-  if(!ant){toast('API key missing — sign out and set up again.');return}
   load('Claude is writing your article…');
-  const today=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
-  const slug='article'+Date.now();
-  const prompt=`You are writing a luxury lifestyle blog post for First Class Exotics, Southern California's #1 exotic car rental company, based in Orange County and serving all of SoCal.\n\nWrite a complete SEO-optimized article about: "${topic}"\n\nAudience — write so the article speaks directly to ALL of these readers:\n- Event planners sourcing exotic cars for high-end celebrations\n- Music video and film producers needing premium vehicles on set\n- Hotel concierges at luxury properties recommending exotic car experiences to VIP guests\n- Party planners organizing celebrity birthdays, quinceañeras, and milestone events\n- Influencers and content creators seeking exotic cars for photoshoots and reels\n- Corporate event organizers impressing clients and rewarding top performers\n- Wedding planners elevating the arrival and departure experience\n\nRequirements:\n- 600-900 words\n- Aspirational luxury tone (Robb Report meets Vogue Living)\n- Orange County is the primary focus; also naturally weave in Los Angeles, San Diego, Riverside County, and Inland Empire (1-2 mentions each)\n- Mention specific SoCal venues where relevant: Pelican Hill Resort, Montage Laguna Beach, Pendry Newport Beach, Pendry San Diego, Beverly Hills Hotel, Nobu Malibu, Coachella Valley, Temecula wine country, Newport Harbor, PCH\n- Establish First Class Exotics as the #1 choice for luxury exotic car experiences in Southern California — mention the brand 3 times naturally\n- H1 headline, 3-4 H2 subheadings, strong opening hook, practical + aspirational content mix\n- Final paragraph must be a call-to-action ending with: "Call or text Ali directly at (949) 294-5958 — First Class Exotics delivers to your hotel, venue, or event location across all of Southern California."\n\nReturn ONLY valid HTML: <h1>...</h1><p>...</p><h2>...</h2><p>...</p> etc. No markdown, no code blocks.`;
   try{
-    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':ant,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-opus-4-7',max_tokens:2000,messages:[{role:'user',content:prompt}]})});
-    if(!r.ok){const e=await r.json();throw new Error(e.error?.message||'API error '+r.status)}
-    const d=await r.json();const body=d.content[0].text.trim();
+    const r=await fetch('/.netlify/functions/blog-publisher',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({operation:'generate',password:'FCE2026',topic,keywords,heroImg})});
+    if(!r.ok){const e=await r.json();throw new Error(e.error||r.statusText)}
+    const d=await r.json();
+    const body=d.content?.trim()||d.completion?.trim();
+    if(!body){throw new Error('No content returned from AI.')}
     const enriched=injectImages(body,topic);
     const headline=body.match(/<h1[^>]*>(.*?)<\/h1>/i)?.[1]||topic;
     const excerpt=(body.match(/<p[^>]*>(.*?)<\/p>/i)?.[1]||'').replace(/<[^>]+>/g,'').slice(0,160);
@@ -353,35 +325,25 @@ async function generate(){
     const pageTitle=headline;
     const description=excerpt||`A luxury exotic car article from First Class Exotics.`;
     const keywordsField=keywords;
-    card=`\n        <a href="${pagePath}" class="blog-card" data-category="${lcat}">\n          <div class="blog-card-image">\n            <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="${heroImg}" alt="${headline} — First Class Exotics exotic car rental Southern California" loading="lazy">\n            <span class="blog-card-badge">${lcat.replace(/-/g,' ')}</span>\n          </div>\n          <div class="blog-card-body"><div class="blog-card-tag">${lcat}</div><div class="blog-card-title">${headline}</div><p class="blog-card-excerpt">${excerpt}…</p><div class="blog-card-meta">First Class Exotics &middot; ${today}</div></div>\n        </a>`;
+    card=`
+        <a href="${pagePath}" class="blog-card" data-category="${lcat}">
+          <div class="blog-card-image">
+            <img class="blog-card-img" onerror="this.style.background='#1C1C1C';this.style.minHeight='200px'" src="${heroImg}" alt="${headline} — First Class Exotics exotic car rental Southern California" loading="lazy">
+            <span class="blog-card-badge">${lcat.replace(/-/g,' ')}</span>
+          </div>
+          <div class="blog-card-body"><div class="blog-card-tag">${lcat}</div><div class="blog-card-title">${headline}</div><p class="blog-card-excerpt">${excerpt}…</p><div class="blog-card-meta">First Class Exotics &middot; ${new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'})}</div></div>
+        </a>`;
     pageHtml=buildArticlePage({title:pageTitle,category:lcat,keywords:keywordsField,description,heroImg,htmlBody:enriched,pagePath});
     document.getElementById('pbody').innerHTML=enriched;loadOff();showStep('st-preview');
   }catch(e){loadOff();toast('Error: '+e.message)}
 }
 
 async function publish(){
-  const gh=localStorage.getItem('fce_g');
-  if(!gh){toast('GitHub token missing — sign out and set up again.');return}
   if(!pageHtml){toast('Please generate the article first.');return}
   load('Publishing to your blog…');
   try{
-    const h={'Authorization':'token '+gh,'Accept':'application/vnd.github.v3+json'};
-    const blogUrl=`https://api.github.com/repos/${REPO}/contents/blog.html`;
-    const pagePath=`blog/${lslug}.html`;
-    const pageUrl=`https://api.github.com/repos/${REPO}/contents/${encodeURIComponent(pagePath)}`;
-    const [blogRes,pageRes]=await Promise.all([fetch(blogUrl,{headers:h}),fetch(pageUrl,{headers:h})]);
-    if(!blogRes.ok)throw new Error('Cannot read blog.html from GitHub ('+blogRes.status+')');
-    const blogFile=await blogRes.json();
-    const cur=b64dec(blogFile.content.replace(/\n/g,''));
-    if(!cur.includes('<!-- NEW-POSTS-INSERT -->'))throw new Error('blog.html missing insert marker.');
-    const pageJson=pageRes.ok?await pageRes.json():null;
-    const pagePayload={message:`Blog: add ${lslug}`,content:b64enc(pageHtml),branch:'main'};
-    if(pageJson?.sha) pagePayload.sha=pageJson.sha;
-    const pageCommit=await fetch(pageUrl,{method:'PUT',headers:{...h,'Content-Type':'application/json'},body:JSON.stringify(pagePayload)});
-    if(!pageCommit.ok){const e=await pageCommit.json();throw new Error(e.message||'GitHub page commit failed')}
-    const updatedBlog=cur.replace('<!-- NEW-POSTS-INSERT -->',card+'\n        <!-- NEW-POSTS-INSERT -->');
-    const blogCommit=await fetch(blogUrl,{method:'PUT',headers:{...h,'Content-Type':'application/json'},body:JSON.stringify({message:`Blog: add card for ${lslug}`,content:b64enc(updatedBlog),sha:blogFile.sha,branch:'main'})});
-    if(!blogCommit.ok){const e=await blogCommit.json();throw new Error(e.message||'GitHub blog commit failed')}
+    const r=await fetch('/.netlify/functions/blog-publisher',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({operation:'publish',password:'FCE2026',pageHtml,card,lslug})});
+    if(!r.ok){const e=await r.json();throw new Error(e.error||r.statusText)}
     loadOff();showStep('st-done');
   }catch(e){loadOff();toast('Publish error: '+e.message)}
 }
