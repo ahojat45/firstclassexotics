@@ -163,11 +163,14 @@ function showS(id){document.querySelectorAll('.screen').forEach(s=>s.classList.r
 function showE(el,m){el.textContent=m;el.style.display='block'}
 
 function doLogin(){
-  const pw=document.getElementById('lp').value.trim();
+  const pw=document.getElementById('lp').value.trim().replace(/\s+/g,'');
   const err=document.getElementById('le');
-  if(pw!=='FCE2026'){err.style.display='block';document.getElementById('lp').value='';return}
+  const valid='FCE2026';
+  if(pw!==valid){err.style.display='block';document.getElementById('lp').value='';return}
   err.style.display='none';
-  document.getElementById('dashboard').style.display='block';showS('');showStep('st-topic');
+  document.getElementById('dashboard').style.display='block';
+  document.getElementById('sl').classList.remove('active');
+  showStep('st-topic');
 }
 
 function logout(){document.getElementById('dashboard').style.display='none';document.getElementById('lp').value='';showS('sl')}
