@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/fleet"
+  to = "/#fleet"
+  status = 301
+  force = true
