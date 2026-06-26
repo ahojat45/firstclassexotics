@@ -3,3 +3,15 @@
   to = "/#fleet"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/contact"
+  to = "/#contact"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gift-cards"
+  to = "/gift"
+  status = 301
+  force = true
