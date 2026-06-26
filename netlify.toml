@@ -15,3 +15,6 @@
   to = "/gift"
   status = 301
   force = true
+
+[build]
+  functions = "netlify/functions"
