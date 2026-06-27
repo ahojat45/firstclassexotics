@@ -219,8 +219,9 @@ async function generate(){
     const r=await fetch('/.netlify/functions/blog-publisher',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({operation:'generate',password:PASSWORD,topic,keywords,heroImg})});
     if(!r.ok){const e=await r.json();throw new Error(e.error||r.statusText)}
     const d=await r.json();
-    const body=d.content?.trim()||d.completion?.trim();
+    let body=d.content?.trim()||d.completion?.trim();
     if(!body){throw new Error('No content returned')}
+    body=body.replace(/^```html\s*/i,'').replace(/^```\s*/i,'').replace(/\s*```$/,'').trim();
     const headline=body.match(/<h1[^>]*>(.*?)<\/h1>/i)?.[1]||topic;
     const desc=(body.match(/<p[^>]*>(.*?)<\/p>/i)?.[1]||'').replace(/<[^>]+>/g,'').slice(0,160);
     const pagePath=`blog/${lslug}.html`;
