@@ -1,8 +1,8 @@
 [build]
   functions = "netlify/functions"
 
-[functions]
-  timeout = 30
+[functions."blog-publisher"]
+  timeout = 26
 
 [[redirects]]
   from = "/fleet"

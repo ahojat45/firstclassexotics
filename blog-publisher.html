@@ -216,7 +216,7 @@ async function generate(){
   heroImg=document.getElementById('iu').value.trim()||topicToLocalImg(topic);
   load('Claude is writing your article…');
   try{
-    const r=await fetch('/.netlify/functions/blog-publisher-background',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({operation:'generate',password:PASSWORD,topic,keywords,heroImg})});
+    const r=await fetch('/.netlify/functions/blog-publisher',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({operation:'generate',password:PASSWORD,topic,keywords,heroImg})});
     if(!r.ok){const e=await r.json();throw new Error(e.error||r.statusText)}
     const d=await r.json();
     const body=d.content?.trim()||d.completion?.trim();
@@ -235,7 +235,7 @@ async function publish(){
   if(!pageHtml){toast('Generate first.');return}
   load('Publishing…');
   try{
-    const r=await fetch('/.netlify/functions/blog-publisher-background',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({operation:'publish',password:PASSWORD,pageHtml,card,lslug})});
+    const r=await fetch('/.netlify/functions/blog-publisher',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({operation:'publish',password:PASSWORD,pageHtml,card,lslug})});
     if(!r.ok){const e=await r.json();throw new Error(e.error||r.statusText)}
     loadOff();showStep('st-done');
   }catch(e){loadOff();toast('Error: '+e.message)}
