@@ -61,8 +61,8 @@ exports.handler = async function (event) {
             'anthropic-version': '2023-06-01',
           },
           body: JSON.stringify({
-            model: 'claude-opus-4-7',
-            max_tokens: 2000,
+            model: 'claude-haiku-4-5-20251001',
+            max_tokens: 1024,
             messages: [{ role: 'user', content: prompt }],
           }),
         });
