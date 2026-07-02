@@ -15,6 +15,21 @@
 
 ## ✅ What's Been Done (Most Recent First)
 
+### 9 SEO Landing Pages Live — July 2 2026
+- Launched 9 new SEO landing pages with unique long-form copy, schema (AutoRental + FAQPage + BreadcrumbList), and optimized local image galleries:
+  - https://www.firstclassexotics.com/rent-lamborghini-orange-county.html
+  - https://www.firstclassexotics.com/rent-ferrari-orange-county.html
+  - https://www.firstclassexotics.com/rent-mclaren-orange-county.html
+  - https://www.firstclassexotics.com/rent-rolls-royce-orange-county.html
+  - https://www.firstclassexotics.com/rent-porsche-orange-county.html
+  - https://www.firstclassexotics.com/rent-g63-orange-county.html
+  - https://www.firstclassexotics.com/rent-maybach-orange-county.html
+  - https://www.firstclassexotics.com/rent-range-rover-orange-county.html
+  - https://www.firstclassexotics.com/exotic-car-rental-newport-beach.html
+- Updated homepage fleet card `Reserve Now` links to route by brand to the new landing pages (href-only changes; no homepage design changes)
+- Added internal links from both `/blog/` and root-level legacy blog posts into relevant new landing pages
+- Updated sitemap.xml to include all 9 new canonical URLs (sitemap now 30 live URLs)
+
 ### GSC Indexing Fix — July 2 2026 Deployment
 - Diagnosed split-hosting: Wix-era paths had no Netlify .html files, falling through to Wix
 - Added 7 x 301 redirects to netlify.toml for dead paths → /
@@ -64,15 +79,16 @@ Fix needed:
 - Active token: "FCE Blog Publisher" (no expiration) — leave alone
 
 ### 3. SEO Roadmap (Remaining)
+- Launch city landing pages for additional primary SoCal service areas (Irvine, Los Angeles, Beverly Hills first)
+- Build model-level landing pages for highest-intent vehicles and trims
 - Build dedicated car detail pages for each fleet vehicle
-- Launch city landing pages for primary SoCal service areas
 - Correct Yelp phone number to match official business line
 
 ---
 
 ## 🔧 Key Files
 - netlify.toml — redirects config (7 Wix-era 301s + 3 internal redirects)
-- sitemap.xml — 21 live URLs (dead ferrari-458 URL removed July 2)
+- sitemap.xml — 30 live URLs (includes 9 new SEO landing pages as of July 2)
 - blog-publisher.html — password: FCE2026
 - blog.html — main blog index page
 - index.html — homepage
