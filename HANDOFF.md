@@ -1,5 +1,5 @@
 # First Class Exotics — Handoff Document
-**Last Updated:** July 1, 2026
+**Last Updated:** July 2, 2026
 **Status:** Production Live
 
 ---
@@ -15,11 +15,12 @@
 
 ## ✅ What's Been Done (Most Recent First)
 
-### GSC Indexing Fix — June 30 2026
+### GSC Indexing Fix — July 2 2026 Deployment
 - Diagnosed split-hosting: Wix-era paths had no Netlify .html files, falling through to Wix
 - Added 7 x 301 redirects to netlify.toml for dead paths → /
   - /irvineluxurycarrental, /costamesaexoticcarrental, /supercarrentalslosangeles
   - /about-2, /our-fleet, /contact-4, /miamibluelamborghinievo
+- Redirects pushed live on Netlify July 2
 - Rebuilt sitemap.xml — now 22 correct canonical URLs (was 16)
 - Sitemap manually resubmitted in GSC June 30
 - Expect indexing improvement over 1-2 weeks
@@ -81,7 +82,7 @@ Fix needed:
 - Clicks last 28 days as of June 30: 257 (down 28% — migration related, expected to recover)
 - Impressions: 17.5K (down 10%)
 - Indexed pages: 25 (target: 50+ once Google recrawls sitemap)
-- Check GSC again July 7-14 to verify indexing improvement
+- Check GSC again July 9-16 to verify indexing improvement
 
 ---
 
