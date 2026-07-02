@@ -24,6 +24,7 @@
 - July 2 — Root cause #2 found and fixed: Netlify primary domain was the apex (firstclassexotics.com), but canonicals, sitemap, and GSC property all use www. Every sitemap URL was 301-redirecting, creating a canonical loop. Fixed by setting www.firstclassexotics.com as primary domain in Netlify dashboard. Sitemap resubmitted in GSC same day (22 pages discovered). NOTE: apex now redirects to www — this is correct and intentional, do not change.
 - Rebuilt sitemap.xml — now 22 correct canonical URLs (was 16)
 - Sitemap manually resubmitted in GSC June 30
+- SEO audit fix batch deployed July 2: removed dead `ferrari-458-italia` sitemap URL (sitemap now 21 live URLs), fixed blog card link/heading structure, updated OC 2026-2027 post title + Article schema, added homepage AutoRental aggregateRating schema, reduced `car-ferrari-f8.html` payload by externalizing 10 embedded images, and added related internal links across all 6 `/blog/` pages.
 - Expect indexing improvement over 1-2 weeks
 - GSC status as of June 30: 25 indexed, 81 not indexed
 
@@ -62,11 +63,16 @@ Fix needed:
 - Can safely delete from github.com/settings/tokens
 - Active token: "FCE Blog Publisher" (no expiration) — leave alone
 
+### 3. SEO Roadmap (Remaining)
+- Build dedicated car detail pages for each fleet vehicle
+- Launch city landing pages for primary SoCal service areas
+- Correct Yelp phone number to match official business line
+
 ---
 
 ## 🔧 Key Files
 - netlify.toml — redirects config (7 Wix-era 301s + 3 internal redirects)
-- sitemap.xml — 22 URLs, resubmitted to GSC June 30
+- sitemap.xml — 21 live URLs (dead ferrari-458 URL removed July 2)
 - blog-publisher.html — password: FCE2026
 - blog.html — main blog index page
 - index.html — homepage
