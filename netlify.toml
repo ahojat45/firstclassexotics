@@ -21,3 +21,45 @@
   to = "/gift"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/irvineluxurycarrental"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/costamesaexoticcarrental"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/supercarrentalslosangeles"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/about-2"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/our-fleet"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/contact-4"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/miamibluelamborghinievo"
+  to = "/"
+  status = 301
+  force = true
