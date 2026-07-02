@@ -1,3 +1,10 @@
+const REPO = 'ahojat45/firstclassexotics';
+const BRANCH = 'main';
+const BLOG_INSERT_MARKER = '<!-- NEW-POSTS-INSERT -->';
+const MAX_SLUG_LENGTH = 60;
+const MAX_IMAGES = 5;
+const MAX_BODY_BYTES = 5 * 1024 * 1024;
+
 const json = (statusCode, payload) => ({
   statusCode,
   headers: {
@@ -16,10 +23,248 @@ async function readJsonResponse(response) {
   }
 }
 
-exports.handler = async function (event) {
+function slugify(input) {
+  return String(input || '')
+    .toLowerCase()
+    .replace(/&amp;/g, ' and ')
+    .replace(/&/g, ' and ')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '')
+    .slice(0, MAX_SLUG_LENGTH)
+    .replace(/-$/g, '');
+}
+
+function githubPathUrl(path) {
+  const encoded = path
+    .split('/')
+    .map((part) => encodeURIComponent(part))
+    .join('/');
+  return `https://api.github.com/repos/${REPO}/contents/${encoded}`;
+}
+
+function githubHeaders(token) {
+  return {
+    Authorization: `token ${token}`,
+    Accept: 'application/vnd.github.v3+json',
+  };
+}
+
+async function githubGet(path, token) {
+  const response = await fetch(githubPathUrl(path), {
+    headers: githubHeaders(token),
+  });
+
+  if (response.status === 404) return null;
+  if (!response.ok) {
+    const errorJson = await readJsonResponse(response);
+    throw new Error(errorJson?.message || `GitHub read failed ${response.status}`);
+  }
+
+  return readJsonResponse(response);
+}
+
+async function githubPut(path, token, contentUtf8, message, sha) {
+  const payload = {
+    message,
+    content: Buffer.from(contentUtf8, 'utf8').toString('base64'),
+    branch: BRANCH,
+  };
+  if (sha) payload.sha = sha;
+
+  const response = await fetch(githubPathUrl(path), {
+    method: 'PUT',
+    headers: {
+      ...githubHeaders(token),
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const errorJson = await readJsonResponse(response);
+    throw new Error(errorJson?.message || `GitHub write failed ${response.status}`);
+  }
+
+  return readJsonResponse(response);
+}
+
+async function githubPutBase64(path, token, contentBase64, message, sha) {
+  const payload = {
+    message,
+    content: contentBase64,
+    branch: BRANCH,
+  };
+  if (sha) payload.sha = sha;
+
+  const response = await fetch(githubPathUrl(path), {
+    method: 'PUT',
+    headers: {
+      ...githubHeaders(token),
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    const errorJson = await readJsonResponse(response);
+    throw new Error(errorJson?.message || `GitHub write failed ${response.status}`);
+  }
+
+  return readJsonResponse(response);
+}
+
+async function githubDelete(path, token, sha, message) {
+  const response = await fetch(githubPathUrl(path), {
+    method: 'DELETE',
+    headers: {
+      ...githubHeaders(token),
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      message,
+      sha,
+      branch: BRANCH,
+    }),
+  });
+
+  if (!response.ok) {
+    const errorJson = await readJsonResponse(response);
+    throw new Error(errorJson?.message || `GitHub delete failed ${response.status}`);
+  }
+
+  return readJsonResponse(response);
+}
+
+async function generateArticle({ topic, category, keywords, notes, anthropicKey }) {
+  const prompt = `You are writing a luxury editorial blog article for First Class Exotics in Orange County.
+
+Topic: "${topic}"
+Category: ${category || 'general'}
+Target keywords: ${keywords || 'exotic car rental orange county'}
+Optional notes/facts from Ali: ${notes || 'none'}
+
+Requirements:
+- Return only valid HTML body content (no <html>, <head>, or markdown fences).
+- Include one <h1> headline, 3-5 useful <h2> sections, optional <h3>, and practical paragraphs.
+- 650-900 words.
+- Focus on real Southern California use cases and practical details (routes, timing, logistics, planning).
+- Mention only 2-3 relevant venues naturally; do not list every venue.
+- Avoid cliches like "epitome of luxury", "ultimate luxury", "unparalleled" and similar filler.
+- Keep tone high-end but specific and grounded.
+- End with a concise CTA mentioning call/text (949) 294-5958.
+- Do not include script tags, style tags, or iframe tags.
+`;
+
+  const response = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': anthropicKey,
+      'anthropic-version': '2023-06-01',
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 2048,
+      messages: [{ role: 'user', content: prompt }],
+    }),
+  });
+
+  if (!response.ok) {
+    const errorJson = await readJsonResponse(response);
+    const message =
+      errorJson?.error?.message ||
+      errorJson?.error ||
+      errorJson?.message ||
+      `Anthropic API error ${response.status}`;
+    throw new Error(message);
+  }
+
+  const data = await readJsonResponse(response);
+  const content = data?.content?.[0]?.text?.trim() || data?.completion?.trim();
+  if (!content) {
+    throw new Error('No AI response content');
+  }
+
+  return content;
+}
+
+async function publishArticle({ pageHtml, card, slugInput, images, githubToken }) {
+  const slug = slugify(slugInput);
+  if (!slug) {
+    return json(400, { error: 'Invalid slug' });
+  }
+
+  const pagePath = `blog/${slug}.html`;
+  const pageExists = await githubGet(pagePath, githubToken);
+  if (pageExists) {
+    return json(409, { error: 'Post with this slug already exists' });
+  }
+
+  if (Array.isArray(images) && images.length > MAX_IMAGES) {
+    return json(400, { error: `A maximum of ${MAX_IMAGES} uploaded images is allowed` });
+  }
+
+  if (Array.isArray(images) && images.length > 0) {
+    for (let i = 0; i < images.length; i += 1) {
+      const image = images[i] || {};
+      const rawBase64 = String(image.dataBase64 || '').trim();
+      if (!rawBase64) {
+        return json(400, { error: `Missing base64 data for uploaded image ${i + 1}` });
+      }
+
+      const imagePath = `images/blog/${slug}/${i + 1}.jpg`;
+      await githubPutBase64(imagePath, githubToken, rawBase64, `Blog: add image ${i + 1} for ${slug}`);
+    }
+  }
+
+  await githubPut(pagePath, githubToken, pageHtml, `Blog: add ${slug}`);
+
+  const blogFile = await githubGet('blog.html', githubToken);
+  if (!blogFile?.content || !blogFile?.sha) {
+    throw new Error('Cannot read blog.html');
+  }
+
+  const currentBlog = Buffer.from(blogFile.content, 'base64').toString('utf8');
+  if (!currentBlog.includes(BLOG_INSERT_MARKER)) {
+    throw new Error('blog.html missing insert marker');
+  }
+
+  const pageHref = `href="blog/${slug}.html"`;
+  if (currentBlog.includes(pageHref)) {
+    return json(409, { error: 'Post with this slug already exists' });
+  }
+
+  const updatedBlog = currentBlog.replace(BLOG_INSERT_MARKER, `${card}\n\n  ${BLOG_INSERT_MARKER}`);
+  await githubPut('blog.html', githubToken, updatedBlog, `Blog: add card for ${slug}`, blogFile.sha);
+
+  const sitemapFile = await githubGet('sitemap.xml', githubToken);
+  if (!sitemapFile?.content || !sitemapFile?.sha) {
+    throw new Error('Cannot read sitemap.xml');
+  }
+
+  const sitemapCurrent = Buffer.from(sitemapFile.content, 'base64').toString('utf8');
+  const newUrl = `https://www.firstclassexotics.com/blog/${slug}.html`;
+
+  if (!sitemapCurrent.includes(`<loc>${newUrl}</loc>`)) {
+    const sitemapEntry = `  <url><loc>${newUrl}</loc><priority>0.7</priority></url>\n`;
+    const updatedSitemap = sitemapCurrent.replace('</urlset>', `${sitemapEntry}</urlset>`);
+    await githubPut('sitemap.xml', githubToken, updatedSitemap, `Blog: append sitemap URL for ${slug}`, sitemapFile.sha);
+  }
+
+  return json(200, { success: true, slug, pagePath, sitemapUrl: newUrl });
+}
+
+exports.handler = async function handler(event) {
   try {
     if (event.httpMethod !== 'POST') {
       return json(405, { error: 'Method Not Allowed' });
+    }
+
+    if (event.body && Buffer.byteLength(event.body, 'utf8') > MAX_BODY_BYTES) {
+      return json(413, { error: 'Request body too large' });
     }
 
     let payload;
@@ -29,7 +274,18 @@ exports.handler = async function (event) {
       return json(400, { error: 'Invalid request body' });
     }
 
-    const { operation, password, topic, keywords, heroImg, pageHtml, card, lslug } = payload;
+    const {
+      operation,
+      password,
+      topic,
+      category,
+      keywords,
+      notes,
+      pageHtml,
+      card,
+      lslug,
+      images,
+    } = payload;
 
     if (password !== 'FCE2026') {
       return json(401, { error: 'Unauthorized' });
@@ -38,47 +294,20 @@ exports.handler = async function (event) {
     const anthropicKey = process.env.ANTHROPIC_API_KEY;
     const githubToken = process.env.GITHUB_TOKEN;
 
-    if (!anthropicKey) {
-      return json(500, { error: 'Anthropic API key not configured' });
-    }
     if (!githubToken) {
       return json(500, { error: 'GitHub token not configured' });
     }
 
     if (operation === 'generate') {
+      if (!anthropicKey) {
+        return json(500, { error: 'Anthropic API key not configured' });
+      }
       if (!topic) {
         return json(400, { error: 'Missing topic' });
       }
 
-      const prompt = `You are writing a luxury lifestyle blog post for First Class Exotics, Southern California's #1 exotic car rental company, based in Orange County and serving all of SoCal.\n\nWrite a complete SEO-optimized article about: "${topic}"\n\nAudience — write so the article speaks directly to ALL of these readers:\n- Event planners sourcing exotic cars for high-end celebrations\n- Music video and film producers needing premium vehicles on set\n- Hotel concierges at luxury properties recommending exotic car experiences to VIP guests\n- Party planners organizing celebrity birthdays, quinceañeras, and milestone events\n- Influencers and content creators seeking exotic cars for photoshoots and reels\n- Corporate event organizers impressing clients and rewarding top performers\n- Wedding planners elevating the arrival and departure experience\n\nRequirements:\n- 600-900 words\n- Aspirational luxury tone (Robb Report meets Vogue Living)\n- Orange County is the primary focus; also naturally weave in Los Angeles, San Diego, Riverside County, and Inland Empire (1-2 mentions each)\n- Mention specific SoCal venues where relevant: Pelican Hill Resort, Montage Laguna Beach, Pendry Newport Beach, Pendry San Diego, Beverly Hills Hotel, Nobu Malibu, Coachella Valley, Temecula wine country, Newport Harbor, PCH\n- Establish First Class Exotics as the #1 choice for luxury exotic car experiences in Southern California — mention the brand 3 times naturally\n- H1 headline, 3-4 H2 subheadings, strong opening hook, practical + aspirational content mix\n- Final paragraph must be a call-to-action ending with: "Call or text Ali directly at (949) 294-5958 — First Class Exotics delivers to your hotel, venue, or event location across all of Southern California."\n\nReturn ONLY valid HTML: <h1>...</h1><p>...</p><h2>...</h2><p>...</p> etc. No markdown, no code blocks.`;
-
       try {
-        const response = await fetch('https://api.anthropic.com/v1/messages', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'x-api-key': anthropicKey,
-            'anthropic-version': '2023-06-01',
-          },
-          body: JSON.stringify({
-            model: 'claude-haiku-4-5-20251001',
-            max_tokens: 1024,
-            messages: [{ role: 'user', content: prompt }],
-          }),
-        });
-
-        if (!response.ok) {
-          const errorJson = await readJsonResponse(response);
-          const message = errorJson?.error?.message || errorJson?.error || errorJson?.message || `Anthropic API error ${response.status}`;
-          return json(502, { error: message });
-        }
-
-        const data = await readJsonResponse(response);
-        const content = data?.content?.[0]?.text?.trim() || data?.completion?.trim();
-        if (!content) {
-          return json(502, { error: 'No AI response content' });
-        }
-
+        const content = await generateArticle({ topic, category, keywords, notes, anthropicKey });
         return json(200, { content });
       } catch (err) {
         return json(502, { error: err.message });
@@ -91,53 +320,28 @@ exports.handler = async function (event) {
       }
 
       try {
-        const repo = 'ahojat45/firstclassexotics';
-        const pagePath = `blog/${lslug}.html`;
-        const pageUrl = `https://api.github.com/repos/${repo}/contents/${encodeURIComponent(pagePath)}`;
-        const blogUrl = `https://api.github.com/repos/${repo}/contents/blog.html`;
-
-        const shaResp = await fetch(pageUrl, { headers: { Authorization: `token ${githubToken}`, Accept: 'application/vnd.github.v3+json' } });
-        const pageJson = shaResp.ok ? await readJsonResponse(shaResp) : null;
-        const pagePayload = {
-          message: `Blog: add ${lslug}`,
-          content: Buffer.from(pageHtml, 'utf8').toString('base64'),
-          branch: 'main',
-        };
-        if (pageJson?.sha) pagePayload.sha = pageJson.sha;
-
-        const pageCommit = await fetch(pageUrl, {
-          method: 'PUT',
-          headers: { Authorization: `token ${githubToken}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-          body: JSON.stringify(pagePayload),
+        return await publishArticle({
+          pageHtml,
+          card,
+          slugInput: lslug,
+          images: Array.isArray(images) ? images : [],
+          githubToken,
         });
-        if (!pageCommit.ok) {
-          const errorJson = await readJsonResponse(pageCommit);
-          const message = errorJson?.message || errorJson?.error || `GitHub page commit failed ${pageCommit.status}`;
-          return json(502, { error: message });
-        }
+      } catch (err) {
+        return json(502, { error: err.message });
+      }
+    }
 
-        const blogResp = await fetch(blogUrl, { headers: { Authorization: `token ${githubToken}`, Accept: 'application/vnd.github.v3+json' } });
-        if (!blogResp.ok) {
-          return json(502, { error: `Cannot read blog.html from GitHub (${blogResp.status})` });
-        }
-        const blogFile = await readJsonResponse(blogResp);
-        const current = Buffer.from(blogFile.content, 'base64').toString('utf8');
-        if (!current.includes('<!-- NEW-POSTS-INSERT -->')) {
-          return json(500, { error: 'blog.html missing insert marker.' });
-        }
+    if (operation === 'delete-post') {
+      const slug = slugify(lslug);
+      if (!slug) return json(400, { error: 'Missing slug' });
 
-        const updatedBlog = current.replace('<!-- NEW-POSTS-INSERT -->', `${card}\n        <!-- NEW-POSTS-INSERT -->`);
-        const blogCommit = await fetch(blogUrl, {
-          method: 'PUT',
-          headers: { Authorization: `token ${githubToken}`, Accept: 'application/vnd.github.v3+json', 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: `Blog: add card for ${lslug}`, content: Buffer.from(updatedBlog, 'utf8').toString('base64'), sha: blogFile.sha, branch: 'main' }),
-        });
-        if (!blogCommit.ok) {
-          const errorJson = await readJsonResponse(blogCommit);
-          const message = errorJson?.message || errorJson?.error || `GitHub blog commit failed ${blogCommit.status}`;
-          return json(502, { error: message });
+      try {
+        const pagePath = `blog/${slug}.html`;
+        const pageFile = await githubGet(pagePath, githubToken);
+        if (pageFile?.sha) {
+          await githubDelete(pagePath, githubToken, pageFile.sha, `Blog: remove ${slug}`);
         }
-
         return json(200, { success: true });
       } catch (err) {
         return json(502, { error: err.message });

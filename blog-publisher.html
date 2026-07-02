@@ -14,7 +14,8 @@
   <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--gold:#9B0006;--gold-2:#D4AF37;--dark:#0A0A0A;--dark-2:#111111;--dark-3:#181818;--gray-2:#8A8A8A;--white:#F7F4EF}
-body{background:var(--dark);color:var(--white);font-family:'Inter',system-ui,sans-serif;min-height:100vh}
+body{background:var(--dark);color:var(--white);font-family:'Montserrat',system-ui,sans-serif;min-height:100vh}
+textarea,input,select,button{font-family:inherit}
 .screen{display:none;min-height:100vh;padding:2rem;align-items:center;justify-content:center;flex-direction:column}
 .screen.active{display:flex}
 .box{width:100%;max-width:460px;background:var(--dark-3);border:1px solid rgba(155,0,6,.25);padding:3rem 2.5rem}
@@ -23,46 +24,60 @@ body{background:var(--dark);color:var(--white);font-family:'Inter',system-ui,san
 .box p.sub{color:var(--gray-2);font-size:.82rem;text-align:center;margin-bottom:2rem;line-height:1.6}
 .field{margin-bottom:1.2rem}
 .field label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-2);margin-bottom:.5rem}
-.field input{width:100%;background:var(--dark-2);border:1px solid rgba(155,0,6,.25);color:var(--white);padding:.85rem 1.1rem;font-size:.88rem;outline:none;font-family:inherit;transition:border-color .2s}
+.field input{width:100%;background:var(--dark-2);border:1px solid rgba(155,0,6,.25);color:var(--white);padding:.85rem 1.1rem;font-size:.88rem;outline:none;transition:border-color .2s}
 .field input:focus{border-color:var(--gold)}
-.err{color:#e55;font-size:.8rem;margin-bottom:1rem;display:none;text-align:center}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--gold);color:#fff;border:none;padding:.85rem 2rem;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .2s;font-family:inherit;width:100%;text-decoration:none}
+.err{color:#f26d6d;font-size:.8rem;margin-bottom:1rem;display:none;text-align:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;background:var(--gold);color:#fff;border:none;padding:.85rem 2rem;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:background .2s;width:100%;text-decoration:none}
 .btn:hover{background:#7a0004}
-.btn:disabled{opacity:.4;cursor:not-allowed}
+.btn:disabled{opacity:.45;cursor:not-allowed}
 .btn-o{background:transparent;border:1px solid rgba(155,0,6,.35);color:var(--gray-2)}
 .btn-o:hover{background:rgba(155,0,6,.08);color:var(--white)}
 #dashboard{display:none}
 .topbar{background:var(--dark-3);border-bottom:1px solid rgba(155,0,6,.2);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between}
 .topbar img{height:38px}
 .topbar span{color:var(--gray-2);font-size:.78rem;letter-spacing:.1em;text-transform:uppercase}
-#logout-btn{background:none;border:none;color:var(--gray-2);cursor:pointer;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;font-family:inherit;padding:0}
+#logout-btn{background:none;border:none;color:var(--gray-2);cursor:pointer;font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;padding:0}
 #logout-btn:hover{color:var(--white)}
-.main{max-width:860px;margin:0 auto;padding:3rem 2rem}
+.main{max-width:980px;margin:0 auto;padding:2.5rem 2rem}
 .step{display:none;animation:fu .3s ease}
 .step.active{display:block}
 @keyframes fu{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 .lbl{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-2);margin-bottom:.5rem}
 .step h2{font-size:1.7rem;font-weight:300;margin-bottom:.4rem}
-.step>p{color:var(--gray-2);font-size:.86rem;line-height:1.7;margin-bottom:2.5rem}
-.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem}
-.chip{padding:.42rem 1rem;border:1px solid rgba(155,0,6,.28);background:transparent;color:var(--gray-2);font-size:.76rem;cursor:pointer;transition:all .18s;letter-spacing:.05em;font-family:inherit}
-.chip:hover,.chip.on{background:var(--gold);border-color:var(--gold);color:#fff}
-.fr{margin-bottom:1.4rem}
-.fr label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-2);margin-bottom:.5rem}
-.fr input,.fr select{width:100%;background:var(--dark-3);border:1px solid rgba(155,0,6,.22);color:var(--white);padding:.85rem 1.1rem;font-size:.88rem;outline:none;font-family:inherit;transition:border-color .2s}
-.fr input:focus,.fr select:focus{border-color:var(--gold)}
-.fr select option{background:var(--dark-3)}
-.rbtns{display:flex;gap:1rem;margin-bottom:2rem;flex-wrap:wrap}
-.pb{background:var(--dark-3);border:1px solid rgba(155,0,6,.15);padding:2.2rem;max-height:460px;overflow-y:auto;line-height:1.85;font-size:.9rem}
-.pb h1{font-size:1.4rem;font-weight:300;margin-bottom:1.2rem}
-.pb h2{font-size:1rem;font-weight:600;color:var(--gold-2);margin:1.6rem 0 .7rem;letter-spacing:.06em}
-.pb p{color:rgba(247,244,239,.82);margin-bottom:1rem}
+.step>p{color:var(--gray-2);font-size:.86rem;line-height:1.7;margin-bottom:1.8rem}
+.mode-toggle{display:flex;gap:.7rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.mode-btn{padding:.48rem 1rem;border:1px solid rgba(155,0,6,.28);background:transparent;color:var(--gray-2);font-size:.74rem;cursor:pointer;letter-spacing:.08em;text-transform:uppercase}
+.mode-btn.on{background:var(--gold);border-color:var(--gold);color:#fff}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:760px){.grid-2{grid-template-columns:1fr}}
+.fr{margin-bottom:1rem}
+.fr label{display:block;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gray-2);margin-bottom:.4rem}
+.fr input,.fr select,.fr textarea{width:100%;background:var(--dark-3);border:1px solid rgba(155,0,6,.22);color:var(--white);padding:.75rem .9rem;font-size:.86rem;outline:none;transition:border-color .2s}
+.fr input:focus,.fr select:focus,.fr textarea:focus{border-color:var(--gold)}
+.fr textarea{min-height:110px;resize:vertical}
+.fr small{display:block;color:var(--gray-2);font-size:.74rem;margin-top:.35rem;line-height:1.5}
+.hidden{display:none!important}
+.upload-wrap{border:1px dashed rgba(155,0,6,.45);padding:1rem;background:rgba(155,0,6,.04)}
+.upload-meta{display:flex;justify-content:space-between;gap:.5rem;flex-wrap:wrap;color:var(--gray-2);font-size:.76rem;margin-top:.6rem}
+.preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:.9rem;margin-top:1rem}
+.thumb{border:1px solid rgba(155,0,6,.2);background:var(--dark-2);padding:.55rem}
+.thumb img{width:100%;height:100px;object-fit:cover;margin-bottom:.5rem}
+.thumb .tag{font-size:.65rem;color:var(--gold-2);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.35rem}
+.thumb input{width:100%;background:var(--dark-3);border:1px solid rgba(155,0,6,.22);color:var(--white);padding:.45rem .5rem;font-size:.74rem}
+.pb{background:var(--dark-3);border:1px solid rgba(155,0,6,.15);padding:1.4rem;max-height:540px;overflow-y:auto;line-height:1.85;font-size:.9rem}
+.pb h1,.pb h2{font-size:1.35rem;font-weight:400;margin:1rem 0 .7rem;color:var(--gold-2)}
+.pb h3{font-size:.84rem;letter-spacing:.1em;text-transform:uppercase;color:#e8d6a5;margin:1.2rem 0 .5rem}
+.pb p,.pb li,.pb blockquote{color:rgba(247,244,239,.9);margin-bottom:.8rem}
+.pb ul{margin-left:1.2rem}
+.preview-meta{margin:1rem 0;padding:1rem;border:1px solid rgba(155,0,6,.22);background:rgba(155,0,6,.04);font-size:.78rem;line-height:1.7;color:var(--gray-2)}
+.preview-meta strong{color:var(--white)}
+.rbtns{display:flex;gap:.8rem;margin-bottom:1.1rem;flex-wrap:wrap}
 #loader{display:none;position:fixed;inset:0;background:rgba(5,5,5,.85);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem}
 #loader.on{display:flex}
 .spin{width:44px;height:44px;border:2px solid rgba(155,0,6,.2);border-top-color:var(--gold);border-radius:50%;animation:sp .75s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 #loader p{color:var(--gray-2);font-size:.82rem;letter-spacing:.12em;text-transform:uppercase}
-#toast{position:fixed;bottom:2rem;right:2rem;background:#6a0003;color:#fff;padding:.9rem 1.4rem;font-size:.83rem;max-width:340px;display:none;z-index:9999;border-left:3px solid var(--gold-2);line-height:1.5}
+#toast{position:fixed;bottom:2rem;right:2rem;background:#6a0003;color:#fff;padding:.9rem 1.4rem;font-size:.82rem;max-width:380px;display:none;z-index:9999;border-left:3px solid var(--gold-2);line-height:1.45}
   </style>
 </head>
 <body>
@@ -70,7 +85,6 @@ body{background:var(--dark);color:var(--white);font-family:'Inter',system-ui,san
 <div id="loader"><div class="spin"></div><p id="lmsg">Working...</p></div>
 <div id="toast"></div>
 
-<!-- LOGIN SCREEN -->
 <div class="screen active" id="login-screen">
   <div class="box">
     <img src="FC_LOGO.png" alt="First Class Exotics">
@@ -85,12 +99,11 @@ body{background:var(--dark);color:var(--white);font-family:'Inter',system-ui,san
   </div>
 </div>
 
-<!-- DASHBOARD -->
 <div id="dashboard">
   <div class="topbar">
     <img src="FC_LOGO.png" alt="First Class Exotics">
     <div style="display:flex;align-items:center;gap:1.5rem">
-      <span>Blog Publisher</span>
+      <span>Blog Publisher v2</span>
       <button id="logout-btn" onclick="doLogout()">Logout</button>
     </div>
   </div>
@@ -98,50 +111,81 @@ body{background:var(--dark);color:var(--white);font-family:'Inter',system-ui,san
 
     <div class="step active" id="st-topic">
       <div class="lbl">Step 1 of 3</div>
-      <h2>Choose a Topic</h2>
-      <p>Pick a suggestion below or type your own. Claude writes a full SEO article for First Class Exotics.</p>
-      <div class="chips">
-        <button class="chip" onclick="pick(this,'2026 Lamborghini Urus SE — The Super SUV Just Got Deadlier')">2026 Lamborghini Urus SE</button>
-        <button class="chip" onclick="pick(this,'Ferrari 296 Speciale — Driver-Focused')">Ferrari 296 Speciale</button>
-        <button class="chip" onclick="pick(this,'Porsche 911 GT3 RS — Naturally Aspirated')">Porsche 911 GT3 RS</button>
-        <button class="chip" onclick="pick(this,'McLaren W1 — Successor to P1')">McLaren W1</button>
-        <button class="chip" onclick="pick(this,'OC Car Culture Guide')">OC Car Culture</button>
-        <button class="chip" onclick="pick(this,'Newport Beach Cars & Coffee')">Newport Beach Events</button>
-        <button class="chip" onclick="pick(this,'PCH Lamborghini Drive')">PCH Drives</button>
-        <button class="chip" onclick="pick(this,'Rolls-Royce Wedding Arrival')">Wedding Arrivals</button>
-        <button class="chip" onclick="pick(this,'Music Video Production')">Music Videos</button>
-        <button class="chip" onclick="pick(this,'Corporate Events')">Corporate Events</button>
+      <h2>Draft Inputs</h2>
+      <p>Use AI Draft or Paste Article mode. Both routes use the same SEO template, image pipeline, and publish flow.</p>
+
+      <div class="mode-toggle">
+        <button class="mode-btn on" id="mode-ai-btn" onclick="setMode('ai')">AI Draft</button>
+        <button class="mode-btn" id="mode-paste-btn" onclick="setMode('paste')">Paste Article</button>
       </div>
-      <div class="fr"><label>Title (edit or type your own)</label><input type="text" id="ti" placeholder="e.g. Best exotic car for a sunset drive on PCH"></div>
-      <div class="fr"><label>Filename slug</label><input type="text" id="su" placeholder="e.g. lamborghini-urus-se-2026"></div>
-      <div class="fr"><label>Category</label>
-        <select id="ci"><option value="new-models">new-models</option><option value="oc-car-culture">oc-car-culture</option><option value="tips-guides">tips-guides</option><option value="events">events</option></select>
+
+      <div class="grid-2">
+        <div class="fr"><label>Title</label><input type="text" id="ti" placeholder="Article title" oninput="handleTitleChange()"></div>
+        <div class="fr"><label>Slug</label><input type="text" id="su" placeholder="auto-generated"></div>
       </div>
-      <div class="fr"><label>Target Keyword</label><input type="text" id="kw" placeholder="e.g. exotic car rental Orange County"></div>
-      <div class="fr"><label>Unsplash Image URL</label><input type="text" id="iu" placeholder="Optional: https://images.unsplash.com/..."/></div>
-      <button class="btn" style="width:auto;padding:.85rem 2.5rem" onclick="generate()">AI Generate Article →</button>
+
+      <div class="grid-2">
+        <div class="fr"><label>Category</label>
+          <select id="ci">
+            <option value="new-models">new-models</option>
+            <option value="oc-car-culture">oc-car-culture</option>
+            <option value="tips-guides">tips-guides</option>
+            <option value="events">events</option>
+          </select>
+        </div>
+        <div class="fr"><label>Target Keywords</label><input type="text" id="kw" placeholder="exotic car rental orange county, ferrari rental"></div>
+      </div>
+
+      <div class="fr"><label>Meta Description</label><textarea id="md" placeholder="Optional. If blank, the first intro sentence is used and capped to 155 chars."></textarea></div>
+
+      <div class="fr" id="ai-topic-wrap"><label>Generate Topic</label><input type="text" id="topic" placeholder="e.g. Why the Ferrari 296 Speciale works for Newport Beach weekend itineraries"></div>
+      <div class="fr" id="ai-notes-wrap"><label>Notes / angle / facts</label><textarea id="notes" placeholder="Optional practical details for Ali to steer tone, facts, routes, venues, use-case context."></textarea></div>
+
+      <div class="fr hidden" id="paste-wrap">
+        <label>Paste Article HTML Body</label>
+        <textarea id="pasteBody" style="min-height:220px" placeholder="Paste body HTML. Allowed tags: h2, h3, p, ul, ol, li, blockquote, strong, em, a, br. script/style/iframe are stripped."></textarea>
+      </div>
+
+      <div class="fr"><label>Unsplash Image URL (fallback)</label><input type="text" id="iu" placeholder="https://images.unsplash.com/..." oninput="updatePayloadEstimate()"><small>Kept as fallback only. Must start with https://images.unsplash.com/</small></div>
+
+      <div class="fr upload-wrap">
+        <label>Upload Images (max 5)</label>
+        <input type="file" id="imageInput" multiple accept="image/*" onchange="handleImageSelect(event)">
+        <div class="upload-meta">
+          <span id="imageCount">0 images selected</span>
+          <span id="sizeInfo">Payload estimate: 0 KB / 5120 KB</span>
+        </div>
+        <div id="imageError" class="err" style="display:none;margin-top:.7rem"></div>
+        <div id="imagePreview" class="preview-grid"></div>
+      </div>
+
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap">
+        <button class="btn" style="width:auto;padding:.85rem 2rem" id="generateBtn" onclick="generate()">AI Generate Draft →</button>
+        <button class="btn" style="width:auto;padding:.85rem 2rem;display:none" id="pasteBtn" onclick="preparePaste()">Build Preview →</button>
+      </div>
     </div>
 
     <div class="step" id="st-preview">
       <div class="lbl">Step 2 of 3</div>
-      <h2>Preview Your Article</h2>
-      <p>Review the generated post below. If it looks good, publish it as a new blog page and add the card to blog.html.</p>
+      <h2>Preview</h2>
+      <p>Confirm body, metadata, related links, and image selections before publishing.</p>
       <div class="rbtns">
-        <button class="btn btn-o" style="width:auto;padding:.75rem 1.5rem" onclick="showStep('st-topic')">← Edit Details</button>
-        <button class="btn btn-o" style="width:auto;padding:.75rem 1.5rem" onclick="generate()">Regenerate</button>
-        <button class="btn" style="width:auto;padding:.75rem 2rem" onclick="publish()">Publish to Blog →</button>
+        <button class="btn btn-o" style="width:auto;padding:.75rem 1.2rem" onclick="showStep('st-topic')">← Edit</button>
+        <button class="btn btn-o" style="width:auto;padding:.75rem 1.2rem" id="regenBtn" onclick="generate()">Regenerate</button>
+        <button class="btn" style="width:auto;padding:.75rem 1.6rem" onclick="publish()">Publish to Blog →</button>
       </div>
+      <div class="preview-meta" id="previewMeta"></div>
       <div class="pb" id="pbody"></div>
     </div>
 
     <div class="step" id="st-done" style="text-align:center;padding-top:2rem">
       <div style="font-size:2.8rem;color:var(--gold-2);margin-bottom:1rem">✓</div>
       <div class="lbl">Published</div>
-      <h2>Article is Live!</h2>
-      <p style="color:var(--gray-2);margin-top:.8rem;line-height:1.7">Your post was saved to GitHub. Netlify will update your blog within 60 seconds.</p>
+      <h2>Article is Live</h2>
+      <p style="color:var(--gray-2);margin-top:.8rem;line-height:1.7">GitHub and Netlify are updated. Verify card placement, schema, and sitemap in production.</p>
       <div style="display:flex;gap:1rem;justify-content:center;margin-top:1.5rem;flex-wrap:wrap">
         <a href="blog.html" target="_blank" class="btn btn-o" style="width:auto;padding:.75rem 1.5rem">View Blog</a>
-        <button class="btn" style="width:auto;padding:.75rem 2rem" onclick="reset()">Write Another Post</button>
+        <button class="btn" style="width:auto;padding:.75rem 2rem" onclick="resetForm()">Publish Another Post</button>
       </div>
     </div>
 
@@ -149,9 +193,45 @@ body{background:var(--dark);color:var(--white);font-family:'Inter',system-ui,san
 </div>
 
 <script>
-const REPO='ahojat45/firstclassexotics';
 const PASSWORD='FCE2026';
-let card='',ltopic='',lcat='',lslug='',excerpt='',heroImg='',pageHtml='';
+const MAX_IMAGES=5;
+const MAX_PAYLOAD_BYTES=5*1024*1024;
+const BLOG_POSTS=[
+  {href:'exotic-cars-coming-orange-county-2026-2027.html',title:'The Hottest Exotic Cars Coming to Orange County in 2026 & 2027',category:'new-models'},
+  {href:'lamborghini-urus-se-2026.html',title:'2026 Lamborghini Urus SE — The Super SUV Just Got Deadlier',category:'new-models'},
+  {href:'ferrari-296-speciale.html',title:'Ferrari 296 Speciale — The Most Driver-Focused Ferrari in a Generation',category:'new-models'},
+  {href:'mclaren-w1.html',title:'McLaren W1 — The Successor to the P1 Has Arrived',category:'new-models'},
+  {href:'porsche-911-gt3-rs-40.html',title:'Porsche 911 GT3 RS 4.0 — The Last Naturally Aspirated Legend',category:'new-models'},
+  {href:'oc-exotic-car-culture-guide.html',title:'OC Car Culture — The Ultimate Guide to Exotic Cars in Orange County',category:'oc-car-culture'},
+  {href:'../blog-newport-beach-exotic-car.html',title:'Best Things to Do in Newport Beach with an Exotic Car Rental',category:'events'},
+  {href:'../blog-exotic-car-rental-wedding-socal.html',title:'How to Rent an Exotic Car for Your Wedding in SoCal',category:'events'},
+  {href:'../blog-lamborghini-vs-ferrari-rental-socal.html',title:'Lamborghini vs Ferrari: Which Should You Rent in SoCal?',category:'tips-guides'},
+  {href:'../blog-first-time-exotic-car-rental-guide.html',title:'Renting an Exotic Car for the First Time? Read This First.',category:'tips-guides'}
+];
+const BRAND_LANDING=[
+  {rx:/\burus\b|\blamborghini\b|\bhuracan\b/i,path:'../rent-lamborghini-orange-county.html',label:'Rent a Lamborghini in Orange County'},
+  {rx:/\bferrari\b|\bf8\b|\b296\b/i,path:'../rent-ferrari-orange-county.html',label:'Ferrari rentals in Orange County'},
+  {rx:/\bmclaren\b|\bw1\b|\b720s\b/i,path:'../rent-mclaren-orange-county.html',label:'Rent a McLaren in Orange County'},
+  {rx:/\brolls\b|\brolls-royce\b|\bcullinan\b|\bghost\b/i,path:'../rent-rolls-royce-orange-county.html',label:'Rolls-Royce rentals in Orange County'},
+  {rx:/\bporsche\b|\bgt3\b/i,path:'../rent-porsche-orange-county.html',label:'Porsche rentals in Orange County'},
+  {rx:/\bg63\b|\bg-wagon\b|\bmercedes\b/i,path:'../rent-g63-orange-county.html',label:'G-Wagon rentals in Orange County'},
+  {rx:/\bmaybach\b/i,path:'../rent-maybach-orange-county.html',label:'Maybach rentals in Orange County'},
+  {rx:/\brange\s*rover\b/i,path:'../rent-range-rover-orange-county.html',label:'Range Rover rentals in Orange County'}
+];
+
+const categoryLabel={
+  'new-models':'New Models',
+  'oc-car-culture':'OC Car Culture',
+  'tips-guides':'Tips & Guides',
+  'events':'Events'
+};
+
+let mode='ai';
+let generatedBody='';
+let pageHtml='';
+let cardMarkup='';
+let publishSlug='';
+let uploadImages=[];
 
 window.onload=()=>{
   const isLoggedIn=sessionStorage.getItem('fce_logged_in')==='true';
@@ -160,6 +240,7 @@ window.onload=()=>{
   }else{
     showLoginScreen();
   }
+  updatePayloadEstimate();
 };
 
 function showLoginScreen(){
@@ -191,62 +272,782 @@ function doLogout(){
   showLoginScreen();
 }
 
-function pick(el,t){document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));el.classList.add('on');document.getElementById('ti').value=t;document.getElementById('su').value=slugify(t)}
-function escapeHTML(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
-function slugify(s){return s.toLowerCase().trim().replace(/'/g,'').replace(/&/g,'and').replace(/[^\u0000-\u007F]+/g,'').replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'')}
+function setMode(nextMode){
+  mode=nextMode;
+  document.getElementById('mode-ai-btn').classList.toggle('on',mode==='ai');
+  document.getElementById('mode-paste-btn').classList.toggle('on',mode==='paste');
+  document.getElementById('ai-topic-wrap').classList.toggle('hidden',mode!=='ai');
+  document.getElementById('ai-notes-wrap').classList.toggle('hidden',mode!=='ai');
+  document.getElementById('paste-wrap').classList.toggle('hidden',mode!=='paste');
+  document.getElementById('generateBtn').style.display=mode==='ai'?'inline-flex':'none';
+  document.getElementById('pasteBtn').style.display=mode==='paste'?'inline-flex':'none';
+  document.getElementById('regenBtn').style.display=mode==='ai'?'inline-flex':'none';
+}
+
+function handleTitleChange(){
+  const title=document.getElementById('ti').value.trim();
+  const slugInput=document.getElementById('su');
+  if(!slugInput.value.trim() && title){
+    slugInput.value=slugify(title);
+  }
+  for(let i=0;i<uploadImages.length;i++){
+    if(!uploadImages[i].altTouched){
+      uploadImages[i].alt=title||`First Class Exotics blog image ${i+1}`;
+    }
+  }
+  renderImagePreviews();
+  updatePayloadEstimate();
+}
+
+function escapeHTML(s){
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+function slugify(s){
+  return String(s||'')
+    .toLowerCase()
+    .replace(/&amp;/g,' and ')
+    .replace(/&/g,' and ')
+    .replace(/[^a-z0-9\s-]/g,'')
+    .trim()
+    .replace(/\s+/g,'-')
+    .replace(/-+/g,'-')
+    .replace(/^-|-$/g,'')
+    .slice(0,60)
+    .replace(/-$/,'');
+}
+
+function estimateReadMinutes(html){
+  const text=stripTags(html);
+  const words=(text.match(/\b[\w'-]+\b/g)||[]).length;
+  return Math.max(4,Math.round(words/140));
+}
+
+function stripTags(html){
+  return String(html||'').replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();
+}
+
+function safeHref(href){
+  const val=(href||'').trim();
+  if(!val) return '';
+  if(/^https?:\/\//i.test(val) || /^\//.test(val) || /^\.\.\//.test(val) || /^#/.test(val)){
+    return val;
+  }
+  if(/^[a-z0-9-]+\.html(?:#.*)?$/i.test(val)){
+    return val;
+  }
+  return '';
+}
+
+function sanitizeArticleHtml(raw){
+  const cleaned=String(raw||'')
+    .replace(/<script[\s\S]*?<\/script>/gi,'')
+    .replace(/<style[\s\S]*?<\/style>/gi,'')
+    .replace(/<iframe[\s\S]*?<\/iframe>/gi,'');
+
+  const parser=new DOMParser();
+  const doc=parser.parseFromString(`<div>${cleaned}</div>`,'text/html');
+  const root=doc.body.firstElementChild;
+  const allowed=new Set(['h2','h3','p','ul','ol','li','blockquote','strong','em','a','br']);
+
+  function walk(node){
+    if(node.nodeType===Node.TEXT_NODE){
+      return escapeHTML(node.textContent||'');
+    }
+    if(node.nodeType!==Node.ELEMENT_NODE){
+      return '';
+    }
+    const tag=node.tagName.toLowerCase();
+    if(tag==='h1'){
+      return '';
+    }
+    if(!allowed.has(tag)){
+      return Array.from(node.childNodes).map(walk).join('');
+    }
+    if(tag==='br') return '<br>';
+    const inner=Array.from(node.childNodes).map(walk).join('');
+    if(tag==='a'){
+      const href=safeHref(node.getAttribute('href'));
+      if(!href) return inner;
+      return `<a href="${escapeHTML(href)}" rel="noopener">${inner}</a>`;
+    }
+    return `<${tag}>${inner}</${tag}>`;
+  }
+
+  return Array.from(root.childNodes).map(walk).join('').trim();
+}
+
+function topicToKeywords(topic){
+  const words=String(topic||'').toLowerCase().split(/[^a-z0-9]+/).filter(w=>w.length>2);
+  return words.slice(0,6).join(', ');
+}
+
+function sanitizeUnsplash(url){
+  const clean=String(url||'').replace(/&amp;/g,'&').trim();
+  if(!clean) return '';
+  if(!clean.startsWith('https://images.unsplash.com/')){
+    throw new Error('Unsplash fallback URL must start with https://images.unsplash.com/');
+  }
+  return clean;
+}
+
+function topicToLocalImg(topic){
+  const t=String(topic||'').toLowerCase();
+  if(/\bmclaren\b|\bw1\b/.test(t)) return '../fleet_blue_mclaren.jpg';
+  if(/\bporsche\b|\bgt3\b/.test(t)) return '../images/porsche/01.jpg';
+  if(/\burus\b/.test(t)) return '../images/lamborghini/01.jpg';
+  if(/\bg63\b|\bg-wagon\b|\bmercedes\b/.test(t)) return '../images/g63/01.jpg';
+  if(/\bmaybach\b/.test(t)) return '../images/maybach/01.jpg';
+  if(/\brange\s*rover\b/.test(t)) return '../images/range-rover/01.jpg';
+  if(/\brolls\b|\brolls-royce\b|\bcullinan\b/.test(t)) return '../fleet_rolls_cullinan.jpg';
+  if(/\bferrari\b|\bf8\b|\b296\b/.test(t)) return '../fleet_ferrari_488.jpg';
+  if(/\blamborghini\b|\bhuracan\b/.test(t)) return '../fleet_yellow_huracan.jpg';
+  return '../fleet_f8.jpg';
+}
+
+function normalizeRelativeImagePath(path){
+  return String(path||'').replace(/^\.\//,'').replace(/^\.\.\//,'');
+}
+
+function absoluteImageUrl(src){
+  if(/^https?:\/\//i.test(src)) return src;
+  const normalized=normalizeRelativeImagePath(src).replace(/^\//,'');
+  return `https://www.firstclassexotics.com/${normalized}`;
+}
+
+function detectBrandLanding(text){
+  for(const item of BRAND_LANDING){
+    if(item.rx.test(text)) return item;
+  }
+  return null;
+}
+
+function pickRelatedLinks(category,slug,title,keywords,bodyText){
+  const same=BLOG_POSTS.filter(p=>p.category===category && !p.href.includes(`${slug}.html`));
+  const fallback=BLOG_POSTS.filter(p=>!p.href.includes(`${slug}.html`));
+  const chosen=[];
+  for(const p of same){if(chosen.length<2) chosen.push(p);}
+  for(const p of fallback){if(chosen.length<2 && !chosen.find(x=>x.href===p.href)) chosen.push(p);}
+
+  const combinedText=`${title} ${keywords} ${bodyText}`;
+  const brand=detectBrandLanding(combinedText);
+
+  const relatedLinks=[...chosen.map(item=>`<a href="${item.href}">${escapeHTML(item.title)}</a>`)];
+  if(brand){relatedLinks.push(`<a href="${brand.path}">${escapeHTML(brand.label)}</a>`);}
+  relatedLinks.push('<a href="/#fleet">browse our exotic fleet</a>');
+  return relatedLinks.join('\n    ');
+}
+
+function capTitleForTag(title){
+  const suffix=' | First Class Exotics';
+  const maxTitlePart=Math.max(10,60-suffix.length);
+  const safe=String(title||'').trim();
+  const part=safe.length<=maxTitlePart?safe:safe.slice(0,maxTitlePart).trim();
+  return `${part}${suffix}`;
+}
+
+function firstParagraphSummary(body){
+  const text=stripTags(body);
+  if(!text) return '';
+  return text.slice(0,155).trim();
+}
+
+function buildCardMarkup({slug,title,category,excerpt,imageSrc,readMinutes}){
+  const badge=categoryLabel[category]||'Article';
+  const monthYear=new Date().toLocaleString('en-US',{month:'short',year:'numeric'});
+  const safeExcerpt=(excerpt||'').slice(0,180);
+  return `  <a href="blog/${slug}.html" class="blog-card" data-category="${category}">
+    <div class="blog-card-image">
+      <img src="${imageSrc}" alt="${escapeHTML(title)}" loading="lazy">
+      <span class="blog-card-badge">${badge}</span>
+    </div>
+    <div class="blog-card-body">
+      <h3 class="blog-card-title">${escapeHTML(title)}</h3>
+      <p class="blog-card-excerpt">${escapeHTML(safeExcerpt)}</p>
+      <div class="blog-card-footer"><span>${readMinutes} min read · ${monthYear}</span><span class="read-link">Read →</span></div>
+    </div>
+  </a>`;
+}
 
 function buildArticlePage(opts){
-  const title=escapeHTML(opts.title);
-  const desc=escapeHTML(opts.description);
-  const kw=escapeHTML(opts.keywords);
-  const heroUrl=/^https?:\/\//i.test(opts.heroImg)?opts.heroImg:`https://www.firstclassexotics.com${opts.heroImg}`;
-  const url=`https://www.firstclassexotics.com/${opts.pagePath}`;
-  const date=new Date().toISOString().split('T')[0];
-  return `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>${title} | First Class Exotics</title><meta name="description" content="${desc}"><meta name="keywords" content="${kw}"><link rel="canonical" href="${url}"><meta property="og:title" content="${title}"><meta property="og:description" content="${desc}"><meta property="og:type" content="article"><meta property="og:url" content="${url}"><meta property="og:image" content="${heroUrl}"></head><body style="background:#050505;color:#F5F3EE;font-family:Montserrat,sans-serif;padding:2rem;"><div style="max-width:900px;margin:0 auto;"><h1>${title}</h1><p style="color:#888;margin-bottom:1rem;">${date}</p><img src="${heroUrl}" alt="${title}" style="width:100%;max-height:400px;object-fit:cover;border-radius:4px;margin-bottom:2rem;"><div style="line-height:1.8;font-size:1.05rem;">${opts.htmlBody}</div></div></body></html>`}
+  const title=opts.title;
+  const titleTag=capTitleForTag(title);
+  const description=opts.description;
+  const keywords=opts.keywords;
+  const canonical=`https://www.firstclassexotics.com/blog/${opts.slug}.html`;
+  const dateIso=new Date().toISOString().slice(0,10);
+  const monthYear=new Date().toLocaleString('en-US',{month:'long',year:'numeric'});
+  const hero=opts.images[0];
+  const support=opts.images.slice(1);
 
-function topicToKeywords(topic){return topic.toLowerCase().split(/[\s,]+/).filter(w=>w.length>2).slice(0,4).join(',')||'exotic-car'}
-function topicToLocalImg(topic){const t=topic.toLowerCase();if(/rolls|royce/.test(t))return'fleet_rolls_cullinan.jpg';if(/ferrari|f8/.test(t))return'fleet_ferrari_488.jpg';if(/lamborghini|huracan/.test(t))return'fleet_yellow_huracan.jpg';return'fleet_ferrari_488.jpg'}
+  const articleSchema={
+    '@context':'https://schema.org',
+    '@type':'Article',
+    headline:title,
+    description,
+    author:{'@type':'Person',name:'Ali Hojat'},
+    publisher:{'@type':'Organization',name:'First Class Exotics',url:'https://www.firstclassexotics.com'},
+    datePublished:dateIso,
+    dateModified:dateIso,
+    image:[hero.absoluteSrc],
+    url:canonical
+  };
+
+  const breadcrumbSchema={
+    '@context':'https://schema.org',
+    '@type':'BreadcrumbList',
+    itemListElement:[
+      {'@type':'ListItem',position:1,name:'Home',item:'https://www.firstclassexotics.com/'},
+      {'@type':'ListItem',position:2,name:'Blog',item:'https://www.firstclassexotics.com/blog.html'},
+      {'@type':'ListItem',position:3,name:title,item:canonical}
+    ]
+  };
+
+  const supportImagesHtml=support.map((img,idx)=>`  <img class="article-img" src="${img.relativeSrc}" alt="${escapeHTML(img.alt || `${title} support image ${idx+1}`)}" width="${img.width}" height="${img.height}" loading="lazy">`).join('\n');
+
+  const relatedLinks=pickRelatedLinks(opts.category,opts.slug,title,keywords,stripTags(opts.bodyHtml));
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E655N33GPP"></script>
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-E655N33GPP');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  <title>${escapeHTML(titleTag)}</title>
+  <meta name="description" content="${escapeHTML(description)}">
+  <meta name="keywords" content="${escapeHTML(keywords)}">
+  <link rel="canonical" href="${canonical}">
+  <meta property="og:title" content="${escapeHTML(title)}">
+  <meta property="og:description" content="${escapeHTML(description)}">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="${canonical}">
+  <meta property="og:image" content="${hero.absoluteSrc}">
+  <script type="application/ld+json">${JSON.stringify(articleSchema)}</script>
+  <script type="application/ld+json">${JSON.stringify(breadcrumbSchema)}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{--gold:#9B0006;--gold-2:#D4AF37;--black:#050505;--dark:#0D0D0D;--dark-2:#141414;--dark-3:#1C1C1C;--gray:#888;--gray-light:#aaa;--white:#F5F3EE;--font-display:'Cormorant Garamond',serif;--font-body:'Montserrat',sans-serif}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;overflow-x:hidden;max-width:100%}
+    body{background:var(--black);color:var(--white);font-family:var(--font-body);overflow-x:hidden;padding-bottom:72px}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;background:var(--dark-3)}
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 4rem;height:80px;display:flex;align-items:center;justify-content:space-between;background:rgba(5,5,5,.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(155,0,6,.15)}
+    .nav-logo{font-family:var(--font-display);font-size:1.4rem;font-weight:600;color:var(--white);text-decoration:none;letter-spacing:.05em}
+    .nav-logo span{color:var(--gold)}
+    .nav-links{display:flex;gap:2.5rem;list-style:none;align-items:center}
+    .nav-links a{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:#aaa;text-decoration:none;transition:color .3s;font-weight:500}
+    .nav-links a:hover,.nav-links a.active{color:var(--gold)}
+    .nav-cta{border:1px solid var(--gold);color:var(--gold)!important;padding:.5rem 1.4rem;transition:background .3s,color .3s!important}
+    .nav-cta:hover{background:var(--gold)!important;color:var(--black)!important}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:5px}
+    .hamburger span{display:block;width:24px;height:1.5px;background:#F7F4EF}
+    .mob-menu{display:none;position:fixed;inset:0;background:rgba(6,6,6,.98);z-index:9999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+    .mob-menu.open{display:flex}
+    .mob-menu a{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:#F7F4EF;letter-spacing:.08em;transition:color .3s;text-decoration:none}
+    .mob-menu a:hover{color:#9B0006}
+    .mob-close{position:absolute;top:2rem;right:2.5rem;background:none;border:none;color:#F7F4EF;font-size:1.5rem;cursor:pointer}
+    .article-hero{padding:9rem 4rem 4rem;background:var(--dark-2);border-bottom:1px solid rgba(155,0,6,.12);max-width:900px;margin:0 auto}
+    .eyebrow{font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;font-weight:500}
+    .breadcrumb{font-size:.62rem;color:var(--gray);margin-bottom:1.5rem;letter-spacing:.05em}
+    .breadcrumb a{color:var(--gray);transition:color .3s}
+    .breadcrumb a:hover{color:var(--gold)}
+    .breadcrumb span{margin:0 .5rem;opacity:.4}
+    h1{font-family:var(--font-display);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.1;margin-bottom:1rem}
+    .article-meta{font-size:.66rem;color:var(--gray);letter-spacing:.08em;padding-bottom:1.5rem;border-bottom:1px solid rgba(255,255,255,.07)}
+    .article-wrap{max-width:900px;margin:0 auto;padding:0 4rem 5rem}
+    .article-img{width:100%;aspect-ratio:16/9;object-fit:cover;margin:2.5rem 0;filter:brightness(.8)}
+    .article-body h2{font-family:var(--font-display);font-size:1.9rem;font-weight:400;color:var(--white);margin:2.5rem 0 .9rem;line-height:1.2}
+    .article-body h3{font-size:.75rem;font-weight:600;color:var(--gold-2);letter-spacing:.15em;text-transform:uppercase;margin:1.8rem 0 .7rem}
+    .article-body p{font-size:.84rem;line-height:2;color:var(--gray-light);margin-bottom:1.2rem}
+    .article-body strong{color:var(--white);font-weight:600}
+    .article-body ul,.article-body ol{margin:1rem 0 1.5rem 1.5rem}
+    .article-body ul li,.article-body ol li{font-size:.82rem;line-height:1.85;color:var(--gray-light);margin-bottom:.4rem}
+    .article-body ul li::marker,.article-body ol li::marker{color:var(--gold)}
+    .article-body blockquote{border-left:2px solid rgba(155,0,6,.3);padding-left:1rem;color:#ddd;margin:1rem 0 1.5rem;font-size:.84rem;line-height:1.9}
+    .article-cta{background:rgba(155,0,6,.07);border:1px solid rgba(155,0,6,.22);padding:2.2rem 2.5rem;margin:3rem 0;text-align:center}
+    .article-cta p{font-size:.82rem;color:var(--gray-light);margin-bottom:1.2rem;line-height:1.75}
+    .article-cta strong{color:var(--white)}
+    .btn-primary{background:var(--gold);color:var(--black);padding:.9rem 2.2rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;font-family:var(--font-body);display:inline-block;transition:background .3s;margin:.4rem;border:none;cursor:pointer}
+    .btn-primary:hover{background:#D4AF37}
+    .btn-call{background:#1f1f1f;color:var(--white);border:1px solid rgba(255,255,255,.2);padding:.9rem 1.5rem;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;font-family:var(--font-body);display:inline-block;transition:border-color .3s;margin:.4rem}
+    .btn-call:hover{border-color:var(--gold)}
+    .blog-footer{background:var(--black);border-top:1px solid rgba(155,0,6,.15);padding:2.5rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+    .blog-footer-brand{font-family:var(--font-display);font-size:1.2rem}
+    .blog-footer-brand span{color:var(--gold)}
+    .blog-footer-copy{font-size:.65rem;color:var(--gray)}
+    .blog-footer-links{display:flex;gap:1.8rem;flex-wrap:wrap}
+    .blog-footer-links a{font-size:.68rem;color:var(--gray);transition:color .3s}
+    .blog-footer-links a:hover{color:var(--gold)}
+    @media(max-width:1024px){nav{padding:0 2rem}.nav-links{display:none}.hamburger{display:flex}}
+    @media(max-width:768px){nav{padding:0 1.5rem}.article-hero{padding:7rem 1.5rem 2.5rem}.article-wrap{padding:0 1.5rem 4rem}.blog-footer{padding:2rem 1.5rem;text-align:center;flex-direction:column}}
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="../index.html" class="nav-logo"><img src="../FC_LOGO.png" alt="First Class Exotics Logo" style="height:64px;width:auto;margin-right:.9rem;vertical-align:middle;background:transparent;">First Class <span>Exotics</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#fleet">Fleet</a></li>
+    <li><a href="../index.html#occasions">Occasions</a></li>
+    <li><a href="../index.html#family">Our Story</a></li>
+    <li><a href="../index.html#how">How It Works</a></li>
+    <li><a href="../index.html#faq">FAQ</a></li>
+    <li><a href="../vinyl-wrap.html">Vinyl Wraps</a></li>
+    <li><a href="../blog.html" class="active">Blog</a></li>
+    <li><a href="../index.html#booking" class="nav-cta">Reserve Now</a></li>
+  </ul>
+  <div class="hamburger" id="hmb" onclick="openMob()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="closeMob()">&#x2715;</button>
+  <a href="../index.html#fleet" onclick="closeMob()">Fleet</a>
+  <a href="../index.html#occasions" onclick="closeMob()">Occasions</a>
+  <a href="../index.html#family" onclick="closeMob()">Our Story</a>
+  <a href="../index.html#faq" onclick="closeMob()">FAQ</a>
+  <a href="../vinyl-wrap.html" onclick="closeMob()">Vinyl Wraps</a>
+  <a href="../blog.html" onclick="closeMob()">Blog</a>
+  <a href="../index.html#booking" onclick="closeMob()">Reserve</a>
+  <a href="tel:9492945958" onclick="closeMob()" style="color:#9B0006;font-size:2rem">(949) 294-5958</a>
+</div>
+
+<div class="article-hero">
+  <p class="breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../blog.html">Blog</a><span>/</span>${escapeHTML(title)}</p>
+  <p class="eyebrow">${escapeHTML(categoryLabel[opts.category]||'Article')} &middot; First Class Exotics</p>
+  <h1>${escapeHTML(title)}</h1>
+  <p class="article-meta">By First Class Exotics Team &nbsp;&middot;&nbsp; ${opts.readMinutes} min read &nbsp;&middot;&nbsp; ${monthYear}</p>
+</div>
+
+<div class="article-wrap">
+  <img class="article-img" src="${hero.relativeSrc}" alt="${escapeHTML(hero.alt||title)}" width="${hero.width}" height="${hero.height}">
+  <div class="article-body">
+${opts.bodyHtml}
+
+    <div class="article-cta">
+      <p><strong>Ready to book your next exotic experience?</strong><br>Call or text (949) 294-5958 for today's rates and fast concierge support.</p>
+      <a href="tel:9492945958" class="btn-call">Call (949) 294-5958</a>
+      <a href="sms:9492945958" class="btn-primary">Text (949) 294-5958</a>
+    </div>
+  </div>
+${supportImagesHtml}
+</div>
+
+<div style="max-width:900px;margin:0 auto 2rem;padding:0 4rem;">
+  <div class="article-cta" style="text-align:left;">
+    <p class="eyebrow" style="margin-bottom:.8rem;">Related Reads</p>
+    <p style="margin-bottom:.8rem;color:#F5F3EE;font-size:.82rem;line-height:1.8;">Explore more from our blog:</p>
+    <div style="display:flex;flex-direction:column;gap:.45rem;">
+    ${relatedLinks}
+    </div>
+  </div>
+</div>
+
+<div class="blog-footer">
+  <div class="blog-footer-brand">First Class <span>Exotics</span></div>
+  <p class="blog-footer-copy">&copy; 2026 First Class Exotics, LLC. Costa Mesa, CA. Family Owned &amp; Operated.</p>
+  <div class="blog-footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../index.html#fleet">Fleet</a>
+    <a href="../index.html#booking">Reserve Now</a>
+    <a href="tel:9492945958">(949) 294-5958</a>
+    <a href="https://www.instagram.com/1stclassexotics" target="_blank" rel="noopener" title="Instagram" style="display:flex;align-items:center"><svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+  </div>
+</div>
+
+<script>
+function openMob(){document.getElementById('mobMenu').classList.add('open');document.body.style.overflow='hidden';}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open');document.body.style.overflow='';}
+</script>
+
+<div style="position:fixed;bottom:0;left:0;right:0;z-index:998;background:#141414;border-top:1px solid rgba(155,0,6,.3);display:flex;align-items:stretch;gap:1px">
+  <a href="tel:9492945958" style="background:#fff;color:#060606;flex:1;text-align:center;padding:.9rem .5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.4rem;text-decoration:none">&#128222; Call Now</a>
+  <a href="sms:9492945958" style="background:#9B0006;color:#fff;flex:1;text-align:center;padding:.9rem .5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.4rem;text-decoration:none">&#128172; Text Us</a>
+</div>
+</body>
+</html>`;
+}
+
+function renderPreview(meta,body){
+  const summary=`<strong>Slug:</strong> blog/${meta.slug}.html<br><strong>Title tag:</strong> ${escapeHTML(meta.titleTag)}<br><strong>Description:</strong> ${escapeHTML(meta.description)}<br><strong>Images:</strong> ${meta.images.length} (hero + support)<br><strong>Mode:</strong> ${mode==='ai'?'AI Draft':'Paste Article'}`;
+  document.getElementById('previewMeta').innerHTML=summary;
+  document.getElementById('pbody').innerHTML=body;
+}
+
+function getImageSet(slug,title,topic){
+  if(uploadImages.length>0){
+    return uploadImages.map((img,idx)=>({
+      relativeSrc:`../images/blog/${slug}/${idx+1}.jpg`,
+      absoluteSrc:`https://www.firstclassexotics.com/images/blog/${slug}/${idx+1}.jpg`,
+      alt:img.alt||title,
+      width:img.width,
+      height:img.height,
+      uploaded:true,
+      dataBase64:img.dataBase64
+    }));
+  }
+
+  let fallback='';
+  try{fallback=sanitizeUnsplash(document.getElementById('iu').value);}catch(err){throw err;}
+  if(!fallback){
+    fallback=topicToLocalImg(`${title} ${topic}`);
+  }
+  return [{
+    relativeSrc:fallback,
+    absoluteSrc:absoluteImageUrl(fallback),
+    alt:title,
+    width:1600,
+    height:1067,
+    uploaded:false,
+    dataBase64:''
+  }];
+}
+
+function prepareArticle(rawBody){
+  const title=(document.getElementById('ti').value.trim() || document.getElementById('topic').value.trim() || 'First Class Exotics Blog').trim();
+  const slugInput=document.getElementById('su').value.trim();
+  const slug=slugify(slugInput || title);
+  if(!slug){throw new Error('Please enter a valid title or slug.');}
+
+  const body=sanitizeArticleHtml(rawBody||'');
+  if(!body){throw new Error('Article body is empty after sanitizing.');}
+
+  const category=document.getElementById('ci').value;
+  const keywords=(document.getElementById('kw').value.trim() || topicToKeywords(title));
+  const customDescription=document.getElementById('md').value.trim();
+  const description=(customDescription || firstParagraphSummary(body) || `Read ${title} from First Class Exotics.`).slice(0,155);
+  const images=getImageSet(slug,title,document.getElementById('topic').value.trim());
+  const readMinutes=estimateReadMinutes(body);
+
+  const html=buildArticlePage({
+    slug,
+    title,
+    category,
+    keywords,
+    description,
+    bodyHtml:body,
+    images,
+    readMinutes
+  });
+
+  const cardImage=images[0].relativeSrc.startsWith('../') ? normalizeRelativeImagePath(images[0].relativeSrc) : images[0].relativeSrc;
+  const card=buildCardMarkup({
+    slug,
+    title,
+    category,
+    excerpt:description,
+    imageSrc:cardImage,
+    readMinutes
+  });
+
+  return {
+    slug,
+    title,
+    titleTag:capTitleForTag(title),
+    description,
+    body,
+    html,
+    card,
+    images,
+    keywords
+  };
+}
 
 async function generate(){
-  const topic=document.getElementById('ti').value.trim();
-  if(!topic){toast('Please enter a topic.');return}
-  ltopic=topic;lcat=document.getElementById('ci').value;
-  lslug=document.getElementById('su').value.trim()||slugify(topic);
-  const keywords=document.getElementById('kw').value.trim()||topicToKeywords(topic);
-  heroImg=document.getElementById('iu').value.trim()||topicToLocalImg(topic);
-  load('Claude is writing your article…');
+  if(mode!=='ai') return;
+  const topic=document.getElementById('topic').value.trim();
+  if(!topic){toast('Please enter a generate topic.');return;}
+
+  const titleInput=document.getElementById('ti');
+  if(!titleInput.value.trim()) titleInput.value=topic;
+  if(!document.getElementById('su').value.trim()) document.getElementById('su').value=slugify(titleInput.value);
+
+  load('Claude is writing your draft…');
   try{
-    const r=await fetch('/.netlify/functions/blog-publisher',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({operation:'generate',password:PASSWORD,topic,keywords,heroImg})});
-    if(!r.ok){const e=await r.json();throw new Error(e.error||r.statusText)}
-    const d=await r.json();
-    let body=d.content?.trim()||d.completion?.trim();
-    if(!body){throw new Error('No content returned')}
-    body=body.replace(/^```html\s*/i,'').replace(/^```\s*/i,'').replace(/\s*```$/,'').trim();
-    const headline=body.match(/<h1[^>]*>(.*?)<\/h1>/i)?.[1]||topic;
-    const desc=(body.match(/<p[^>]*>(.*?)<\/p>/i)?.[1]||'').replace(/<[^>]+>/g,'').slice(0,160);
-    const pagePath=`blog/${lslug}.html`;
-    card=`<a href="${pagePath}"><h3>${headline}</h3></a>`;
-    pageHtml=buildArticlePage({title:headline,category:lcat,keywords,description:desc,heroImg,htmlBody:body,pagePath});
-    document.getElementById('pbody').innerHTML=body;
-    loadOff();showStep('st-preview');
-  }catch(e){loadOff();toast('Error: '+e.message)}
+    const response=await fetch('/.netlify/functions/blog-publisher',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        operation:'generate',
+        password:PASSWORD,
+        topic,
+        category:document.getElementById('ci').value,
+        keywords:document.getElementById('kw').value.trim(),
+        notes:document.getElementById('notes').value.trim()
+      })
+    });
+
+    const data=await response.json();
+    if(!response.ok){throw new Error(data.error||response.statusText);}
+
+    let body=(data.content||'').trim().replace(/^```html\s*/i,'').replace(/^```\s*/i,'').replace(/\s*```$/,'').trim();
+    if(!body){throw new Error('No content returned.');}
+
+    const headingMatch=body.match(/<h1[^>]*>(.*?)<\/h1>/i);
+    if(headingMatch && !document.getElementById('ti').value.trim()){
+      document.getElementById('ti').value=stripTags(headingMatch[1]);
+      document.getElementById('su').value=slugify(stripTags(headingMatch[1]));
+    }
+
+    const prepared=prepareArticle(body);
+    generatedBody=prepared.body;
+    pageHtml=prepared.html;
+    cardMarkup=prepared.card;
+    publishSlug=prepared.slug;
+    renderPreview(prepared,prepared.body);
+    showStep('st-preview');
+    loadOff();
+  }catch(err){
+    loadOff();
+    toast('Error: '+err.message);
+  }
+}
+
+function preparePaste(){
+  if(mode!=='paste') return;
+  try{
+    const raw=document.getElementById('pasteBody').value.trim();
+    if(!raw){throw new Error('Paste Article body is required in Paste mode.');}
+    const prepared=prepareArticle(raw);
+    generatedBody=prepared.body;
+    pageHtml=prepared.html;
+    cardMarkup=prepared.card;
+    publishSlug=prepared.slug;
+    renderPreview(prepared,prepared.body);
+    showStep('st-preview');
+  }catch(err){
+    toast('Error: '+err.message);
+  }
 }
 
 async function publish(){
-  if(!pageHtml){toast('Generate first.');return}
-  load('Publishing…');
+  if(!pageHtml || !cardMarkup || !publishSlug){
+    toast('Generate or build preview first.');
+    return;
+  }
+
+  const uploadedPayload=uploadImages.map((img,idx)=>(
+    {index:idx+1,alt:img.alt||'',width:img.width,height:img.height,dataBase64:img.dataBase64}
+  ));
+
+  const payload={
+    operation:'publish',
+    password:PASSWORD,
+    pageHtml,
+    card:cardMarkup,
+    lslug:publishSlug,
+    images:uploadedPayload
+  };
+
+  const payloadBytes=new Blob([JSON.stringify(payload)]).size;
+  if(payloadBytes>MAX_PAYLOAD_BYTES){
+    toast('Publish payload exceeds 5MB. Remove images or use fewer uploads.');
+    return;
+  }
+
+  load('Publishing to GitHub…');
   try{
-    const r=await fetch('/.netlify/functions/blog-publisher',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({operation:'publish',password:PASSWORD,pageHtml,card,lslug})});
-    if(!r.ok){const e=await r.json();throw new Error(e.error||r.statusText)}
-    loadOff();showStep('st-done');
-  }catch(e){loadOff();toast('Error: '+e.message)}
+    const response=await fetch('/.netlify/functions/blog-publisher',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload)
+    });
+    const data=await response.json();
+
+    if(response.status===409){
+      throw new Error(data.error || 'Post with this slug already exists');
+    }
+    if(!response.ok){
+      throw new Error(data.error || response.statusText);
+    }
+
+    loadOff();
+    showStep('st-done');
+  }catch(err){
+    loadOff();
+    toast('Error: '+err.message);
+  }
 }
 
-function showStep(id){document.querySelectorAll('.step').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active')}
-function reset(){document.querySelectorAll('.chip').forEach(c=>c.classList.remove('on'));document.getElementById('ti').value='';document.getElementById('su').value='';document.getElementById('kw').value='';document.getElementById('iu').value='';card='';pageHtml='';showStep('st-topic')}
-function load(m){document.getElementById('lmsg').textContent=m;document.getElementById('loader').classList.add('on')}
-function loadOff(){document.getElementById('loader').classList.remove('on')}
-let tt;function toast(m){const t=document.getElementById('toast');t.textContent=m;t.style.display='block';clearTimeout(tt);tt=setTimeout(()=>{t.style.display='none'},4000)}
+async function handleImageSelect(event){
+  const files=Array.from(event.target.files||[]);
+  const title=document.getElementById('ti').value.trim();
+  const limited=files.slice(0,MAX_IMAGES);
+  if(files.length>MAX_IMAGES){
+    showImageError(`Only ${MAX_IMAGES} images allowed. Extra files were ignored.`);
+  }else{
+    showImageError('');
+  }
+
+  try{
+    const next=[];
+    for(let i=0;i<limited.length;i++){
+      const processed=await processImageFile(limited[i]);
+      next.push({
+        name:limited[i].name,
+        alt:title||`First Class Exotics blog image ${i+1}`,
+        altTouched:false,
+        width:processed.width,
+        height:processed.height,
+        sizeBytes:processed.sizeBytes,
+        previewUrl:processed.previewUrl,
+        dataBase64:processed.dataBase64
+      });
+    }
+    uploadImages=next;
+    renderImagePreviews();
+    const bytes=estimatePublishPayloadBytes();
+    if(bytes>MAX_PAYLOAD_BYTES){
+      uploadImages=[];
+      renderImagePreviews();
+      showImageError('Images push payload above 5MB. Use smaller/fewer files.');
+    }
+    updatePayloadEstimate();
+  }catch(err){
+    uploadImages=[];
+    renderImagePreviews();
+    showImageError(`Image processing failed: ${err.message}`);
+    updatePayloadEstimate();
+  }
+}
+
+function showImageError(msg){
+  const el=document.getElementById('imageError');
+  if(!msg){
+    el.style.display='none';
+    el.textContent='';
+    return;
+  }
+  el.style.display='block';
+  el.textContent=msg;
+}
+
+function renderImagePreviews(){
+  const wrap=document.getElementById('imagePreview');
+  const count=document.getElementById('imageCount');
+  wrap.innerHTML='';
+  if(uploadImages.length===0){
+    count.textContent='0 images selected';
+    return;
+  }
+
+  count.textContent=`${uploadImages.length} image${uploadImages.length===1?'':'s'} selected`;
+  uploadImages.forEach((img,idx)=>{
+    const el=document.createElement('div');
+    el.className='thumb';
+    el.innerHTML=`
+      <div class="tag">${idx===0?'Hero Image':`Support ${idx}`}</div>
+      <img src="${img.previewUrl}" alt="preview ${idx+1}">
+      <input type="text" value="${escapeHTML(img.alt)}" data-idx="${idx}" placeholder="Alt text">
+      <div style="margin-top:.35rem;color:#8a8a8a;font-size:.68rem">${img.width}x${img.height}</div>
+    `;
+    const input=el.querySelector('input');
+    input.addEventListener('input',(e)=>{
+      const i=Number(e.target.getAttribute('data-idx'));
+      uploadImages[i].alt=e.target.value.trim();
+      uploadImages[i].altTouched=true;
+    });
+    wrap.appendChild(el);
+  });
+}
+
+function processImageFile(file){
+  return new Promise((resolve,reject)=>{
+    const fr=new FileReader();
+    fr.onload=()=>{
+      const img=new Image();
+      img.onload=()=>{
+        const maxWidth=1600;
+        const scale=img.width>maxWidth?maxWidth/img.width:1;
+        const width=Math.round(img.width*scale);
+        const height=Math.round(img.height*scale);
+        const canvas=document.createElement('canvas');
+        canvas.width=width;
+        canvas.height=height;
+        const ctx=canvas.getContext('2d');
+        ctx.drawImage(img,0,0,width,height);
+        const dataUrl=canvas.toDataURL('image/jpeg',0.8);
+        const dataBase64=dataUrl.split(',')[1] || '';
+        const sizeBytes=Math.ceil((dataBase64.length*3)/4);
+        resolve({previewUrl:dataUrl,dataBase64,width,height,sizeBytes});
+      };
+      img.onerror=()=>reject(new Error('invalid image'));img.src=fr.result;
+    };
+    fr.onerror=()=>reject(new Error('read failure'));
+    fr.readAsDataURL(file);
+  });
+}
+
+function estimatePublishPayloadBytes(){
+  const dummy={
+    operation:'publish',
+    password:PASSWORD,
+    pageHtml:pageHtml||'',
+    card:cardMarkup||'',
+    lslug:publishSlug||slugify(document.getElementById('su').value||document.getElementById('ti').value),
+    images:uploadImages.map((img,idx)=>({index:idx+1,alt:img.alt,width:img.width,height:img.height,dataBase64:img.dataBase64}))
+  };
+  return new Blob([JSON.stringify(dummy)]).size;
+}
+
+function updatePayloadEstimate(){
+  const bytes=estimatePublishPayloadBytes();
+  const kb=Math.round(bytes/1024);
+  const maxKb=Math.round(MAX_PAYLOAD_BYTES/1024);
+  document.getElementById('sizeInfo').textContent=`Payload estimate: ${kb} KB / ${maxKb} KB`;
+}
+
+function showStep(id){
+  document.querySelectorAll('.step').forEach(step=>step.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function resetForm(){
+  generatedBody='';
+  pageHtml='';
+  cardMarkup='';
+  publishSlug='';
+  uploadImages=[];
+  document.getElementById('ti').value='';
+  document.getElementById('su').value='';
+  document.getElementById('kw').value='';
+  document.getElementById('md').value='';
+  document.getElementById('topic').value='';
+  document.getElementById('notes').value='';
+  document.getElementById('pasteBody').value='';
+  document.getElementById('iu').value='';
+  document.getElementById('imageInput').value='';
+  renderImagePreviews();
+  updatePayloadEstimate();
+  setMode('ai');
+  showStep('st-topic');
+}
+
+function load(message){
+  document.getElementById('lmsg').textContent=message;
+  document.getElementById('loader').classList.add('on');
+}
+
+function loadOff(){
+  document.getElementById('loader').classList.remove('on');
+}
+
+let toastTimer;
+function toast(message){
+  const t=document.getElementById('toast');
+  t.textContent=message;
+  t.style.display='block';
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>{t.style.display='none';},4200);
+}
 </script>
 
 </body>
