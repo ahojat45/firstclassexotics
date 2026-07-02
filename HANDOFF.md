@@ -21,6 +21,7 @@
   - /irvineluxurycarrental, /costamesaexoticcarrental, /supercarrentalslosangeles
   - /about-2, /our-fleet, /contact-4, /miamibluelamborghinievo
 - Redirects pushed live on Netlify July 2
+- July 2 — Root cause #2 found and fixed: Netlify primary domain was the apex (firstclassexotics.com), but canonicals, sitemap, and GSC property all use www. Every sitemap URL was 301-redirecting, creating a canonical loop. Fixed by setting www.firstclassexotics.com as primary domain in Netlify dashboard. Sitemap resubmitted in GSC same day (22 pages discovered). NOTE: apex now redirects to www — this is correct and intentional, do not change.
 - Rebuilt sitemap.xml — now 22 correct canonical URLs (was 16)
 - Sitemap manually resubmitted in GSC June 30
 - Expect indexing improvement over 1-2 weeks
@@ -82,7 +83,7 @@ Fix needed:
 - Clicks last 28 days as of June 30: 257 (down 28% — migration related, expected to recover)
 - Impressions: 17.5K (down 10%)
 - Indexed pages: 25 (target: 50+ once Google recrawls sitemap)
-- Check GSC again July 9-16 to verify indexing improvement
+- Check GSC again July 9-16; expect indexed count to climb from 25. Brief dip or "page with redirect" notices in the first few days are normal.
 
 ---
 
