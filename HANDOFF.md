@@ -15,6 +15,43 @@
 
 ## ✅ What's Been Done (Most Recent First)
 
+### Blog Publisher v2 Live — July 2 2026
+- Rebuilt `blog-publisher.html` + `netlify/functions/blog-publisher.js` end-to-end for production-safe publishing.
+- New article template now ships SEO-complete by default:
+  - canonical `https://www.firstclassexotics.com/blog/{slug}.html`
+  - title tag capped to 60 chars including `| First Class Exotics`
+  - meta description from dedicated field (fallback: first intro text, capped)
+  - exactly one template H1 (body H1 is stripped)
+  - `Article` + `BreadcrumbList` JSON-LD
+  - OG image always absolute URL
+  - hero + support image handling with width/height attrs and lazy loading on support images
+  - related section before footer (2 blog links + brand landing link when relevant + `/#fleet`)
+  - CTA block with both call and text links to `(949) 294-5958`
+- Added mode toggle: `AI Draft` vs `Paste Article`
+  - Paste mode sanitizes HTML body (strips script/style/iframe)
+  - fields include title/category/keywords/meta description + body HTML
+- Added image upload pipeline (max 5 images):
+  - client-side resize to max width 1600, JPEG quality 0.8
+  - preview thumbnails + per-image alt text (default title)
+  - first upload is hero image
+  - payload-size counter + hard stop at 5MB request body
+- Backend hardening in Netlify function:
+  - checks for existing slug first and returns `409 {"error":"Post with this slug already exists"}`
+  - slug normalization tightened (lowercase, punctuation stripped, hyphenated, max 60 chars)
+  - uploaded images are committed to `images/blog/{slug}/{n}.jpg` via GitHub API before article publish
+  - sitemap auto-append of new blog URL in `sitemap.xml`
+- Generate mode upgraded:
+  - optional Notes / angle / facts input included in prompt
+  - prompt rewritten to require practical detail and avoid cliche language
+  - model remains `claude-haiku-4-5-20251001`
+  - `max_tokens` increased to `2048` and verified with live generate test (no timeout)
+- Added `Blog` JSON-LD schema to `blog.html` index page.
+- Live validation completed:
+  - published `test-publisher-rebuild` through live publisher in Paste mode with 2 uploaded images
+  - verified live article (200), schema present, related links present, image attrs present, and sitemap append
+  - verified duplicate-slug guard via live `409` response
+  - clean rollback completed: removed test post file, card, sitemap entry, and uploaded test images
+
 ### 9 SEO Landing Pages Live — July 2 2026
 - Launched 9 new SEO landing pages with unique long-form copy, schema (AutoRental + FAQPage + BreadcrumbList), and optimized local image galleries:
   - https://www.firstclassexotics.com/rent-lamborghini-orange-county.html
@@ -67,22 +104,38 @@
 
 ## 🐛 Known Pending Issues
 
-### 1. Blog Publisher Duplicate Card Bug (TOP PRIORITY)
-When publishing a new post, if slug already exists in blog.html, creates duplicate card + orphan link.
-Fix needed:
-- Before inserting new card into blog.html, check if slug already exists — skip if it does
-- Sanitize Unsplash URLs: replace &amp; with & before saving
-
-### 2. Expired GitHub Token
+### 1. Expired GitHub Token
 - "First Class Exotics Blog" token expired June 12 2026
 - Can safely delete from github.com/settings/tokens
 - Active token: "FCE Blog Publisher" (no expiration) — leave alone
 
-### 3. SEO Roadmap (Remaining)
+### 2. SEO Roadmap (Remaining)
 - Launch city landing pages for additional primary SoCal service areas (Irvine, Los Angeles, Beverly Hills first)
 - Build model-level landing pages for highest-intent vehicles and trims
 - Build dedicated car detail pages for each fleet vehicle
 - Correct Yelp phone number to match official business line
+
+---
+
+## 🧭 Publisher v2 Flow (Do This Every Time)
+1. Open `https://www.firstclassexotics.com/blog-publisher.html` and log in with password `FCE2026`.
+2. Choose mode:
+  - `AI Draft` for generated first draft
+  - `Paste Article` for final human-written HTML body
+3. Fill title, slug, category, keywords, and meta description.
+4. Add optional Notes (AI mode) for real facts/angle.
+5. Upload 1-5 images (preferred) and set alt text per image.
+6. If no uploads, provide valid Unsplash URL (`https://images.unsplash.com/...`) or rely on brand-aware local fallback.
+7. Build/Generate preview and verify:
+  - single H1
+  - clean headings/body
+  - metadata and related links shown in preview summary
+8. Publish.
+9. Confirm live:
+  - `https://www.firstclassexotics.com/blog/{slug}.html` returns 200
+  - card appears once in `blog.html`
+  - URL appears in `sitemap.xml`
+10. If publish returns 409, slug already exists; change slug/title and republish.
 
 ---
 
@@ -112,5 +165,5 @@ Fix needed:
 ## ⚠️ Rules
 - NEVER touch Wix DNS or MX records
 - NEVER alter site content during technical fixes
-- Blog publisher model must stay as claude-haiku-4-5-20251001 with max_tokens: 1024
+- Blog publisher model must stay as claude-haiku-4-5-20251001 with max_tokens: 2048
 - All repo work via Claude Code (Ace) — planning chat handles diagnosis only
