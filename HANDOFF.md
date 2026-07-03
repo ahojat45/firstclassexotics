@@ -15,6 +15,13 @@
 
 ## ✅ What's Been Done (Most Recent First)
 
+### July 3 2026 Session Notes
+- **CRITICAL city landing page URL pattern:** city pages must be `exotic-car-rental-{city}.html` with the city name LAST. Examples: `exotic-car-rental-irvine.html`, `exotic-car-rental-huntington-beach.html`, `exotic-car-rental-laguna-beach.html`, `exotic-car-rental-newport-beach.html`.
+- A city-first guess like `irvine-exotic-car-rental.html` caused a 404 and a rejected GSC indexing request today. All future city pages (Anaheim, Costa Mesa, LA, Beverly Hills) must follow the same pattern.
+- GSC status (July 3): Request Indexing was completed on desktop for all 4 city pages (Irvine, Huntington Beach, Laguna Beach, Newport Beach). All show "Indexing requested." Current report is 24 indexed / 38 not indexed, down from 81 as old Wix URLs flush out.
+- Recrawl checkpoint: July 9-16. Indexed count is expected to climb toward the 33 URLs currently in sitemap.
+- Open GSC noindex item: repo scan found `noindex` only in `404.html`, `privacy.html`, and `terms.html`. No real page, blog post, fleet page, or `blog-publisher.html` contains `noindex`, so no code change is needed for this item.
+
 ### Evening SEO + Publisher Fixes — July 2 2026
 - Fixed slug accent transliteration in `buildSlug` in `blog-publisher.html` using Unicode normalization (`normalize('NFD')` + combining-mark strip) so `Huracán` now becomes `huracan`.
   - Commit: `1d8e92c`
