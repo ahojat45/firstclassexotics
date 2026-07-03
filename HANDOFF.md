@@ -15,6 +15,23 @@
 
 ## ✅ What's Been Done (Most Recent First)
 
+### Evening SEO + Publisher Fixes — July 2 2026
+- Fixed slug accent transliteration in `buildSlug` in `blog-publisher.html` using Unicode normalization (`normalize('NFD')` + combining-mark strip) so `Huracán` now becomes `huracan`.
+  - Commit: `1d8e92c`
+- Launched new city landing pages:
+  - Irvine: `https://www.firstclassexotics.com/exotic-car-rental-irvine.html` (commit `3da1eac`)
+  - Huntington Beach: `https://www.firstclassexotics.com/exotic-car-rental-huntington-beach.html` (commit `11efec1`)
+  - Laguna Beach: `https://www.firstclassexotics.com/exotic-car-rental-laguna-beach.html` (commit `3d89ad8`)
+- Upgraded Newport Beach city page to current standard and added dedicated Corona del Mar section:
+  - `https://www.firstclassexotics.com/exotic-car-rental-newport-beach.html` (commit `35e6609`)
+- Repointed legacy Wix Irvine URL redirect from homepage to the new Irvine landing page:
+  - `/irvineluxurycarrental` now redirects to `/exotic-car-rental-irvine.html` (301)
+  - Commit: `3649eda`
+- Audited Netlify legacy redirects for new city pages:
+  - No legacy Huntington Beach redirect existed.
+  - No legacy Laguna Beach redirect existed.
+- Sitemap updated to 33 live URLs.
+
 ### Blog Publisher v2 Live — July 2 2026
 - Rebuilt `blog-publisher.html` + `netlify/functions/blog-publisher.js` end-to-end for production-safe publishing.
 - First real article published via Publisher v2 Paste Mode: `blog/lamborghini-temerario-the-huracan-era-is-ending.html` (Temerario/Huracan story using Ali's own Huracan photo).
@@ -113,16 +130,9 @@
 - Can safely delete from github.com/settings/tokens
 - Active token: "FCE Blog Publisher" (no expiration) — leave alone
 
-### 2. Publisher v2 Minor Bug (Low Priority Next Session)
-- Slug generator currently drops accented characters instead of transliterating (example: `Hurac\u00e1n` can become `huracn` if not manually corrected).
-- This was manually corrected for the real July 2 Temerario/Huracan post.
-- Patch needed in `buildSlug` in `blog-publisher.html`:
-  - normalize accents via `String.normalize('NFD')`
-  - strip combining marks
-  - keep existing cleanup and filler-word stripping behavior
-
-### 3. SEO Roadmap (Remaining)
-- Launch city landing pages for additional primary SoCal service areas (Irvine, Los Angeles, Beverly Hills first)
+### 2. SEO Roadmap (Remaining)
+- Launch city landing pages in controlled batches (2-3 per week max): Anaheim + Costa Mesa next.
+- Then move to Los Angeles + Beverly Hills city pages.
 - Build model-level landing pages for highest-intent vehicles and trims
 - Build dedicated car detail pages for each fleet vehicle
 - Correct Yelp phone number to match official business line
@@ -153,7 +163,7 @@
 
 ## 🔧 Key Files
 - netlify.toml — redirects config (7 Wix-era 301s + 3 internal redirects)
-- sitemap.xml — 30 live URLs (includes 9 new SEO landing pages as of July 2)
+- sitemap.xml — 33 live URLs (includes Irvine, Huntington Beach, and Laguna Beach city pages)
 - blog-publisher.html — password: FCE2026
 - blog.html — main blog index page
 - index.html — homepage
@@ -170,7 +180,13 @@
 - Clicks last 28 days as of June 30: 257 (down 28% — migration related, expected to recover)
 - Impressions: 17.5K (down 10%)
 - Indexed pages: 25 (target: 50+ once Google recrawls sitemap)
-- Check GSC again during week of July 9-16; expect indexed count to climb from 25 with 30 URLs currently in sitemap. Brief dip or "page with redirect" notices in the first few days are normal.
+- Check GSC again during week of July 9-16; expect indexed count to climb from 25 with 33 URLs currently in sitemap. Brief dip or "page with redirect" notices in the first few days are normal.
+- PENDING TOMORROW: Request indexing in GSC for the 4 city URLs:
+  - `https://www.firstclassexotics.com/exotic-car-rental-irvine.html`
+  - `https://www.firstclassexotics.com/exotic-car-rental-huntington-beach.html`
+  - `https://www.firstclassexotics.com/exotic-car-rental-laguna-beach.html`
+  - `https://www.firstclassexotics.com/exotic-car-rental-newport-beach.html`
+  - Must be done from desktop with the verified GSC account; MacBook Google account is not verified for this property.
 
 ---
 
