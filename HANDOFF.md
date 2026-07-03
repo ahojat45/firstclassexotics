@@ -17,6 +17,8 @@
 
 ### Blog Publisher v2 Live — July 2 2026
 - Rebuilt `blog-publisher.html` + `netlify/functions/blog-publisher.js` end-to-end for production-safe publishing.
+- First real article published via Publisher v2 Paste Mode: `blog/lamborghini-temerario-the-huracan-era-is-ending.html` (Temerario/Huracan story using Ali's own Huracan photo).
+- Publisher v2 workflow confirmed working end-to-end in production with a real non-test post.
 - New article template now ships SEO-complete by default:
   - canonical `https://www.firstclassexotics.com/blog/{slug}.html`
   - title tag capped to 60 chars including `| First Class Exotics`
@@ -30,6 +32,7 @@
 - Added mode toggle: `AI Draft` vs `Paste Article`
   - Paste mode sanitizes HTML body (strips script/style/iframe)
   - fields include title/category/keywords/meta description + body HTML
+  - Publishing workflow rule: articles researched/written by Claude chat go in via `Paste Article` tab, never via AI Draft topic box (to avoid rewrites and factual drift)
 - Added image upload pipeline (max 5 images):
   - client-side resize to max width 1600, JPEG quality 0.8
   - preview thumbnails + per-image alt text (default title)
@@ -99,6 +102,7 @@
 ### Homepage
 - Elfsight Google Reviews widget live (ID: 2c1fd891-04c1-41e3-b373-10268396653b) — 5.0 stars, 75 reviews
 - Elfsight Instagram widget live (ID: e190139a-b69b-47b3-9345-57192bd5ce39)
+- Elfsight status update (July 2): Google Reviews widget moved to paid Basic-Yearly plan after view-limit outage; Instagram widget already paid. Both are live and verified on homepage, no replacement needed.
 
 ---
 
@@ -109,7 +113,15 @@
 - Can safely delete from github.com/settings/tokens
 - Active token: "FCE Blog Publisher" (no expiration) — leave alone
 
-### 2. SEO Roadmap (Remaining)
+### 2. Publisher v2 Minor Bug (Low Priority Next Session)
+- Slug generator currently drops accented characters instead of transliterating (example: `Hurac\u00e1n` can become `huracn` if not manually corrected).
+- This was manually corrected for the real July 2 Temerario/Huracan post.
+- Patch needed in `buildSlug` in `blog-publisher.html`:
+  - normalize accents via `String.normalize('NFD')`
+  - strip combining marks
+  - keep existing cleanup and filler-word stripping behavior
+
+### 3. SEO Roadmap (Remaining)
 - Launch city landing pages for additional primary SoCal service areas (Irvine, Los Angeles, Beverly Hills first)
 - Build model-level landing pages for highest-intent vehicles and trims
 - Build dedicated car detail pages for each fleet vehicle
@@ -158,7 +170,7 @@
 - Clicks last 28 days as of June 30: 257 (down 28% — migration related, expected to recover)
 - Impressions: 17.5K (down 10%)
 - Indexed pages: 25 (target: 50+ once Google recrawls sitemap)
-- Check GSC again July 9-16; expect indexed count to climb from 25. Brief dip or "page with redirect" notices in the first few days are normal.
+- Check GSC again during week of July 9-16; expect indexed count to climb from 25 with 30 URLs currently in sitemap. Brief dip or "page with redirect" notices in the first few days are normal.
 
 ---
 
