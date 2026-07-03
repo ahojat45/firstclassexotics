@@ -305,6 +305,8 @@ function escapeHTML(s){
 
 function slugify(s){
   return String(s||'')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,'')
     .toLowerCase()
     .replace(/&amp;/g,' and ')
     .replace(/&/g,' and ')
