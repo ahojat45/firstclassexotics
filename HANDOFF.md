@@ -137,6 +137,60 @@ The CRM/customer core is now Module 1, not Module 2. Rationale: every other feat
 - Recommend evaluating Netlify-friendly options like Neon/Supabase Postgres in the build session.
 - Keep FCE OS code organized so it can be separated from the marketing site later.
 
+### Module 1 Build Status (July 6, 2026)
+- Module 1 (Customer & Lead Core) is now implemented in-repo under isolated paths:
+  - Frontend: `fce-os/index.html`, `fce-os/styles.css`, `fce-os/app.js`
+  - DB migration: `fce-os/db/migrations/001_module1_customer_lead_core.sql`
+  - Setup runbook: `fce-os/SETUP.md`
+  - Backend functions: `netlify/functions/fce-os-*.js` plus `netlify/functions/submission-created.js`
+- No marketing page UX changes were made.
+
+### Module 1 Schema Summary
+- `lead_sources`: Website, Instagram, Referral, Phone (+ referral requirement flag)
+- `customers`: contact info, notes, source, status (`lead`/`customer`), requested vehicle/dates/delivery, DL + insurance pointers/expiration fields
+- `leads`: one pipeline record per customer, stage enum (`New`, `Contacted`, `Quoted`, `Booked`, `Lost`), stage timestamp
+- `lead_stage_history`: from/to stage audit trail with timestamps and actor
+- `documents`: DL/insurance docs tied to customer with private storage path + expiration date
+
+### Module 1 Features Implemented
+- Password-gated CRM dashboard with server-side auth cookie session (separate from blog password)
+- Pipeline board with 5 stages and lead cards showing source, requested vehicle/dates, and days-in-stage
+- Stage updates via drag-and-drop and per-card stage picker
+- Manual lead quick-add for Phone/Instagram/Referral (includes referred-by)
+- Customer list + search (name/phone/email)
+- Customer detail editor (contact, notes, requested rental fields)
+- Document uploads for DL and insurance with expiration date tracking
+- Expiration alert panel for expired or <=30 day DL/insurance docs
+- Website booking form intake via `submission-created` function to auto-create Website leads in `New`
+
+### FCE OS Dashboard URL + Auth
+- URL: `/fce-os/index.html`
+- Auth model:
+  - Login posts to `/.netlify/functions/fce-os-auth-login`
+  - Password env var: `FCE_OS_DASHBOARD_PASSWORD` (new password; never use `FCE2026`)
+  - Session cookie signed with `FCE_OS_SESSION_SECRET` (HTTP-only, SameSite=Lax)
+  - Protected API functions require valid session cookie
+
+### Required Env Vars (Netlify)
+- `SUPABASE_URL`
+- `SUPABASE_SERVICE_ROLE_KEY`
+- `SUPABASE_ANON_KEY` (reserved for later client-side module work)
+- `SUPABASE_STORAGE_BUCKET` (set to `fce-os-documents`)
+- `FCE_OS_DASHBOARD_PASSWORD`
+- `FCE_OS_SESSION_SECRET`
+
+### External Setup Required Before Live E2E
+- Create Supabase project + private storage bucket `fce-os-documents`
+- Run migration: `fce-os/db/migrations/001_module1_customer_lead_core.sql`
+- Add env vars above in Netlify
+- Detailed step-by-step is in `fce-os/SETUP.md`
+
+### Module 2 Dependencies from Module 1
+- Reuse `customers` as the canonical record for agreement generation
+- Reuse `leads` + `lead_stage_history` for agreement-triggered lifecycle transitions
+- Extend `documents` for agreement PDFs, condition photos, and signed artifacts
+- Keep `Booked` transition as the conversion anchor for rental operations workflows
+
 ---
 
 ## 🔧 Key Files
