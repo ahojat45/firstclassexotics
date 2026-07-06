@@ -91,24 +91,15 @@
 
 ## ⏳ Pending Tasks
 
-### 1) Fleet Page Update (waiting on Ali)
-Do not start until Ali provides:
-1. Car list (make/model/year/color)
-2. Photo location (`May 7 Car Photos` or `20 Car Photos`) and destination (on-site vs Google Drive lightbox)
-3. Pricing/details format or instruction to mirror existing fleet cards
+### Completed July 6, 2026
+- Fleet update DONE and verified live (commits `7c5c69f`, `20a7111`): Chevrolet Corvette C8 Z51 (3LT, White) and 2025 Cadillac Escalade ESV (Black) added to `index.html`.
+- Included fleet cards with 5-image Drive lightboxes each, standard spec-line format, and booking form dropdown entries (Corvette under Chevrolet optgroup, new Cadillac optgroup for the Escalade).
+- Fleet page task is CLOSED.
 
-Implementation requirements when details arrive:
-- Follow existing fleet card + lightbox pattern in `index.html`
-- For Google Drive thumbnails, use:
-  - `https://drive.google.com/thumbnail?id=FILE_ID&sz=w800`
-- Optimize/compress any on-site images
-- No base64 embeds
-- Use lazy-loading
-- If any new pages are created, update `sitemap.xml`
-
-### 2) GSC noindex Verification
-- Confirm excluded page identity in GSC.
-- Treat `blog-publisher.html` as intentional noindex; fix any other page if flagged.
+### Still Pending (carry forward)
+- Verify GSC "Excluded by noindex" page is `blog-publisher.html` (intentional). If any other page, remove the noindex.
+- GSC recrawl checkpoint July 9-16: indexed count expected to climb toward 33.
+- Next city landing page batch (max 2-3/week): Anaheim + Costa Mesa, then LA + Beverly Hills, then model-level car pages.
 
 ---
 
@@ -119,22 +110,32 @@ Goal:
 - Run FCE operations on it for 2-3 months.
 - Then productize for OC/LA fleet-owner network.
 
-### Module 1 Scope (Now)
-- Digital rental agreements (customer completes on phone)
+### Updated Module Order (supersedes previous scope order)
+The CRM/customer core is now Module 1, not Module 2. Rationale: every other feature (agreements, e-sign, documents, deposits) hangs off the customer record, and the existing Netlify booking form can feed leads into the CRM from day one.
+
+### Module 1 — Customer & Lead Core
+- Customer records (contact info, notes, rental history)
+- Lead pipeline with stages (New -> Contacted -> Quoted -> Booked -> Lost)
+- Lead source tracking (Website, Instagram, Referral, Phone)
+- Automatic lead capture from the existing `index.html` booking form via Netlify Function
+- DL + insurance card uploads on the customer record with expiration-date tracking
+
+### Module 2 — Rental Operations
+- Digital rental agreements (customer fills on phone)
 - E-signature
 - Condition photos at pickup/return
 - Deposit tracking (hold -> release)
-- Customer document uploads on customer record:
-  - driver's license
-  - insurance card
-- Expiration-date tracking for re-verification reminders
+- Signed agreement auto-converts lead -> customer
 
-### Module 2 Scope (Next)
-- CRM layer with customer records auto-created from signed agreements
-- Rental history timeline
-- Lead pipeline with source tracking
+### Module 3 — Revenue Layer
 - Automated follow-ups
-- Repeat-customer tiers for upsells
+- 90-day win-backs
+- Repeat-customer tiers flagged for chauffeur/corporate upsells
+
+### Infrastructure Note
+- Site is static HTML on Netlify, so FCE OS will use Netlify Functions + a hosted database.
+- Recommend evaluating Netlify-friendly options like Neon/Supabase Postgres in the build session.
+- Keep FCE OS code organized so it can be separated from the marketing site later.
 
 ---
 
