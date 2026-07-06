@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FCE OS - Module 1 CRM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="login-shell" id="loginShell">
+    <div class="login-card">
+      <img src="../FC_LOGO.png" alt="First Class Exotics" class="logo">
+      <h1>FCE OS</h1>
+      <p>Module 1: Customer and Lead Core</p>
+      <label for="passwordInput">Dashboard Password</label>
+      <input type="password" id="passwordInput" placeholder="Enter dashboard password">
+      <button id="loginBtn">Sign In</button>
+      <div class="error" id="loginError"></div>
+    </div>
+  </div>
+
+  <div class="app hidden" id="appShell">
+    <header class="topbar">
+      <div>
+        <h2>FCE OS Dashboard</h2>
+        <small>Customer and Lead Core</small>
+      </div>
+      <div class="topbar-actions">
+        <button class="ghost" id="refreshBtn">Refresh</button>
+        <button class="ghost" id="logoutBtn">Logout</button>
+      </div>
+    </header>
+
+    <section class="alerts" id="expiringAlerts"></section>
+
+    <section class="panel quick-add">
+      <div class="panel-head">
+        <h3>Quick Add Lead</h3>
+      </div>
+      <form id="quickLeadForm" class="grid-form">
+        <input name="fullName" placeholder="Full name" required>
+        <input name="phone" placeholder="Phone" required>
+        <input name="email" placeholder="Email">
+        <select name="source" id="leadSource" required>
+          <option value="Phone">Phone</option>
+          <option value="Instagram">Instagram</option>
+          <option value="Referral">Referral</option>
+        </select>
+        <input name="referredBy" id="referredBy" placeholder="Referred by" class="hidden">
+        <input name="requestedVehicle" placeholder="Requested car">
+        <input name="requestedStartDate" type="date">
+        <input name="requestedEndDate" type="date">
+        <textarea name="notes" placeholder="Notes"></textarea>
+        <button type="submit" class="primary">Create Lead</button>
+      </form>
+      <div class="error" id="quickLeadError"></div>
+      <div class="success" id="quickLeadSuccess"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h3>Pipeline</h3>
+        <small>Drag cards between stages or use stage picker on each card.</small>
+      </div>
+      <div class="pipeline" id="pipelineBoard"></div>
+    </section>
+
+    <section class="split">
+      <section class="panel">
+        <div class="panel-head">
+          <h3>Customers</h3>
+          <input id="customerSearch" placeholder="Search name, phone, email">
+        </div>
+        <div class="customer-list" id="customerList"></div>
+      </section>
+
+      <section class="panel" id="customerDetailPanel">
+        <div class="panel-head">
+          <h3>Customer Detail</h3>
+        </div>
+        <div class="muted">Select a customer from the list.</div>
+      </section>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
