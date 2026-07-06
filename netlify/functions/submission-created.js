@@ -38,6 +38,6 @@ exports.handler = async function handler(event) {
     return { statusCode: 200, body: 'Lead created' };
   } catch (error) {
     console.error('submission-created error', error);
-    return { statusCode: 500, body: 'Failed to create lead' };
+    return { statusCode: 500, body: `Failed to create lead: ${error.message}` };
   }
 };
