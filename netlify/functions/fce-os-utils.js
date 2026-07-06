@@ -99,9 +99,9 @@ function requireAuth(event) {
 }
 
 function getSupabaseConfig() {
-  const url = process.env.SUPABASE_URL;
-  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-  const bucket = process.env.SUPABASE_STORAGE_BUCKET || 'fce-os-documents';
+  const url = String(process.env.SUPABASE_URL || '').trim();
+  const serviceKey = String(process.env.SUPABASE_SERVICE_ROLE_KEY || '').trim();
+  const bucket = String(process.env.SUPABASE_STORAGE_BUCKET || 'fce-os-documents').trim() || 'fce-os-documents';
 
   if (!url || !serviceKey) {
     throw new Error('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY');
@@ -114,15 +114,21 @@ async function supabaseFetch(path, { method = 'GET', body, headers = {} } = {}) 
   const { url, serviceKey } = getSupabaseConfig();
   const target = `${url}${path}`;
 
-  const response = await fetch(target, {
-    method,
-    headers: {
-      apikey: serviceKey,
-      Authorization: `Bearer ${serviceKey}`,
-      ...headers,
-    },
-    body,
-  });
+  let response;
+  try {
+    response = await fetch(target, {
+      method,
+      headers: {
+        apikey: serviceKey,
+        Authorization: `Bearer ${serviceKey}`,
+        ...headers,
+      },
+      body,
+    });
+  } catch (error) {
+    const cause = error?.cause?.message ? `: ${error.cause.message}` : '';
+    throw new Error(`Supabase fetch failed for ${target}${cause}`);
+  }
 
   const text = await response.text();
   let parsed;
