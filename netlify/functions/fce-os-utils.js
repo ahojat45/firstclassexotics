@@ -169,8 +169,34 @@ async function getLeadSourceMap() {
   return map;
 }
 
+async function ensureLeadSources() {
+  const defaults = [
+    { code: 'Website', label: 'Website', requires_referred_by: false },
+    { code: 'Instagram', label: 'Instagram', requires_referred_by: false },
+    { code: 'Referral', label: 'Referral', requires_referred_by: true },
+    { code: 'Phone', label: 'Phone', requires_referred_by: false },
+  ];
+
+  const rows = await supabaseFetch('/rest/v1/lead_sources?select=id,code,label,requires_referred_by');
+  const existing = new Set(rows.map((row) => row.code));
+  const missing = defaults.filter((row) => !existing.has(row.code));
+
+  if (missing.length) {
+    await supabaseFetch('/rest/v1/lead_sources?select=*', {
+      method: 'POST',
+      headers: {
+        Prefer: 'resolution=merge-duplicates,return=representation',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(missing),
+    });
+  }
+
+  return getLeadSourceMap();
+}
+
 async function createCustomerAndLead(input) {
-  const sourceMap = await getLeadSourceMap();
+  const sourceMap = await ensureLeadSources();
   const source = sourceMap.get(input.source || 'Website') || sourceMap.get('Website');
   if (!source) {
     throw new Error('Lead source seed data missing');
@@ -306,4 +332,5 @@ module.exports = {
   encodeFormBody,
   leadDaysInStage,
   daysTo,
+  ensureLeadSources,
 };
