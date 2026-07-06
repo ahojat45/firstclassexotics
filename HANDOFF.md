@@ -180,10 +180,16 @@ The CRM/customer core is now Module 1, not Module 2. Rationale: every other feat
 - `FCE_OS_SESSION_SECRET`
 
 ### External Setup Required Before Live E2E
-- Create Supabase project + private storage bucket `fce-os-documents`
-- Run migration: `fce-os/db/migrations/001_module1_customer_lead_core.sql`
-- Add env vars above in Netlify
-- Detailed step-by-step is in `fce-os/SETUP.md`
+- Infrastructure is complete: Supabase project created, migration run, all 5 tables verified, private bucket `fce-os-documents` created, all 6 Netlify env vars set, and the site redeployed.
+- Remaining blocker is timing-only: rerun the booking submission test after Netlify's DNS cache expires.
+- Retest window: about 30-60 minutes from the last failed booking submission.
+- Detailed step-by-step is in `fce-os/SETUP.md`.
+
+### Current End-to-End State
+- Browser-side DNS resolves the Supabase hostname.
+- The deployed Netlify function still hits a cached NXDOMAIN on the Supabase hostname from its resolver path.
+- No code or config changes are needed at this point.
+- Next action is a single booking submission retest after the DNS cache window.
 
 ### Module 2 Dependencies from Module 1
 - Reuse `customers` as the canonical record for agreement generation
