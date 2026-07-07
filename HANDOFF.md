@@ -180,7 +180,8 @@ The CRM/customer core is now Module 1, not Module 2. Rationale: every other feat
 - `FCE_OS_SESSION_SECRET`
 
 ### External Setup Required Before Live E2E
-- Infrastructure is complete: Supabase project created, migration run, all 5 tables verified, private bucket `fce-os-documents` created, all 6 Netlify env vars set, and the site redeployed.
+- Infrastructure is complete: Supabase project `fce-os` created, migration run, all 5 tables verified, private bucket `fce-os-documents` created, all 6 Netlify env vars set, and the site redeployed.
+- Three fix commits are deployed on `main`: `4866522` (auto-seed lead sources), `dd491b6` (expose intake errors), `e45db08` (Supabase fetch diagnostics).
 - Remaining blocker is timing-only: rerun the booking submission test after Netlify's DNS cache expires.
 - Retest window: about 30-60 minutes from the last failed booking submission.
 - Detailed step-by-step is in `fce-os/SETUP.md`.
@@ -190,6 +191,22 @@ The CRM/customer core is now Module 1, not Module 2. Rationale: every other feat
 - The deployed Netlify function still hits a cached NXDOMAIN on the Supabase hostname from its resolver path.
 - No code or config changes are needed at this point.
 - Next action is a single booking submission retest after the DNS cache window.
+
+### Exact Retest Steps
+1. Wait until at least 30-60 minutes have elapsed since the last failed booking submission.
+2. Open the live booking form at `https://www.firstclassexotics.com/#booking`.
+3. Submit one fresh test booking using the normal site form, or run this exact command once if testing from terminal:
+
+```bash
+curl -s -X POST https://www.firstclassexotics.com/.netlify/functions/submission-created \
+  -H 'Content-Type: application/json' \
+  --data '{"form_name":"booking","payload":{"data":{"first-name":"Test","last-name":"Lead","phone":"+1 949 555 0101","email":"test@example.com","vehicle":"Ferrari F8 Spider","start-date":"2026-07-10","end-date":"2026-07-12","delivery":"Delivery - Orange County","message":"End-to-end verification test"}}}'
+```
+
+4. Confirm the function returns success with no Supabase DNS error.
+5. Open `https://www.firstclassexotics.com/fce-os/index.html` and sign in with the FCE OS dashboard password from Netlify env vars.
+6. Verify the new lead appears in the CRM pipeline under `New` with source `Website`.
+7. If the lead appears, the Module 1 booking intake flow is complete.
 
 ### Module 2 Dependencies from Module 1
 - Reuse `customers` as the canonical record for agreement generation
