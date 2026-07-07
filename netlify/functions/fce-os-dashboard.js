@@ -22,6 +22,8 @@ exports.handler = async function handler(event) {
 
     const history = await supabaseFetch('/rest/v1/lead_stage_history?select=id,lead_id,from_stage,to_stage,changed_at,changed_by,note&order=changed_at.desc&limit=500');
 
+    const agreements = await supabaseFetch('/rest/v1/agreements?select=id,customer_id,lead_id,status,token_expires_at,sent_at,viewed_at,signed_at,deposit_amount_cents,deposit_status,created_at&order=created_at.desc&limit=500');
+
     const stages = {};
     STAGE_ORDER.forEach((stage) => {
       stages[stage] = [];
@@ -82,6 +84,7 @@ exports.handler = async function handler(event) {
       customers,
       stageHistory: history,
       expiringFlags,
+      agreements,
     });
   } catch (error) {
     return json(500, { error: error.message || 'Failed to load dashboard data' });

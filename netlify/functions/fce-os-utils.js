@@ -323,6 +323,51 @@ function daysTo(dateStr) {
   return Math.floor(diff / (1000 * 60 * 60 * 24));
 }
 
+function nowIso() {
+  return new Date().toISOString();
+}
+
+function buildBaseUrl(event) {
+  const proto = event.headers?.['x-forwarded-proto'] || 'https';
+  const host = event.headers?.['x-forwarded-host'] || event.headers?.host || 'www.firstclassexotics.com';
+  return `${proto}://${host}`;
+}
+
+function createAgreementToken() {
+  return crypto.randomBytes(32).toString('hex');
+}
+
+function hashAgreementToken(token) {
+  return crypto.createHash('sha256').update(String(token || '')).digest('hex');
+}
+
+function tokenExpiryIso(hours = 48) {
+  return new Date(Date.now() + (hours * 60 * 60 * 1000)).toISOString();
+}
+
+function getRequesterIp(event) {
+  const value = event.headers?.['x-nf-client-connection-ip'] || event.headers?.['x-forwarded-for'] || '';
+  return String(value).split(',')[0].trim() || null;
+}
+
+function cleanUserAgent(value) {
+  return String(value || '').slice(0, 300) || null;
+}
+
+async function findAgreementByToken(token, select = '*') {
+  const tokenHash = hashAgreementToken(token);
+  const rows = await supabaseFetch(`/rest/v1/agreements?token_hash=eq.${tokenHash}&select=${encodeURIComponent(select)}&limit=1`);
+  return rows[0] || null;
+}
+
+function agreementPublicError(agreement) {
+  if (!agreement) return 'Agreement not found';
+  if (agreement.signed_at || agreement.status === 'signed') return 'Agreement already signed';
+  if (agreement.voided_at || agreement.status === 'voided') return 'Agreement voided';
+  if (agreement.token_expires_at && Date.parse(agreement.token_expires_at) <= Date.now()) return 'Agreement link expired';
+  return null;
+}
+
 module.exports = {
   STAGE_ORDER,
   json,
@@ -339,4 +384,13 @@ module.exports = {
   leadDaysInStage,
   daysTo,
   ensureLeadSources,
+  nowIso,
+  buildBaseUrl,
+  createAgreementToken,
+  hashAgreementToken,
+  tokenExpiryIso,
+  getRequesterIp,
+  cleanUserAgent,
+  findAgreementByToken,
+  agreementPublicError,
 };

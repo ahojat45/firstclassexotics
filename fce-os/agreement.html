@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>First Class Exotics | Rental Agreement</title>
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Oswald:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="agreement-public-shell">
+    <section class="agreement-public-card">
+      <h1>Rental Agreement</h1>
+      <p class="muted" id="agreementState">Loading agreement...</p>
+
+      <div id="agreementSummary" class="agreement-summary hidden"></div>
+
+      <form id="agreementSignForm" class="agreement-sign-form hidden">
+        <label>
+          Typed full name
+          <input type="text" id="typedName" required placeholder="Enter full legal name">
+        </label>
+
+        <label>
+          Draw signature
+          <canvas id="signaturePad" width="600" height="220" aria-label="Signature pad"></canvas>
+        </label>
+
+        <div class="agreement-sign-actions">
+          <button type="button" class="ghost" id="clearSignatureBtn">Clear Signature</button>
+          <button type="submit" class="primary">Sign and Submit</button>
+        </div>
+      </form>
+
+      <div class="error" id="agreementError"></div>
+      <div class="success" id="agreementSuccess"></div>
+    </section>
+  </main>
+
+  <script src="agreement.js"></script>
+</body>
+</html>

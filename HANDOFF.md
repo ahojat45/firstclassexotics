@@ -59,54 +59,36 @@
 - `exotic-cars-coming-orange-county-2026-2027`
 - `ferrari-296-speciale`
 - `lamborghini-urus-se-2026`
-- `mclaren-w1`
-- `oc-exotic-car-culture-guide`
-- `porsche-911-gt3-rs-40`
 - `lamborghini-temerario-the-huracan-era-is-ending`
-
 ### Homepage Status
 - Elfsight Google Reviews widget live and paid:
   - ID `2c1fd891-04c1-41e3-b373-10268396653b`
 - Elfsight Instagram widget live and paid:
   - ID `e190139a-b69b-47b3-9345-57192bd5ce39`
 - Homepage `AutoRental` JSON-LD includes `AggregateRating` = **5.0 / 75**
-
----
-
 ## 🧭 Roadmap + Pacing Rules
 
-### City Pages Pacing Rule
-- Maximum **2-3 new city pages per week**.
 - Next order:
   1. Anaheim + Costa Mesa
-  2. Los Angeles + Beverly Hills
   3. Model-level car pages
 
-### Open GSC Item
-- Verify which URL is flagged as **Excluded by noindex**.
 - If it is `blog-publisher.html`, that is intentional.
-- If it is any real indexable page (city/brand/blog/fleet), remove noindex and push immediately.
 
 ---
 
 ## ⏳ Pending Tasks
 
 ### Completed July 6, 2026
-- Fleet update DONE and verified live (commits `7c5c69f`, `20a7111`): Chevrolet Corvette C8 Z51 (3LT, White) and 2025 Cadillac Escalade ESV (Black) added to `index.html`.
 - Included fleet cards with 5-image Drive lightboxes each, standard spec-line format, and booking form dropdown entries (Corvette under Chevrolet optgroup, new Cadillac optgroup for the Escalade).
 - Fleet page task is CLOSED.
 
 ### Still Pending (carry forward)
 - Verify GSC "Excluded by noindex" page is `blog-publisher.html` (intentional). If any other page, remove the noindex.
-- GSC recrawl checkpoint July 9-16: indexed count expected to climb toward 33.
 - Next city landing page batch (max 2-3/week): Anaheim + Costa Mesa, then LA + Beverly Hills, then model-level car pages.
 
 ---
-
 ## 🧩 New Project — FCE OS (Internal First)
-
 Goal:
-- Build FCE OS as First Class Exotics' internal broker-rental management software first.
 - Run FCE operations on it for 2-3 months.
 - Then productize for OC/LA fleet-owner network.
 
@@ -119,19 +101,14 @@ The CRM/customer core is now Module 1, not Module 2. Rationale: every other feat
 - Lead source tracking (Website, Instagram, Referral, Phone)
 - Automatic lead capture from the existing `index.html` booking form via Netlify Function
 - DL + insurance card uploads on the customer record with expiration-date tracking
-
 ### Module 2 — Rental Operations
 - Digital rental agreements (customer fills on phone)
-- E-signature
 - Condition photos at pickup/return
 - Deposit tracking (hold -> release)
 - Signed agreement auto-converts lead -> customer
 
 ### Module 3 — Revenue Layer
 - Automated follow-ups
-- 90-day win-backs
-- Repeat-customer tiers flagged for chauffeur/corporate upsells
-
 ### Infrastructure Note
 - Site is static HTML on Netlify, so FCE OS will use Netlify Functions + a hosted database.
 - Recommend evaluating Netlify-friendly options like Neon/Supabase Postgres in the build session.
@@ -236,6 +213,7 @@ curl -s -X POST https://www.firstclassexotics.com/.netlify/functions/submission-
 - Never change apex->www canonical redirect behavior.
 - All deploys happen via push to `main`.
 
+<<<<<<< HEAD
 
 ---
 
@@ -258,3 +236,52 @@ End-to-end intake verified live on production: booking form → `submission-crea
 ### External setup status
 - All items under "External Setup Required Before Live E2E" are COMPLETE: Supabase project created, migration 001 run, private bucket `fce-os-documents` created, all env vars set in Netlify (and `SUPABASE_URL` corrected).
 - Module 2 (Rental Operations) is unblocked and can start immediately.
+=======
+---
+
+## FCE OS Module 2 - Phase A (Shipped July 7, 2026)
+
+Scope shipped in isolated FCE OS paths only (`fce-os/*`, `netlify/functions/fce-os-*`).
+
+### DB Migration
+- Added `fce-os/db/migrations/002_module2_agreements_core.sql` with `agreements` table:
+  - Tokenized public signing flow (`token_hash`, `token_expires_at`)
+  - Agreement lifecycle states (`draft`, `sent`, `viewed`, `signed`, `voided`)
+  - Prefill snapshot fields from customer/lead
+  - Signature metadata (`signature_typed_name`, storage path, signed timestamp, IP, user-agent)
+  - Deposit tracking fields (`deposit_amount_cents`, `deposit_status`, hold/release timestamps)
+- Migration includes required explicit grant:
+  - `grant select, insert, update, delete on table agreements to service_role;`
+
+### New Functions
+- `netlify/functions/fce-os-agreements-create.js`
+  - Auth-protected dashboard API to create agreement from customer/lead and return tokenized mobile link.
+- `netlify/functions/fce-os-agreements-get-public.js`
+  - Public token endpoint for customer mobile agreement view.
+- `netlify/functions/fce-os-agreements-sign-public.js`
+  - Public token endpoint to capture typed-name + drawn signature artifact to `fce-os-documents`.
+  - On success: auto-converts lifecycle via existing Module 1 primitives:
+    - lead -> `Booked`
+    - customer status `lead` -> `customer`
+    - stage history entry recorded
+  - Guardrails:
+    - rejects expired links
+    - rejects voided agreements
+    - rejects already-signed agreements
+    - idempotent by design (second submit never overwrites signed record)
+
+### Dashboard + Public UI
+- Dashboard integration added in `fce-os/index.html` + `fce-os/app.js`:
+  - Create mobile signing link from customer detail panel
+  - View latest agreement status summary
+- Added public signer page: `fce-os/agreement.html` + `fce-os/agreement.js`
+  - Mobile-friendly agreement review
+  - Typed name + canvas signature capture
+  - `noindex` meta tag present on purpose
+  - Not listed in `sitemap.xml` on purpose
+
+## Next Up (Phase B)
+- Pickup/return condition photo workflow (document types + upload UI)
+- Deposit hold/release operations UI and status controls
+- Agreement artifact export flow (PDF/receipt style output)
+>>>>>>> b32ebf8 (feat(fce-os): phase a agreements signing flow and booked auto-conversion)

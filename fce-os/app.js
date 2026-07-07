@@ -23,6 +23,7 @@ const el = {
 const state = {
   data: null,
   selectedCustomerId: null,
+  lastAgreementLinkByCustomer: {},
 };
 
 async function api(path, options = {}) {
@@ -226,6 +227,8 @@ function renderCustomerDetail() {
   }
 
   const lead = leadByCustomerId(customer.id);
+  const customerAgreements = (state.data.agreements || []).filter((row) => row.customer_id === customer.id);
+  const newestAgreement = customerAgreements[0] || null;
 
   el.customerDetailPanel.innerHTML = `
     <div class="panel-head"><h3>${customer.full_name}</h3></div>
@@ -261,6 +264,24 @@ function renderCustomerDetail() {
     <div style="margin-top:1rem">
       <h3>Stage History</h3>
       ${lead ? renderHistoryForLead(lead.id) : '<div class="muted">No lead pipeline record for this customer.</div>'}
+    </div>
+
+    <div style="margin-top:1rem" class="agreements-section">
+      <h3>Rental Agreement</h3>
+      <form id="agreementCreateForm" class="agreement-create-form">
+        <input type="number" name="depositAmountCents" min="0" step="100" placeholder="Deposit amount (cents) e.g. 150000">
+        <input type="number" name="expiryHours" min="1" max="168" value="48" placeholder="Link expiry hours">
+        <button class="primary" type="submit">Create Mobile Signing Link</button>
+      </form>
+      <div class="muted" id="agreementLinkResult">${state.lastAgreementLinkByCustomer[customer.id] ? `<a href="${state.lastAgreementLinkByCustomer[customer.id]}" target="_blank" rel="noopener">Open latest signing link</a>` : 'No new link generated in this session.'}</div>
+      ${newestAgreement ? `<div class="muted">Latest agreement: ${newestAgreement.status} | expires ${new Date(newestAgreement.token_expires_at).toLocaleString()}</div>` : '<div class="muted">No agreements yet for this customer.</div>'}
+      <div class="agreement-list">
+        ${customerAgreements.map((agreement) => `<div class="agreement-row">
+          <strong>${agreement.status}</strong>
+          <span>Created ${new Date(agreement.created_at).toLocaleString()}</span>
+          <span>Deposit: $${((agreement.deposit_amount_cents || 0) / 100).toFixed(2)} (${agreement.deposit_status})</span>
+        </div>`).join('') || ''}
+      </div>
     </div>
 
     <div class="error" id="customerDetailError"></div>
@@ -318,6 +339,34 @@ function renderCustomerDetail() {
         document.getElementById('customerDetailError').textContent = error.message;
       }
     });
+  });
+
+  const agreementForm = document.getElementById('agreementCreateForm');
+  agreementForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    document.getElementById('customerDetailError').textContent = '';
+    document.getElementById('customerDetailSuccess').textContent = '';
+
+    const fd = new FormData(agreementForm);
+    const payload = {
+      customerId: customer.id,
+      leadId: lead?.id || null,
+      depositAmountCents: Number(fd.get('depositAmountCents') || 0),
+      expiryHours: Number(fd.get('expiryHours') || 48),
+    };
+
+    try {
+      const result = await api('/.netlify/functions/fce-os-agreements-create', {
+        method: 'POST',
+        body: JSON.stringify(payload),
+      });
+      state.lastAgreementLinkByCustomer[customer.id] = result.signingLink;
+      document.getElementById('agreementLinkResult').innerHTML = `<a href="${result.signingLink}" target="_blank" rel="noopener">Open signing link</a>`;
+      document.getElementById('customerDetailSuccess').textContent = 'Agreement link created.';
+      await loadDashboard(false);
+    } catch (error) {
+      document.getElementById('customerDetailError').textContent = error.message;
+    }
   });
 }
 
