@@ -1,5 +1,5 @@
 # First Class Exotics — Handoff Document
-**Last Updated:** July 6, 2026
+**Last Updated:** July 7, 2026
 **Status:** Production Live
 
 ---
@@ -212,3 +212,26 @@ The CRM/customer core is now Module 1, not Module 2. Rationale: every other feat
 - Never touch Wix DNS/MX configuration.
 - Never change apex->www canonical redirect behavior.
 - All deploys happen via push to `main`.
+
+
+---
+
+## ✅ FCE OS Module 1 — VERIFIED COMPLETE (July 7, 2026)
+
+End-to-end intake verified live on production: booking form → `submission-created` → customer + lead created in Supabase, lead lands in `New` stage and renders on the /fce-os pipeline board. Test records ("FCE OS TEST2 IGNORE") intentionally left in DB; safe to delete from the CRM.
+
+### Supabase project (source of truth)
+- Project ref: `jboscqynotjqrsqdxuwx` (20 chars — note the `q` before `dxuwx`)
+- URL: `https://jboscqynotjqrsqdxuwx.supabase.co`
+- Root cause of the July 6–7 "NXDOMAIN blocker": Netlify `SUPABASE_URL` contained a 19-char typo (`jboscqynotjqrsdxuwx`, missing the `q`). Corrected in Netlify July 7 and redeployed. Any 19-char version of the ref found in old notes or logs is WRONG — do not reuse it.
+
+### DB grants rule (CRITICAL for Module 2 migrations)
+- This project has "expose new tables" behavior disabled: newly created tables receive NO select/insert/update/delete grants for ANY API role — including `service_role`. Symptom: PostgREST 403 `permission denied for table X`.
+- Fix applied July 7 for Module 1 tables:
+  - `grant select, insert, update, delete on table customers, leads, lead_sources, lead_stage_history, documents to service_role;`
+  - `grant usage, select on all sequences in schema public to service_role;`
+- EVERY new Module 2 table must include the same grant to `service_role` in its migration. Keep `anon`/`authenticated` without grants (all access is server-side via Netlify Functions).
+
+### External setup status
+- All items under "External Setup Required Before Live E2E" are COMPLETE: Supabase project created, migration 001 run, private bucket `fce-os-documents` created, all env vars set in Netlify (and `SUPABASE_URL` corrected).
+- Module 2 (Rental Operations) is unblocked and can start immediately.
