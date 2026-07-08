@@ -214,6 +214,57 @@ function renderHistoryForLead(leadId) {
   }).join('');
 }
 
+function centsToDollars(cents) {
+  const value = Number(cents || 0);
+  if (!Number.isFinite(value)) return '';
+  return (value / 100).toFixed(2);
+}
+
+function dollarsToCents(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return null;
+  return Math.round(number * 100);
+}
+
+function toLocalDateTimeInput(value) {
+  if (!value) return '';
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return '';
+  const tzOffsetMs = date.getTimezoneOffset() * 60 * 1000;
+  return new Date(date.getTime() - tzOffsetMs).toISOString().slice(0, 16);
+}
+
+function createAgreementRowHtml(agreement) {
+  const rentalSummary = [
+    `Daily $${centsToDollars(agreement.daily_rate_cents)}`,
+    `Total $${centsToDollars(agreement.total_price_cents)}`,
+    `${agreement.miles_included_per_day || 0} mi/day`,
+    `Overage $${centsToDollars(agreement.mileage_overage_rate_cents)}/mi`,
+  ].join(' | ');
+
+  const signedCopyLine = agreement.signed_pdf_storage_path
+    ? '<button class="ghost agreement-action-btn" type="button" data-agreement-download="1">Download Signed PDF</button>'
+    : '<span class="muted">Signed PDF pending</span>';
+
+  const resendButton = agreement.manual_resend_required
+    ? '<button class="ghost agreement-action-btn" type="button" data-agreement-resend="1">Retry PDF/Email</button>'
+    : '';
+
+  const manualFlag = agreement.manual_resend_required
+    ? `<span class="manual-flag">Manual resend required${agreement.signed_pdf_error ? `: ${agreement.signed_pdf_error}` : agreement.signed_email_error ? `: ${agreement.signed_email_error}` : ''}</span>`
+    : '<span class="muted">Signed copy delivery healthy</span>';
+
+  return `<div class="agreement-row" data-agreement-id="${agreement.id}">
+    <strong>${agreement.status}</strong>
+    <span>Created ${new Date(agreement.created_at).toLocaleString()}</span>
+    <span>Deposit: $${centsToDollars(agreement.deposit_amount_cents)} (${agreement.deposit_status})</span>
+    <span>Pickup: ${agreement.pickup_time ? new Date(agreement.pickup_time).toLocaleString() : 'N/A'} | Return: ${agreement.return_time ? new Date(agreement.return_time).toLocaleString() : 'N/A'}</span>
+    <span>${rentalSummary}</span>
+    <div class="agreement-row-actions">${signedCopyLine}${resendButton}</div>
+    ${manualFlag}
+  </div>`;
+}
+
 function renderCustomerDetail() {
   if (!state.selectedCustomerId) {
     el.customerDetailPanel.innerHTML = '<div class="panel-head"><h3>Customer Detail</h3></div><div class="muted">Select a customer from the list.</div>';
@@ -269,18 +320,22 @@ function renderCustomerDetail() {
     <div style="margin-top:1rem" class="agreements-section">
       <h3>Rental Agreement</h3>
       <form id="agreementCreateForm" class="agreement-create-form">
-        <input type="number" name="depositAmountCents" min="0" step="100" placeholder="Deposit amount (cents) e.g. 150000">
+        <input type="number" name="dailyRate" min="0" step="0.01" placeholder="Daily rate ($)" required>
+        <input type="number" name="totalPrice" min="0" step="0.01" placeholder="Total price ($)" required>
+        <input type="number" name="milesIncludedPerDay" min="0" step="1" placeholder="Miles included/day" required>
+        <input type="number" name="mileageOverageRate" min="0" step="0.01" placeholder="Overage rate per mile ($)">
+        <input type="number" name="depositAmount" min="0" step="0.01" placeholder="Deposit amount ($)" required>
+        <input type="datetime-local" name="pickupTime" value="${toLocalDateTimeInput(newestAgreement?.pickup_time)}" required>
+        <input type="datetime-local" name="returnTime" value="${toLocalDateTimeInput(newestAgreement?.return_time)}" required>
+        <input type="text" name="fuelTerms" placeholder="Fuel terms (e.g. return full)" value="${newestAgreement?.fuel_terms || ''}">
+        <input type="text" name="additionalDriverNames" placeholder="Additional drivers (comma separated)" value="${newestAgreement?.additional_driver_names || ''}">
         <input type="number" name="expiryHours" min="1" max="168" value="48" placeholder="Link expiry hours">
         <button class="primary" type="submit">Create Mobile Signing Link</button>
       </form>
       <div class="muted" id="agreementLinkResult">${state.lastAgreementLinkByCustomer[customer.id] ? `<a href="${state.lastAgreementLinkByCustomer[customer.id]}" target="_blank" rel="noopener">Open latest signing link</a>` : 'No new link generated in this session.'}</div>
       ${newestAgreement ? `<div class="muted">Latest agreement: ${newestAgreement.status} | expires ${new Date(newestAgreement.token_expires_at).toLocaleString()}</div>` : '<div class="muted">No agreements yet for this customer.</div>'}
       <div class="agreement-list">
-        ${customerAgreements.map((agreement) => `<div class="agreement-row">
-          <strong>${agreement.status}</strong>
-          <span>Created ${new Date(agreement.created_at).toLocaleString()}</span>
-          <span>Deposit: $${((agreement.deposit_amount_cents || 0) / 100).toFixed(2)} (${agreement.deposit_status})</span>
-        </div>`).join('') || ''}
+        ${customerAgreements.map((agreement) => createAgreementRowHtml(agreement)).join('') || ''}
       </div>
     </div>
 
@@ -348,10 +403,35 @@ function renderCustomerDetail() {
     document.getElementById('customerDetailSuccess').textContent = '';
 
     const fd = new FormData(agreementForm);
+    const dailyRateCents = dollarsToCents(fd.get('dailyRate'));
+    const totalPriceCents = dollarsToCents(fd.get('totalPrice'));
+    const overageRateCents = dollarsToCents(fd.get('mileageOverageRate') || 0);
+    const depositAmountCents = dollarsToCents(fd.get('depositAmount'));
+    const milesIncludedPerDay = Number(fd.get('milesIncludedPerDay') || 0);
+    const pickupTime = String(fd.get('pickupTime') || '').trim();
+    const returnTime = String(fd.get('returnTime') || '').trim();
+
+    if (dailyRateCents === null || dailyRateCents < 0 ||
+      totalPriceCents === null || totalPriceCents < 0 ||
+      depositAmountCents === null || depositAmountCents < 0 ||
+      !Number.isFinite(milesIncludedPerDay) || milesIncludedPerDay <= 0 ||
+      !pickupTime || !returnTime) {
+      document.getElementById('customerDetailError').textContent = 'Daily rate, total price, miles/day, deposit, pickup and return date/time are required before creating a signing link.';
+      return;
+    }
+
     const payload = {
       customerId: customer.id,
       leadId: lead?.id || null,
-      depositAmountCents: Number(fd.get('depositAmountCents') || 0),
+      dailyRateCents,
+      totalPriceCents,
+      milesIncludedPerDay,
+      mileageOverageRateCents: overageRateCents || 0,
+      fuelTerms: String(fd.get('fuelTerms') || '').trim() || null,
+      pickupTime,
+      returnTime,
+      additionalDriverNames: String(fd.get('additionalDriverNames') || '').trim() || null,
+      depositAmountCents,
       expiryHours: Number(fd.get('expiryHours') || 48),
     };
 
@@ -367,6 +447,48 @@ function renderCustomerDetail() {
     } catch (error) {
       document.getElementById('customerDetailError').textContent = error.message;
     }
+  });
+
+  document.querySelectorAll('[data-agreement-download]').forEach((button) => {
+    button.addEventListener('click', async (event) => {
+      const agreementId = event.currentTarget.closest('[data-agreement-id]')?.getAttribute('data-agreement-id');
+      if (!agreementId) return;
+
+      try {
+        const result = await api(`/.netlify/functions/fce-os-agreements-download-link?agreementId=${encodeURIComponent(agreementId)}`, {
+          method: 'GET',
+        });
+        window.open(result.signedUrl, '_blank', 'noopener');
+      } catch (error) {
+        document.getElementById('customerDetailError').textContent = error.message;
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-agreement-resend]').forEach((button) => {
+    button.addEventListener('click', async (event) => {
+      const agreementId = event.currentTarget.closest('[data-agreement-id]')?.getAttribute('data-agreement-id');
+      if (!agreementId) return;
+
+      document.getElementById('customerDetailError').textContent = '';
+      document.getElementById('customerDetailSuccess').textContent = '';
+
+      try {
+        const result = await api('/.netlify/functions/fce-os-agreements-resend', {
+          method: 'POST',
+          body: JSON.stringify({ agreementId }),
+        });
+
+        if (result.signedCopy?.manualResendRequired) {
+          document.getElementById('customerDetailError').textContent = (result.signedCopy.errors || []).join(' | ') || 'Manual resend is still required.';
+        } else {
+          document.getElementById('customerDetailSuccess').textContent = 'Signed PDF and customer email were resent successfully.';
+        }
+        await loadDashboard(false);
+      } catch (error) {
+        document.getElementById('customerDetailError').textContent = error.message;
+      }
+    });
   });
 }
 

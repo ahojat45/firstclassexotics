@@ -16,54 +16,33 @@
 ---
 
 ## ✅ Current Production State (July 6)
-
-### SEO + Indexing
-- `sitemap.xml` contains **33 URLs** and is submitted to GSC.
 - Recrawl checkpoint remains **July 9-16**.
-- City pages are live for:
   - `exotic-car-rental-irvine.html`
   - `exotic-car-rental-huntington-beach.html`
   - `exotic-car-rental-laguna-beach.html`
   - `exotic-car-rental-newport-beach.html` (includes Corona del Mar section)
 - No standalone Corona del Mar page (intentional doorway-risk control).
 
-### CRITICAL URL Pattern Rule
-- All city pages must follow: **`exotic-car-rental-{city}.html`** (city name LAST).
-- Reversed pattern (example: `irvine-exotic-car-rental.html`) causes 404s and indexing failures.
 - Future city pages (Anaheim, Costa Mesa, LA, Beverly Hills) must follow this exact naming pattern.
 
-### Brand Landing Pages Live (full schema)
-- `rent-lamborghini-orange-county.html`
-- `rent-ferrari-orange-county.html`
-- `rent-mclaren-orange-county.html`
-- `rent-rolls-royce-orange-county.html`
 - `rent-porsche-orange-county.html`
 - `rent-g63-orange-county.html`
-- `rent-maybach-orange-county.html`
-- `rent-range-rover-orange-county.html`
 
-### Blog Publisher v2
 - URL: `/blog-publisher.html`
 - Password: `FCE2026`
 - **Paste Article mode only** for production publishing (do not use AI Draft topic box for final content).
 - Multi-image upload writes to: `images/blog/{slug}/`
 - Slug-exists guard active (prevents duplicate post/card)
 - Sitemap auto-append active on publish
-- Accent normalization fix in `buildSlug` is live (`normalize('NFD')` + combining-mark strip)
   - Commit: `1d8e92c`
 - Model configuration:
   - `claude-haiku-4-5-20251001`
   - `max_tokens: 1024`
 
-### Live Blog Slugs
-- `exotic-cars-coming-orange-county-2026-2027`
 - `ferrari-296-speciale`
 - `lamborghini-urus-se-2026`
-- `lamborghini-temerario-the-huracan-era-is-ending`
 ### Homepage Status
-- Elfsight Google Reviews widget live and paid:
   - ID `2c1fd891-04c1-41e3-b373-10268396653b`
-- Elfsight Instagram widget live and paid:
   - ID `e190139a-b69b-47b3-9345-57192bd5ce39`
 - Homepage `AutoRental` JSON-LD includes `AggregateRating` = **5.0 / 75**
 ## 🧭 Roadmap + Pacing Rules
@@ -76,31 +55,20 @@
 
 ---
 
-## ⏳ Pending Tasks
 
 ### Completed July 6, 2026
-- Included fleet cards with 5-image Drive lightboxes each, standard spec-line format, and booking form dropdown entries (Corvette under Chevrolet optgroup, new Cadillac optgroup for the Escalade).
 - Fleet page task is CLOSED.
 
 ### Still Pending (carry forward)
 - Verify GSC "Excluded by noindex" page is `blog-publisher.html` (intentional). If any other page, remove the noindex.
 - Next city landing page batch (max 2-3/week): Anaheim + Costa Mesa, then LA + Beverly Hills, then model-level car pages.
 
----
-## 🧩 New Project — FCE OS (Internal First)
-Goal:
 - Run FCE operations on it for 2-3 months.
 - Then productize for OC/LA fleet-owner network.
 
 ### Updated Module Order (supersedes previous scope order)
-The CRM/customer core is now Module 1, not Module 2. Rationale: every other feature (agreements, e-sign, documents, deposits) hangs off the customer record, and the existing Netlify booking form can feed leads into the CRM from day one.
-
-### Module 1 — Customer & Lead Core
 - Customer records (contact info, notes, rental history)
 - Lead pipeline with stages (New -> Contacted -> Quoted -> Booked -> Lost)
-- Lead source tracking (Website, Instagram, Referral, Phone)
-- Automatic lead capture from the existing `index.html` booking form via Netlify Function
-- DL + insurance card uploads on the customer record with expiration-date tracking
 ### Module 2 — Rental Operations
 - Digital rental agreements (customer fills on phone)
 - Condition photos at pickup/return
@@ -213,8 +181,6 @@ curl -s -X POST https://www.firstclassexotics.com/.netlify/functions/submission-
 - Never change apex->www canonical redirect behavior.
 - All deploys happen via push to `main`.
 
-<<<<<<< HEAD
-
 ---
 
 ## ✅ FCE OS Module 1 — VERIFIED COMPLETE (July 7, 2026)
@@ -236,7 +202,7 @@ End-to-end intake verified live on production: booking form → `submission-crea
 ### External setup status
 - All items under "External Setup Required Before Live E2E" are COMPLETE: Supabase project created, migration 001 run, private bucket `fce-os-documents` created, all env vars set in Netlify (and `SUPABASE_URL` corrected).
 - Module 2 (Rental Operations) is unblocked and can start immediately.
-=======
+
 ---
 
 ## FCE OS Module 2 - Phase A (Shipped July 7, 2026)
@@ -280,8 +246,36 @@ Scope shipped in isolated FCE OS paths only (`fce-os/*`, `netlify/functions/fce-
   - `noindex` meta tag present on purpose
   - Not listed in `sitemap.xml` on purpose
 
+### E2E Verification
+- Phase A E2E was verified live on July 7, 2026.
+
+## FCE OS Module 2 - Phase A.5 (Shipped July 7, 2026)
+
+### DB Migration
+- Added `fce-os/db/migrations/003_rental_terms.sql` to extend `agreements` with:
+  - `daily_rate_cents`, `total_price_cents`
+  - `miles_included_per_day`, `mileage_overage_rate_cents`
+  - `fuel_terms`, `pickup_time`, `return_time`, `additional_driver_names`
+  - signed-copy delivery tracking fields (`signed_pdf_*`, `signed_email_*`, `manual_resend_required`)
+- Migration includes required explicit grant at the end:
+  - `grant select, insert, update, delete on table agreements to service_role;`
+
+### Migration application rule (CRITICAL)
+- Ali/Claude must run migration SQL manually in Supabase SQL Editor before deploy goes live.
+- Never assume migrations are auto-applied by deploy.
+- If migration is missing, dashboard/functions can 500 in production (this happened July 7 when migration 002 was not applied).
+
+### Phase A.5 behavior
+- Agreement creation now requires daily rate, total price, miles/day, deposit, pickup datetime, and return datetime before a signing link can be created.
+- Signing page renders a Rental Terms table plus config-driven numbered sections with required initials checkboxes.
+- Signing is fail-open for customer UX:
+  - Signature + stage automation commit first.
+  - Signed PDF generation and Brevo send run after commit.
+  - If PDF/email fails, signing still succeeds and agreement is flagged for manual resend in dashboard.
+- Contract-language slot is ready for attorney-approved text replacement; placeholder language remains in place until legal approval.
+
 ## Next Up (Phase B)
 - Pickup/return condition photo workflow (document types + upload UI)
 - Deposit hold/release operations UI and status controls
 - Agreement artifact export flow (PDF/receipt style output)
->>>>>>> b32ebf8 (feat(fce-os): phase a agreements signing flow and booked auto-conversion)
+- Dashboard filter for `manual_resend_required` agreements so ops can triage failed PDF/email deliveries faster

@@ -9,13 +9,23 @@ const {
   hashAgreementToken,
   tokenExpiryIso,
 } = require('./fce-os-utils');
+const { TERMS_SECTIONS } = require('./fce-os-agreement-artifacts');
 
-const DEFAULT_TERMS = [
-  'I confirm the provided information is accurate.',
-  'I accept responsibility for the vehicle during the rental term.',
-  'I agree to return the vehicle in the same condition, normal wear excepted.',
-  'I understand any damage, tolls, tickets, or violations are my responsibility.',
-].join(' ');
+const DEFAULT_TERMS = TERMS_SECTIONS.map((section) => `${section.number}. ${section.title}: ${section.text}`).join(' ');
+
+function normalizeInt(value) {
+  if (value === null || value === undefined || value === '') return null;
+  const num = Number(value);
+  if (!Number.isFinite(num)) return null;
+  return Math.round(num);
+}
+
+function normalizeTimestamp(value) {
+  if (!value) return null;
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return parsed.toISOString();
+}
 
 exports.handler = async function handler(event) {
   if (event.httpMethod !== 'POST') {
@@ -34,6 +44,30 @@ exports.handler = async function handler(event) {
 
   if (!payload.customerId && !payload.leadId) {
     return json(400, { error: 'customerId or leadId is required' });
+  }
+
+  const requiredNumericFields = [
+    ['dailyRateCents', 'Daily rate is required'],
+    ['totalPriceCents', 'Total price is required'],
+    ['milesIncludedPerDay', 'Miles included per day is required'],
+    ['depositAmountCents', 'Deposit amount is required'],
+  ];
+
+  for (const [key, message] of requiredNumericFields) {
+    const parsed = normalizeInt(payload[key]);
+    if (parsed === null || parsed < 0) {
+      return json(400, { error: message });
+    }
+  }
+
+  const pickupTime = normalizeTimestamp(payload.pickupTime);
+  const returnTime = normalizeTimestamp(payload.returnTime);
+  if (!pickupTime || !returnTime) {
+    return json(400, { error: 'Pickup and return date/time are required' });
+  }
+
+  if (Date.parse(returnTime) < Date.parse(pickupTime)) {
+    return json(400, { error: 'Return time cannot be before pickup time' });
   }
 
   try {
@@ -85,7 +119,15 @@ exports.handler = async function handler(event) {
         rental_end_date: customer.requested_end_date || null,
         delivery_preference: customer.delivery_preference || null,
         agreement_terms: payload.agreementTerms || DEFAULT_TERMS,
-        deposit_amount_cents: Number(payload.depositAmountCents) || 0,
+        daily_rate_cents: normalizeInt(payload.dailyRateCents),
+        total_price_cents: normalizeInt(payload.totalPriceCents),
+        miles_included_per_day: normalizeInt(payload.milesIncludedPerDay),
+        mileage_overage_rate_cents: normalizeInt(payload.mileageOverageRateCents),
+        fuel_terms: payload.fuelTerms || null,
+        pickup_time: pickupTime,
+        return_time: returnTime,
+        additional_driver_names: payload.additionalDriverNames || null,
+        deposit_amount_cents: normalizeInt(payload.depositAmountCents),
         deposit_status: payload.depositStatus || 'none',
         created_by: 'dashboard',
       }),

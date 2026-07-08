@@ -3,7 +3,6 @@ const {
   json,
   parseJsonBody,
   supabaseFetch,
-  getSupabaseConfig,
   nowIso,
   getRequesterIp,
   cleanUserAgent,
@@ -11,6 +10,11 @@ const {
   agreementPublicError,
   moveLeadStage,
 } = require('./fce-os-utils');
+const {
+  TERMS_SECTIONS,
+  uploadObjectToStorage,
+  processSignedArtifacts,
+} = require('./fce-os-agreement-artifacts');
 
 exports.handler = async function handler(event) {
   if (event.httpMethod !== 'POST') {
@@ -27,9 +31,21 @@ exports.handler = async function handler(event) {
   const token = payload.token || '';
   const typedName = String(payload.typedName || '').trim();
   const signatureBase64 = String(payload.signatureBase64 || '').trim();
+  const acceptedSections = Array.isArray(payload.acceptedSections) ? payload.acceptedSections : [];
 
   if (!token || !typedName || !signatureBase64) {
     return json(400, { error: 'token, typedName, and signatureBase64 are required' });
+  }
+
+  const requiredSections = TERMS_SECTIONS.filter((section) => section.requiresInitials).map((section) => section.number);
+  const normalizedAcceptedSections = new Set(
+    acceptedSections
+      .map((value) => Number(value))
+      .filter((value) => Number.isFinite(value))
+  );
+  const missingSections = requiredSections.filter((number) => !normalizedAcceptedSections.has(number));
+  if (missingSections.length) {
+    return json(400, { error: 'Please initial all required terms sections before signing.' });
   }
 
   try {
@@ -56,24 +72,13 @@ exports.handler = async function handler(event) {
       return json(400, { error: 'Signature image is empty' });
     }
 
-    const { url, serviceKey, bucket } = getSupabaseConfig();
-    const path = `agreements/${agreement.id}/signature/${Date.now()}-${crypto.randomUUID()}.png`;
-
-    const uploadResponse = await fetch(`${url}/storage/v1/object/${bucket}/${path}`, {
-      method: 'POST',
-      headers: {
-        apikey: serviceKey,
-        Authorization: `Bearer ${serviceKey}`,
-        'Content-Type': 'image/png',
-        'x-upsert': 'false',
-      },
-      body: buffer,
+    const signaturePath = `agreements/${agreement.id}/signature/${Date.now()}-${crypto.randomUUID()}.png`;
+    const signatureStorage = await uploadObjectToStorage({
+      path: signaturePath,
+      mimeType: 'image/png',
+      buffer,
+      upsert: false,
     });
-
-    if (!uploadResponse.ok) {
-      const detail = await uploadResponse.text();
-      return json(500, { error: `Storage upload failed: ${detail}` });
-    }
 
     const signedAt = nowIso();
     const [updated] = await supabaseFetch(`/rest/v1/agreements?id=eq.${encodeURIComponent(agreement.id)}&signed_at=is.null&status=not.in.(signed,voided)&select=id,customer_id,lead_id,status,signed_at`, {
@@ -86,8 +91,8 @@ exports.handler = async function handler(event) {
         status: 'signed',
         signed_at: signedAt,
         signature_typed_name: typedName,
-        signature_storage_bucket: bucket,
-        signature_storage_path: path,
+        signature_storage_bucket: signatureStorage.bucket,
+        signature_storage_path: signatureStorage.path,
         signed_ip: getRequesterIp(event),
         signed_user_agent: cleanUserAgent(event.headers?.['user-agent']),
       }),
@@ -122,12 +127,57 @@ exports.handler = async function handler(event) {
       });
     }
 
+    let artifactResult = {
+      manualResendRequired: false,
+      downloadUrl: null,
+      errors: [],
+    };
+
+    try {
+      const agreementRows = await supabaseFetch(`/rest/v1/agreements?id=eq.${encodeURIComponent(updated.id)}&select=id,renter_full_name,renter_email,renter_phone,rental_vehicle,rental_start_date,rental_end_date,delivery_preference,agreement_terms,deposit_amount_cents,pickup_time,return_time,daily_rate_cents,total_price_cents,miles_included_per_day,mileage_overage_rate_cents,fuel_terms,additional_driver_names,signed_pdf_storage_bucket,signed_pdf_storage_path&limit=1`);
+      const agreementForArtifacts = agreementRows[0];
+
+      artifactResult = await processSignedArtifacts({
+        agreement: agreementForArtifacts,
+        typedName,
+        signedAt,
+        signerIp: getRequesterIp(event),
+        signaturePngBuffer: buffer,
+      });
+    } catch (artifactError) {
+      artifactResult = {
+        manualResendRequired: true,
+        downloadUrl: null,
+        errors: [artifactError.message || 'Signed copy generation/email failed after signature commit'],
+      };
+
+      try {
+        await supabaseFetch(`/rest/v1/agreements?id=eq.${encodeURIComponent(updated.id)}`, {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            manual_resend_required: true,
+            signed_pdf_error: artifactResult.errors[0],
+          }),
+        });
+      } catch {
+        // Non-fatal by design: signing must remain successful even if post-sign persistence fails.
+      }
+    }
+
     return json(200, {
       success: true,
       agreement: {
         id: updated.id,
         status: updated.status,
         signedAt: updated.signed_at,
+      },
+      signedCopy: {
+        manualResendRequired: artifactResult.manualResendRequired,
+        downloadUrl: artifactResult.downloadUrl,
+        errors: artifactResult.errors,
       },
     });
   } catch (error) {
