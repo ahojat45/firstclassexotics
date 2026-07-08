@@ -1,5 +1,5 @@
 # First Class Exotics — Handoff Document
-**Last Updated:** July 7, 2026
+**Last Updated:** July 8, 2026
 **Status:** Production Live
 
 ---
@@ -16,6 +16,10 @@
 ---
 
 ## ✅ Current Production State (July 6)
+- Fleet addition is complete across landing pages:
+  - `index.html` already updated in prior session (Corvette C8 3LT Z51 + Escalade ESV + booking dropdown additions)
+  - `rent-mclaren-orange-county.html` now includes 2019 McLaren 570S (Miami Blue), 2025 Artura Spider, and 2024 Artura Coupe cards
+  - `rent-g63-orange-county.html` now includes Mercedes-Benz Brabus 800 G-Wagon card (authentic conversion copy)
 - Recrawl checkpoint remains **July 9-16**.
   - `exotic-car-rental-irvine.html`
   - `exotic-car-rental-huntington-beach.html`

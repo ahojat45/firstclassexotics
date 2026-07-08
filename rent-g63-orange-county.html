@@ -102,11 +102,29 @@ footer{background:var(--black);border-top:1px solid rgba(155,0,6,.12);padding:2r
 .sticky-bar a{flex:1;text-align:center;padding:.9rem .5rem;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;gap:.4rem}
 .sticky-call{background:#fff;color:#060606}
 .sticky-reserve{background:var(--gold);color:#fff}
+.fleet-models-section{padding:0 3rem 3rem;background:var(--black)}
+.fleet-models-title{font-family:var(--ff-title);font-size:2.2rem;letter-spacing:.05em;color:var(--white);margin-bottom:1.25rem}
+.fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.fleet-card{position:relative;overflow:hidden;display:flex;flex-direction:column;background:var(--dark-3);border-radius:4px;transition:transform .45s ease,box-shadow .45s ease}
+.fleet-card:hover{transform:translateY(-5px);box-shadow:0 24px 64px rgba(0,0,0,.55)}
+.fleet-card img{width:100%;aspect-ratio:3/2;height:auto;object-fit:cover;object-position:center center;filter:brightness(.88);transition:transform 1s ease,filter 1s ease;display:block}
+.fleet-card:hover img{transform:scale(1.05);filter:brightness(.7)}
+.fleet-card-overlay{position:absolute;left:0;right:0;top:0;aspect-ratio:3/2;background:linear-gradient(to bottom,transparent 55%,rgba(5,5,5,.55) 100%);pointer-events:none}
+.fleet-card-body{background:var(--dark-3);padding:1.6rem 2rem 2.2rem;border-top:2px solid rgba(155,0,6,.18);display:flex;flex-direction:column;flex:1}
+.fleet-brand{font-size:.52rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold-2);margin-bottom:.45rem;font-weight:600}
+.fleet-name{font-family:var(--ff-serif);font-size:1.65rem;font-weight:400;color:var(--white);margin-bottom:.65rem;line-height:1.1;letter-spacing:.02em}
+.fleet-specs{display:flex;gap:1.5rem;margin-bottom:.65rem;padding-bottom:.65rem;border-bottom:1px solid rgba(255,255,255,.06)}
+.fleet-spec{font-size:.58rem;letter-spacing:.1em;color:var(--gray-2)}
+.fleet-spec strong{color:var(--white);font-weight:600}
+.fleet-price{font-size:.68rem;color:var(--gray-2);margin-bottom:1rem;letter-spacing:.04em;margin-top:auto;padding-top:.8rem}
+.fleet-cta{display:inline-block;background:var(--gold);color:var(--white);font-size:.57rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:.58rem 1.4rem;transition:background .3s,box-shadow .3s;align-self:flex-start;margin-top:.5rem}
+.fleet-cta:hover{background:#7a0004;box-shadow:0 4px 20px rgba(155,0,6,.4)}
 @media(max-width:768px){
   nav{padding:.8rem 1.5rem}
-  .car-hero-content,.gallery-section,.desc-section,.article-block,.faq-section,.links-section,.cta-section{padding-left:1.5rem;padding-right:1.5rem}
+  .car-hero-content,.gallery-section,.fleet-models-section,.desc-section,.article-block,.faq-section,.links-section,.cta-section{padding-left:1.5rem;padding-right:1.5rem}
   .gallery-grid{grid-template-columns:1fr 1fr}
   .gallery-grid img:first-child{grid-column:span 2}
+  .fleet-grid{grid-template-columns:1fr}
   .desc-section{grid-template-columns:1fr;gap:2rem}
   .specs-bar{padding:1rem 1.5rem}
   .cta-btns{flex-direction:column;align-items:center}
@@ -131,6 +149,27 @@ footer{background:var(--black);border-top:1px solid rgba(155,0,6,.12);padding:2r
 <div class="gallery-section">
   <div class="gallery-title">PHOTO GALLERY</div>
   <div class="gallery-grid" id="gallery"><img src="images/g63/01.jpg" alt="Mercedes-AMG G63 (G-Wagon) Rentals in Orange County photo 1" onclick="openLightbox(0)" width="1320" height="1393"><img src="images/g63/02.jpg" alt="Mercedes-AMG G63 (G-Wagon) Rentals in Orange County photo 2" onclick="openLightbox(1)" loading="lazy" width="1320" height="1475"><img src="images/g63/03.jpg" alt="Mercedes-AMG G63 (G-Wagon) Rentals in Orange County photo 3" onclick="openLightbox(2)" loading="lazy" width="1320" height="1442"><img src="images/g63/04.jpg" alt="Mercedes-AMG G63 (G-Wagon) Rentals in Orange County photo 4" onclick="openLightbox(3)" loading="lazy" width="1320" height="1468"><img src="images/g63/05.jpg" alt="Mercedes-AMG G63 (G-Wagon) Rentals in Orange County photo 5" onclick="openLightbox(4)" loading="lazy" width="1320" height="1149"></div>
+</div>
+<div class="fleet-models-section">
+  <div class="fleet-models-title">AVAILABLE G-WAGON MODELS</div>
+  <div class="fleet-grid">
+    <div class="fleet-card">
+      <img loading="lazy" src="https://drive.google.com/thumbnail?id=15YrHq0-ngrGBDnOXHbbt3Ob1LeQ16OFO&sz=w800" alt="Black Mercedes-Benz Brabus 800 G-Wagon rental Orange County First Class Exotics" data-gallery="15YrHq0-ngrGBDnOXHbbt3Ob1LeQ16OFO" onerror="this.style.background='#1C1C1C'">
+      <div class="fleet-card-overlay"></div>
+      <div class="fleet-card-body">
+        <div class="fleet-brand">Mercedes-Benz</div>
+        <div class="fleet-name">Brabus 800 G-Wagon</div>
+        <div class="fleet-specs">
+          <div class="fleet-spec"><strong>800 HP</strong></div>
+          <div class="fleet-spec"><strong>4.1s</strong> 0&ndash;60</div>
+          <div class="fleet-spec">4.0L Twin-Turbo V8 (Brabus-tuned)</div>
+        </div>
+        <div class="fleet-color" style="font-size:.62rem;color:var(--gray-2);margin-bottom:.6rem;letter-spacing:.08em">Authentic Brabus Conversion | Black</div>
+        <div class="fleet-price">Contact for Rates</div>
+        <a href="index.html#booking" class="fleet-cta">Reserve Now</a>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="desc-section">
   <div>
