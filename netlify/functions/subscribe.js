@@ -10,21 +10,21 @@ exports.handler = async function (event) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request body' }) };
   }
 
-  if (!name || !email) {
-    return { statusCode: 400, body: JSON.stringify({ error: 'Name and email are required' }) };
+  if (!name || !email || !phone) {
+    return { statusCode: 400, body: JSON.stringify({ error: 'Name, email, and phone are required' }) };
   }
 
-  const attributes = { FIRSTNAME: name };
+  // Normalize phone to E.164 when possible; otherwise store what was provided.
+  const digits = String(phone).replace(/\D/g, '');
+  let cell = String(phone).trim();
+  if (digits.length === 10) cell = '+1' + digits;
+  else if (digits.length === 11 && digits.startsWith('1')) cell = '+' + digits;
 
-  // Only store a textable number when a valid US phone is given AND SMS consent is checked.
-  // A malformed/empty phone is skipped so it never fails the contact create — email still saves.
-  if (smsConsent && phone) {
-    const digits = String(phone).replace(/\D/g, '');
-    let smsE164 = '';
-    if (digits.length === 10) smsE164 = '+1' + digits;
-    else if (digits.length === 11 && digits.startsWith('1')) smsE164 = '+' + digits;
-    if (smsE164) attributes.SMS = smsE164;
-  }
+  const attributes = {
+    FIRSTNAME: name,
+    CELL_PHONE: cell,
+    SMS_CONSENT: smsConsent ? 'yes' : 'no',
+  };
 
   const res = await fetch('https://api.brevo.com/v3/contacts', {
     method: 'POST',
