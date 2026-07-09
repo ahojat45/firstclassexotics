@@ -3,15 +3,27 @@ exports.handler = async function (event) {
     return { statusCode: 405, body: 'Method Not Allowed' };
   }
 
-  let name, email;
+  let name, email, phone, smsConsent;
   try {
-    ({ name, email } = JSON.parse(event.body));
+    ({ name, email, phone, smsConsent } = JSON.parse(event.body));
   } catch {
     return { statusCode: 400, body: JSON.stringify({ error: 'Invalid request body' }) };
   }
 
   if (!name || !email) {
     return { statusCode: 400, body: JSON.stringify({ error: 'Name and email are required' }) };
+  }
+
+  const attributes = { FIRSTNAME: name };
+
+  // Only store a textable number when a valid US phone is given AND SMS consent is checked.
+  // A malformed/empty phone is skipped so it never fails the contact create — email still saves.
+  if (smsConsent && phone) {
+    const digits = String(phone).replace(/\D/g, '');
+    let smsE164 = '';
+    if (digits.length === 10) smsE164 = '+1' + digits;
+    else if (digits.length === 11 && digits.startsWith('1')) smsE164 = '+' + digits;
+    if (smsE164) attributes.SMS = smsE164;
   }
 
   const res = await fetch('https://api.brevo.com/v3/contacts', {
@@ -22,7 +34,7 @@ exports.handler = async function (event) {
     },
     body: JSON.stringify({
       email,
-      attributes: { FIRSTNAME: name },
+      attributes,
       listIds: [2],
       updateEnabled: true,
     }),
