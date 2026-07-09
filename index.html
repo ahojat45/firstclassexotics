@@ -1984,7 +1984,7 @@ function scrollToHashTarget(){
   const targetId=decodeURIComponent(window.location.hash.slice(1));
   if(!targetId)return;
   const target=document.getElementById(targetId);
-  if(target)target.scrollIntoView({behavior:'auto',block:'start'});
+  if(target)window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 120, behavior: 'instant' });
 }
 
 function preselectVehicleFromQuery(){
