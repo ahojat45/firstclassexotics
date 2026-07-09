@@ -308,6 +308,7 @@ nav.scrolled{top:0;width:100%;max-width:100%;border-radius:0;background:rgba(5,5
 
 /* ── BOOKING ── */
 .booking-section{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.08)}
+#booking{scroll-margin-top:120px}
 .booking-layout{display:grid;grid-template-columns:1fr 1fr;gap:0}
 .booking-left{padding:6rem 5.5rem;background:var(--dark-3)}
 .booking-right{padding:6rem 5.5rem;background:var(--dark-2)}
@@ -1976,6 +1977,36 @@ function submitForm(e){
   fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
     .then(()=>{form.style.display='none';document.getElementById('successMsg').style.display='block';})
     .catch(()=>{alert('Something went wrong. Please call or text Ali directly at (949) 294-5958.');});
+}
+
+function scrollToHashTarget(){
+  if(!window.location.hash)return;
+  const targetId=decodeURIComponent(window.location.hash.slice(1));
+  if(!targetId)return;
+  const target=document.getElementById(targetId);
+  if(target)target.scrollIntoView({behavior:'auto',block:'start'});
+}
+
+function preselectVehicleFromQuery(){
+  const params=new URLSearchParams(window.location.search);
+  const car=params.get('car');
+  if(!car)return;
+  const vehicleSelect=document.querySelector('#bookForm select[name="vehicle"]');
+  if(!vehicleSelect)return;
+  const hasOption=Array.from(vehicleSelect.options).some(o=>o.value===car);
+  if(hasOption)vehicleSelect.value=car;
+}
+
+window.addEventListener('load',()=>{
+  preselectVehicleFromQuery();
+  scrollToHashTarget();
+  setTimeout(scrollToHashTarget,800);
+});
+
+if(document.readyState==='complete'){
+  preselectVehicleFromQuery();
+  scrollToHashTarget();
+  setTimeout(scrollToHashTarget,800);
 }
 </script>
 
