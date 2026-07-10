@@ -1,5 +1,5 @@
 # First Class Exotics — Handoff Document
-**Last Updated:** July 8, 2026
+**Last Updated:** July 9, 2026
 **Status:** Production Live
 
 ---
@@ -212,6 +212,26 @@ End-to-end intake verified live on production: booking form → `submission-crea
 ## FCE OS Module 2 - Phase A (Shipped July 7, 2026)
 
 Scope shipped in isolated FCE OS paths only (`fce-os/*`, `netlify/functions/fce-os-*`).
+
+## ✅ July 9, 2026 Session
+
+### Fleet — 2 Mercedes added (LIVE & verified)
+- **2026 Mercedes-Maybach GLS 600 (White)** — 550 HP / 4.8s / 4.0L Biturbo V8 + EQ Boost. Drive folder `1zhJLRcPh_m86EkJ79VvAOXQ2Zt43phD9` (5 photos). Front-exterior hero ID: `13jzLAqtSgjd5NKi-sTd1eFKhnWZZeatL`.
+- **Mercedes-AMG G63 (Silver, no year)** — 577 HP / 4.5s / 4.0L Biturbo V8. Drive folder `1h_4Kpf39lcG_UKl8_yHZuLom5ZPgqoOS` (3 photos). Front-exterior hero ID: `1cxrM_meWONuvfq7hTjErrZyidgwXo-g1`.
+- Added to `index.html`, `rent-maybach-orange-county.html`, `rent-g63-orange-county.html`, and the Mercedes-Benz booking dropdown, each with a full click-through Drive gallery.
+- Commits: `c90c5b3` (add) + `42c10ab` (hero reorder). **RULE: the card hero image must be the front-facing EXTERIOR shot, not an interior — verify before shipping.**
+
+### Brevo 15%-off subscribe popup — FIXED (was silently failing ~30 days)
+- Root cause was NOT code: Brevo Security → Authorized IPs had "Blocking unauthorized IP addresses" ON for API keys, rejecting Netlify's serverless IPs. Fixed in the Brevo account (Deactivate for API keys).
+- `netlify/functions/subscribe.js` now requires name+email+phone, writes `CELL_PHONE` + `SMS_CONSENT` ('yes'/'no') to Brevo list `[2]` via `BREVO_API_KEY`, and does NOT use Brevo's gated `SMS` attribute. Popup shows success only on `r.ok`. Commits `e6c8623` + `c6070fe`. Verified live.
+- Two custom Brevo contact attributes were created: `CELL_PHONE` (text), `SMS_CONSENT` (text).
+- To actually send texts later: needs Brevo SMS credits (currently 0) or export consented `CELL_PHONE` numbers to an SMS tool. TCPA: only text contacts with `SMS_CONSENT='yes'`.
+- The same IP fix very likely revived the Phase A.5 customer signing-agreement emails (they fail silently by design) — run one live signing test to confirm.
+
+### Open items (carryover)
+- Attorney review of Rental Agreement v2 (launch bottleneck for FCE OS signing flow) — still pending; no legal text goes live until then.
+- Live A.5 signing test to confirm signed-PDF email now delivers.
+- SEO: indexing is NOT the bottleneck and being "indexed" ≠ ranking #1. The next real lever for #1 is the **Google Business Profile / Maps local pack + reviews (at 76)**, not the GSC Pages report. GSC recrawl window is July 9–16.
 
 ### DB Migration
 - Added `fce-os/db/migrations/002_module2_agreements_core.sql` with `agreements` table:
