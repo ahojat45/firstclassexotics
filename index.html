@@ -1009,6 +1009,38 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
+      <img loading="lazy" src="images/lamborghini-evo-blue/05.jpg" alt="2022 Lamborghini Evo blue rental Orange County exotic car rental First Class Exotics" data-gallery="images/lamborghini-evo-blue/05.jpg,images/lamborghini-evo-blue/01.jpg,images/lamborghini-evo-blue/02.jpg,images/lamborghini-evo-blue/03.jpg,images/lamborghini-evo-blue/04.jpg" onerror="this.style.background='#1C1C1C'">
+      <div class="fleet-card-overlay"></div>
+      <div class="fleet-card-body">
+        <div class="fleet-brand">Lamborghini</div>
+        <div class="fleet-name">2022 Lamborghini Evo (Blue)</div>
+        <div class="fleet-specs">
+          <div class="fleet-spec"><strong>TODO</strong> HP</div>
+          <div class="fleet-spec"><strong>TODO</strong> 0&ndash;60</div>
+          <div class="fleet-spec">TODO Specs</div>
+        </div>
+        <div class="fleet-color" style="font-size:.62rem;color:var(--gray-2);margin-bottom:.6rem;letter-spacing:.08em">Blue</div>
+        <div class="fleet-price">Contact for Rates</div>
+        <a href="#booking" data-car="2022 Lamborghini Evo (Blue)" class="fleet-cta">Reserve Now</a>
+      </div>
+    </div>
+    <div class="fleet-card">
+      <img loading="lazy" src="images/lamborghini-huracan-white/05.jpg" alt="Lamborghini Huracan white rental Orange County exotic car rental First Class Exotics" data-gallery="images/lamborghini-huracan-white/05.jpg,images/lamborghini-huracan-white/01.jpg,images/lamborghini-huracan-white/02.jpg,images/lamborghini-huracan-white/03.jpg,images/lamborghini-huracan-white/04.jpg" onerror="this.style.background='#1C1C1C'">
+      <div class="fleet-card-overlay"></div>
+      <div class="fleet-card-body">
+        <div class="fleet-brand">Lamborghini</div>
+        <div class="fleet-name">Lamborghini Hurac&aacute;n (White)</div>
+        <div class="fleet-specs">
+          <div class="fleet-spec"><strong>TODO</strong> HP</div>
+          <div class="fleet-spec"><strong>TODO</strong> 0&ndash;60</div>
+          <div class="fleet-spec">TODO Specs</div>
+        </div>
+        <div class="fleet-color" style="font-size:.62rem;color:var(--gray-2);margin-bottom:.6rem;letter-spacing:.08em">White</div>
+        <div class="fleet-price">Contact for Rates</div>
+        <a href="#booking" data-car="Lamborghini Huracán (White)" class="fleet-cta">Reserve Now</a>
+      </div>
+    </div>
+    <div class="fleet-card">
       <img loading="lazy" src="https://drive.google.com/thumbnail?id=1932_BQo4JgPyQ_nxguQnavNuK1JgqmF3&sz=w800" alt="Ferrari 488 GTB red rental Orange County exotic car rental First Class Exotics" data-gallery="1932_BQo4JgPyQ_nxguQnavNuK1JgqmF3,1Hh_70egPWFGTrxctVP0Aj2RLD5ZIQbvz,13NEI87LTTn35uTijCWlUGfmz0GPuByX3,12EhuCydV9zNTFPovIjooCnvIFwglPQ1y,12quUuuMavMwLNclIGi-ccptfzRIQ7mRa,1M4ULmwtOwGQ0o-NtQrIIhmqaBFP_Hj3i" onerror="this.style.background='#1C1C1C'">
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
@@ -1572,9 +1604,11 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
             <option value="" disabled selected>Select a car...</option>
             <optgroup label="Lamborghini">
               <option>Lamborghini Aventador SVJ</option>
+              <option>2022 Lamborghini Evo (Blue)</option>
               <option>Lamborghini Hurac&#225;n EVO &mdash; Satin Black</option>
               <option>Lamborghini Hurac&#225;n Spyder &mdash; Yellow</option>
               <option>Lamborghini Hurac&#225;n Spyder &mdash; Satin Black</option>
+              <option>Lamborghini Hurac&#225;n (White)</option>
               <option>Lamborghini Hurac&#225;n &mdash; Satin Black</option>
               <option>Lamborghini Hurac&#225;n &mdash; Verde Mantis</option>
               <option>Lamborghini Hurac&#225;n &mdash; White</option>
@@ -2096,7 +2130,11 @@ document.addEventListener('click',function(e){
   var lbCounter=lb.querySelector('.lb-counter');
   var lbThumbs=lb.querySelector('.lb-thumbs');
   var images=[],current=0,carName='';
-  function gdUrl(id,size){return 'https://drive.google.com/thumbnail?id='+id+'&sz='+size;}
+  function gdUrl(id,size){
+    // Existing cards use Drive IDs; newer local cards pass direct relative image paths.
+    if(id.indexOf('/')!==-1||id.indexOf('.')!==-1)return id;
+    return 'https://drive.google.com/thumbnail?id='+id+'&sz='+size;
+  }
   function open(imgs,name,idx){images=imgs;current=idx||0;carName=name;buildThumbs();show(current);lb.classList.add('open');document.body.style.overflow='hidden';}
   function close(){lb.classList.remove('open');document.body.style.overflow='';}
   function show(idx){current=idx;lbCarName.textContent=carName;lbCounter.textContent=(current+1)+' / '+images.length;lbImg.classList.add('fading');var newImg=new Image();newImg.onload=function(){lbImg.src=this.src;lbImg.classList.remove('fading');};newImg.src=gdUrl(images[current],'w1600');lb.querySelectorAll('.lb-thumb').forEach(function(t,i){t.classList.toggle('active',i===current);});var at=lb.querySelectorAll('.lb-thumb')[current];if(at)at.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
