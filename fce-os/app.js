@@ -414,13 +414,13 @@ function renderCustomerDetail() {
       <form class="doc-form" data-doc-type="dl">
         <strong>Driver License</strong>
         <input type="date" name="expirationDate" value="${customer.dl_expiration_date || ''}" required>
-        <input type="file" name="file" accept="image/*" required>
+        <input type="file" name="file" accept="image/*,application/pdf" required>
         <button class="primary" type="submit">Upload DL</button>
       </form>
       <form class="doc-form" data-doc-type="insurance">
         <strong>Insurance Card</strong>
         <input type="date" name="expirationDate" value="${customer.insurance_expiration_date || ''}" required>
-        <input type="file" name="file" accept="image/*" required>
+        <input type="file" name="file" accept="image/*,application/pdf" required>
         <button class="primary" type="submit">Upload Insurance</button>
       </form>
     </div>

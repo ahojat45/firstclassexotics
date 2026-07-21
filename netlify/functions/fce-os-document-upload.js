@@ -15,6 +15,30 @@ function cleanFileName(value) {
     .replace(/^-|-$/g, '');
 }
 
+const ALLOWED_MIME_TYPES = new Set([
+  'application/pdf',
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+  'image/heic',
+  'image/heif',
+]);
+
+function detectMimeType(fileName, mimeType) {
+  const normalizedMime = String(mimeType || '').trim().toLowerCase();
+  if (ALLOWED_MIME_TYPES.has(normalizedMime)) return normalizedMime;
+
+  const lowerName = String(fileName || '').toLowerCase();
+  if (lowerName.endsWith('.pdf')) return 'application/pdf';
+  if (lowerName.endsWith('.png')) return 'image/png';
+  if (lowerName.endsWith('.webp')) return 'image/webp';
+  if (lowerName.endsWith('.heic')) return 'image/heic';
+  if (lowerName.endsWith('.heif')) return 'image/heif';
+  if (lowerName.endsWith('.jpg') || lowerName.endsWith('.jpeg')) return 'image/jpeg';
+
+  return null;
+}
+
 exports.handler = async function handler(event) {
   if (event.httpMethod !== 'POST') {
     return json(405, { error: 'Method Not Allowed' });
@@ -34,8 +58,8 @@ exports.handler = async function handler(event) {
   const docType = payload.docType;
   const expirationDate = payload.expirationDate || null;
   const fileBase64 = payload.fileBase64;
-  const fileName = cleanFileName(payload.fileName || 'document.jpg');
-  const mimeType = payload.mimeType || 'image/jpeg';
+  const fileName = cleanFileName(payload.fileName || 'document');
+  const mimeType = detectMimeType(fileName, payload.mimeType);
 
   if (!customerId || !docType || !fileBase64) {
     return json(400, { error: 'customerId, docType, and fileBase64 are required' });
@@ -43,6 +67,10 @@ exports.handler = async function handler(event) {
 
   if (!['dl', 'insurance'].includes(docType)) {
     return json(400, { error: 'docType must be dl or insurance' });
+  }
+
+  if (!mimeType) {
+    return json(400, { error: 'Unsupported file type. Allowed: PDF, JPG, PNG, WEBP, HEIC.' });
   }
 
   try {
