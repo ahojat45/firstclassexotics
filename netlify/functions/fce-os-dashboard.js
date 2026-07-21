@@ -7,6 +7,43 @@ const {
   daysTo,
 } = require('./fce-os-utils');
 
+const AGREEMENTS_SELECT_EXTENDED =
+  'id,customer_id,lead_id,status,token_expires_at,sent_at,viewed_at,signed_at,deposit_amount_cents,deposit_status,created_at,daily_rate_cents,total_price_cents,miles_included_per_day,mileage_overage_rate_cents,pickup_time,return_time,additional_driver_names,fuel_terms,manual_resend_required,signed_pdf_storage_bucket,signed_pdf_storage_path,signed_pdf_error,signed_email_error,signed_email_sent_at';
+
+const AGREEMENTS_SELECT_BASE =
+  'id,customer_id,lead_id,status,token_expires_at,sent_at,viewed_at,signed_at,deposit_amount_cents,deposit_status,created_at';
+
+async function fetchDashboardAgreements() {
+  try {
+    return await supabaseFetch(`/rest/v1/agreements?select=${encodeURIComponent(AGREEMENTS_SELECT_EXTENDED)}&order=created_at.desc&limit=500`);
+  } catch (error) {
+    const message = String(error?.message || '');
+    if (!message.includes('column agreements.') || !message.includes(' does not exist')) {
+      throw error;
+    }
+
+    const rows = await supabaseFetch(`/rest/v1/agreements?select=${encodeURIComponent(AGREEMENTS_SELECT_BASE)}&order=created_at.desc&limit=500`);
+
+    return rows.map((row) => ({
+      ...row,
+      daily_rate_cents: null,
+      total_price_cents: null,
+      miles_included_per_day: null,
+      mileage_overage_rate_cents: null,
+      pickup_time: null,
+      return_time: null,
+      additional_driver_names: null,
+      fuel_terms: null,
+      manual_resend_required: false,
+      signed_pdf_storage_bucket: null,
+      signed_pdf_storage_path: null,
+      signed_pdf_error: null,
+      signed_email_error: null,
+      signed_email_sent_at: null,
+    }));
+  }
+}
+
 exports.handler = async function handler(event) {
   if (event.httpMethod !== 'GET') {
     return json(405, { error: 'Method Not Allowed' });
@@ -22,7 +59,7 @@ exports.handler = async function handler(event) {
 
     const history = await supabaseFetch('/rest/v1/lead_stage_history?select=id,lead_id,from_stage,to_stage,changed_at,changed_by,note&order=changed_at.desc&limit=500');
 
-    const agreements = await supabaseFetch('/rest/v1/agreements?select=id,customer_id,lead_id,status,token_expires_at,sent_at,viewed_at,signed_at,deposit_amount_cents,deposit_status,created_at,daily_rate_cents,total_price_cents,miles_included_per_day,mileage_overage_rate_cents,pickup_time,return_time,additional_driver_names,fuel_terms,manual_resend_required,signed_pdf_storage_bucket,signed_pdf_storage_path,signed_pdf_error,signed_email_error,signed_email_sent_at&order=created_at.desc&limit=500');
+    const agreements = await fetchDashboardAgreements();
 
     const stages = {};
     STAGE_ORDER.forEach((stage) => {
