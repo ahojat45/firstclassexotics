@@ -26,6 +26,98 @@ const state = {
   lastAgreementLinkByCustomer: {},
 };
 
+const STAGE_LOOKUP = STAGES.reduce((acc, stage) => {
+  acc[stage.toLowerCase()] = stage;
+  return acc;
+}, {});
+
+function normalizeStageName(stage) {
+  const value = String(stage || '').trim();
+  if (!value) return null;
+  return STAGE_LOOKUP[value.toLowerCase()] || null;
+}
+
+function normalizeLead(lead = {}) {
+  const source = typeof lead.source === 'string'
+    ? lead.source
+    : (lead.source?.code || lead.source?.label || 'Website');
+
+  return {
+    id: lead.id,
+    customerId: lead.customerId || lead.customer_id || lead.customer?.id || null,
+    stage: normalizeStageName(lead.stage) || 'New',
+    stageChangedAt: lead.stageChangedAt || lead.stage_changed_at || null,
+    daysInStage: Number.isFinite(Number(lead.daysInStage)) ? Number(lead.daysInStage) : 0,
+    fullName: lead.fullName || lead.full_name || lead.customer?.full_name || null,
+    phone: lead.phone || lead.customer?.phone || null,
+    email: lead.email || lead.customer?.email || null,
+    notes: lead.notes || lead.customer?.notes || null,
+    source,
+    referredBy: lead.referredBy || lead.referred_by || null,
+    requestedVehicle: lead.requestedVehicle || lead.requested_vehicle || lead.customer?.requested_vehicle || null,
+    requestedStartDate: lead.requestedStartDate || lead.requested_start_date || lead.customer?.requested_start_date || null,
+    requestedEndDate: lead.requestedEndDate || lead.requested_end_date || lead.customer?.requested_end_date || null,
+    deliveryPreference: lead.deliveryPreference || lead.delivery_preference || lead.customer?.delivery_preference || null,
+  };
+}
+
+function normalizeCustomer(customer = {}) {
+  const source = typeof customer.source === 'string'
+    ? { code: customer.source, label: customer.source }
+    : (customer.source || null);
+
+  return {
+    ...customer,
+    id: customer.id || customer.customer_id || null,
+    full_name: customer.full_name || customer.fullName || null,
+    phone: customer.phone || null,
+    email: customer.email || null,
+    status: customer.status || 'active',
+    source,
+  };
+}
+
+function normalizeDashboardData(raw = {}) {
+  const stages = STAGES.reduce((acc, stage) => {
+    acc[stage] = [];
+    return acc;
+  }, {});
+
+  if (raw.stages && typeof raw.stages === 'object') {
+    Object.entries(raw.stages).forEach(([key, value]) => {
+      const canonical = normalizeStageName(key);
+      if (!canonical || !Array.isArray(value)) return;
+      stages[canonical] = value.map((lead) => {
+        const normalized = normalizeLead(lead);
+        normalized.stage = canonical;
+        return normalized;
+      });
+    });
+  }
+
+  const hasStageRows = STAGES.some((stage) => stages[stage].length > 0);
+  if (!hasStageRows && Array.isArray(raw.leads)) {
+    raw.leads.forEach((lead) => {
+      const normalized = normalizeLead(lead);
+      const stage = normalizeStageName(normalized.stage) || 'New';
+      normalized.stage = stage;
+      stages[stage].push(normalized);
+    });
+  }
+
+  const customersRaw = Array.isArray(raw.customers)
+    ? raw.customers
+    : (raw.customers && typeof raw.customers === 'object' ? Object.values(raw.customers) : []);
+
+  return {
+    stages,
+    customers: customersRaw.map((customer) => normalizeCustomer(customer)).filter((customer) => customer.id),
+    stageHistory: Array.isArray(raw.stageHistory) ? raw.stageHistory : [],
+    expiringFlags: Array.isArray(raw.expiringFlags) ? raw.expiringFlags : [],
+    agreements: Array.isArray(raw.agreements) ? raw.agreements : [],
+  };
+}
+
 async function api(path, options = {}) {
   const response = await fetch(path, {
     credentials: 'include',
@@ -184,11 +276,12 @@ function renderCustomerList() {
     .map((row) => {
       const activeClass = row.id === state.selectedCustomerId ? 'active' : '';
       const lead = leadByCustomerId(row.id);
+      const sourceCode = typeof row.source === 'string' ? row.source : (row.source?.code || 'Unknown');
       return `
         <div class="customer-item ${activeClass}" data-customer-id="${row.id}">
           <div><strong>${row.full_name}</strong></div>
           <small>${row.phone || ''} ${row.email ? `| ${row.email}` : ''}</small>
-          <small>Source: ${row.source?.code || 'Unknown'} | Status: ${row.status}</small>
+          <small>Source: ${sourceCode} | Status: ${row.status}</small>
           <small>Stage: ${lead?.stage || 'No lead'}</small>
         </div>
       `;
@@ -534,7 +627,8 @@ async function createQuickLead(event) {
 }
 
 async function loadDashboard(resetSelection = true) {
-  const data = await api('/.netlify/functions/fce-os-dashboard', { method: 'GET' });
+  const response = await api('/.netlify/functions/fce-os-dashboard', { method: 'GET' });
+  const data = normalizeDashboardData(response);
   state.data = data;
 
   if (resetSelection && data.customers.length) {
