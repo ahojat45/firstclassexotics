@@ -224,6 +224,7 @@ function renderPipeline() {
             <select data-lead-move="${lead.id}">
               ${STAGES.map((s) => `<option value="${s}" ${s === lead.stage ? 'selected' : ''}>${s}</option>`).join('')}
             </select>
+            <button class="ghost" type="button" data-lead-delete="${lead.id}" data-customer-id="${lead.customerId || ''}" data-lead-name="${lead.fullName || ''}">Delete</button>
           </div>
         `;
       })
@@ -260,6 +261,24 @@ function renderPipeline() {
       const stage = stageColumn.getAttribute('data-stage');
       if (leadId && stage) {
         await moveLead(leadId, stage);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-lead-delete]').forEach((button) => {
+    button.addEventListener('click', async (event) => {
+      const target = event.currentTarget;
+      const leadId = target.getAttribute('data-lead-delete');
+      const customerId = target.getAttribute('data-customer-id');
+      const leadName = target.getAttribute('data-lead-name') || 'this lead';
+
+      const confirmed = window.confirm(`Delete this lead? This can't be undone.\n\n${leadName}`);
+      if (!confirmed) return;
+
+      try {
+        await deleteLeadCustomer({ leadId, customerId });
+      } catch (error) {
+        window.alert(error.message);
       }
     });
   });
@@ -376,6 +395,7 @@ function renderCustomerDetail() {
 
   el.customerDetailPanel.innerHTML = `
     <div class="panel-head"><h3>${customer.full_name}</h3></div>
+    <div style="margin-bottom:0.75rem"><button id="customerDeleteBtn" class="ghost" type="button">Delete Customer + Lead</button></div>
     <form id="customerEditForm" class="grid-form">
       <input name="full_name" value="${customer.full_name || ''}" placeholder="Full name">
       <input name="phone" value="${customer.phone || ''}" placeholder="Phone">
@@ -437,6 +457,18 @@ function renderCustomerDetail() {
   `;
 
   const editForm = document.getElementById('customerEditForm');
+  const customerDeleteBtn = document.getElementById('customerDeleteBtn');
+  customerDeleteBtn.addEventListener('click', async () => {
+    const confirmed = window.confirm(`Delete this lead? This can't be undone.\n\n${customer.full_name || ''}`);
+    if (!confirmed) return;
+
+    try {
+      await deleteLeadCustomer({ customerId: customer.id, leadId: lead?.id || null });
+    } catch (error) {
+      document.getElementById('customerDetailError').textContent = error.message;
+    }
+  });
+
   editForm.addEventListener('submit', async (event) => {
     event.preventDefault();
     const fd = new FormData(editForm);
@@ -604,6 +636,21 @@ async function moveLead(leadId, stage) {
     body: JSON.stringify({ leadId, stage }),
   });
   await loadDashboard(false);
+}
+
+async function deleteLeadCustomer({ leadId = null, customerId = null }) {
+  const result = await api('/.netlify/functions/fce-os-leads-delete', {
+    method: 'POST',
+    body: JSON.stringify({ leadId, customerId }),
+  });
+
+  const deletedCustomerId = result?.deleted?.customerId || customerId;
+
+  if (state.selectedCustomerId && deletedCustomerId && state.selectedCustomerId === deletedCustomerId) {
+    state.selectedCustomerId = null;
+  }
+
+  await loadDashboard(true);
 }
 
 async function createQuickLead(event) {
