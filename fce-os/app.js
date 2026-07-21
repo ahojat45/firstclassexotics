@@ -413,12 +413,14 @@ function renderCustomerDetail() {
     <div class="doc-grid">
       <form class="doc-form" data-doc-type="dl">
         <strong>Driver License</strong>
+        <div class="muted">${customer.dl_document_id ? `<button class="ghost" type="button" data-doc-download="${customer.dl_document_id}" data-doc-label="Driver License">View Driver License</button>` : 'No file uploaded yet.'}</div>
         <input type="date" name="expirationDate" value="${customer.dl_expiration_date || ''}" required>
         <input type="file" name="file" accept="image/*,application/pdf" required>
         <button class="primary" type="submit">Upload DL</button>
       </form>
       <form class="doc-form" data-doc-type="insurance">
         <strong>Insurance Card</strong>
+        <div class="muted">${customer.insurance_document_id ? `<button class="ghost" type="button" data-doc-download="${customer.insurance_document_id}" data-doc-label="Insurance Card">View Insurance Card</button>` : 'No file uploaded yet.'}</div>
         <input type="date" name="expirationDate" value="${customer.insurance_expiration_date || ''}" required>
         <input type="file" name="file" accept="image/*,application/pdf" required>
         <button class="primary" type="submit">Upload Insurance</button>
@@ -517,6 +519,27 @@ function renderCustomerDetail() {
         await loadDashboard(false);
       } catch (error) {
         document.getElementById('customerDetailError').textContent = error.message;
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-doc-download]').forEach((button) => {
+    button.addEventListener('click', async (event) => {
+      event.preventDefault();
+      document.getElementById('customerDetailError').textContent = '';
+
+      const target = event.currentTarget;
+      const documentId = target.getAttribute('data-doc-download');
+      const label = target.getAttribute('data-doc-label') || 'Document';
+      if (!documentId) return;
+
+      try {
+        const result = await api(`/.netlify/functions/fce-os-document-download-link?documentId=${encodeURIComponent(documentId)}`, {
+          method: 'GET',
+        });
+        window.open(result.signedUrl, '_blank', 'noopener');
+      } catch (error) {
+        document.getElementById('customerDetailError').textContent = `${label}: ${error.message}`;
       }
     });
   });
