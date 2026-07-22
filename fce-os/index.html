@@ -23,67 +23,125 @@
   </div>
 
   <div class="app hidden" id="appShell">
-    <header class="topbar">
-      <div>
-        <h2>FCE OS Dashboard</h2>
-        <small>Customer and Lead Core</small>
-      </div>
-      <div class="topbar-actions">
-        <button class="ghost" id="refreshBtn">Refresh</button>
-        <button class="ghost" id="logoutBtn">Logout</button>
-      </div>
-    </header>
-
-    <section class="alerts" id="expiringAlerts"></section>
-
-    <section class="panel quick-add">
-      <div class="panel-head">
-        <h3>Quick Add Lead</h3>
-      </div>
-      <form id="quickLeadForm" class="grid-form">
-        <input name="fullName" placeholder="Full name" required>
-        <input name="phone" placeholder="Phone" required>
-        <input name="email" placeholder="Email">
-        <select name="source" id="leadSource" required>
-          <option value="Phone">Phone</option>
-          <option value="Instagram">Instagram</option>
-          <option value="Referral">Referral</option>
-        </select>
-        <input name="referredBy" id="referredBy" placeholder="Referred by" class="hidden">
-        <input name="requestedVehicle" placeholder="Requested car">
-        <input name="requestedStartDate" type="date">
-        <input name="requestedEndDate" type="date">
-        <textarea name="notes" placeholder="Notes"></textarea>
-        <button type="submit" class="primary">Create Lead</button>
-      </form>
-      <div class="error" id="quickLeadError"></div>
-      <div class="success" id="quickLeadSuccess"></div>
-    </section>
-
-    <section class="panel">
-      <div class="panel-head">
-        <h3>Pipeline</h3>
-        <small>Drag cards between stages or use stage picker on each card.</small>
-      </div>
-      <div class="pipeline" id="pipelineBoard"></div>
-    </section>
-
-    <section class="split">
-      <section class="panel">
-        <div class="panel-head">
-          <h3>Customers</h3>
-          <input id="customerSearch" placeholder="Search name, phone, email">
+    <div class="crm-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <img src="../FC_LOGO.png" alt="First Class Exotics" class="logo sidebar-logo">
+          <div>
+            <h2>FCE OS</h2>
+            <small>Module 1 CRM</small>
+          </div>
         </div>
-        <div class="customer-list" id="customerList"></div>
-      </section>
 
-      <section class="panel" id="customerDetailPanel">
-        <div class="panel-head">
-          <h3>Customer Detail</h3>
+        <div class="sidebar-search">
+          <label for="globalSearch">Global search</label>
+          <input id="globalSearch" placeholder="Name, phone, car">
         </div>
-        <div class="muted">Select a customer from the list.</div>
-      </section>
-    </section>
+
+        <nav class="sidebar-nav">
+          <button class="nav-item active" type="button" data-view="overview">Overview</button>
+          <button class="nav-item" type="button" data-view="pipeline">Pipeline</button>
+          <button class="nav-item" type="button" data-view="customers">Customers</button>
+          <button class="nav-item" type="button" data-view="documents">Documents</button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button class="ghost" id="refreshBtn">Refresh</button>
+          <button class="ghost" id="logoutBtn">Logout</button>
+        </div>
+      </aside>
+
+      <main class="main-shell">
+        <header class="topbar">
+          <div>
+            <h2>FCE OS Dashboard</h2>
+            <small>CRM overview, pipeline, customers, and documents.</small>
+          </div>
+          <div class="topbar-actions">
+            <button class="ghost" id="pipelineQuickAddToggle" type="button">Quick add</button>
+          </div>
+        </header>
+
+        <section class="view-panel" data-view-panel="overview" id="overviewPanel"></section>
+
+        <section class="view-panel hidden" data-view-panel="pipeline">
+          <section class="panel quick-add-drawer hidden" id="pipelineQuickAdd">
+            <div class="panel-head">
+              <div>
+                <h3>Quick Add Lead</h3>
+                <small>Keep this collapsed unless you are entering a lead.</small>
+              </div>
+            </div>
+            <form id="quickLeadForm" class="grid-form">
+              <input name="fullName" placeholder="Full name" required>
+              <input name="phone" placeholder="Phone" required>
+              <input name="email" placeholder="Email">
+              <select name="source" id="leadSource" required>
+                <option value="Phone">Phone</option>
+                <option value="Instagram">Instagram</option>
+                <option value="Referral">Referral</option>
+              </select>
+              <input name="referredBy" id="referredBy" placeholder="Referred by" class="hidden">
+              <input name="requestedVehicle" placeholder="Requested car">
+              <input name="requestedStartDate" type="date">
+              <input name="requestedEndDate" type="date">
+              <textarea name="notes" placeholder="Notes"></textarea>
+              <button type="submit" class="primary">Create Lead</button>
+            </form>
+            <div class="error" id="quickLeadError"></div>
+            <div class="success" id="quickLeadSuccess"></div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-head crm-toolbar">
+              <div>
+                <h3>Pipeline</h3>
+                <small>Table first, kanban available when you want the old flow.</small>
+              </div>
+              <input id="pipelineSearch" placeholder="Search name, phone, car">
+            </div>
+            <div class="chip-row" id="pipelineFilterChips"></div>
+            <div class="chip-row right" id="pipelineViewToggle"></div>
+            <div class="pipeline-board" id="pipelineBoard"></div>
+          </section>
+        </section>
+
+        <section class="view-panel hidden" data-view-panel="customers">
+          <section class="panel split-shell">
+            <div class="panel split-list-panel">
+              <div class="panel-head crm-toolbar">
+                <div>
+                  <h3>Customers</h3>
+                  <small>Searchable directory of every renter.</small>
+                </div>
+                <input id="customerSearch" placeholder="Search name, phone, car">
+              </div>
+              <div class="customer-list" id="customerList"></div>
+            </div>
+
+            <section class="panel split-detail-panel" id="customerDetailPanel">
+              <div class="panel-head">
+                <h3>Customer Detail</h3>
+              </div>
+              <div class="muted">Select a customer from the list.</div>
+            </section>
+          </section>
+        </section>
+
+        <section class="view-panel hidden" data-view-panel="documents">
+          <section class="panel">
+            <div class="panel-head crm-toolbar">
+              <div>
+                <h3>Documents</h3>
+                <small>Driver licenses and insurance cards sorted by expiration date.</small>
+              </div>
+              <input id="documentSearch" placeholder="Search name, phone, car, doc type">
+            </div>
+            <div class="document-list" id="documentList"></div>
+          </section>
+        </section>
+      </main>
+    </div>
   </div>
 
   <script src="app.js"></script>
