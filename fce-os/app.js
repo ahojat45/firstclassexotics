@@ -267,9 +267,43 @@ function initials(value) {
   return parts.map((part) => part[0]).join('').toUpperCase();
 }
 
+function isDateOnlyString(value) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(String(value || '').trim());
+}
+
+function parseDateOnlyLocal(value) {
+  const [year, month, day] = String(value).split('-').map((part) => Number(part));
+  if (!Number.isInteger(year) || !Number.isInteger(month) || !Number.isInteger(day)) return null;
+  const date = new Date(year, month - 1, day);
+  if (Number.isNaN(date.getTime())) return null;
+  return date;
+}
+
+function daysTo(value) {
+  if (!value) return null;
+
+  const target = isDateOnlyString(value)
+    ? parseDateOnlyLocal(value)
+    : new Date(value);
+
+  if (!target || Number.isNaN(target.getTime())) return null;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  target.setHours(0, 0, 0, 0);
+
+  const diffMs = target.getTime() - today.getTime();
+  return Math.floor(diffMs / (1000 * 60 * 60 * 24));
+}
+
 function formatDate(value) {
   if (!value) return '—';
-  const date = new Date(value);
+
+  const date = isDateOnlyString(value)
+    ? parseDateOnlyLocal(value)
+    : new Date(value);
+
+  if (!date) return '—';
   if (Number.isNaN(date.getTime())) return '—';
   return date.toLocaleDateString();
 }
