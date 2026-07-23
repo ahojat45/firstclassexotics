@@ -440,6 +440,19 @@ button.ghost {
   margin-bottom: 0.8rem;
 }
 
+.stage-form {
+  display: grid;
+  grid-template-columns: minmax(160px, 240px) auto;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.stage-form .primary {
+  width: auto;
+  padding-inline: 1rem;
+}
+
 .detail-badges {
   display: flex;
   gap: 0.45rem;
@@ -684,4 +697,6 @@ button.ghost {
   .attention-row { flex-direction: column; }
   .attention-meta { flex-wrap: wrap; white-space: normal; }
   .crm-toolbar input { max-width: 100%; }
+  .stage-form { grid-template-columns: 1fr; }
+  .stage-form .primary { width: 100%; }
 }

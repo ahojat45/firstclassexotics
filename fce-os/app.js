@@ -36,6 +36,7 @@ const state = {
   data: null,
   selectedCustomerId: null,
   lastAgreementLinkByCustomer: {},
+  detailFeedbackByCustomer: {},
   activeView: 'overview',
   pipelineView: 'table',
   pipelineStageFilter: 'All',
@@ -578,6 +579,27 @@ function stageTone(stage) {
   }
 }
 
+function setDetailFeedback(customerId, type, message) {
+  if (!customerId) return;
+  state.detailFeedbackByCustomer[customerId] = {
+    type,
+    message: String(message || ''),
+    at: Date.now(),
+  };
+}
+
+function readDetailFeedback(customerId) {
+  const entry = state.detailFeedbackByCustomer[customerId];
+  if (!entry) return { error: '', success: '' };
+  if (entry.type === 'error') return { error: entry.message, success: '' };
+  return { error: '', success: entry.message };
+}
+
+function clearDetailFeedback(customerId) {
+  if (!customerId) return;
+  delete state.detailFeedbackByCustomer[customerId];
+}
+
 function renderPipeline() {
   const leads = filteredPipelineLeads();
   const counts = STAGES.reduce((acc, stage) => {
@@ -899,6 +921,7 @@ function renderCustomerDetail() {
   const customerAgreements = (state.data.agreements || []).filter((row) => row.customer_id === customer.id);
   const newestAgreement = customerAgreements[0] || null;
   const docSummary = customerDocumentSummary(customer);
+  const detailFeedback = readDetailFeedback(customer.id);
 
   el.customerDetailPanel.innerHTML = `
     <div class="panel-head">
@@ -914,6 +937,17 @@ function renderCustomerDetail() {
     <div class="detail-actions">
       <button id="customerDeleteBtn" class="ghost danger-action" type="button">Delete Customer + Lead</button>
     </div>
+
+    <h3 style="margin-top:0.8rem">Lead Stage</h3>
+    ${lead ? `
+      <form id="customerStageForm" class="stage-form">
+        <select name="stage" aria-label="Lead Stage">
+          ${STAGES.map((stage) => `<option value="${stage}" ${stage === lead.stage ? 'selected' : ''}>${stage}</option>`).join('')}
+        </select>
+        <button class="primary" type="submit">Update Stage</button>
+      </form>
+    ` : '<div class="muted">No lead is linked to this customer yet.</div>'}
+
     <form id="customerEditForm" class="grid-form">
       <input name="full_name" value="${escapeHtml(customer.full_name || '')}" placeholder="Full name">
       <input name="phone" value="${escapeHtml(customer.phone || '')}" placeholder="Phone">
@@ -932,15 +966,15 @@ function renderCustomerDetail() {
       <form class="doc-form" data-doc-type="dl">
         <strong>Driver License</strong>
         <div class="muted">${customer.dl_document_id ? `<button class="ghost" type="button" data-doc-download="${escapeHtml(customer.dl_document_id)}" data-doc-label="Driver License">View Driver License</button>` : 'No file uploaded yet.'}</div>
-        <input type="date" name="expirationDate" value="${escapeHtml(customer.dl_expiration_date || '')}" required>
-        <input type="file" name="file" accept="image/*,application/pdf" required>
+        <input type="date" name="expirationDate" value="${escapeHtml(customer.dl_expiration_date || '')}">
+        <input type="file" name="file" accept="image/*,application/pdf">
         <button class="primary" type="submit">Upload DL</button>
       </form>
       <form class="doc-form" data-doc-type="insurance">
         <strong>Insurance Card</strong>
         <div class="muted">${customer.insurance_document_id ? `<button class="ghost" type="button" data-doc-download="${escapeHtml(customer.insurance_document_id)}" data-doc-label="Insurance Card">View Insurance Card</button>` : 'No file uploaded yet.'}</div>
-        <input type="date" name="expirationDate" value="${escapeHtml(customer.insurance_expiration_date || '')}" required>
-        <input type="file" name="file" accept="image/*,application/pdf" required>
+        <input type="date" name="expirationDate" value="${escapeHtml(customer.insurance_expiration_date || '')}">
+        <input type="file" name="file" accept="image/*,application/pdf">
         <button class="primary" type="submit">Upload Insurance</button>
       </form>
     </div>
@@ -972,12 +1006,13 @@ function renderCustomerDetail() {
       </div>
     </div>
 
-    <div class="error" id="customerDetailError"></div>
-    <div class="success" id="customerDetailSuccess"></div>
+    <div class="error" id="customerDetailError">${escapeHtml(detailFeedback.error)}</div>
+    <div class="success" id="customerDetailSuccess">${escapeHtml(detailFeedback.success)}</div>
   `;
 
   const editForm = document.getElementById('customerEditForm');
   const customerDeleteBtn = document.getElementById('customerDeleteBtn');
+  const customerStageForm = document.getElementById('customerStageForm');
   customerDeleteBtn.addEventListener('click', async () => {
     const confirmed = window.confirm(`Delete this lead? This can't be undone.\n\n${customer.full_name || ''}`);
     if (!confirmed) return;
@@ -991,6 +1026,7 @@ function renderCustomerDetail() {
 
   editForm.addEventListener('submit', async (event) => {
     event.preventDefault();
+    clearDetailFeedback(customer.id);
     const fd = new FormData(editForm);
     const payload = { customerId: customer.id };
     for (const [k, v] of fd.entries()) {
@@ -1002,23 +1038,62 @@ function renderCustomerDetail() {
         method: 'POST',
         body: JSON.stringify(payload),
       });
-      document.getElementById('customerDetailSuccess').textContent = 'Customer updated.';
+      setDetailFeedback(customer.id, 'success', 'Customer updated.');
       await loadDashboard(false);
     } catch (error) {
-      document.getElementById('customerDetailError').textContent = error.message;
+      setDetailFeedback(customer.id, 'error', error.message);
+      renderCustomerDetail();
     }
   });
+
+  if (customerStageForm && lead) {
+    customerStageForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearDetailFeedback(customer.id);
+
+      const stage = customerStageForm.querySelector('select[name="stage"]')?.value;
+      if (!stage) {
+        setDetailFeedback(customer.id, 'error', 'Choose a stage before updating.');
+        renderCustomerDetail();
+        return;
+      }
+
+      try {
+        await api('/.netlify/functions/fce-os-leads-move', {
+          method: 'POST',
+          body: JSON.stringify({ leadId: lead.id, stage }),
+        });
+        setDetailFeedback(customer.id, 'success', `Stage updated to ${stage}.`);
+        await loadDashboard(false);
+      } catch (error) {
+        setDetailFeedback(customer.id, 'error', error.message);
+        renderCustomerDetail();
+      }
+    });
+  }
 
   document.querySelectorAll('.doc-form').forEach((form) => {
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
+      clearDetailFeedback(customer.id);
       const target = event.currentTarget;
       const docType = target.getAttribute('data-doc-type');
       const fileInput = target.querySelector('input[name="file"]');
       const dateInput = target.querySelector('input[name="expirationDate"]');
+      const submitButton = target.querySelector('button[type="submit"]');
 
-      const file = fileInput.files[0];
-      if (!file) return;
+      const file = fileInput.files?.[0] || null;
+      if (!file) {
+        setDetailFeedback(customer.id, 'error', 'Choose a file before uploading.');
+        renderCustomerDetail();
+        return;
+      }
+
+      const originalButtonText = submitButton?.textContent || 'Upload';
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = 'Uploading...';
+      }
 
       try {
         const b64 = await toBase64(file);
@@ -1027,16 +1102,23 @@ function renderCustomerDetail() {
           body: JSON.stringify({
             customerId: customer.id,
             docType,
-            expirationDate: dateInput.value,
+            expirationDate: dateInput.value || null,
             fileName: file.name,
             mimeType: file.type,
             fileBase64: b64,
           }),
         });
-        document.getElementById('customerDetailSuccess').textContent = `${docType.toUpperCase()} uploaded.`;
+        const docLabel = docType === 'dl' ? 'Driver License' : 'Insurance Card';
+        setDetailFeedback(customer.id, 'success', `${docLabel} uploaded and saved.`);
         await loadDashboard(false);
       } catch (error) {
-        document.getElementById('customerDetailError').textContent = error.message;
+        setDetailFeedback(customer.id, 'error', error.message);
+        renderCustomerDetail();
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalButtonText;
+        }
       }
     });
   });
@@ -1044,7 +1126,7 @@ function renderCustomerDetail() {
   document.querySelectorAll('[data-doc-download]').forEach((button) => {
     button.addEventListener('click', async (event) => {
       event.preventDefault();
-      document.getElementById('customerDetailError').textContent = '';
+      clearDetailFeedback(customer.id);
 
       const target = event.currentTarget;
       const documentId = target.getAttribute('data-doc-download');
@@ -1057,7 +1139,8 @@ function renderCustomerDetail() {
         });
         window.open(result.signedUrl, '_blank', 'noopener');
       } catch (error) {
-        document.getElementById('customerDetailError').textContent = `${label}: ${error.message}`;
+        setDetailFeedback(customer.id, 'error', `${label}: ${error.message}`);
+        renderCustomerDetail();
       }
     });
   });
