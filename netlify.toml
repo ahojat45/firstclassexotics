@@ -7,18 +7,24 @@
 [[redirects]]
   from = "/blog"
   to = "/blog.html"
-  status = 301
+  status = 200
   force = true
 
 [[redirects]]
   from = "/blog/"
   to = "/blog.html"
-  status = 301
+  status = 200
   force = true
 
 [[redirects]]
   from = "/blog/lamborghini-temerario-the-huracan-era-is-ending.html"
-  to = "/blog/lamborghini-temerario-just-dropped-most-requested-rental-california.html"
+  to = "/blog/lamborghini-temerario-rental-california.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/lamborghini-temerario-just-dropped-most-requested-rental-california.html"
+  to = "/blog/lamborghini-temerario-rental-california.html"
   status = 301
   force = true
 
