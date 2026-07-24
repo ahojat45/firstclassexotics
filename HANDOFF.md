@@ -1,6 +1,55 @@
 # First Class Exotics — Handoff Document
-**Last Updated:** July 9, 2026
+**Last Updated:** July 22, 2026
 **Status:** Production Live
+
+---
+
+## FCE OS Dashboard Handoff for Ace (July 22, 2026)
+
+Production redesign at `https://www.firstclassexotics.com/fce-os/` is deployed and independently QA-verified as working.
+
+### Scope + Files Touched
+- Dashboard shell redesign with tabs: Overview, Pipeline, Customers, Documents
+- Files touched in this round: `fce-os/app.js`, `fce-os/index.html`, `fce-os/styles.css`
+- Backend flows intentionally untouched:
+  - leads CRUD
+  - `fce-os-leads-delete`
+  - `fce-os-document-download-link`
+
+### Verified Working (Independent QA)
+- Overview tab:
+  - KPI counts render with real data: New, Quoted, Booked, Avg days in stage
+  - needs-attention list renders correctly
+- Pipeline tab:
+  - table + kanban toggle work
+  - stage filter chips show correct counts
+  - all 27 rows render with correct data
+  - timezone parsing/date display bug is fixed (rows no longer off by one day)
+- Customers tab:
+  - all 27 customers render with name, vehicle, and document status
+  - prior break from missing `daysTo` helper is fixed
+- Documents tab:
+  - renders correctly
+  - sorted by expiration
+  - expired docs surface at top (example verified: Ella Holm DL)
+- Document upload from Customer Detail (Driver License / Insurance Card):
+  - prior silent fail from native required-field submit blocking is fixed
+  - explicit success message now appears
+  - uploads persist correctly
+  - verified live on Hooman Honary (DL + insurance now show View links)
+- Lead Stage update from Customer Detail:
+  - Stage dropdown + Update Stage button present
+  - writes through same move endpoint used by Pipeline
+  - Stage History logs correctly
+  - verified with live test path: New -> Contacted -> New
+
+### One Item to Confirm (Not a Known Bug)
+- Dashboard now sits behind a "Dashboard Password" login screen that did not exist before this redesign.
+- This is not currently treated as a defect, but should be confirmed with Ali as intentional vs side-effect.
+
+### Current Assessment
+- No other known bugs at handoff.
+- QA checklist for this round is complete: Overview, Pipeline, Customers, Documents, document upload, and stage editing are all confirmed solid.
 
 ---
 

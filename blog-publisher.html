@@ -174,6 +174,13 @@ textarea,input,select,button{font-family:inherit}
         <button class="btn btn-o" style="width:auto;padding:.75rem 1.2rem" id="regenBtn" onclick="generate()">Regenerate</button>
         <button class="btn" style="width:auto;padding:.75rem 1.6rem" onclick="publish()">Publish to Blog →</button>
       </div>
+      <div class="fr" style="margin-bottom:1rem">
+        <label style="display:flex;align-items:center;gap:.5rem;letter-spacing:.08em;text-transform:none;color:var(--gray-2)">
+          <input type="checkbox" id="overwriteExistingPost" style="width:auto;accent-color:#9B0006">
+          Overwrite existing post if this slug already exists
+        </label>
+        <small>Use only when intentionally updating an existing live post with the same slug.</small>
+      </div>
       <div class="preview-meta" id="previewMeta"></div>
       <div class="pb" id="pbody"></div>
     </div>
@@ -198,6 +205,7 @@ const MAX_IMAGES=5;
 const MAX_PAYLOAD_BYTES=5*1024*1024;
 const BLOG_POSTS=[
   {href:'exotic-cars-coming-orange-county-2026-2027.html',title:'The Hottest Exotic Cars Coming to Orange County in 2026 & 2027',category:'new-models'},
+  {href:'lamborghini-temerario-just-dropped-most-requested-rental-california.html',title:'The Lamborghini Temerario Just Dropped - Most-Requested Rental in California',category:'new-models'},
   {href:'lamborghini-urus-se-2026.html',title:'2026 Lamborghini Urus SE — The Super SUV Just Got Deadlier',category:'new-models'},
   {href:'ferrari-296-speciale.html',title:'Ferrari 296 Speciale — The Most Driver-Focused Ferrari in a Generation',category:'new-models'},
   {href:'mclaren-w1.html',title:'McLaren W1 — The Successor to the P1 Has Arrived',category:'new-models'},
@@ -454,6 +462,14 @@ function firstParagraphSummary(body){
   return text.slice(0,155).trim();
 }
 
+function cleanDescriptionText(input){
+  return String(input||'')
+    .replace(/\(\s*\d+\s*chars?\s*\)/gi,'')
+    .replace(/\bGenerate\s+(Top|Bottom)\b/gi,'')
+    .replace(/\s+/g,' ')
+    .trim();
+}
+
 function buildCardMarkup({slug,title,category,excerpt,imageSrc,readMinutes}){
   const badge=categoryLabel[category]||'Article';
   const monthYear=new Date().toLocaleString('en-US',{month:'short',year:'numeric'});
@@ -680,7 +696,7 @@ function closeMob(){document.getElementById('mobMenu').classList.remove('open');
 }
 
 function renderPreview(meta,body){
-  const summary=`<strong>Slug:</strong> blog/${meta.slug}.html<br><strong>Title tag:</strong> ${escapeHTML(meta.titleTag)}<br><strong>Description:</strong> ${escapeHTML(meta.description)}<br><strong>Images:</strong> ${meta.images.length} (hero + support)<br><strong>Mode:</strong> ${mode==='ai'?'AI Draft':'Paste Article'}`;
+  const summary=`<strong>Slug:</strong> /blog/${meta.slug}<br><strong>Title tag:</strong> ${escapeHTML(meta.titleTag)}<br><strong>Description:</strong> ${escapeHTML(meta.description)}<br><strong>Images:</strong> ${meta.images.length} (hero + support)<br><strong>Mode:</strong> ${mode==='ai'?'AI Draft':'Paste Article'}`;
   document.getElementById('previewMeta').innerHTML=summary;
   document.getElementById('pbody').innerHTML=body;
 }
@@ -725,8 +741,11 @@ function prepareArticle(rawBody){
 
   const category=document.getElementById('ci').value;
   const keywords=(document.getElementById('kw').value.trim() || topicToKeywords(title));
-  const customDescription=document.getElementById('md').value.trim();
-  const description=(customDescription || firstParagraphSummary(body) || `Read ${title} from First Class Exotics.`).slice(0,155);
+  const customDescription=cleanDescriptionText(document.getElementById('md').value.trim());
+  if(document.getElementById('md').value.trim()!==customDescription){
+    document.getElementById('md').value=customDescription;
+  }
+  const description=cleanDescriptionText(customDescription || firstParagraphSummary(body) || `Read ${title} from First Class Exotics.`).slice(0,155);
   const images=getImageSet(slug,title,document.getElementById('topic').value.trim());
   const readMinutes=estimateReadMinutes(body);
 
@@ -847,7 +866,8 @@ async function publish(){
     pageHtml,
     card:cardMarkup,
     lslug:publishSlug,
-    images:uploadedPayload
+    images:uploadedPayload,
+    overwriteExisting:document.getElementById('overwriteExistingPost').checked
   };
 
   const payloadBytes=new Blob([JSON.stringify(payload)]).size;
@@ -866,7 +886,7 @@ async function publish(){
     const data=await response.json();
 
     if(response.status===409){
-      throw new Error(data.error || 'Post with this slug already exists');
+      throw new Error((data.error || 'Post with this slug already exists')+'. To replace it, enable "Overwrite existing post" and publish again.');
     }
     if(!response.ok){
       throw new Error(data.error || response.statusText);
@@ -1028,6 +1048,7 @@ function resetForm(){
   document.getElementById('pasteBody').value='';
   document.getElementById('iu').value='';
   document.getElementById('imageInput').value='';
+  document.getElementById('overwriteExistingPost').checked=false;
   renderImagePreviews();
   updatePayloadEstimate();
   setMode('ai');

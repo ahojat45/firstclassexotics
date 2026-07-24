@@ -37,6 +37,25 @@ function slugify(input) {
     .replace(/-$/g, '');
 }
 
+function removeExistingCardBySlug(blogHtml, slug) {
+  const href = `href="blog/${slug}.html"`;
+  const hrefIndex = blogHtml.indexOf(href);
+  if (hrefIndex === -1) {
+    return { html: blogHtml, removed: false };
+  }
+
+  const cardStart = blogHtml.lastIndexOf('<a ', hrefIndex);
+  const cardEndTagIndex = blogHtml.indexOf('</a>', hrefIndex);
+  if (cardStart === -1 || cardEndTagIndex === -1) {
+    throw new Error(`Existing blog card for slug ${slug} could not be parsed`);
+  }
+
+  const cardEnd = cardEndTagIndex + 4;
+  const before = blogHtml.slice(0, cardStart).replace(/[ \t]*$/g, '');
+  const after = blogHtml.slice(cardEnd).replace(/^\s*\n/, '\n');
+  return { html: `${before}\n\n${after}`, removed: true };
+}
+
 function githubPathUrl(path) {
   const encoded = path
     .split('/')
@@ -191,7 +210,7 @@ Requirements:
   return content;
 }
 
-async function publishArticle({ pageHtml, card, slugInput, images, githubToken }) {
+async function publishArticle({ pageHtml, card, slugInput, images, githubToken, overwriteExisting }) {
   const slug = slugify(slugInput);
   if (!slug) {
     return json(400, { error: 'Invalid slug' });
@@ -199,7 +218,7 @@ async function publishArticle({ pageHtml, card, slugInput, images, githubToken }
 
   const pagePath = `blog/${slug}.html`;
   const pageExists = await githubGet(pagePath, githubToken);
-  if (pageExists) {
+  if (pageExists && !overwriteExisting) {
     return json(409, { error: 'Post with this slug already exists' });
   }
 
@@ -220,7 +239,13 @@ async function publishArticle({ pageHtml, card, slugInput, images, githubToken }
     }
   }
 
-  await githubPut(pagePath, githubToken, pageHtml, `Blog: add ${slug}`);
+  await githubPut(
+    pagePath,
+    githubToken,
+    pageHtml,
+    `${pageExists ? 'Blog: update' : 'Blog: add'} ${slug}`,
+    pageExists?.sha,
+  );
 
   const blogFile = await githubGet('blog.html', githubToken);
   if (!blogFile?.content || !blogFile?.sha) {
@@ -233,11 +258,16 @@ async function publishArticle({ pageHtml, card, slugInput, images, githubToken }
   }
 
   const pageHref = `href="blog/${slug}.html"`;
-  if (currentBlog.includes(pageHref)) {
+  if (currentBlog.includes(pageHref) && !overwriteExisting) {
     return json(409, { error: 'Post with this slug already exists' });
   }
 
-  const updatedBlog = currentBlog.replace(BLOG_INSERT_MARKER, `${card}\n\n  ${BLOG_INSERT_MARKER}`);
+  let nextBlog = currentBlog;
+  if (overwriteExisting && currentBlog.includes(pageHref)) {
+    nextBlog = removeExistingCardBySlug(nextBlog, slug).html;
+  }
+
+  const updatedBlog = nextBlog.replace(BLOG_INSERT_MARKER, `${card}\n\n  ${BLOG_INSERT_MARKER}`);
   await githubPut('blog.html', githubToken, updatedBlog, `Blog: add card for ${slug}`, blogFile.sha);
 
   const sitemapFile = await githubGet('sitemap.xml', githubToken);
@@ -254,7 +284,7 @@ async function publishArticle({ pageHtml, card, slugInput, images, githubToken }
     await githubPut('sitemap.xml', githubToken, updatedSitemap, `Blog: append sitemap URL for ${slug}`, sitemapFile.sha);
   }
 
-  return json(200, { success: true, slug, pagePath, sitemapUrl: newUrl });
+  return json(200, { success: true, slug, pagePath, sitemapUrl: newUrl, overwritten: Boolean(pageExists) });
 }
 
 exports.handler = async function handler(event) {
@@ -285,6 +315,7 @@ exports.handler = async function handler(event) {
       card,
       lslug,
       images,
+      overwriteExisting,
     } = payload;
 
     if (password !== 'FCE2026') {
@@ -326,6 +357,7 @@ exports.handler = async function handler(event) {
           slugInput: lslug,
           images: Array.isArray(images) ? images : [],
           githubToken,
+          overwriteExisting: Boolean(overwriteExisting),
         });
       } catch (err) {
         return json(502, { error: err.message });
