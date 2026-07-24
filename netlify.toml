@@ -18,13 +18,31 @@
 
 [[redirects]]
   from = "/blog/lamborghini-temerario-the-huracan-era-is-ending.html"
-  to = "/blog/lamborghini-temerario-rental-california.html"
+  to = "/blog/lamborghini-temerario-rental-california"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/lamborghini-temerario-the-huracan-era-is-ending"
+  to = "/blog/lamborghini-temerario-rental-california"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/lamborghini-temerario-just-dropped-most-requested-rental-california"
+  to = "/blog/lamborghini-temerario-rental-california"
   status = 301
   force = true
 
 [[redirects]]
   from = "/blog/lamborghini-temerario-just-dropped-most-requested-rental-california.html"
-  to = "/blog/lamborghini-temerario-rental-california.html"
+  to = "/blog/lamborghini-temerario-rental-california"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/lamborghini-temerario-rental-california.html"
+  to = "/blog/lamborghini-temerario-rental-california"
   status = 301
   force = true
 
