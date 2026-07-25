@@ -474,7 +474,7 @@ function buildCardMarkup({slug,title,category,excerpt,imageSrc,readMinutes}){
   const badge=categoryLabel[category]||'Article';
   const monthYear=new Date().toLocaleString('en-US',{month:'short',year:'numeric'});
   const safeExcerpt=(excerpt||'').slice(0,180);
-  return `  <a href="blog/${slug}.html" class="blog-card" data-category="${category}">
+  return `  <a href="blog/${slug}" class="blog-card" data-category="${category}">
     <div class="blog-card-image">
       <img src="${imageSrc}" alt="${escapeHTML(title)}" loading="lazy">
       <span class="blog-card-badge">${badge}</span>
@@ -492,7 +492,7 @@ function buildArticlePage(opts){
   const titleTag=capTitleForTag(title);
   const description=opts.description;
   const keywords=opts.keywords;
-  const canonical=`https://www.firstclassexotics.com/blog/${opts.slug}.html`;
+  const canonical=`https://www.firstclassexotics.com/blog/${opts.slug}`;
   const dateIso=new Date().toISOString().slice(0,10);
   const monthYear=new Date().toLocaleString('en-US',{month:'long',year:'numeric'});
   const hero=opts.images[0];
@@ -516,7 +516,7 @@ function buildArticlePage(opts){
     '@type':'BreadcrumbList',
     itemListElement:[
       {'@type':'ListItem',position:1,name:'Home',item:'https://www.firstclassexotics.com/'},
-      {'@type':'ListItem',position:2,name:'Blog',item:'https://www.firstclassexotics.com/blog.html'},
+      {'@type':'ListItem',position:2,name:'Blog',item:'https://www.firstclassexotics.com/blog'},
       {'@type':'ListItem',position:3,name:title,item:canonical}
     ]
   };

@@ -38,8 +38,12 @@ function slugify(input) {
 }
 
 function removeExistingCardBySlug(blogHtml, slug) {
-  const href = `href="blog/${slug}.html"`;
-  const hrefIndex = blogHtml.indexOf(href);
+  const hrefHtml = `href="blog/${slug}.html"`;
+  const hrefSlashless = `href="blog/${slug}"`;
+  let hrefIndex = blogHtml.indexOf(hrefSlashless);
+  if (hrefIndex === -1) {
+    hrefIndex = blogHtml.indexOf(hrefHtml);
+  }
   if (hrefIndex === -1) {
     return { html: blogHtml, removed: false };
   }
@@ -216,6 +220,14 @@ async function publishArticle({ pageHtml, card, slugInput, images, githubToken, 
     return json(400, { error: 'Invalid slug' });
   }
 
+  const extensionlessPostUrl = `https://www.firstclassexotics.com/blog/${slug}`;
+  const htmlPostUrl = `${extensionlessPostUrl}.html`;
+  const normalizedPageHtml = String(pageHtml)
+    .replaceAll(htmlPostUrl, extensionlessPostUrl)
+    .replace(/(<link rel="canonical" href="https:\/\/www\.firstclassexotics\.com\/blog\/[^"]+)\.html(")/g, '$1$2')
+    .replace(/(<meta property="og:url" content="https:\/\/www\.firstclassexotics\.com\/blog\/[^"]+)\.html(")/g, '$1$2');
+  const normalizedCard = String(card).replaceAll(`href="blog/${slug}.html"`, `href="blog/${slug}"`);
+
   const pagePath = `blog/${slug}.html`;
   const pageExists = await githubGet(pagePath, githubToken);
   if (pageExists && !overwriteExisting) {
@@ -242,7 +254,7 @@ async function publishArticle({ pageHtml, card, slugInput, images, githubToken, 
   await githubPut(
     pagePath,
     githubToken,
-    pageHtml,
+    normalizedPageHtml,
     `${pageExists ? 'Blog: update' : 'Blog: add'} ${slug}`,
     pageExists?.sha,
   );
@@ -257,17 +269,18 @@ async function publishArticle({ pageHtml, card, slugInput, images, githubToken, 
     throw new Error('blog.html missing insert marker');
   }
 
-  const pageHref = `href="blog/${slug}.html"`;
-  if (currentBlog.includes(pageHref) && !overwriteExisting) {
+  const pageHrefHtml = `href="blog/${slug}.html"`;
+  const pageHrefSlashless = `href="blog/${slug}"`;
+  if ((currentBlog.includes(pageHrefHtml) || currentBlog.includes(pageHrefSlashless)) && !overwriteExisting) {
     return json(409, { error: 'Post with this slug already exists' });
   }
 
   let nextBlog = currentBlog;
-  if (overwriteExisting && currentBlog.includes(pageHref)) {
+  if (overwriteExisting && (currentBlog.includes(pageHrefHtml) || currentBlog.includes(pageHrefSlashless))) {
     nextBlog = removeExistingCardBySlug(nextBlog, slug).html;
   }
 
-  const updatedBlog = nextBlog.replace(BLOG_INSERT_MARKER, `${card}\n\n  ${BLOG_INSERT_MARKER}`);
+  const updatedBlog = nextBlog.replace(BLOG_INSERT_MARKER, `${normalizedCard}\n\n  ${BLOG_INSERT_MARKER}`);
   await githubPut('blog.html', githubToken, updatedBlog, `Blog: add card for ${slug}`, blogFile.sha);
 
   const sitemapFile = await githubGet('sitemap.xml', githubToken);
@@ -276,10 +289,11 @@ async function publishArticle({ pageHtml, card, slugInput, images, githubToken, 
   }
 
   const sitemapCurrent = Buffer.from(sitemapFile.content, 'base64').toString('utf8');
-  const newUrl = `https://www.firstclassexotics.com/blog/${slug}.html`;
+  const newUrl = `https://www.firstclassexotics.com/blog/${slug}`;
+  const lastmod = new Date().toISOString().slice(0, 10);
 
   if (!sitemapCurrent.includes(`<loc>${newUrl}</loc>`)) {
-    const sitemapEntry = `  <url><loc>${newUrl}</loc><priority>0.7</priority></url>\n`;
+    const sitemapEntry = `  <url><loc>${newUrl}</loc><lastmod>${lastmod}</lastmod><priority>0.7</priority></url>\n`;
     const updatedSitemap = sitemapCurrent.replace('</urlset>', `${sitemapEntry}</urlset>`);
     await githubPut('sitemap.xml', githubToken, updatedSitemap, `Blog: append sitemap URL for ${slug}`, sitemapFile.sha);
   }
