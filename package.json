@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "check:placeholders": "node scripts/check-placeholders.js",
+    "predeploy": "npm run check:placeholders"
+  },
   "dependencies": {
     "pdf-lib": "^1.17.1"
   }

@@ -47,6 +47,150 @@
   force = true
 
 [[redirects]]
+  from = "/blog-best-roads-lamborghini-orange-county"
+  to = "/blog/best-roads-lamborghini-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-best-roads-lamborghini-orange-county.html"
+  to = "/blog/best-roads-lamborghini-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-lamborghini-vs-ferrari-rental-socal"
+  to = "/blog/lamborghini-vs-ferrari-rental-socal"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-lamborghini-vs-ferrari-rental-socal.html"
+  to = "/blog/lamborghini-vs-ferrari-rental-socal"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-exotic-car-rental-los-angeles-guide"
+  to = "/blog/exotic-car-rental-los-angeles-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-exotic-car-rental-los-angeles-guide.html"
+  to = "/blog/exotic-car-rental-los-angeles-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-exotic-car-rental-cost-orange-county"
+  to = "/blog/exotic-car-rental-cost-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-exotic-car-rental-cost-orange-county.html"
+  to = "/blog/exotic-car-rental-cost-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-exotic-car-rental-wedding-socal"
+  to = "/blog/exotic-car-rental-wedding-socal"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-exotic-car-rental-wedding-socal.html"
+  to = "/blog/exotic-car-rental-wedding-socal"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-newport-beach-exotic-car"
+  to = "/blog/newport-beach-exotic-car"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-newport-beach-exotic-car.html"
+  to = "/blog/newport-beach-exotic-car"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-first-time-exotic-car-rental-guide"
+  to = "/blog/first-time-exotic-car-rental-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-first-time-exotic-car-rental-guide.html"
+  to = "/blog/first-time-exotic-car-rental-guide"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-ferrari-vs-lamborghini-which-to-rent"
+  to = "/blog/ferrari-vs-lamborghini-which-to-rent"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog-ferrari-vs-lamborghini-which-to-rent.html"
+  to = "/blog/ferrari-vs-lamborghini-which-to-rent"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/best-roads-lamborghini-orange-county"
+  to = "/blog-best-roads-lamborghini-orange-county.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/lamborghini-vs-ferrari-rental-socal"
+  to = "/blog-lamborghini-vs-ferrari-rental-socal.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/exotic-car-rental-los-angeles-guide"
+  to = "/blog-exotic-car-rental-los-angeles-guide.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/exotic-car-rental-cost-orange-county"
+  to = "/blog-exotic-car-rental-cost-orange-county.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/exotic-car-rental-wedding-socal"
+  to = "/blog-exotic-car-rental-wedding-socal.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/newport-beach-exotic-car"
+  to = "/blog-newport-beach-exotic-car.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/first-time-exotic-car-rental-guide"
+  to = "/blog-first-time-exotic-car-rental-guide.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/blog/ferrari-vs-lamborghini-which-to-rent"
+  to = "/blog-ferrari-vs-lamborghini-which-to-rent.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/fleet"
   to = "/#fleet"
   status = 301
