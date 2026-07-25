@@ -216,7 +216,13 @@
 
 [[redirects]]
   from = "/costamesaexoticcarrental"
-  to = "/"
+  to = "/exotic-car-rental-costa-mesa"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rentalambocostamesa"
+  to = "/exotic-car-rental-costa-mesa"
   status = 301
   force = true
 
