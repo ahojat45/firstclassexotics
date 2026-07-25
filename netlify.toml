@@ -209,6 +209,12 @@
   force = true
 
 [[redirects]]
+  from = "/book-online"
+  to = "/#booking"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/irvineluxurycarrental"
   to = "/exotic-car-rental-irvine.html"
   status = 301
