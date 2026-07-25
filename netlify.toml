@@ -215,6 +215,12 @@
   force = true
 
 [[redirects]]
+  from = "/membership"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/irvineluxurycarrental"
   to = "/exotic-car-rental-irvine.html"
   status = 301
