@@ -191,6 +191,18 @@
   force = true
 
 [[redirects]]
+  from = "/blog/exotic-cars-coming-orange-county-2026-2027.html"
+  to = "/blog/exotic-cars-coming-orange-county-2026-2027"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/porsche-911-gt3-rs-40.html"
+  to = "/blog/porsche-911-gt3-rs-40"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/fleet"
   to = "/#fleet"
   status = 301
