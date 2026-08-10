@@ -203,6 +203,198 @@
   force = true
 
 [[redirects]]
+  from = "/blog.html"
+  to = "/blog"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/gift.html"
+  to = "/gift"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/privacy.html"
+  to = "/privacy"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/terms.html"
+  to = "/terms"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/car-ferrari-f8.html"
+  to = "/car-ferrari-f8"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rent-lamborghini-orange-county.html"
+  to = "/rent-lamborghini-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rent-ferrari-orange-county.html"
+  to = "/rent-ferrari-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rent-mclaren-orange-county.html"
+  to = "/rent-mclaren-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rent-rolls-royce-orange-county.html"
+  to = "/rent-rolls-royce-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rent-porsche-orange-county.html"
+  to = "/rent-porsche-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rent-g63-orange-county.html"
+  to = "/rent-g63-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rent-maybach-orange-county.html"
+  to = "/rent-maybach-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/rent-range-rover-orange-county.html"
+  to = "/rent-range-rover-orange-county"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/exotic-car-rental-newport-beach.html"
+  to = "/exotic-car-rental-newport-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/exotic-car-rental-irvine.html"
+  to = "/exotic-car-rental-irvine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/exotic-car-rental-costa-mesa.html"
+  to = "/exotic-car-rental-costa-mesa"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/exotic-car-rental-sna-airport.html"
+  to = "/exotic-car-rental-sna-airport"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/exotic-car-rental-lax.html"
+  to = "/exotic-car-rental-lax"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/exotic-car-rental-huntington-beach.html"
+  to = "/exotic-car-rental-huntington-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/exotic-car-rental-laguna-beach.html"
+  to = "/exotic-car-rental-laguna-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vinyl-wrap-newport-beach.html"
+  to = "/vinyl-wrap-newport-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vinyl-wrap-irvine.html"
+  to = "/vinyl-wrap-irvine"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vinyl-wrap-costa-mesa.html"
+  to = "/vinyl-wrap-costa-mesa"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vinyl-wrap-huntington-beach.html"
+  to = "/vinyl-wrap-huntington-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vinyl-wrap-laguna-beach.html"
+  to = "/vinyl-wrap-laguna-beach"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vinyl-wrap-dana-point.html"
+  to = "/vinyl-wrap-dana-point"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vinyl-wrap-san-clemente.html"
+  to = "/vinyl-wrap-san-clemente"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vinyl-wrap-mission-viejo.html"
+  to = "/vinyl-wrap-mission-viejo"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vinyl-wrap-yorba-linda.html"
+  to = "/vinyl-wrap-yorba-linda"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vinyl-wrap-corona-del-mar.html"
+  to = "/vinyl-wrap-corona-del-mar"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/vinyl-wrap.html"
+  to = "/vinyl-wrap"
+  status = 301
+  force = true
+
+[[redirects]]
   from = "/fleet"
   to = "/#fleet"
   status = 301
