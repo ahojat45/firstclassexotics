@@ -474,7 +474,13 @@ function buildCardMarkup({slug,title,category,excerpt,imageSrc,readMinutes}){
   const badge=categoryLabel[category]||'Article';
   const monthYear=new Date().toLocaleString('en-US',{month:'short',year:'numeric'});
   const safeExcerpt=(excerpt||'').slice(0,180);
-  return `  <a href="blog/${slug}" class="blog-card" data-category="${category}">
+  let normalizedSlug=String(slug||'').trim();
+  while(/^\/?blog\//i.test(normalizedSlug)){
+    normalizedSlug=normalizedSlug.replace(/^\/?blog\//i,'');
+  }
+  normalizedSlug=normalizedSlug.replace(/^\/+/, '');
+  const blogHref=`/blog/${normalizedSlug}`;
+  return `  <a href="${blogHref}" class="blog-card" data-category="${category}">
     <div class="blog-card-image">
       <img src="${imageSrc}" alt="${escapeHTML(title)}" loading="lazy">
       <span class="blog-card-badge">${badge}</span>
