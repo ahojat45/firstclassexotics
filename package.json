@@ -1,9 +1,13 @@
 {
   "scripts": {
     "check:placeholders": "node scripts/check-placeholders.js",
+    "test:analytics": "node scripts/test-analytics.mjs",
     "predeploy": "npm run check:placeholders"
   },
   "dependencies": {
     "pdf-lib": "^1.17.1"
+  },
+  "devDependencies": {
+    "jsdom": "^24.1.3"
   }
 }
