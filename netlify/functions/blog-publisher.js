@@ -37,12 +37,27 @@ function slugify(input) {
     .replace(/-$/g, '');
 }
 
+function normalizeBlogHref(slug) {
+  let normalizedSlug = String(slug || '').trim();
+  while (/^\/?blog\//i.test(normalizedSlug)) {
+    normalizedSlug = normalizedSlug.replace(/^\/?blog\//i, '');
+  }
+  normalizedSlug = normalizedSlug.replace(/^\/+/, '');
+  return `/blog/${normalizedSlug}`;
+}
+
+function getBlogHrefVariants(slug) {
+  const absoluteHref = normalizeBlogHref(slug);
+  const relativeHref = absoluteHref.replace(/^\/blog\//, 'blog/');
+  return [absoluteHref, relativeHref, `${absoluteHref}.html`, `${relativeHref}.html`];
+}
+
 function removeExistingCardBySlug(blogHtml, slug) {
-  const hrefHtml = `href="blog/${slug}.html"`;
-  const hrefSlashless = `href="blog/${slug}"`;
-  let hrefIndex = blogHtml.indexOf(hrefSlashless);
-  if (hrefIndex === -1) {
-    hrefIndex = blogHtml.indexOf(hrefHtml);
+  const hrefVariants = getBlogHrefVariants(slug);
+  let hrefIndex = -1;
+  for (const hrefVariant of hrefVariants) {
+    hrefIndex = blogHtml.indexOf(`href="${hrefVariant}"`);
+    if (hrefIndex !== -1) break;
   }
   if (hrefIndex === -1) {
     return { html: blogHtml, removed: false };
@@ -226,7 +241,12 @@ async function publishArticle({ pageHtml, card, slugInput, images, githubToken, 
     .replaceAll(htmlPostUrl, extensionlessPostUrl)
     .replace(/(<link rel="canonical" href="https:\/\/www\.firstclassexotics\.com\/blog\/[^"]+)\.html(")/g, '$1$2')
     .replace(/(<meta property="og:url" content="https:\/\/www\.firstclassexotics\.com\/blog\/[^"]+)\.html(")/g, '$1$2');
-  const normalizedCard = String(card).replaceAll(`href="blog/${slug}.html"`, `href="blog/${slug}"`);
+  const normalizedCardHref = normalizeBlogHref(slug);
+  const normalizedCard = String(card)
+    .replaceAll(`href="blog/${slug}.html"`, `href="${normalizedCardHref}"`)
+    .replaceAll(`href="blog/${slug}"`, `href="${normalizedCardHref}"`)
+    .replaceAll(`href="/blog/${slug}.html"`, `href="${normalizedCardHref}"`)
+    .replaceAll(`href="/blog/${slug}"`, `href="${normalizedCardHref}"`);
 
   const pagePath = `blog/${slug}.html`;
   const pageExists = await githubGet(pagePath, githubToken);
@@ -269,14 +289,14 @@ async function publishArticle({ pageHtml, card, slugInput, images, githubToken, 
     throw new Error('blog.html missing insert marker');
   }
 
-  const pageHrefHtml = `href="blog/${slug}.html"`;
-  const pageHrefSlashless = `href="blog/${slug}"`;
-  if ((currentBlog.includes(pageHrefHtml) || currentBlog.includes(pageHrefSlashless)) && !overwriteExisting) {
+  const blogHrefVariants = getBlogHrefVariants(slug);
+  const hasExistingCard = blogHrefVariants.some((hrefVariant) => currentBlog.includes(`href="${hrefVariant}"`));
+  if (hasExistingCard && !overwriteExisting) {
     return json(409, { error: 'Post with this slug already exists' });
   }
 
   let nextBlog = currentBlog;
-  if (overwriteExisting && (currentBlog.includes(pageHrefHtml) || currentBlog.includes(pageHrefSlashless))) {
+  if (overwriteExisting && hasExistingCard) {
     nextBlog = removeExistingCardBySlug(nextBlog, slug).html;
   }
 
