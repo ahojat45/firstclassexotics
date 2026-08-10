@@ -2221,6 +2221,11 @@ function submitForm(e){
   if (!s || !e) return;
   s.min = today;
   e.min = today;
+  var maxDate = d.getFullYear() + 2 + '-' +
+    String(d.getMonth() + 1).padStart(2, '0') + '-' +
+    String(d.getDate()).padStart(2, '0');
+  s.max = maxDate;
+  e.max = maxDate;
   s.addEventListener('change', function () {
     e.min = s.value || today;
     if (e.value && e.value < s.value) e.value = s.value;
