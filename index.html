@@ -1841,6 +1841,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
         <div class="fg"><label>Start Date</label><input type="date" name="start-date" required/></div>
         <div class="fg"><label>End Date</label><input type="date" name="end-date" required/></div>
         <div class="fg full"><label>Occasion &amp; Special Requests</label><textarea name="message" placeholder="Birthday, wedding, anniversary, content shoot, corporate event, weekend drive, hotel delivery (Pelican Hill, Pendry, Montage, Vea, etc.)... the more detail, the better we can serve you. Mention promo code FIRSTCLASS15 here if applicable."></textarea></div>
+        <div style="position:absolute;left:-9999px"><label for="website">Leave this field empty</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off" value=""/></div>
         <div class="fg full">
           <button type="submit" class="btn-gold" style="width:100%;padding:1rem;font-size:.75rem">Submit Reservation Request</button>
           <p class="form-note">&#9889; 2-hour family response &bull; No payment to inquire &bull; Must be 25+ with valid license &amp; full coverage insurance &bull; Exemptions may be available</p>
@@ -2206,7 +2207,12 @@ function toggleFaq(btn){const item=btn.parentElement;item.classList.toggle('open
 function submitForm(e){
   e.preventDefault();
   const form=document.getElementById('bookForm');
-  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString()})
+  const honeypotInput=form.querySelector('input[name="website"]');
+  const honeypotValue=honeypotInput?String(honeypotInput.value||'').trim():'';
+  if(honeypotValue){return;}
+  const formData=new FormData(form);
+  formData.delete('website');
+  fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(formData).toString()})
     .then(()=>{form.style.display='none';document.getElementById('successMsg').style.display='block';})
     .catch(()=>{alert('Something went wrong. Please call or text Ali directly at (949) 294-5958.');});
 }
