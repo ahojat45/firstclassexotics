@@ -28,18 +28,48 @@ The directory name and the filename stem must match exactly. Card and gallery re
 
 Note the dir names are descriptive, not a fixed word order — both `miami-blue-2019-mclaren-570s` and `ferrari-296-gtb` are valid. Match whatever `index.html` references.
 
-## Verified state as of 2026-07-27 (HEAD `760b654`)
+## Verified state as of 2026-08-11 (HEAD `81d6c7b`)
 
 Re-verified this date by direct file inspection, not carried from notes:
 
-- 44 fleet dirs referenced by `index.html`, 245 images total
+- **47** fleet dirs referenced by `index.html`, **53** on disk (6 are the orphans below)
+- **358** images total under `images/`
 - **0** broken references — every referenced dir exists on disk
 - **0** files violating the naming convention
 - **0** PNGs under `images/`
 - **0** images over 800 KB
-- Page weight 40 MB → 18.7 MB
+- **Homepage weight 11.6 MB** (was 20 MB on 9 Aug)
 
 **The image audit is complete. Do not redo it.** Run the checks below if you need to confirm; don't re-derive the work.
+
+### Image compression standard — match this for any new car
+
+All fleet photos were recompressed on 10 Aug to **JPEG quality 82, progressive, metadata
+stripped, 1600px max dimension**. Root cause of the old 20 MB homepage was 269 photos saved
+at quality 95 — dimensions were never the problem.
+
+**Any new fleet photos must be added at q82.** Do not resize below 1600px: there is a
+lightbox on 49 images that needs the resolution.
+
+```
+# python/Pillow
+im.save(path, 'JPEG', quality=82, optimize=True, progressive=True)
+# imagemagick
+magick in.png -resize 1600x1600\> -quality 82 -interlace Plane -strip out.jpg
+```
+
+## Conversion tracking — do not break this
+
+`js/fce-analytics.js` is loaded on every public page via
+`<script src="/js/fce-analytics.js" defer></script>` before `</head>`. It fires GA4
+`generate_lead`, `contact_click` and `newsletter_signup` using pure event delegation.
+
+- **Never send PII to GA4** — no name, email or phone in event params. Violates Google's ToS.
+- Forms fire on success (the form hides itself), not on submit. Honeypot checked first.
+- **Run `npm run test:analytics` after touching any form handler.** Must be 20/20.
+- New blog posts inherit the script from the template inside `blog-publisher.html`
+  (~line 534). **If a post is missing tracking, fix that template, not just the post.**
+- `blog-publisher.html` and `fce-os/` are internal tools and are deliberately untracked.
 
 ## Known outstanding — 6 orphan directories
 
@@ -94,7 +124,9 @@ They are Claude/Cowork scheduled tasks, defined here:
 
 Debug them there, in a session with access to that folder — not from this repo.
 
-**Status as of 2026-07-27 18:30 PDT:** all three are enabled and firing on schedule. `fc-exotics-inbox-monitor` and `bioaminex-inbox-monitor` run at 08:00 and 18:00 daily; `fce-lead-calendar-sync` runs every 2 hours. All three last fired ~18:03 PDT today. So the cron side works — the failure is downstream of the trigger. They fired twice daily for 11 days and produced no drafts, which is why 20 booking-form leads went 6–9 days without a reply. Fixing this is higher value than any remaining site work.
+**Status as of 2026-08-11:** the July failure is **fixed.** `fce-lead-calendar-sync` was dying in the gap between `create_event` and `label_thread`, so every run re-entered the same dying path. The prompt was rewritten on 10 Aug with a reconcile pass, one lead per run, a stale-date check and a malformed-email check. Confirmed running.
+
+**Open anomaly (11 Aug):** `fc-exotics-inbox-monitor` **skipped its 8am run** — last run 6:03pm 10 Aug, next 6:03pm 11 Aug — while `bioaminex-inbox-monitor` ran normally at 8:07am on the same machine and the same cron. Not investigated. Given July cost 20 unanswered leads, a silently skipped run is worth checking before any site work.
 
 ## Terminal cwd gotcha
 
