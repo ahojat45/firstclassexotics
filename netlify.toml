@@ -471,3 +471,15 @@
   to = "/"
   status = 301
   force = true
+
+[[redirects]]
+  from = "/shop"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/copy-of-bmw-m3-competition-g80"
+  to = "/#fleet"
+  status = 301
+  force = true
