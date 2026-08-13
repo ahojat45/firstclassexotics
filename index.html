@@ -958,7 +958,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </div>
     <div class="fleet-card">
-      <img width="800" height="533" loading="lazy" src="images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-01.jpg" alt="2026 McLaren 750S Spider Orange exotic car rental Orange County First Class Exotics" style="object-position:center 65%" data-gallery="images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-01.jpg,images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-02.jpg,images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-03.jpg,images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-04.jpg,images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-05.jpg" onerror="this.style.background='#1C1C1C'">
+      <picture><source srcset="images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-01.webp" type="image/webp"><img width="800" height="533" loading="lazy" src="images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-01.jpg" alt="2026 McLaren 750S Spider Orange exotic car rental Orange County First Class Exotics" style="object-position:center 65%" data-gallery="images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-01.jpg,images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-02.jpg,images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-03.jpg,images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-04.jpg,images/fleet/mclaren-750s-spider-orange/mclaren-750s-spider-orange-05.jpg" onerror="this.style.background='#1C1C1C'"></picture>
       <div class="fleet-card-overlay"></div>
       <div class="fleet-card-body">
         <div class="fleet-brand">McLaren</div>
@@ -2359,12 +2359,15 @@ document.addEventListener('click',function(e){
     // Homepage galleries now store local image paths directly.
     return id;
   }
+  // Prefer WebP in the lightbox; every referenced JPEG has a .webp sibling.
+  // Falls back to the original JPEG if the WebP is missing or unsupported.
+  function webpUrl(u){return u.replace(/\.jpe?g$/i,'.webp');}
   function open(imgs,name,idx){images=imgs;current=idx||0;carName=name;buildThumbs();show(current);lb.classList.add('open');document.body.style.overflow='hidden';}
   function close(){lb.classList.remove('open');document.body.style.overflow='';}
-  function show(idx){current=idx;lbCarName.textContent=carName;lbCounter.textContent=(current+1)+' / '+images.length;lbImg.classList.add('fading');var newImg=new Image();newImg.onload=function(){lbImg.src=this.src;lbImg.classList.remove('fading');};newImg.src=gdUrl(images[current],'w1600');lb.querySelectorAll('.lb-thumb').forEach(function(t,i){t.classList.toggle('active',i===current);});var at=lb.querySelectorAll('.lb-thumb')[current];if(at)at.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
+  function show(idx){current=idx;lbCarName.textContent=carName;lbCounter.textContent=(current+1)+' / '+images.length;lbImg.classList.add('fading');var newImg=new Image();newImg.onload=function(){lbImg.src=this.src;lbImg.classList.remove('fading');};var _jpg=gdUrl(images[current],'w1600'),_wp=webpUrl(_jpg),_tried=false;newImg.onerror=function(){if(!_tried&&_wp!==_jpg){_tried=true;newImg.src=_jpg;}else{lbImg.classList.remove('fading');}};newImg.src=(_wp!==_jpg)?_wp:_jpg;lb.querySelectorAll('.lb-thumb').forEach(function(t,i){t.classList.toggle('active',i===current);});var at=lb.querySelectorAll('.lb-thumb')[current];if(at)at.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}
   function prev(){show((current-1+images.length)%images.length);}
   function next(){show((current+1)%images.length);}
-  function buildThumbs(){lbThumbs.innerHTML='';images.forEach(function(id,i){var t=document.createElement('div');t.className='lb-thumb';var img=document.createElement('img');img.src=gdUrl(id,'w200');img.loading='lazy';t.appendChild(img);t.addEventListener('click',function(){show(i);});lbThumbs.appendChild(t);});}
+  function buildThumbs(){lbThumbs.innerHTML='';images.forEach(function(id,i){var t=document.createElement('div');t.className='lb-thumb';var img=document.createElement('img');var tj=gdUrl(id,'w200'),tw=webpUrl(tj);img.onerror=function(){if(this.src.indexOf('.webp')>-1){this.onerror=null;this.src=tj;}};img.src=(tw!==tj)?tw:tj;img.loading='lazy';t.appendChild(img);t.addEventListener('click',function(){show(i);});lbThumbs.appendChild(t);});}
   document.querySelectorAll('.fleet-card img[data-gallery]').forEach(function(img){img.addEventListener('click',function(e){e.stopPropagation();var ids=this.getAttribute('data-gallery').split(',');var card=this.closest('.fleet-card');var name=card.querySelector('.fleet-brand').textContent+' '+card.querySelector('.fleet-name').textContent;open(ids,name,0);});});
   lb.querySelector('.lb-close').addEventListener('click',close);
   lb.querySelector('.lb-prev').addEventListener('click',prev);
