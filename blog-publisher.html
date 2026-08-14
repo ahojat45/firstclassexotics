@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="robots" content="noindex,nofollow">
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-E655N33GPP"></script>
   <script>
   window.dataLayer = window.dataLayer || [];
@@ -200,7 +201,10 @@ textarea,input,select,button{font-family:inherit}
 </div>
 
 <script>
-const PASSWORD='FCE2026';
+// The gate password is NEVER stored in this file. It is typed by the operator,
+// held in sessionStorage for the tab's lifetime only, and verified server-side
+// against the BLOG_PUBLISHER_PASSWORD env var.
+function getPassword(){return sessionStorage.getItem('fce_bp_pw')||'';}
 const MAX_IMAGES=5;
 const MAX_PAYLOAD_BYTES=5*1024*1024;
 const BLOG_POSTS=[
@@ -242,7 +246,9 @@ let publishSlug='';
 let uploadImages=[];
 
 window.onload=()=>{
-  const isLoggedIn=sessionStorage.getItem('fce_logged_in')==='true';
+  // Require BOTH the flag and the stored credential, so a stale pre-upgrade session
+  // cannot land on the dashboard with no working password.
+  const isLoggedIn=sessionStorage.getItem('fce_logged_in')==='true' && !!getPassword();
   if(isLoggedIn){
     showDashboard();
   }else{
@@ -261,22 +267,44 @@ function showDashboard(){
   document.getElementById('dashboard').style.display='block';
 }
 
-function doLogin(){
-  const pw=document.getElementById('password-input').value.trim();
+async function doLogin(){
+  const input=document.getElementById('password-input');
+  const pw=input.value.trim();
   const err=document.getElementById('login-error');
-  if(pw!==PASSWORD){
-    err.style.display='block';
-    document.getElementById('password-input').value='';
-    return;
-  }
+  if(!pw){err.textContent='Enter the admin password.';err.style.display='block';return;}
   err.style.display='none';
-  sessionStorage.setItem('fce_logged_in','true');
-  document.getElementById('password-input').value='';
-  showDashboard();
+  const btn=document.querySelector('#login-screen .btn');
+  if(btn){btn.disabled=true;}
+  try{
+    const r=await fetch('/.netlify/functions/blog-publisher',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({operation:'auth',password:pw})
+    });
+    if(r.ok){
+      sessionStorage.setItem('fce_bp_pw',pw);
+      sessionStorage.setItem('fce_logged_in','true');
+      input.value='';
+      showDashboard();
+    }else{
+      const d=await r.json().catch(function(){return {};});
+      err.textContent=(r.status===500&&/not configured/i.test(d.error||''))
+        ? 'Server not configured: BLOG_PUBLISHER_PASSWORD is not set in Netlify.'
+        : 'Incorrect password.';
+      err.style.display='block';
+      input.value='';
+    }
+  }catch(e){
+    err.textContent='Could not reach the server. Check your connection and try again.';
+    err.style.display='block';
+  }finally{
+    if(btn){btn.disabled=false;}
+  }
 }
 
 function doLogout(){
   sessionStorage.removeItem('fce_logged_in');
+  sessionStorage.removeItem('fce_bp_pw');
   showLoginScreen();
 }
 
@@ -806,7 +834,7 @@ async function generate(){
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         operation:'generate',
-        password:PASSWORD,
+        password:getPassword(),
         topic,
         category:document.getElementById('ci').value,
         keywords:document.getElementById('kw').value.trim(),
@@ -869,7 +897,7 @@ async function publish(){
 
   const payload={
     operation:'publish',
-    password:PASSWORD,
+    password:getPassword(),
     pageHtml,
     card:cardMarkup,
     lslug:publishSlug,
@@ -1019,7 +1047,7 @@ function processImageFile(file){
 function estimatePublishPayloadBytes(){
   const dummy={
     operation:'publish',
-    password:PASSWORD,
+    password:getPassword(),
     pageHtml:pageHtml||'',
     card:cardMarkup||'',
     lslug:publishSlug||slugify(document.getElementById('su').value||document.getElementById('ti').value),

@@ -1,4 +1,5 @@
 const REPO = 'ahojat45/firstclassexotics';
+const crypto = require('crypto');
 const BRANCH = 'main';
 const BLOG_INSERT_MARKER = '<!-- NEW-POSTS-INSERT -->';
 const MAX_SLUG_LENGTH = 60;
@@ -81,6 +82,18 @@ function githubPathUrl(path) {
     .map((part) => encodeURIComponent(part))
     .join('/');
   return `https://api.github.com/repos/${REPO}/contents/${encoded}`;
+}
+
+// Constant-time string compare, so a wrong password cannot be recovered by timing.
+function safeEqual(a, b) {
+  const bufA = Buffer.from(String(a), 'utf8');
+  const bufB = Buffer.from(String(b), 'utf8');
+  if (bufA.length !== bufB.length) {
+    // Still burn a comparison so length is not leaked by timing.
+    crypto.timingSafeEqual(bufA, bufA);
+    return false;
+  }
+  return crypto.timingSafeEqual(bufA, bufB);
 }
 
 function githubHeaders(token) {
@@ -352,8 +365,22 @@ exports.handler = async function handler(event) {
       overwriteExisting,
     } = payload;
 
-    if (password !== 'FCE2026') {
+    // Gate password lives ONLY in the Netlify env var BLOG_PUBLISHER_PASSWORD.
+    // It is never sent to the browser. Fail closed if it is not configured.
+    const gatePassword = process.env.BLOG_PUBLISHER_PASSWORD;
+
+    if (!gatePassword) {
+      return json(500, { error: 'BLOG_PUBLISHER_PASSWORD not configured' });
+    }
+
+    if (!safeEqual(String(password || ''), gatePassword)) {
       return json(401, { error: 'Unauthorized' });
+    }
+
+    // Lightweight credential check used by the login screen. Must stay AFTER the
+    // password check and BEFORE any operation that needs GitHub/Anthropic keys.
+    if (operation === 'auth') {
+      return json(200, { ok: true });
     }
 
     const anthropicKey = process.env.ANTHROPIC_API_KEY;
