@@ -540,6 +540,18 @@ flag is the first thing to check.
 until a rule is added for it.** Either add the rule or keep new docs out of the repo.
 `robots.txt` also gained `Disallow: /*.md$` — crawl hygiene, not a control.
 
+⚠️ **TWO TRAPS WHEN VERIFYING THIS — both hit on 21 Aug:**
+1. **Never test with a query string.** `…/HANDOFF.md?cb=1` **returns the document**; the query
+   string stops the redirect matching, and it reads as "the rule failed." The bare
+   `…/HANDOFF.md` correctly returns the 404 page. Test the bare URL.
+2. **`WebFetch` can no longer reach these URLs at all** — it obeys the `robots.txt` line we
+   just added and returns `ROBOTS_DISALLOWED`. A cloud session therefore **cannot verify this
+   itself**. Ask Ali to open the URL in Chrome; do not try to route around robots.
+
+✅ Confirmed live 21 Aug: `firstclassexotics.com/HANDOFF.md` returns the branded 404 page
+(Ali screenshotted it). Homepage, booking form, fleet (48+), and the `/blog/mclaren-w1`
+status-200 rewrite all still resolve normally.
+
 Verified before push: 81 → 100 well-formed rules, zero duplicate paths, every pre-existing rule
 still present in its original order, **119 insertions / 0 deletions**, and none of the
 never-touch paths (`404.html`, `blog-publisher.html`, `agreement.html`, the two `google*.html`
