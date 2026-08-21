@@ -184,13 +184,31 @@ Do not re-read before early September and expect movement.
 | **Not found (404)** | **5** | ⚠️ **UNRESOLVED — see below** |
 | Redirect error | 0 | — |
 
-### ⚠️ OPEN: the 5 "Not found (404)" URLs
-The repo audit finds **zero** broken internal links, so these are URLs Google learned about
-externally — old Wix addresses, backlinks, directory listings — with no redirect rule.
-`netlify.toml` has **no `/*` catch-all**, so anything unmapped hard-404s.
-**Ali has been asked twice to click that row in GSC and paste the URLs; still not supplied.**
-If any have real links, each is a one-line 301 in `netlify.toml` recovering lost authority.
-Low priority — nothing is broken — but it is the one defect class invisible from the repo.
+### ✅ RESOLVED 21 Aug — the 5 "Not found (404)" URLs
+Ali supplied them. **Only 2 of the 5 were real; 3 were stale GSC entries.** Each was tested
+against production rather than trusted from the report — do the same next time.
+
+| URL | Last crawled | Rule existed | Live result | Action |
+|---|---|---|---|---|
+| `/book-online` | 9 Jul | ✅ line 416 | **works**, 301→`/#booking` | none — GSC stale |
+| `/shop` | 12 Jul | ✅ line 476 | **works**, 301→`/` | none — GSC stale |
+| `/copy-of-bmw-m3-competition-g80` | 21 Jul | ✅ line 482 | **works**, 301→`/#fleet` | none — GSC stale |
+| `/exoticcarrentalcostamesa` | 13 Aug | ❌ | real 404 | ✅ **301 added** → `/exotic-car-rental-costa-mesa` |
+| `/exoticlinx` | 8 Aug | ❌ | real 404 | ✅ **deliberately left 404ing** |
+
+⚠️ **Three of the five were already fixed weeks ago** — their "last crawled" dates all predate
+the commits that added their rules. GSC keeps reporting a 404 until Google recrawls. **A URL in
+this report is not evidence it is currently broken. Curl it before writing a rule.**
+
+**`/exoticlinx` must stay a 404 — do not "fix" it.** Ali: it was a one-off collab with his
+jeweler (Goldlinx) and is over. A dead page *should* 404; Google drops it naturally. Redirecting
+an unrelated page to the homepage is worse than a 404 — Google commonly treats an irrelevant
+redirect as a soft 404 anyway.
+
+**Safety note for future `netlify.toml` work:** all rules are **exact paths — zero splats or
+placeholders**. A new rule for a path that appears nowhere else therefore cannot shadow an
+existing route. Verify with `grep -n 'from = ".*\*\|from = ".*:' netlify.toml` (must return
+nothing) before adding anything, and re-check after.
 
 **Request Indexing is DONE — queue empty since 18 Aug. Do not submit anything else.**
 Never submit `/terms` or `/privacy`; both are `noindex` by design.
