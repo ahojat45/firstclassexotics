@@ -257,13 +257,15 @@ three times and then stalled. Ali sent all 21 himself from Gmail drafts. Verifie
 `in:sent`; **zero bounces**.
 
 **Do not ask these 21 again** (most-recent one-time renters, Apr–Aug 2026):
-`trieuinvests@gmail.com` · `minny.tarun@gmail.com` · `ritap9904@yahoo.com` ·
-`d6development8@gmail.com` · `laradavis10@gmail.com` · `j.yan01319@gmail.com` ·
-`adrianperezofficial99@gmail.com` · `oprah@castlightmediainc.com` · `hbakhshi@revivabala.com` ·
-`lucas.johnson@me.com` · `hayden.guerin29@gmail.com` · `joerge.ogihara@yahoo.com` ·
-`hooman.honary@gmail.com` · `jessetorres82@gmail.com` · `jenniferlin269@gmail.com` ·
-`daniel.giraldo.us@gmail.com` · `12mendez23@gmail.com` · `gwestoninc@gmail.com` ·
-`shelby.seal@icloud.com` · `beccaputt@gmail.com` · `cullen@tideviewholdco.com`
+Wilson T · Tarunjeet Bajwa · Rita & Dylan Patel · Keith Davis & Jewel King · Lara Davis ·
+Jack Yen · Adrian Perez · Omari Grandberry · Hassan Bakhshi · Lucas Johanson · Hayden G ·
+Joerge Ogihara · Hooman Honary · Jesse Torres · Jennifer Lin · Daniel G · Andres Mendez ·
+Garrett Weston · Shelby Seal · Rebecca Putt · Cullen Brasfield
+
+⚠️ **Email addresses are deliberately NOT stored in this file — see §11.** The authoritative
+record of exactly who was asked is Gmail itself:
+`in:sent subject:"Quick favor" newer_than:1y` — that query returns the address of every person
+already contacted. Diff any new batch against it before sending.
 
 **Wording Ali approved — reuse verbatim for batch 2.** Subject `Quick favor, <First>?`; body
 is four short lines: thanks + the month they rented, "30 seconds, a Google review would go a
@@ -290,19 +292,19 @@ the rental converts far worse than one two months after.
 - **Ameen / Said Hofioni** — same person, already reviewed
 - **Faith Schmidt** — two emails, same person; reviewed 17 Aug
 - **Excluded, not customers:** Kevin Hernandez / Partners Direct, George Wood / Falconstone,
-  Patrick Thomas / Acrisure (all insurance), `ali.hojatkashani@gmail.com` (Ali),
-  `aleeassadian@gmail.com` (test), Mark Andrew Nones (co-op partner)
+  Patrick Thomas / Acrisure (all insurance), `al…@…com [redacted]` (Ali),
+  `al…@…com [redacted]` (test), Mark Andrew Nones (co-op partner)
 - **Possible dupes NOT merged — ask Ali:** Edmund Coutan (`kumquatlife` / `kumquatsolar`),
   Thomas & Tanya Farmakis Tolmasoff, Rita & Dylan Patel
-- **Kacy Kienholz** (`kacykienholz@gmail.com`) — on Lincoln Kienholz's contract, same
+- **Kacy Kienholz** (`ka…@…com [redacted]`) — on Lincoln Kienholz's contract, same
   household. **Deliberately skipped** on 21 Aug; Lincoln already reviewed and asking the same
   household twice reads badly.
-- **Adrian Perez** — `adrianperezofficial99@gmail.com` (Jul 2026) vs `adrianp808@yahoo.com`
+- **Adrian Perez** — `ad…@…com [redacted]` (Jul 2026) vs `ad…@…com [redacted]`
   (May 2024). Possibly one person, which would make him a repeat. **Unconfirmed — ask Ali.**
   He was asked on 21 Aug as a one-time renter.
 - **Carlos Ruelas** — three addresses (`carlosruelas1226@`, `carlosruelas1227@`,
-  `carlosruelas@crabuild.com`). Almost certainly one person with many rentals. Not merged.
-- **Miles Ortiz** (`miles@hi-voltagesplicing.com`) — flagged as "new" on 20 Aug, but the full
+  `ca…@…com [redacted]`). Almost certainly one person with many rentals. Not merged.
+- **Miles Ortiz** (`mi…@…com [redacted]`) — flagged as "new" on 20 Aug, but the full
   history shows him as a **long-standing repeat** (2023→2026). Another artifact of the old
   short-window pull.
 
@@ -474,3 +476,37 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
 
 **Do not invent site work.** There is no meaningful engineering left; the remaining upside is
 reviews and the stock-photo decision.
+
+---
+
+## 11. ⚠️ THE REPO ROOT IS PUBLICLY SERVED — NO CUSTOMER DATA IN MARKDOWN
+Discovered 21 Aug. Netlify publishes the repo root and **nothing blocks `.md`**, so every
+markdown file here is live on the open web:
+`https://www.firstclassexotics.com/HANDOFF.md` returns this document in full. `robots.txt`
+says `Allow: /` for everything except `/blog-publisher.html` and `/fce-os/`.
+
+**How it happened:** the 21 Aug handoff listed all 21 review-ask customer email addresses as a
+do-not-re-ask record. That published 21 customers' addresses. All third-party addresses across
+`HANDOFF.md`, `HANDOFF-2026-08-17.md`, `-08-19.md` and `-08-21.md` were redacted the same day.
+
+### Rules
+- **Never write a customer email, phone number, or home address into any `.md` file in this
+  repo.** Reference the Gmail query that produces the data instead.
+- Names alone are acceptable. Contact details are not.
+- The same applies to secrets — env var *names* are fine, values never.
+
+### ⛔ STILL OPEN — the files are still publicly served
+Redaction removed the payload; it did **not** stop the files being served. 18 markdown docs
+remain reachable at the site root, including every past handoff, `REVIEW-SYSTEM.md`,
+`VOICE-AGENT-SETUP.md` and `START-HERE-MACBOOK.md`.
+
+**Deliberately not fixed on 21 Aug** — Ali flagged it as an important business day and asked
+that nothing touch the live site. The fix edits `netlify.toml`, which is routing config, so it
+was deferred rather than rushed. **Do this on a quiet day:**
+1. Add 404 redirects for the markdown docs. ⚠️ Netlify splats must be at the **end** of a
+   path — `from = "/*.md"` is **not** reliable. Use one explicit rule per file.
+2. Put them **first** in `netlify.toml` (80+ rules, first-match-wins) and use `force = true`.
+3. Add `Disallow: /*.md$` to `robots.txt` — crawl hygiene only, not a security control.
+4. Verify each doc returns 404 in production, and confirm the fleet, booking form and blog
+   rewrites still resolve — a `force = true` rule placed first can shadow a real route.
+5. Check Search Console for any indexed `.md` URL and request removal.
