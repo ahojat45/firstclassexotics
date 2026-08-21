@@ -259,9 +259,10 @@ under an alternate slug. Live cards use `miami-blue-2019-mclaren-570s/`,
 
 **90 reviews, 5.0, #2 in the local map pack.**
 
-⚠️ **CORRECTED 21 Aug — the old competitor line was wrong on both name and number.** It read
-"Mango Exotics is #1 with 187." There is no Mango. Verified in an incognito search for
-*lamborghini rental in orange county*, 21 Aug:
+⚠️ **CORRECTED 21 Aug — the old competitor line named the wrong business.** It read "Mango
+Exotics is #1 with 187." **Mango Exotics does exist — Ali says they are not a competitor that
+matters and should not be tracked.** The actual #1 is **Monza** Exotics. Verified in an
+incognito search for *lamborghini rental in orange county*, 21 Aug:
 
 | # | Business | Rating | Reviews | Location |
 |---|---|---|---|---|
@@ -273,6 +274,31 @@ under an alternate slug. Live cards use `miami-blue-2019-mclaren-570s/`,
 Review count is one input among proximity, relevance and engagement — it is not the ranking.
 The profile is performing well above its review count, and "catch up on reviews" is the wrong
 frame. Reviews compound and are worth doing; they are not the reason for the current position.
+
+### 🔴 THE REAL COMPETITIVE GAP IS PAID ADS, NOT REVIEWS
+Same incognito search, expanded local finder. **All three competitors run Google Ads. FCE does
+not.** The page reads:
+
+```
+SPONSORED  Monza Exotics          410
+SPONSORED  Peacock Rentals        170   (4.5 stars — worse rating than FCE)
+SPONSORED  Jungle Exotic Rentals  648
+─────────────────────────────────────
+ORGANIC    Monza Exotics          409
+ORGANIC    First Class Exotics     90   ← FCE
+ORGANIC    Jungle Exotic Rentals  648
+```
+
+Monza and Jungle each appear **twice** — paid and organic. Peacock buys placement above FCE
+with a **4.5** rating. FCE is #2 organically but sits **fifth on the page**. The visible
+dominance is bought slots, not review count.
+
+💰 **Ali has an unused $500 Google Ads credit** (spend $500, get $500) showing on the GBP
+dashboard as of 21 Aug.
+⚠️ **This is a spend decision, not an SEO task — Ali's call, and he has not made it.** Do not
+start a campaign. Exotic rental is an expensive keyword vertical and these are high-intent
+terms three funded competitors already bid on; $500 buys a test, not a campaign. Whether the
+math works depends on his close rate per lead and revenue per rental — numbers only he has.
 
 ⚠️ **Do not accuse competitors of buying reviews without evidence.** 409 and 648 are ordinary
 for a higher-volume shop with a systematic ask over 4–5 years. FCE has ~470 contracts since
