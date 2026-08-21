@@ -209,13 +209,17 @@ Unwinnable; exclude it when measuring.
 
 ### Other open items (not from the audit)
 
-- ~~**Address string mismatch**~~ ✅ **CLOSED 21 Aug.** The handoff overstated this: it was
-  never "27 pages vs index.html". It was **one field** — `index.html` line 41,
-  `"streetAddress": "2060 Placentia Ave Ste A4"` in the JSON-LD, which contradicted the four
-  **visible** addresses on its own page and all 30 other pages, every one of which uses the
-  comma. Fixed to the comma form; **39 occurrences across 31 files are now identical, 0
-  outliers.** ⚠️ Still worth confirming against the Google Business Profile — if GBP uses the
-  no-comma form then all 31 should flip the other way. Ali has not confirmed which GBP uses.
+- ~~**Address string mismatch**~~ ✅ **CLOSED 21 Aug — confirmed against GBP.**
+  **The canonical address is `2060 Placentia Ave Ste A4, Costa Mesa, CA 92627` — NO comma
+  between "Ave" and "Ste", and "Ste" not "Suite".** Ali screenshotted the Google Business
+  Profile; that is what Google has. All 40 occurrences across 30 files now match exactly,
+  including all 28 JSON-LD `streetAddress` fields. Zero outliers.
+  ⚠️ **How this was nearly gotten wrong — read before touching the address again.** The site
+  had three forms: 34× `Ave, Ste A4`, 3× `Ave, Suite A4` (privacy/terms), and 1× `Ave Ste A4`
+  (index.html JSON-LD). Majority-rules reasoning said "fix the 1 outlier to match the 30" —
+  **and that was backwards.** The lone outlier was the only correct one. It was flipped the
+  wrong way in `bd9c9eb` and corrected immediately after Ali produced the GBP screenshot.
+  **NAP is decided by what Google Business Profile shows, never by what most files say.**
 - ~~**Three fleet numbers**~~ ✅ **CLOSED 21 Aug.** Ali's call: all three say **48**, matching
   the 48 real cards. `index.html` stat box `46+`→`48+`, fleet subtitle `45+`→`48+`, and
   `blog/porsche-911-carrera-4-gts-satin-grey.html` `46+`→`48+`. Verified: no `4[567]+` fleet
@@ -426,8 +430,12 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
   the blog copy. Updated 21 Aug from the old mixed `45+`/`46+`; do not reintroduce those.
   ⚠️ **48 is the live card count.** If cars are added or sold, re-count with
   `grep -o 'data-car="' index.html | wc -l` and update all three places together.
-- Address is **"2060 Placentia Ave, Ste A4"** — with the comma — in visible copy *and* in
-  JSON-LD `streetAddress`. All 39 occurrences match; keep it that way.
+- Address is **"2060 Placentia Ave Ste A4, Costa Mesa, CA 92627"** — **no comma before
+  "Ste", and "Ste" never "Suite"** — in visible copy *and* in JSON-LD `streetAddress`. This is
+  verbatim what the Google Business Profile shows (confirmed 21 Aug). All 40 occurrences match.
+  Check with `grep -rn 'Placentia Ave, \|Suite A4' --include='*.html' .` — that must return
+  nothing. Two footer instances use a `·` separator before the city; that is a deliberate
+  design choice and is fine.
 
 ### Scheduled tasks (all on the iMac, only run while the app is open)
 | Task | Schedule |
