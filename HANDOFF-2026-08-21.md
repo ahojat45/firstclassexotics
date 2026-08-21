@@ -257,7 +257,28 @@ under an alternate slug. Live cards use `miami-blue-2019-mclaren-570s/`,
 
 ## 6. 🟢 REVIEWS — still the main business workstream
 
-**90 reviews, 5.0, #2 in the local map pack.** Mango Exotics is #1 with 187.
+**90 reviews, 5.0, #2 in the local map pack.**
+
+⚠️ **CORRECTED 21 Aug — the old competitor line was wrong on both name and number.** It read
+"Mango Exotics is #1 with 187." There is no Mango. Verified in an incognito search for
+*lamborghini rental in orange county*, 21 Aug:
+
+| # | Business | Rating | Reviews | Location |
+|---|---|---|---|---|
+| 1 | **Monza Exotics** | 5.0 | **409** | Huntington Beach |
+| 2 | **First Class Exotics** | 5.0 | **90** | Costa Mesa |
+| 3 | **Jungle Exotic Rentals** | 5.0 | **648** | Newport Beach |
+
+🟢 **Read this the right way: FCE ranks #2 while sitting BELOW a competitor with 648 reviews.**
+Review count is one input among proximity, relevance and engagement — it is not the ranking.
+The profile is performing well above its review count, and "catch up on reviews" is the wrong
+frame. Reviews compound and are worth doing; they are not the reason for the current position.
+
+⚠️ **Do not accuse competitors of buying reviews without evidence.** 409 and 648 are ordinary
+for a higher-volume shop with a systematic ask over 4–5 years. FCE has ~470 contracts since
+2022 and asked essentially nobody until 21 Aug — that alone explains the gap. Real fake-review
+signals are burst timing, single-review reviewer accounts, generic text, and out-of-area
+profiles; a raw count proves nothing.
 Trajectory: 81 (11 Aug) → 84 (13) → 88 (14) → 89 (17) → **90 (18)**.
 Review link: `https://g.page/r/CQ_Rg94B1MthEBM/review` — verified working.
 
