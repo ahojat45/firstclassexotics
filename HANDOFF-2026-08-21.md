@@ -452,12 +452,28 @@ Open Graph + Twitter tags **were** added, since those drive link previews regard
   are Key Events and receiving data
 - Connectors live: Google Drive, Gmail, Calendar, Chrome, Netlify
 
-### ✅ CORRECTION: the cloud container CAN reach firstclassexotics.com
-Earlier handoffs said the proxy blocks it and to verify only through Chrome. **`WebFetch` worked
-fine on 19 Aug** and confirmed the live dropdown, review count, canonical and sitemap.
-Caveat: WebFetch converts to markdown, so **it cannot see `<script>` contents** — JSON-LD is
-invisible to it — and its summarizer miscounts (it reported 50 sitemap entries for a 49-entry
-file). Use it for rendered content; use exact repo counts for numbers.
+### ⛔ WebFetch REACHES the site but CANNOT BE TRUSTED TO VERIFY IT
+It resolves `firstclassexotics.com`, but on 21 Aug it gave **three separate false readings**
+and nearly caused three wrong conclusions. **Never confirm a deploy with WebFetch alone.**
+
+| What happened | Truth |
+|---|---|
+| Reported `/exoticcarrentalcostamesa` as **404** right after the redirect deployed | Rule was working; it replayed a **cached** pre-deploy response (~15 min TTL) |
+| Reported `HANDOFF.md?cb=1` as **still serving the document** | The **query string** stopped the redirect matching. The bare URL correctly 404s |
+| Reported the **old business hours** across **four** different cache-busting URLs for ~15 min after the deploy went `ready` | Ali's browser showed the new hours immediately. Netlify confirmed a fresh deploy the whole time |
+
+Also: it converts to markdown, so **`<script>` contents are invisible** — JSON-LD cannot be
+checked this way — and its summarizer miscounts (reported 50 sitemap entries for a 49-entry file).
+And since `robots.txt` gained `Disallow: /*.md$`, WebFetch now refuses those URLs entirely
+(`ROBOTS_DISALLOWED`).
+
+**How to actually verify a deploy:**
+1. `git rev-parse HEAD` == `origin/main`, and `git show HEAD:<file> | grep …` to prove the
+   committed file contains the change.
+2. Netlify `get-project` → `currentDeploy.state` is `ready` **and** the deploy **id changed**.
+   (This API returned Cloudflare 502s repeatedly on 21 Aug — just retry after ~60s.)
+3. **Ask Ali to hard-refresh (⌘⇧R) and screenshot.** He is the ground truth. Do this rather
+   than reporting a failure WebFetch invented.
 
 ⚠️ **The Chrome extension did not respond at all on 19 Aug** — `tabs_context_mcp` timed out
 repeatedly across the whole session. Two browsers are connected ("Browser 1" / "Browser 2") and
