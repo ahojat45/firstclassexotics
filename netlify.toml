@@ -489,3 +489,121 @@
   to = "/#fleet"
   status = 301
   force = true
+
+# --- Internal docs: present in the repo, never served. Added 21 Aug 2026. ---
+# The publish root is the repo root, so every .md here was a live public page.
+# force = true is REQUIRED: without it Netlify serves the real file before redirecting.
+
+[[redirects]]
+  from = "/ACE-PROMPT-mclaren-720s-mso-satin-black.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/ACE-PROMPT-porsche-911-gts.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/BLOG-PUBLISHER-porsche-911-carrera-4-gts.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/HANDOFF-2026-07-30.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/HANDOFF-2026-08-10.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/HANDOFF-2026-08-11.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/HANDOFF-2026-08-13.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/HANDOFF-2026-08-17.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/HANDOFF-2026-08-19.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/HANDOFF-2026-08-21.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/HANDOFF.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/MACBOOK-PASTE-THIS.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/REVIEW-SYSTEM.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/SITE-AUDIT-2026-07-27.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/START-HERE-MACBOOK.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/STATUS-2026-07-30.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/VOICE-AGENT-PLAN.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/VOICE-AGENT-SETUP.md"
+  to = "/404.html"
+  status = 404
+  force = true

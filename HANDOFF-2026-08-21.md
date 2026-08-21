@@ -529,18 +529,30 @@ do-not-re-ask record. That published 21 customers' addresses. All third-party ad
 - Names alone are acceptable. Contact details are not.
 - The same applies to secrets — env var *names* are fine, values never.
 
-### ⛔ STILL OPEN — the files are still publicly served
-Redaction removed the payload; it did **not** stop the files being served. 18 markdown docs
-remain reachable at the site root, including every past handoff, `REVIEW-SYSTEM.md`,
-`VOICE-AGENT-SETUP.md` and `START-HERE-MACBOOK.md`.
+### ✅ CLOSED 21 Aug — all 19 root docs now return 404
+`netlify.toml` gained **19 explicit rules**, one per root `.md` file, each
+`to = "/404.html"`, `status = 404`, **`force = true`**.
+⚠️ **`force = true` is mandatory here.** Without it Netlify serves the real file *before*
+consulting redirects, and the rule does nothing. If a doc ever becomes readable again, that
+flag is the first thing to check.
+⚠️ **One rule per file — no wildcard.** Netlify splats must sit at the **end** of a path, so
+`from = "/*.md"` does **not** reliably match. **Any new `.md` added to the repo root is public
+until a rule is added for it.** Either add the rule or keep new docs out of the repo.
+`robots.txt` also gained `Disallow: /*.md$` — crawl hygiene, not a control.
 
-**Deliberately not fixed on 21 Aug** — Ali flagged it as an important business day and asked
-that nothing touch the live site. The fix edits `netlify.toml`, which is routing config, so it
-was deferred rather than rushed. **Do this on a quiet day:**
-1. Add 404 redirects for the markdown docs. ⚠️ Netlify splats must be at the **end** of a
-   path — `from = "/*.md"` is **not** reliable. Use one explicit rule per file.
-2. Put them **first** in `netlify.toml` (80+ rules, first-match-wins) and use `force = true`.
-3. Add `Disallow: /*.md$` to `robots.txt` — crawl hygiene only, not a security control.
-4. Verify each doc returns 404 in production, and confirm the fleet, booking form and blog
-   rewrites still resolve — a `force = true` rule placed first can shadow a real route.
-5. Check Search Console for any indexed `.md` URL and request removal.
+Verified before push: 81 → 100 well-formed rules, zero duplicate paths, every pre-existing rule
+still present in its original order, **119 insertions / 0 deletions**, and none of the
+never-touch paths (`404.html`, `blog-publisher.html`, `agreement.html`, the two `google*.html`
+verification files) or any `fce-os/` path caught by a new rule.
+
+### ⚠️ STILL EXPOSED — not markdown
+- **`fce-os/db/migrations/*.sql`** — three database schema files under the published root.
+  `robots.txt` disallows `/fce-os/`, so Google will not index them, but robots is not access
+  control and a direct fetch still works. **Deliberately not blocked:** §8 says never redirect
+  or block `fce-os/`, and breaking that app was not worth the trade without Ali's say-so.
+  **Ask him.** If the app does not read them at runtime — it almost certainly does not, they
+  are migrations — three more `force`d 404 rules close it.
+- `package.json`, `package-lock.json`, `vercel.json` (a leftover), `scripts/test-analytics.mjs`
+  are also served. Harmless, but `vercel.json` is dead weight and could simply be deleted.
+- ✅ Confirmed NOT exposed: `.claude/`, `.vscode/`, `.gitignore` — Netlify does not serve
+  dot-directories. `https://www.firstclassexotics.com/.claude/settings.local.json` returns 404.

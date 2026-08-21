@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /blog-publisher.html
 Disallow: /fce-os/
+Disallow: /*.md$
 
 Sitemap: https://www.firstclassexotics.com/sitemap.xml
