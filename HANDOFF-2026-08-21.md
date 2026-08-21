@@ -495,6 +495,17 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
   the blog copy. Updated 21 Aug from the old mixed `45+`/`46+`; do not reintroduce those.
   ⚠️ **48 is the live card count.** If cars are added or sold, re-count with
   `grep -o 'data-car="' index.html | wc -l` and update all three places together.
+- **Hours are `Open Daily 8am–10pm`** (schema `Mo-Su 08:00-22:00`). Changed 21 Aug from
+  `Mon–Fri 8am–6pm · Sat 9am–6pm · Sun 9am–5pm`. Ali confirmed he genuinely answers that late —
+  he is a one-man operation and "open" means reachable to book, not a staffed storefront.
+  ⚠️ **Hours live in 24 places: 16 JSON-LD `openingHours` arrays, 1 `openingHoursSpecification`
+  block (index.html), and 8 visible strings** across index, gift, terms and privacy. Change all
+  of them together or you reintroduce a mismatch. ⚠️ **index.html's `openingHours` is
+  pretty-printed across multiple lines** while the other 15 are single-line — a one-line
+  find/replace silently misses it. It did on the first pass 21 Aug.
+  **Also update the Google Business Profile — the site and GBP must agree.**
+  Why it changed: competitors close later and were showing as *Open* while FCE showed *Closed*
+  during the evening booking window. Monza 10pm, Peacock 10pm, Jungle 7pm, FCE was 6pm.
 - Address is **"2060 Placentia Ave Ste A4, Costa Mesa, CA 92627"** — **no comma before
   "Ste", and "Ste" never "Suite"** — in visible copy *and* in JSON-LD `streetAddress`. This is
   verbatim what the Google Business Profile shows (confirmed 21 Aug). All 40 occurrences match.
