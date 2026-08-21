@@ -209,12 +209,17 @@ Unwinnable; exclude it when measuring.
 
 ### Other open items (not from the audit)
 
-- ⚠️ **Address string mismatch.** 27 pages say **"2060 Placentia Ave, Ste A4"** (with comma);
-  `index.html` says **"2060 Placentia Ave Ste A4"** (no comma). The 19 Aug work matched the
-  majority rather than rewriting the homepage. **Ask Ali which form his Google Business Profile
-  uses and align all 28** — exact NAP consistency matters for local ranking.
-- **Three fleet numbers on the homepage**: `46+` (stat box, line 806), `45+` (fleet subtitle,
-  line 885), 48 actual cards. Long-standing.
+- ~~**Address string mismatch**~~ ✅ **CLOSED 21 Aug.** The handoff overstated this: it was
+  never "27 pages vs index.html". It was **one field** — `index.html` line 41,
+  `"streetAddress": "2060 Placentia Ave Ste A4"` in the JSON-LD, which contradicted the four
+  **visible** addresses on its own page and all 30 other pages, every one of which uses the
+  comma. Fixed to the comma form; **39 occurrences across 31 files are now identical, 0
+  outliers.** ⚠️ Still worth confirming against the Google Business Profile — if GBP uses the
+  no-comma form then all 31 should flip the other way. Ali has not confirmed which GBP uses.
+- ~~**Three fleet numbers**~~ ✅ **CLOSED 21 Aug.** Ali's call: all three say **48**, matching
+  the 48 real cards. `index.html` stat box `46+`→`48+`, fleet subtitle `45+`→`48+`, and
+  `blog/porsche-911-carrera-4-gts-satin-grey.html` `46+`→`48+`. Verified: no `4[567]+` fleet
+  claim remains anywhere in the repo.
 - **Minor**: `FC_LOGO.png` (256×256) has no `width`/`height` on 55 pages — free CLS win.
   78 images lack dimensions, 95 lack `loading`. Booking form is `data-netlify="true"` with no
   honeypot.
@@ -416,10 +421,13 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
 - Fleet images `images/fleet/<slug>/<slug>-NN.jpg` **+ matching `.webp`**, NN from `01`
 - `-01` must be an exterior front three-quarter; interiors last
 - 1600px q82 progressive where the source allows — **never upscale**
-- Blog URLs `/blog/<slug>`. Canonical copy: "12+ years", "since 2014", "45+ exotics available
-  now" (fleet section), "46+" (Fleet Access Network stat box — see §5).
-  `46+` also appears in `blog/porsche-911-carrera-4-gts-satin-grey.html` from a publisher
-  template; if the number changes, update the template too.
+- Blog URLs `/blog/<slug>`. Canonical copy: "12+ years", "since 2014", and **"48+"
+  everywhere a fleet size is stated** — fleet subtitle, the Fleet Access Network stat box, and
+  the blog copy. Updated 21 Aug from the old mixed `45+`/`46+`; do not reintroduce those.
+  ⚠️ **48 is the live card count.** If cars are added or sold, re-count with
+  `grep -o 'data-car="' index.html | wc -l` and update all three places together.
+- Address is **"2060 Placentia Ave, Ste A4"** — with the comma — in visible copy *and* in
+  JSON-LD `streetAddress`. All 39 occurrences match; keep it that way.
 
 ### Scheduled tasks (all on the iMac, only run while the app is open)
 | Task | Schedule |
