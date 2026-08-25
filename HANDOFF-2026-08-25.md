@@ -3,8 +3,10 @@ Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
 nothing here is carried forward on faith.
-**HEAD is `e5a94f1`, pushed, deployed, working tree clean, local == origin/main.**
-**Site engineering is finished.** 22–24 Aug was content work — see §12.
+**Last work commit `09903ab`** (batch 2), pushed and deployed — Netlify `6a8e16d7…` ready/current,
+tree clean, local == origin/main. One doc-only commit sits on top of it fixing this very line;
+if `git log -1` shows something newer than `09903ab` and it is a handoff edit, that is expected.
+**Site engineering is finished.** 22–24 Aug was content work (§12); 25 Aug was reviews (§6).
 
 ---
 
