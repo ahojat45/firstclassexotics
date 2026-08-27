@@ -573,6 +573,12 @@
   force = true
 
 [[redirects]]
+  from = "/HANDOFF-2026-08-26.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
   from = "/HANDOFF.md"
   to = "/404.html"
   status = 404
