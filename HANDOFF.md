@@ -3,7 +3,10 @@ Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
 nothing here is carried forward on faith.
-**Last commit `30f1c08`**, local == origin/main, tree otherwise clean.
+**Last work commit `dbd9e87`** (Handoff 7 Sep), pushed and deployed — Netlify
+`6a9efd55807f7d0008193df1` **ready/current**, deploy id confirmed changed from the previous
+`6a8e1dca…`. A doc-only commit correcting this very line may sit on top of it.
+⚠️ **Never trust this line over git** — confirm with `git --no-optional-locks log --oneline -1`.
 **Site engineering is finished.** 22–24 Aug content (§12); 25 Aug reviews (§6); 26 Aug video
 (§13); **27 Aug – 7 Sep Higgsfield video via MCP (§15)**.
 
@@ -699,10 +702,11 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
 3. ~~💰 **Andreas Kunz — 11 rentals, silent 14 months**~~ ✅ **CLOSED 27 Aug.** Ali confirmed
    he **is** Andy Koontz, his Alpha Solar partner (§14). Not a customer win-back — do not
    email him a review ask or a "we miss you" note.
-4. **404 check, still never confirmed.** Ask Ali to open
-   `https://www.firstclassexotics.com/HANDOFF-2026-09-07.md` in Chrome — **bare URL, no query
-   string** (§11 trap 1). Should return the branded 404. An agent cannot verify this.
-   The rule for that file was added to `netlify.toml` on 7 Sep.
+4. ✅ **404 check CONFIRMED 7 Sep — first time since the rule scheme was built.** Ali opened
+   the bare `https://www.firstclassexotics.com/HANDOFF-2026-09-07.md` in Chrome and got the
+   branded 404 page. Screenshotted. The `force = true` rule scheme is proven working
+   end-to-end: new file → rule added → pushed → deployed → 404 live. **Nothing to do here;
+   repeat this check for each new snapshot.**
 5. **Review the 12s continuous-take 720S video** (§15). It is the newest recipe and Ali has
    not judged it. One question decides everything: **does the woman stay continuous from the
    moment the car enters frame to the moment she walks off?** If yes, the recipe is locked and
@@ -926,7 +930,10 @@ until a rule is added for it.** Either add the rule or keep new docs out of the 
    itself**. Ask Ali to open the URL in Chrome; do not try to route around robots.
 
 ✅ Confirmed live 21 Aug: `firstclassexotics.com/HANDOFF.md` returns the branded 404 page
-(Ali screenshotted it). Homepage, booking form, fleet (48+), and the `/blog/mclaren-w1`
+(Ali screenshotted it).
+✅ **Confirmed again 7 Sep** on `HANDOFF-2026-09-07.md` — bare URL, branded 404, screenshotted.
+The full add-rule → push → deploy → verify loop is proven; deploy id changed
+`6a8e1dca…` → `6a9efd55…` before the check. Homepage, booking form, fleet (48+), and the `/blog/mclaren-w1`
 status-200 rewrite all still resolve normally.
 
 Verified before push: 81 → 100 well-formed rules, zero duplicate paths, every pre-existing rule
