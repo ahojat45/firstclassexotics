@@ -419,7 +419,7 @@ Sayed Hashemeyan · John Means III · Robert Smith · Chris Wells · Yinghao Cai
 Ali screenshotted the Google Business Profile on **Sat 29 Aug**: **91 reviews, 5.0 stars,
 1,411 customer interactions.** It was 90 on 21 Aug.
 
-⚠️ **That was an 8-day read and it is now stale — re-check before acting on it (§10 item 1).**
+⚠️ **Superseded — see the 7 Sep read below.**
 
 **Read against §6's pre-set table: 91 lands in the "91–92 / marginal but real" row → send
 batch 2, reassess after.** That gate was set before the data came in; it is being honoured
@@ -456,6 +456,27 @@ the 25–60 the optimistic case suggested. Worth having, but it is not a growth 
 | 93+ | ~3 of 21 converted; the 10–25% assumption holds | send batch 2, then work the 2022–24 cohorts |
 | 91–92 | marginal but real | send batch 2, reassess after |
 | still 90 | 0-for-21 in 5+ days | **do not send the same email to 250 colder names.** Rethink the channel first |
+
+### ✅ ANSWERED 7 SEP — THE COUNT IS 92. BATCH 1 IS CLOSED AT 2-FOR-21.
+Ali screenshotted the Google Business Profile on **Mon 7 Sep, 11:34am PT**: **92 reviews,
+5.0 stars, 1,234 customer interactions.** 90 on 21 Aug → 91 on 29 Aug → **92 on 7 Sep**.
+This is the **17-day read** §6 said to wait for, so batch 1 is now measured, not sampled.
+
+**Result: +2 reviews from 21 asks over 17 days — ~9.5% conversion.** Roughly double the 5%
+the 8-day read implied, still below the 10–25% the plan assumed. It lands in the pre-set
+**"91–92 / marginal but real"** row and in §10 item 1's **92** row. Both say the same thing.
+
+**Decision — honour the gate, do not re-argue it:**
+- ✅ **Send the 26 batch-2 drafts.** Verified still in Gmail 7 Sep (`list_drafts`,
+  `subject:"Quick favor"` → 26 returned, all 26 names match §6's list, all unsent, wording
+  byte-identical to batch 1). They cost nothing further and take the sample from 21 → 47.
+- ⛔ **Then STOP. Do not build batches 3+ for the 2022–24 cohorts.** ~250 names at ~9.5%
+  is ~24 reviews for a fresh round of list-building — and at 92 reviews / 5.0 the marginal
+  value of review #93 is far below what #10 was. Revisit only if batch 2 beats 15%.
+- 💬 **Two unreplied reviews.** The profile card shows a **"2 new reviews"** prompt. Google
+  favours profiles that respond and it costs a minute. Ali does this himself in the GBP app.
+
+⚠️ **Ali sends the 26 drafts himself from Gmail. Never send for him (§8).**
 
 ### Batch 1 result so far — 3 days in
 21 sent 21 Aug · **1 reply** (Andres Mendez: "I dropped a review for yall a while back") · 0
@@ -685,17 +706,11 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
 
 **Everything below is blocked on Ali, not on work. Do not invent tasks to fill the gap.**
 
-1. 🔴 **RE-CHECK THE GOOGLE REVIEW COUNT — FIRST THING.** It was **91 on 29 Aug** (up 1 from
-   90 on 21 Aug, an 8-day read). It is now **17+ days since batch 1 went out**, which is the
-   window §6 said to wait for. Ask Ali for the live number before anything else; an agent
-   cannot read it. Then:
-   - **93+** → batch 1 worked. Send batch 2, and the 2022–24 cohorts become worth building.
-   - **92** → ~5% conversion confirmed. Send batch 2 (drafts already exist, cost nothing), then
-     **stop** — do not build 250 more names.
-   - **still 91** → 1-for-21 over 17 days. The channel does not convert. Send batch 2 only if
-     Ali wants the larger sample; otherwise close the workstream and put the effort into
-     customer-generated content instead (§15).
-   ⚠️ **Whatever the number, Ali sends the 26 drafts himself from Gmail. Never send for him.**
+1. ✅ **REVIEW COUNT RE-CHECKED 7 SEP — 92.** Screenshotted by Ali, 11:34am PT (90 → 91 →
+   92; 2-for-21 over 17 days, ~9.5%). See §6. **The action is now: Ali sends the 26 batch-2
+   drafts himself from Gmail, then the workstream stops** — no 2022–24 cohorts. Also two
+   unreplied reviews sitting on the profile. Next count re-check: **14+ days after batch 2
+   goes out**, not before.
 2. **The four batch-2 judgement calls** (§6): the Rajesh/Dhananjay pair, the Siqi/Yinghao
    pair, the two junk-name signers ("lol lol" and "SK", mid-Jan), and John Means III's
    mismatched address. None are drafted; all need Ali's memory.
@@ -719,6 +734,11 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
 7. **`og:image` under 1200px on 34 pages** — the only real optimization left. Not broken.
 
 ### Minor, non-urgent
+- ⚠️ **GBP address now reads `2060 Placentia Ave Unit A4`, the site says `Ste A4`.** Spotted
+  in the 7 Sep screenshot. §8 fixed the site's 40 occurrences to `Ste A4` on 21 Aug precisely
+  because that was verbatim what GBP showed then; GBP has since drifted (or was edited). NAP
+  strings should match exactly. **Cheaper to change GBP back to `Ste A4` than to touch 40
+  files — Ali's call, one edit in the profile.** Not broken, no ranking evidence, low priority.
 - `images/fleet/2024-maserati-mc20-cielo-black/-01.jpg` is an **interior** shot. §8 conventions
   say `-01` must be an exterior front three-quarter, interiors last. `-06` or `-02` is correct.
   Card renders fine; cosmetic only.
