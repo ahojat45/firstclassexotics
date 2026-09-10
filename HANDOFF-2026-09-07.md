@@ -1049,13 +1049,21 @@ Priority, phone / email / vehicle / finish / best-time all rendered, `Open FCE O
 Netlify deploy `6aa20251ce70510008d554b9` ready/current, commit `34c662c`.
 **The dead-SMS-gateway problem is solved. Lead alerts reach his phone again.**
 
-⚠️ **One cosmetic issue open: the push arrived SILENTLY.** He saw it only inside the app.
-Code sets `priority: 1` + `sound: 'persistent'`, which is correct, so the cause is device-side.
-Check in this order: **(1) the phone's physical silent switch**, (2) iOS Settings →
-Notifications → Pushover → **Sounds** on, Banner Style Persistent, Time-Sensitive on,
-(3) Pushover app → gear → per-priority sound, High Priority not set to silent.
-Retest with the **app fully closed** — a push arriving while the app is foregrounded shows no
-banner and plays no sound, which may be all that happened.
+✅ **LOCK-SCREEN DELIVERY CONFIRMED 10 SEP ~11:10 AM.** Alert + sound on the locked phone.
+**Nothing is outstanding on lead alerts.**
+
+**Why the first two pushes were silent — for the record, do not re-diagnose this:**
+1. The **first install denied iOS notification permission**, so the app could only show
+   messages when opened. The Pushover app flags this with a **red ⚠️ triangle in its header**
+   and the text *"This device cannot receive push notifications."* **That triangle is the
+   single fastest diagnostic — check it before touching any iOS setting.**
+2. Fixed by **delete app → reinstall → tap Allow on the first-launch prompt** → re-register
+   the device as `iphone`. The permission prompt appears **once per install**, so a denial is
+   sticky and no Settings toggle recovers it.
+3. After the triangle cleared, the remaining silence was simply that **the app was open in the
+   foreground** — iOS suppresses the banner and sound in that case. Always test with the app
+   swiped closed and the phone locked.
+4. Also set **Banner Style → Persistent** (was Temporary, which flashes by in ~2s).
 
 ### Still worth doing
 - **`zdt2xuoyjk@pomail.net` is Ali's Pushover e-mail alias** — anything mailed there becomes a
