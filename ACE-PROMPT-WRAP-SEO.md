@@ -38,12 +38,20 @@ Placentia Ave shop and HAS real job photos.
 4. Grep both `unsplash` and `pexels` when verifying zero remain (past audits missed
    Pexels). Update each touched page's og:image/twitter:image to a real photo ≥1200px wide.
 
+## Task 0 — Context added 10 Sep: Tint + Ceramic are now offered
+Ali added **Window Tint** and **4-Stage Ceramic Coating** to the Google Business Profile
+services on 10 Sep, and the hub page already has service cards, form options and
+serviceType schema for both (done same day). Keep site and GBP in sync: mention tint and
+ceramic where natural in Task 2/3 content (FAQ, pricing section, blog posts), and the
+pricing placeholders below include them.
+
 ## Task 2 — Hub page (`vinyl-wrap.html`) becomes the money page
 Grow from 764 to ~1,400 words. Add, in this order after the existing services section:
 1. **Pricing section** targeting "car wrap cost orange county". Honest ranges with a
    "every car quoted individually" caveat. ⚠️ GET THE RANGES FROM ALI — do not invent
    prices. Placeholders: full color change $____–$____, chrome delete $____–$____,
-   partial/accents $____–$____, PPF+wrap combo from $____.
+   partial/accents $____–$____, PPF+wrap combo from $____, window tint $____–$____,
+   4-stage ceramic coating $____–$____.
 2. **Real-work gallery** — 6–10 of the Task-1 photos with captions naming car + finish.
 3. **Process section** — drop-off at the Costa Mesa shop, film samples in person,
    3–5 day full wraps, 1–2 day chrome delete (claims already live on the city pages).
