@@ -1041,6 +1041,33 @@ Netlify → Project configuration → Environment variables. **Then redeploy.**
 
 **Then:** add both env vars in Netlify → redeploy → submit the booking form on the live site as
 a test. **First real end-to-end proof is that test — until it runs, this is unverified.**
+
+## ✅✅ WORKING END-TO-END — PROVEN 10 SEP 10:54 AM
+Ali submitted the live `wrap-quote` form at `/vinyl-wrap-costa-mesa`. **The Pushover alert
+arrived on his iPhone in the same second (10:54:48)** — title `WRAP QUOTE: ali Hojat`, High
+Priority, phone / email / vehicle / finish / best-time all rendered, `Open FCE OS` link live.
+Netlify deploy `6aa20251ce70510008d554b9` ready/current, commit `34c662c`.
+**The dead-SMS-gateway problem is solved. Lead alerts reach his phone again.**
+
+⚠️ **One cosmetic issue open: the push arrived SILENTLY.** He saw it only inside the app.
+Code sets `priority: 1` + `sound: 'persistent'`, which is correct, so the cause is device-side.
+Check in this order: **(1) the phone's physical silent switch**, (2) iOS Settings →
+Notifications → Pushover → **Sounds** on, Banner Style Persistent, Time-Sensitive on,
+(3) Pushover app → gear → per-priority sound, High Priority not set to silent.
+Retest with the **app fully closed** — a push arriving while the app is foregrounded shows no
+banner and plays no sound, which may be all that happened.
+
+### Still worth doing
+- **`zdt2xuoyjk@pomail.net` is Ali's Pushover e-mail alias** — anything mailed there becomes a
+  push. Adding it as a Netlify form-notification recipient is a **zero-code backup path** that
+  replicates the old vtext architecture with an endpoint that actually works. Not needed now
+  that the function works, but it is the fallback if the function ever breaks.
+- **Delete the dead gateway address** from Netlify's form-notification recipients — it bounces
+  on every submission. Netlify → Forms / Notifications → Form submission notifications.
+- ⛔ **api.pushover.net is NOT reachable** from either the Cowork cloud container or
+  `device_bash` on the iMac (both return `HTTP_CODE=000`). **Claude cannot test the Pushover
+  API directly** — only Netlify's function can reach it. Diagnose from Netlify function logs
+  or a live form submission, not curl.
 ⚠️ His user key appeared in a chat screenshot. Harmless without the app token, but if he wants
 it clean he can regenerate it in Pushover Settings — **then the Netlify var must be updated.**
 
