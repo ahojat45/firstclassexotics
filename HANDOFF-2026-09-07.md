@@ -950,7 +950,19 @@ settings, or an external automation (Zapier / Make / Twilio).
 ⚠️ **`booking` form is alive** — 76 submissions, last one **8 Sep 18:06 UTC**. So leads are
 landing; only the text leg is dead.
 
-### 🎯 The leading theory — an email-to-SMS gateway that the carrier killed
+### ✅ CONFIRMED 10 SEP BY SCREENSHOT — IT WAS A CARRIER EMAIL-TO-TEXT GATEWAY
+Ali sent the old thread from his iPhone Messages app. **The sender handle is
+`formresponses@netlify.com`** — Netlify's own form-notification address — rendering as an SMS
+thread. Body is the raw Netlify notification: *"(Form submission from booking form: Hendrik)
+First Name: … Phone: … Email: …"*. **Last text in the thread: Sun 16 Aug, 12:06 AM.**
+
+That is definitive: Netlify was emailing a **carrier email-to-SMS gateway address**
+(`<number>@vtext.com` or similar) listed as a form-notification recipient, and the carrier
+delivered it to Messages showing the *email* as the sender. Nothing else produces that thread.
+**So the break is at the carrier, not in Netlify, not in the repo, and not anything Ali did.**
+The email leg of the same notification still works, which is why only the text went quiet.
+
+### 🎯 Why it died — the gateway theory, now the confirmed mechanism
 Netlify form notifications support **email, Slack and webhooks — never SMS**. The standard
 way people get "a text" out of Netlify is to add a carrier gateway address
 (`9492945958@vtext.com`, `@txt.att.net`, `@tmomail.net`) as a *second email recipient*.
@@ -958,7 +970,25 @@ way people get "a text" out of Netlify is to add a carrier gateway address
 exactly: the real email recipient still works, the gateway recipient silently stopped.
 This needs no change on Ali's side to break — which is why "nothing changed and it stopped".
 
-### ⛔ Blocked on Ali — the Netlify UI needs his login
+### ⛔ DEAD, PROVEN 9 SEP — VERIZON REJECTS BOTH GATEWAYS
+Two test drafts were created and **Ali sent them himself** (§8 hard rule honoured) at 6:11 PM:
+
+| To | Result |
+|---|---|
+| `9492945958@vtext.com` | **bounced** — `552 5.2.0 rejected AUP#POL` |
+| `9492945958@vzwpix.com` | **bounced** — `552 5.2.0 rejected AUP#POL` |
+
+`AUP#POL` is Verizon refusing on Acceptable-Use-Policy grounds — the gateway is switched off at
+their end, not misconfigured at ours. **Ali is on Spectrum Mobile, an MVNO riding Verizon's
+network**, so Verizon's retirement takes Spectrum customers with it.
+**There is no setting on Ali's side, in Netlify, or in the repo that brings the old texts back.**
+Do not spend time re-testing gateway addresses — this is settled.
+
+### 🔎 The real problem underneath: the email alert is invisible
+Ali's inbox shows **8,466 unread**. The Netlify email notification still arrives perfectly —
+it just drowns. Any fix has to be a **separate channel with its own alert**, not another email.
+
+### ⛔ Not yet read — the Netlify recipient list needs his login
 The Netlify **API does not expose notification settings** (`get-forms-for-project` returns
 forms and fields only). Tried reading the UI through the Chrome extension on 10 Sep — the
 extension **responded fine** (first time since 19 Aug, §8 is stale on this) but that Chrome
@@ -972,13 +1002,65 @@ profile is **not logged in to Netlify**, and per §8 hard rules Claude does not 
 - Only his normal address → the text came from an external automation; check Zapier / Make
   for a disabled or task-capped zap.
 
-### Fix options once the source is known — do not build before Ali picks
-1. **Zapier/Make → Twilio** on the Netlify webhook. Most robust, ~$1–20/mo, needs a Twilio
-   number.
-2. **Brevo transactional SMS.** Brevo is already wired (`subscribe.js`, §Brevo) and holds a
-   `BREVO_API_KEY` in Netlify env — a few lines in `submission-created.js` would text Ali on
-   every booking. Cheapest path given what already exists.
-3. **Netlify → Slack → Slack mobile push.** Not a text, but free and instant.
+### ✅ BUILT 9 SEP — PUSHOVER, ALI'S PICK. CODE DONE, AWAITING HIS KEYS.
+`netlify/functions/submission-created.js` now fires a **Pushover** push before it touches
+Supabase. Backup of the original at `~/submission-created.js.bak` on the iMac VM (ephemeral).
+
+**What changed:**
+- `notifyPushover(title, message)` — POSTs to `api.pushover.net/1/messages.json`,
+  `priority: 1`, `sound: 'persistent'`, deep-links to `/fce-os/`. **Wrapped in try/catch and
+  never throws** — a Pushover outage cannot stop a lead being created.
+- **Alerts fire on all three lead forms** — `booking` ("NEW RENTAL LEAD"), `gift-request`
+  ("GIFT CARD REQUEST"), `wrap-quote` ("WRAP QUOTE"). Previously the function ignored the
+  latter two entirely. **FCE OS lead creation is still booking-only, unchanged.**
+- **Alert runs BEFORE `createCustomerAndLead`** deliberately: if Supabase is down Ali still
+  gets the lead on his phone.
+- **Missing env vars = silent skip**, so the code is safe to deploy before the keys exist.
+
+**Tested 9 Sep** in a scratch harness with a stubbed `fce-os-utils` and a fake `fetch`:
+booking / wrap-quote / non-lead form / malformed body / keys-absent all behave correctly,
+`node --check` clean. **Not yet tested against the live Pushover API** — that needs the keys.
+
+⚠️ **Two Netlify env vars still needed — Ali enters these himself, §8 hard rule:**
+`PUSHOVER_TOKEN` (application token) and `PUSHOVER_USER` (his user key).
+Netlify → Project configuration → Environment variables. **Then redeploy.**
+🔑 **Keys NEVER go in a file — the repo root is publicly served (§11).** Env vars only.
+**Do not record either key in this handoff or any repo file.**
+
+**🔴 PICK UP HERE — Pushover setup, stopped 9 Sep 6:40 PM. Three steps, ~10 minutes.**
+1. ✅ **Account created and e-mail VERIFIED** (`ali@firstclassexotics.com`). Done.
+2. ✅ **iOS app installed, device registered as `iphone` (9:51 AM).** 30-day trial started;
+   $4.99 one-time after that. **The phone side is proven** — the app's own welcome push
+   arrived. Two snags on the way, both resolved, note them if this is ever redone:
+   - App Store demanded his **Apple ID password**; he reset it.
+   - First launch, iOS **denied notification permission** — "This device cannot receive push
+     notifications". Fixed by reinstalling and tapping **Allow**. ⚠️ With permission denied
+     the Pushover API still returns *success* and nothing arrives; always confirm on-device.
+3. ⏳ **No application token yet.** He has only the *user key*. `pushover.net/apps/build`
+   → type **Application**, name "First Class Exotics" → yields `PUSHOVER_TOKEN`.
+
+**Then:** add both env vars in Netlify → redeploy → submit the booking form on the live site as
+a test. **First real end-to-end proof is that test — until it runs, this is unverified.**
+⚠️ His user key appeared in a chat screenshot. Harmless without the app token, but if he wants
+it clean he can regenerate it in Pushover Settings — **then the Netlify var must be updated.**
+
+### Fix options that were considered — for the record, do not revisit
+1. 🟢 **FREE STOPGAP, 2 MINUTES, NO CODE — do this regardless.** iPhone Mail → add
+   `formresponses@netlify.com` to **VIP**, give VIP a loud custom alert tone. The email he
+   already gets then buzzes the lock screen like a text. Solves the 8,466-unread problem
+   without touching anything.
+2. ⭐ **CHOSEN AND BUILT — Pushover wired into `submission-created.js`.** $5 one-time (iOS app),
+   no monthly fee, **no carrier and no A2P registration**, alert lands in ~2 seconds with its
+   own sound. ~15 lines in the existing function plus two Netlify env vars
+   (`PUSHOVER_TOKEN`, `PUSHOVER_USER`). The function already fires on every booking and
+   already has the lead's name, phone, email and car — nothing new to plumb.
+3. **Real SMS via Twilio.** Actual texts, but US law now requires **A2P 10DLC registration**
+   even to text yourself: ~$1.15/mo number + ~$2/mo campaign + one-time brand fee, and
+   **days to weeks of approval before the first message sends**. Right answer only if Ali
+   insists on a literal SMS.
+4. **Brevo transactional SMS** — rejected. Brevo is already wired (`subscribe.js`) and the
+   `BREVO_API_KEY` is in Netlify env, but US SMS through Brevo hits the same 10DLC/sender-ID
+   wall as Twilio with less control. No advantage over option 3.
 ⚠️ **This is Ali texting himself, so the TCPA/consent problem in §6 does not apply.**
 
 ---
