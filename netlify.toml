@@ -501,6 +501,12 @@
   force = true
 
 [[redirects]]
+  from = "/ACE-PROMPT-WRAP-SEO.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
   from = "/ACE-PROMPT-porsche-911-gts.md"
   to = "/404.html"
   status = 404
