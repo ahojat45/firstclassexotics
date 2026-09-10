@@ -3,8 +3,8 @@ Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
 nothing here is carried forward on faith.
-**Last work commit `34c662c`** (Pushover lead alerts), deployed as Netlify
-`6aa20251ce70510008d554b9` **ready/current**. Doc-only commits sit on top.
+**Last work commit `51be1ef`** (wrap hub real photos), deployed as Netlify
+`6aa338be2497570008232415` **ready/current**. Doc-only commits sit on top.
 ⚠️ **Never trust this line over git** — confirm with `git --no-optional-locks log --oneline -1`.
 **Site engineering is finished.** 22–24 Aug content (§12); 25 Aug reviews (§6); 26 Aug video
 (§13); 27 Aug – 7 Sep Higgsfield video via MCP (§15); **10 Sep lead alerts rebuilt (§16)**.
@@ -16,7 +16,32 @@ nothing here is carried forward on faith.
 3. **Lead text alerts fixed (§16).** Verizon killed the email-to-SMS gateway on 16 Aug —
    proven, not guessed. Replaced with **Pushover**, working end-to-end on the lock screen.
    Now also covers gift-card and wrap-quote forms, which never alerted at all before.
-4. **Next session: SEO for the vinyl wrap pages** — Ali's call, see §10 item 1.
+4. **Wrap SEO started AND largely reshaped (afternoon session) — see §10 item 1 for state.**
+   The audit found the pages are NOT thin doorways (unique titles/desc/H1s, ~400 words of
+   city-specific copy each, 3 unique FAQs, Service+FAQPage schema). **The real finding:
+   the `wrap-quote` form has produced 1 real lead since 15 May** (2 submissions; one was
+   Ali's own Pushover test). Demand/proof problem, not a tags problem.
+5. **Ali now ALSO offers Window Tint and 4-Stage Ceramic Coating** — added 10 Sep to both
+   GBP and the hub page (cards, quote-form options, serviceType schema, meta description).
+6. **GBP expanded by Ali in-browser 10 Sep:** secondary category **Vehicle wrapping
+   service** + 6 services with descriptions (Full Vinyl Wrap · Chrome Delete · Partial
+   Wrap & Accents · PPF · Window Tint · 4-Stage Ceramic Coating). Pending Google review
+   (~1 day banner shown).
+   ⚠️ **GBP posts are REJECTED if the body contains a phone number** — both 10 Sep posts
+   bounced until the number was removed; use the CTA button instead. Ali still needs to
+   repost the two (Tesla, Escalade — copy is in the session log) and upload photos to GBP.
+   ✅ **The Unit A4 / Ste A4 "drift" (§10 minor) is NOT drift** — GBP stores `Ste A4`;
+   Google's public panel renders it "Unit A4". Nothing to fix; do not edit the address.
+   📈 **Count showed 93 at 1:09pm 10 Sep** — first batch-2 conversion ~2h after send.
+   The 24/27 Sep gate still stands; do not formally re-check early.
+7. **Real wrap photos are live on the hub.** 7 shop photos (4× satin-black Tesla Model 3,
+   3× gloss Nardo Gray Escalade, both real jobs with 4-stage ceramic) processed per §2
+   (q82 jpg+webp, ≤1448px, no upscale) into `images/wraps/<slug>/`. **vinyl-wrap.html now
+   has ZERO stock images** (was 6); og:image is the Tesla -01 (1448px). Originals in
+   `images/wraps/_raw/` — **gitignored**, also still in `~/Downloads`. **The 10 city pages
+   are still 100% stock** — that is Ace Task 1 (`ACE-PROMPT-WRAP-SEO.md`, 404-ruled,
+   updated for tint/ceramic). **Ace is blocked on Ali's price ranges** (full wrap, chrome
+   delete, partial, PPF combo, tint, ceramic) — asked twice, not yet given.
 
 ---
 
@@ -722,7 +747,12 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
 **Most of what follows is blocked on Ali or on time. Do not invent site work to fill the gap —
 §10's closing line still stands. The ONE live workstream is wrap SEO, item 1.**
 
-1. 🔵 **VINYL WRAP SEO — ALI'S NEXT TASK, requested 10 Sep. Nothing done yet.**
+1. 🔵 **VINYL WRAP SEO — IN PROGRESS 10 Sep. Hub done, city pages + pricing next.**
+   ✅ Audit done (pages sound, not doorways) · ✅ hub has real photos, 0 stock · ✅ tint +
+   ceramic added site+GBP · ✅ GBP wrap category/services added · ⏳ Ali: price ranges,
+   GSC screenshot, repost 2 GBP posts, GBP photos · ⏳ Ace: city-page photo swap, pricing
+   section, 2 blog posts (see ACE-PROMPT-WRAP-SEO.md).
+   Original context below still applies:
    **11 wrap pages exist:** `vinyl-wrap.html` (hub) plus 10 city pages — corona-del-mar,
    costa-mesa, dana-point, huntington-beach, irvine, laguna-beach, mission-viejo,
    newport-beach, san-clemente, yorba-linda. All served without `.html` (§2).
