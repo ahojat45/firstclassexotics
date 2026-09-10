@@ -3,9 +3,10 @@ Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
 nothing here is carried forward on faith.
-**Last work commit `dbd9e87`** (Handoff 7 Sep), pushed and deployed — Netlify
-`6a9efd55807f7d0008193df1` **ready/current**, deploy id confirmed changed from the previous
-`6a8e1dca…`. A doc-only commit correcting this very line may sit on top of it.
+**Last commit `c9f3858`** (Handoff: review count 92, 7 Sep), pushed by Ali and deployed —
+`HEAD == origin/main`, tree clean, Netlify deploy `6a9f1324813d16000860a2b4` **ready/current**,
+id confirmed changed from the previous `6a9efd55…`. A doc-only commit correcting this very
+line may sit on top of it.
 ⚠️ **Never trust this line over git** — confirm with `git --no-optional-locks log --oneline -1`.
 **Site engineering is finished.** 22–24 Aug content (§12); 25 Aug reviews (§6); 26 Aug video
 (§13); **27 Aug – 7 Sep Higgsfield video via MCP (§15)**.
@@ -405,7 +406,16 @@ Sayed Hashemeyan · John Means III · Robert Smith · Chris Wells · Yinghao Cai
 - **Not customers:** Kevin Hernandez / Partners Direct, Patrick Thomas / Acrisure (insurance),
   Mark Andrew Nones (co-op partner).
 
-⚠️ **Four judgement calls for Ali — none are in the drafts:**
+✅ **ALL FOUR JUDGEMENT CALLS ANSWERED BY ALI 10 SEP. Batch 2 is 25 names, not 26.**
+- **Siqi Cao** — *leave it, one booking.* Yinghao gets the ask, Siqi does not. No draft added.
+- **"lol lol" / "SK"** — *skip both.* Not worth chasing. Stay out of batch 2.
+- **John Means III** — *skip him.* Too likely to land wrong (`tiffanythuy…`, different name).
+  **His draft was moved to Gmail Trash on 10 Sep** — recoverable with `untrash_message`
+  (messageId `1a03b062afba32c5`) if Ali changes his mind. **Batch 2 is now 25 drafts.**
+- **Rajesh (rvshah)** — *leave it, one ask per group.* Dhananjay gets the ask, Rajesh does
+  not. Same logic as the Kienholz household. No draft added.
+
+The original four, for reference:
 1. **Rajesh (rvshah)** and **Dhananjay Rawal** signed two contracts two minutes apart, cross-CC'd
    — one group, two cars. Only Dhananjay was drafted, same logic as the Kienholz household.
 2. **Siqi Cao** and **Yinghao Cai** signed 39 seconds apart on 5 Sep 2025 — almost certainly one
@@ -467,14 +477,15 @@ the 8-day read implied, still below the 10–25% the plan assumed. It lands in t
 **"91–92 / marginal but real"** row and in §10 item 1's **92** row. Both say the same thing.
 
 **Decision — honour the gate, do not re-argue it:**
-- ✅ **Send the 26 batch-2 drafts.** Verified still in Gmail 7 Sep (`list_drafts`,
-  `subject:"Quick favor"` → 26 returned, all 26 names match §6's list, all unsent, wording
-  byte-identical to batch 1). They cost nothing further and take the sample from 21 → 47.
+- ✅ **Send the batch-2 drafts — now 25, not 26.** Verified in Gmail 7 Sep (`list_drafts`,
+  `subject:"Quick favor"` → 26 returned, all names matched §6's list, all unsent, wording
+  byte-identical to batch 1). John Means III was pulled 10 Sep on Ali's call, leaving **25**.
+  Re-verified 10 Sep: **batch 2 had still not gone out** (`in:sent subject:"Quick favor"`
+  returns only the 21 from 21 Aug). They cost nothing further and take the sample 21 → 46.
 - ⛔ **Then STOP. Do not build batches 3+ for the 2022–24 cohorts.** ~250 names at ~9.5%
   is ~24 reviews for a fresh round of list-building — and at 92 reviews / 5.0 the marginal
   value of review #93 is far below what #10 was. Revisit only if batch 2 beats 15%.
-- 💬 **Two unreplied reviews.** The profile card shows a **"2 new reviews"** prompt. Google
-  favours profiles that respond and it costs a minute. Ali does this himself in the GBP app.
+- ✅ **Two new reviews — replied 7 Sep.** Ali handled them himself in the GBP app.
 
 ⚠️ **Ali sends the 26 drafts himself from Gmail. Never send for him (§8).**
 
@@ -708,12 +719,13 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
 
 1. ✅ **REVIEW COUNT RE-CHECKED 7 SEP — 92.** Screenshotted by Ali, 11:34am PT (90 → 91 →
    92; 2-for-21 over 17 days, ~9.5%). See §6. **The action is now: Ali sends the 26 batch-2
-   drafts himself from Gmail, then the workstream stops** — no 2022–24 cohorts. Also two
-   unreplied reviews sitting on the profile. Next count re-check: **14+ days after batch 2
-   goes out**, not before.
-2. **The four batch-2 judgement calls** (§6): the Rajesh/Dhananjay pair, the Siqi/Yinghao
-   pair, the two junk-name signers ("lol lol" and "SK", mid-Jan), and John Means III's
-   mismatched address. None are drafted; all need Ali's memory.
+   drafts himself from Gmail, then the workstream stops** — no 2022–24 cohorts. The two new
+   reviews were replied to 7 Sep. Next count re-check: **14+ days after batch 2 goes out**,
+   not before. ⚠️ **Log the date batch 2 actually goes out — the 14-day clock starts there.**
+2. ✅ **ALL FOUR batch-2 judgement calls ANSWERED 10 SEP** (§6): Rajesh — leave it; Siqi —
+   leave it; "lol lol"/"SK" — skip both; John Means III — skip, draft trashed.
+   **Batch 2 = 25 drafts, ready to send, nothing left to decide.**
+   ⚠️ **Batch 2 had still not been sent as of 10 Sep.** Ali sends them himself.
 3. ~~💰 **Andreas Kunz — 11 rentals, silent 14 months**~~ ✅ **CLOSED 27 Aug.** Ali confirmed
    he **is** Andy Koontz, his Alpha Solar partner (§14). Not a customer win-back — do not
    email him a review ask or a "we miss you" note.
@@ -911,6 +923,63 @@ already emailing that exact list for reviews. **If the review channel closes (§
 ### Prompt file
 `FC videos/S580-HIGGSFIELD-PROMPT.md` — the Maybach garage prompt plus the de-badging checklist
 and escalation ladder. ⚠️ **`FC videos` is NOT the repo — never put video in the repo folder.**
+
+---
+
+## 16. 🔴 OPEN 10 SEP — LEAD **TEXT** ALERTS STOPPED; EMAIL STILL ARRIVES
+
+**Ali's report:** a website rental lead used to reach him as **both an email and a text**.
+The email still arrives. The text does not. He cannot remember what the old text looked like
+or what number it came from, so the source has to be found in configuration.
+
+### ✅ Established 10 Sep — it was never the site
+Grepped the whole repo for `twilio|sms|textbelt|clicksend|messagebird|telnyx`. **No SMS
+sending code exists anywhere**, and none ever did — every `sms:` hit is an outbound
+*"Text Us"* link for the customer (173 tel: / 27 sms: links, §8 GA4). The lead path is:
+
+```
+booking form  →  Netlify Forms  →  (a) Netlify email notification  →  Ali's inbox
+                                →  (b) netlify/functions/submission-created.js
+                                       → createCustomerAndLead()  → Supabase / FCE OS
+```
+`submission-created.js` only writes the lead to FCE OS. `subscribe.js` only pushes the popup
+contact to **Brevo** (list 2, with a `SMS_CONSENT` attribute) — **it sends nothing to Ali**.
+So the text came from **outside the repo**: a recipient configured in Netlify's notification
+settings, or an external automation (Zapier / Make / Twilio).
+
+⚠️ **`booking` form is alive** — 76 submissions, last one **8 Sep 18:06 UTC**. So leads are
+landing; only the text leg is dead.
+
+### 🎯 The leading theory — an email-to-SMS gateway that the carrier killed
+Netlify form notifications support **email, Slack and webhooks — never SMS**. The standard
+way people get "a text" out of Netlify is to add a carrier gateway address
+(`9492945958@vtext.com`, `@txt.att.net`, `@tmomail.net`) as a *second email recipient*.
+**Verizon, AT&T and T-Mobile have all been retiring these gateways**, which fits the symptom
+exactly: the real email recipient still works, the gateway recipient silently stopped.
+This needs no change on Ali's side to break — which is why "nothing changed and it stopped".
+
+### ⛔ Blocked on Ali — the Netlify UI needs his login
+The Netlify **API does not expose notification settings** (`get-forms-for-project` returns
+forms and fields only). Tried reading the UI through the Chrome extension on 10 Sep — the
+extension **responded fine** (first time since 19 Aug, §8 is stale on this) but that Chrome
+profile is **not logged in to Netlify**, and per §8 hard rules Claude does not log in for him.
+
+**What Ali needs to do — one page, one screenshot:**
+`https://app.netlify.com/projects/firstclassexotics/configuration/notifications`
+→ **Form submission notifications**. Screenshot the recipient list.
+- A recipient ending in `@vtext.com` / `@txt.att.net` / `@tmomail.net` → **gateway theory
+  confirmed**, and the fix is a real SMS relay, not a Netlify setting.
+- Only his normal address → the text came from an external automation; check Zapier / Make
+  for a disabled or task-capped zap.
+
+### Fix options once the source is known — do not build before Ali picks
+1. **Zapier/Make → Twilio** on the Netlify webhook. Most robust, ~$1–20/mo, needs a Twilio
+   number.
+2. **Brevo transactional SMS.** Brevo is already wired (`subscribe.js`, §Brevo) and holds a
+   `BREVO_API_KEY` in Netlify env — a few lines in `submission-created.js` would text Ali on
+   every booking. Cheapest path given what already exists.
+3. **Netlify → Slack → Slack mobile push.** Not a text, but free and instant.
+⚠️ **This is Ali texting himself, so the TCPA/consent problem in §6 does not apply.**
 
 ---
 
