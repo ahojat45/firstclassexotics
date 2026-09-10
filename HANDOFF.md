@@ -1070,8 +1070,11 @@ Netlify deploy `6aa20251ce70510008d554b9` ready/current, commit `34c662c`.
   push. Adding it as a Netlify form-notification recipient is a **zero-code backup path** that
   replicates the old vtext architecture with an endpoint that actually works. Not needed now
   that the function works, but it is the fallback if the function ever breaks.
-- **Delete the dead gateway address** from Netlify's form-notification recipients — it bounces
-  on every submission. Netlify → Forms / Notifications → Form submission notifications.
+- ✅ **DEAD GATEWAY DELETED 10 SEP.** Netlify → Project configuration → Notifications →
+  Form submission notifications listed exactly two recipients:
+  `ali@firstclassexotics.com` and **`9492945958@vtext.com`** — the vtext one confirming the
+  diagnosis outright. The vtext row was deleted; **only `ali@firstclassexotics.com` remains**,
+  which is the intended paper-trail copy. No more bounces on every submission.
 - ⛔ **api.pushover.net is NOT reachable** from either the Cowork cloud container or
   `device_bash` on the iMac (both return `HTTP_CODE=000`). **Claude cannot test the Pushover
   API directly** — only Netlify's function can reach it. Diagnose from Netlify function logs
