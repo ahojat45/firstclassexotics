@@ -174,6 +174,17 @@ footer{background:var(--dark-2);padding:3rem 6rem;border-top:1px solid rgba(255,
 .footer-links-row a:hover{color:var(--white)}
 .footer-copy{font-size:.62rem;color:var(--gray);text-align:right}
 
+/* REAL TRANSFORMATION */
+.transform-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:4rem}
+.transform-img{position:relative;aspect-ratio:3/4;overflow:hidden}
+.transform-img img{width:100%;height:100%;object-fit:cover}
+.transform-label{position:absolute;top:1.5rem;left:1.5rem;padding:.5rem 1.2rem;background:rgba(5,5,5,.85);border:1px solid var(--gold-2);color:var(--gold-2);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase}
+.transform-process{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;margin-top:1px;align-items:center;background:var(--dark-3);padding:3rem}
+.transform-process-img{aspect-ratio:3/4;overflow:hidden}
+.transform-process-img img{width:100%;height:100%;object-fit:cover}
+.transform-process-text h3{font-family:var(--ff-title);font-size:1.8rem;letter-spacing:.06em;color:var(--white);margin-bottom:1rem}
+.transform-process-text p{font-size:.85rem;color:var(--gray-2);line-height:1.8}
+
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:translateY(0)}
@@ -188,6 +199,7 @@ footer{background:var(--dark-2);padding:3rem 6rem;border-top:1px solid rgba(255,
   .finishes-grid{grid-template-columns:1fr 1fr}
   .services-grid{grid-template-columns:1fr 1fr}
   .why-grid{grid-template-columns:1fr;gap:3rem}
+  .transform-process{grid-template-columns:1fr}
   .quote-layout{grid-template-columns:1fr}
   .brands-section{padding:4rem 3rem}
   footer{padding:2.5rem 3rem}
@@ -200,6 +212,7 @@ footer{background:var(--dark-2);padding:3rem 6rem;border-top:1px solid rgba(255,
   .finishes-grid{grid-template-columns:1fr 1fr}
   .services-grid{grid-template-columns:1fr}
   .form-grid{grid-template-columns:1fr}
+  .transform-grid{grid-template-columns:1fr}
   .quote-left,.quote-right{padding:3.5rem 2.5rem}
   .brands-section{padding:3rem 2rem}
   footer{padding:2rem;flex-direction:column;text-align:center}
@@ -298,6 +311,32 @@ footer{background:var(--dark-2);padding:3rem 6rem;border-top:1px solid rgba(255,
         <div class="finish-name">Gloss &amp; Color</div>
         <div class="finish-desc">Any color in the spectrum, high-gloss finish, show-quality results. Completely yours.</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- REAL TRANSFORMATION -->
+<section class="transform-section section">
+  <div class="s-eyebrow reveal">Real Client Work</div>
+  <h2 class="s-title reveal delay-1">SEE THE<br><span class="gold">TRANSFORMATION.</span></h2>
+  <p class="s-sub reveal delay-2">A factory white Cadillac CT5-V Blackwing, taken to full satin black at our Costa Mesa shop — same angle, before and after.</p>
+  <div class="transform-grid">
+    <div class="transform-img reveal">
+      <picture><source srcset="images/wraps/satin-black-cadillac-ct5v-blackwing/satin-black-cadillac-ct5v-blackwing-02.webp" type="image/webp"><img width="1135" height="1386" loading="lazy" src="images/wraps/satin-black-cadillac-ct5v-blackwing/satin-black-cadillac-ct5v-blackwing-02.jpg" alt="White Cadillac CT5-V Blackwing before its satin black vinyl wrap" onerror="this.style.background='#111';this.style.minHeight='400px'"/></picture>
+      <span class="transform-label">Before</span>
+    </div>
+    <div class="transform-img reveal delay-1">
+      <picture><source srcset="images/wraps/satin-black-cadillac-ct5v-blackwing/satin-black-cadillac-ct5v-blackwing-03.webp" type="image/webp"><img width="1135" height="1386" loading="lazy" src="images/wraps/satin-black-cadillac-ct5v-blackwing/satin-black-cadillac-ct5v-blackwing-03.jpg" alt="Cadillac CT5-V Blackwing after a full satin black vinyl wrap, same angle as the before photo" onerror="this.style.background='#111';this.style.minHeight='400px'"/></picture>
+      <span class="transform-label">After</span>
+    </div>
+  </div>
+  <div class="transform-process reveal delay-2">
+    <div class="transform-process-img">
+      <picture><source srcset="images/wraps/satin-black-cadillac-escalade/satin-black-cadillac-escalade-01.webp" type="image/webp"><img width="1198" height="1313" loading="lazy" src="images/wraps/satin-black-cadillac-escalade/satin-black-cadillac-escalade-01.jpg" alt="Cadillac Escalade mid-wrap, transitioning from factory silver to satin black" onerror="this.style.background='#111';this.style.minHeight='400px'"/></picture>
+    </div>
+    <div class="transform-process-text">
+      <h3>The Process</h3>
+      <p>Most full color changes take 3–5 days in our shop — like this Escalade mid-wrap, going from factory silver to satin black. Every panel is hand-wrapped, seamed, and post-heated for a factory-tight finish.</p>
     </div>
   </div>
 </section>
