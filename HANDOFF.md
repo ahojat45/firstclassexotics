@@ -83,8 +83,8 @@ do not invent work outside it (§10 closing line still governs).
 | # | Move | Whose | Notes |
 |---|---|---|---|
 | 1 | **Ask Ali for the GSC *Performance* screenshot** filtered to `/vinyl-wrap` (Queries tab, last 3 months) | Ali | Asked 3× on 10 Sep, still not supplied. This is the **before-picture** and it degrades as the new pricing page gets crawled — get it early or lose it. ⚠️ Not the Indexing screens; those are done (§10.1). |
-| 2 | **Ace Task 1: real photos onto the 10 wrap city pages** | Ace | The last real gap — all 10 are still 100% stock while the hub is 100% real. Brief: `ACE-PROMPT-WRAP-SEO.md`. Needs more photos from Ali first (below). |
-| 3 | **Get more wrap photos, especially BEFORE shots** | Ali | Red Tesla pre-wrap, black Escalade pre-wrap, plus a tint job and a ceramic/water-beading shot. Drop in `images/wraps/_raw/` (gitignored). Process per §2 → `images/wraps/<slug>/`. |
+| 2 | **Ace Task 1: real photos onto the 10 wrap city pages** | Ace | Still the last real gap — all 10 are still 100% stock. Brief: `ACE-PROMPT-WRAP-SEO.md`. ⚠️ Do not pull from the new CT5-V/Escalade set (§10.2) for this — those are used on the hub already; city pages need their own shots or Ali's next batch. |
+| 3 | **Get more wrap photos, especially BEFORE shots** | Ali | ✅ First batch in 11 Sep (§10.2) — CT5-V Blackwing + Escalade. Still owed: red Tesla pre-wrap, gloss Nardo Gray Escalade pre-wrap (the *other* Escalade — see §10.2 on the naming), plus a tint job and a ceramic/water-beading shot. Drop in `images/wraps/_raw/` (gitignored). Process per §2 → `images/wraps/<slug>/`. |
 | 4 | **Ace Task 3: the 2 wrap blog posts** | Ace | Cost post reuses the §WHAT-HAPPENED-8 prices **verbatim**. ⚠️ Link both prominently from the hub — 8 of 9 existing blog posts have never been crawled (§10.1), and burying these repeats that. |
 | 5 | **Four content facts for the FAQ** | Ali | Film brands stocked besides 3M · wrap warranty length · realistic ceramic lifespan · what the customer does during the 3–5 days. Asked 10 Sep, not answered. |
 | 6 | **Review count** | — | 🔴 **Do not check before 24 Sep; 27 Sep is the like-for-like read.** Scoring table in §10 item 3. Informal 93 sighting on 10 Sep is NOT the read. |
@@ -92,6 +92,36 @@ do not invent work outside it (§10 closing line still governs).
 
 **If Ali asks "what moves the needle?"** — the honest answer is the photo habit (§10 closing),
 not more site work: every job = 3 photos (before / in-progress / after) + 1 GBP post.
+
+### 10.2 — ✅ 11 SEP: first new wrap photos in, hub gets a "Real Transformation" section
+Commit `6e1bf29`, tree clean, not yet pushed (Ali pushes, per §8 workflow — command given to him).
+Ali AirDropped 5 photos → Downloads → moved to `images/wraps/_raw/` → identified by sight
+(all 5 previewed and matched against his description before filing) → processed per §2
+(q82 jpg+webp, no upscale — none needed, all under 1448px already) → committed.
+
+**New jobs, two new slugs:**
+- `images/wraps/satin-black-cadillac-ct5v-blackwing/` — 4 photos. **A genuine matching-angle
+  before/after pair** (-02 before, -03 after, same camera angle) plus a hero after shot (-01)
+  and an in-progress rear shot (-04). ⚠️ **-01's source photo had a fully readable plate
+  (`9WDP248`) — blurred before processing.** Check any future CT5-V photo for the same before
+  it goes anywhere public; this is the first job where a plate was actually in frame.
+- `images/wraps/satin-black-cadillac-escalade/` — 1 photo, in-progress only (silver → satin
+  black). **A different vehicle from `nardo-gray-cadillac-escalade`** — do not conflate the
+  two Escalade jobs. No before or after shot yet for this one.
+
+**vinyl-wrap.html:** new section between the finishes grid and services, `.transform-section` —
+CT5-V before/after pair side by side, then a "The Process" panel using the Escalade in-progress
+shot with 3–5 day install copy. New CSS is scoped (`.transform-*`), reuses existing tokens and
+`.reveal` classes, responsive rules added at both breakpoints. **The original 4-card finishes
+grid was left untouched** — this is an addition, not a replacement, so all three real jobs
+(Tesla, Nardo Gray Escalade, CT5-V) are now visible on the hub, just in two different sections.
+Verified: balanced `<section>` tags (10/10), all 10 new image files exist at their referenced
+paths, `git diff --stat` shows only the intended insertions.
+
+⚠️ **Git identity note for future sessions:** the device VM's `~/.gitconfig` does not persist —
+`git commit` will fail with "Author identity unknown" until `user.name`/`user.email` are set
+for the session. Every commit in this repo's history is authored `Ali Hojat
+<ali@firstclassexotics.com>` — match that, don't introduce a different author identity.
 
 ---
 
