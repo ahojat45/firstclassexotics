@@ -47,18 +47,20 @@ pricing placeholders below include them.
 
 ## Task 2 — Hub page (`vinyl-wrap.html`) becomes the money page
 Grow from 764 to ~1,400 words. Add, in this order after the existing services section:
-1. **Pricing section** targeting "car wrap cost orange county". Honest ranges with a
-   "every car quoted individually" caveat. ⚠️ GET THE RANGES FROM ALI — do not invent
-   prices. Placeholders: full color change $____–$____, chrome delete $____–$____,
-   partial/accents $____–$____, PPF+wrap combo from $____, window tint $____–$____,
-   4-stage ceramic coating $____–$____.
+1. ✅ **DONE 10 SEP — pricing section is LIVE on the hub, do not rebuild it.** Ali's
+   real starting prices (all "from", all starting points, confirmed by him 10 Sep):
+   full color change from $3,500 sedan/coupe, from $4,500 SUV/truck, exotics quoted
+   individually · chrome delete from $399 · partial & accents from $399 · PPF from
+   $2,400 front clip, $4,600 full car · ceramic window tint from $599 · 4-stage ceramic
+   coating from $699. A "what changes the price" paragraph carries the variance (size,
+   film choice, paint correction, PPF underneath). **Reuse these numbers verbatim in the
+   cost blog post (Task 3) — never invent or "update" a price.** Prices live in ONE place
+   (the hub) by design; do NOT copy them onto the 10 city pages.
 2. **Real-work gallery** — 6–10 of the Task-1 photos with captions naming car + finish.
 3. **Process section** — drop-off at the Costa Mesa shop, film samples in person,
    3–5 day full wraps, 1–2 day chrome delete (claims already live on the city pages).
-4. **FAQ block + FAQPage JSON-LD** (hub has none; city pages have 3 Qs each). 6 Qs,
-   cost-intent first: how much does it cost · how long does it last · wrap vs paint ·
-   does it damage paint · how long does install take · do you wrap daily drivers or
-   only exotics.
+4. ✅ **DONE 10 SEP — 6-question FAQ + FAQPage JSON-LD live on the hub**, cost question
+   first and answered with the real numbers. Do not duplicate; extend only if asked.
 5. Keep the LocalBusiness block; add a `Service` block mirroring the city pages
    (no aggregateRating).
 Title stays close but pick up cost intent, e.g.

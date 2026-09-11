@@ -3,10 +3,11 @@ Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
 nothing here is carried forward on faith.
-**Last work commit `51be1ef`** (wrap hub real photos), deployed as Netlify
-`6aa338be2497570008232415` **ready/current**. Doc-only commits sit on top.
+**Last work commit `2bcd5c7`** (rental→wrap cross-links + LA 301); a pricing/FAQ commit
+follows it. Confirm the live deploy with Netlify `get-project` → `currentDeploy`.
 ⚠️ **Never trust this line over git** — confirm with `git --no-optional-locks log --oneline -1`.
-**Site engineering is finished.** 22–24 Aug content (§12); 25 Aug reviews (§6); 26 Aug video
+⚠️ **"Site engineering is finished" is no longer true for the wrap side** — 10 Sep opened
+real work there (photos, pricing, FAQ, cross-links). It remains true for the rental side. 22–24 Aug content (§12); 25 Aug reviews (§6); 26 Aug video
 (§13); 27 Aug – 7 Sep Higgsfield video via MCP (§15); **10 Sep lead alerts rebuilt (§16)**.
 
 ## 🔴 WHAT HAPPENED 10 SEP — read this first
@@ -40,8 +41,35 @@ nothing here is carried forward on faith.
    has ZERO stock images** (was 6); og:image is the Tesla -01 (1448px). Originals in
    `images/wraps/_raw/` — **gitignored**, also still in `~/Downloads`. **The 10 city pages
    are still 100% stock** — that is Ace Task 1 (`ACE-PROMPT-WRAP-SEO.md`, 404-ruled,
-   updated for tint/ceramic). **Ace is blocked on Ali's price ranges** (full wrap, chrome
-   delete, partial, PPF combo, tint, ceramic) — asked twice, not yet given.
+   updated for tint/ceramic).
+8. ✅ **PRICING IS LIVE — Ali gave real numbers 10 Sep evening. Ace is UNBLOCKED.**
+   A `#pricing` section (6 cards) plus a 6-question FAQ with **FAQPage JSON-LD** now sit on
+   `vinyl-wrap.html` between the services grid and the Why-Us section. Hub title/description
+   rewritten for cost intent (`Vinyl Wrap Cost Orange County | First Class Exotics`;
+   description leads with "$3,500 … $399"). `priceRange` added to the LocalBusiness block.
+   🔴 **THE PRICES — every one is a STARTING point ("from"), Ali's explicit framing:**
+   | Service | From |
+   |---|---|
+   | Full color change — sedans & coupes | **$3,500** |
+   | Full color change — SUVs & trucks | **$4,500** |
+   | Full color change — exotics | quoted individually |
+   | Chrome delete | **$399** |
+   | Partial & accents (roof/hood/mirrors) | **$399** |
+   | PPF — front clip | **$2,400** |
+   | PPF — full car | **$4,600** |
+   | Ceramic window tint | **$599** |
+   | 4-stage ceramic coating | **$699** |
+   ⚠️ **Never invent, round, or "refresh" a price — these came from Ali and only he changes
+   them.** Variance is handled by a "what changes the price" paragraph (vehicle size, film
+   choice, paint correction, PPF underneath), not by hedging the numbers.
+   ⚠️ **Prices live in ONE place (the hub) by design.** Do not copy them onto the 10 city
+   pages — one canonical spot means one edit when they change. The cost blog post (Ace
+   Task 3) may quote them, verbatim.
+9. ✅ **GSC DIAGNOSED — the wrap pages were never an indexing problem.** See §10 item 1.
+   Indexed 61 / not-indexed 48, flat for weeks. **All 11 wrap URLs are in the indexed 61.**
+   The genuinely unindexed content is **9 blog posts** (8 never crawled at all) plus dead
+   Wix ghosts. Cross-links added from all 7 rental city pages → matching wrap pages, and
+   `/luxurycarrentallosangeles` got a real 301 → `/exotic-car-rental-lax`.
 
 ---
 
@@ -748,10 +776,23 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
 §10's closing line still stands. The ONE live workstream is wrap SEO, item 1.**
 
 1. 🔵 **VINYL WRAP SEO — IN PROGRESS 10 Sep. Hub done, city pages + pricing next.**
-   ✅ Audit done (pages sound, not doorways) · ✅ hub has real photos, 0 stock · ✅ tint +
-   ceramic added site+GBP · ✅ GBP wrap category/services added · ⏳ Ali: price ranges,
-   GSC screenshot, repost 2 GBP posts, GBP photos · ⏳ Ace: city-page photo swap, pricing
-   section, 2 blog posts (see ACE-PROMPT-WRAP-SEO.md).
+   **Done 10 Sep:** ✅ audit (pages are sound, not doorways) · ✅ hub has real photos,
+   0 stock · ✅ tint + ceramic added to site **and** GBP · ✅ GBP wrap category + 6 services
+   · ✅ 2 GBP posts live with Learn-more buttons · ✅ **pricing section + FAQPage schema
+   live** · ✅ cross-links from 7 rental city pages · ✅ GSC diagnosed (wrap pages ARE
+   indexed).
+   **Still owed by Ali:** GSC **Performance** screenshot filtered to `/vinyl-wrap`
+   (Queries tab, last 3 months) — this is the BASELINE and has been asked for three times;
+   more wrap photos, **especially BEFORE shots** (red Tesla, black Escalade) plus tint and
+   ceramic jobs; and four content facts (film brands stocked besides 3M, wrap warranty
+   length, realistic ceramic lifespan, what the customer does for the 3–5 days).
+   **Still owed by Ace:** city-page photo swap (all 10 are still 100% stock — the last
+   real gap), 2 blog posts, sitemap/lastmod hygiene. Brief: `ACE-PROMPT-WRAP-SEO.md`.
+   ⚠️ **Do not re-audit, re-request-index, or rebuild the pricing/FAQ sections.** The
+   remaining upside is photos on the city pages and the two blog posts, nothing else.
+   📌 **Measurement plan:** wrap-quote form submissions (Pushover alerts on Ali's phone)
+   are the real scoreboard — baseline is **1 genuine lead between 15 May and 10 Sep**.
+   Secondary: GSC Performance on `/vinyl-wrap` in **early Oct** vs the baseline screenshot.
    ✅ **GSC DIAGNOSED 10 SEP EVENING — ALL 11 WRAP PAGES ARE INDEXED.** Neither
    not-indexed bucket contains a single extensionless wrap URL (only the redirecting
    `vinyl-wrap-dana-point.html` variant appears — harmless). Wrap problem = demand/
@@ -823,8 +864,17 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
   say `-01` must be an exterior front three-quarter, interiors last. `-06` or `-02` is correct.
   Card renders fine; cosmetic only.
 
-**Do not invent site work.** There is no meaningful engineering left; the remaining upside is
-reviews and the stock-photo decision.
+**Do not invent site work.** The remaining upside is narrow and named: (1) real photos onto
+the 10 wrap city pages, (2) the 2 wrap blog posts, (3) reviews on their own clock, (4) the
+fleet stock-photo decision (§10 item 7), which is still Ali's call. Everything else is done.
+
+### 📸 The habit that beats any SEO task — tell Ali this, it is the real lever
+Every job that leaves the shop = **3 photos (before, in-progress, after) + 1 GBP post**.
+The 10 Sep Tesla and Escalade took ~20 minutes total and produced the first real proof the
+wrap pages have ever had. Ali has the phone, the cars and the shop; the bottleneck was never
+the website. **Before shots are the highest-value asset he can produce** — a red-to-satin-black
+before/after outperforms any copy change on the page. Photos go to `images/wraps/_raw/`
+(gitignored) and get processed per §2.
 
 ---
 
