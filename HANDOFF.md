@@ -928,7 +928,7 @@ the website. **Before shots are the highest-value asset he can produce** — a r
 before/after outperforms any copy change on the page. Photos go to `images/wraps/_raw/`
 (gitignored) and get processed per §2.
 
-### 10.3 — ✅ 11 SEP: Huracan chrome wrap added (commit `e46bac0`, not yet pushed)
+### 10.3 — ✅ 11 SEP: Huracan chrome wrap added (commit `e46bac0`, pushed and live)
 Ali AirDropped 6 more photos same session (2 white before, 4 chrome after). All confirmed real
 by Ali directly, including the dry-lakebed shot (flagged first per the §15 authenticity lesson
 — Ali confirmed it's a real photo they took, not stock). `images/wraps/chrome-lamborghini-huracan/`
@@ -936,6 +936,23 @@ now has 6 processed photos. Hub's transform-section now carries per-car labels s
 two jobs (CT5-V + Huracan), plus a small unlabeled 2-up strip ("Out In Orange County") for the
 outdoor-lot and dry-lakebed shots. Two background plates (a different car in frame in two shots,
 not the subject) blurred same as before.
+
+### 10.4 — ✅ 11 SEP: hero background swapped to the chrome Huracan (commit `e7692a9`, pushed and live)
+Ali asked to swap the `/vinyl-wrap` hero background off the Tesla and onto the chrome Huracan
+("looks so good"). One CSS rule changed — `.wrap-hero-bg` now points at
+`chrome-lamborghini-huracan-01.jpg`. Nothing else touched: `og:image`/`twitter:image` meta tags
+and the finishes-grid Tesla card still reference the Tesla photos — worth revisiting if the
+Tesla card ever gets swapped for something else.
+
+### 10.5 — ✅ 11 SEP: McLaren 570S custom livery wrap added
+Ali AirDropped 4 more photos (2 white before, 2 after — a custom black/white livery with a
+fade-dot stripe and red pinstripe accents, shot in the FCE showroom). No plates visible in any
+of the four, so no blurring needed this time. Processed into
+`images/wraps/custom-livery-mclaren-570s/` (4 photos). Added a third car label to the
+transform-section — "McLaren 570S — Custom Livery" — with two before/after rows (one per shot
+angle) since both angle pairs were genuinely before/after, not just bonus shots. This is the
+third real job on the hub now (CT5-V, Huracan, McLaren) — worth considering whether the section
+needs a "view more" collapse if a fourth job comes in.
 
 ---
 
