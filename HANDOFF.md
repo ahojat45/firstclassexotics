@@ -3,12 +3,13 @@ Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
 nothing here is carried forward on faith.
-**Last work commit `2bcd5c7`** (rental→wrap cross-links + LA 301); a pricing/FAQ commit
-follows it. Confirm the live deploy with Netlify `get-project` → `currentDeploy`.
+**Last work commit `1fcf099`** (wrap hub starting prices + FAQPage schema), deployed as
+Netlify `6aa354046d6402000877cf8e` **ready/current**, tree clean, 10 Sep 6:06pm PT.
 ⚠️ **Never trust this line over git** — confirm with `git --no-optional-locks log --oneline -1`.
 ⚠️ **"Site engineering is finished" is no longer true for the wrap side** — 10 Sep opened
-real work there (photos, pricing, FAQ, cross-links). It remains true for the rental side. 22–24 Aug content (§12); 25 Aug reviews (§6); 26 Aug video
-(§13); 27 Aug – 7 Sep Higgsfield video via MCP (§15); **10 Sep lead alerts rebuilt (§16)**.
+real work there (photos, pricing, FAQ, cross-links). It remains true for the rental side.
+History: 22–24 Aug content (§12); 25 Aug reviews (§6); 26 Aug video (§13); 27 Aug – 7 Sep
+Higgsfield video via MCP (§15); 10 Sep lead alerts rebuilt (§16) **and wrap SEO (§10.1)**.
 
 ## 🔴 WHAT HAPPENED 10 SEP — read this first
 1. **Review count 92.** Batch 1 closed at **2-for-21 over 17 days (~9.5%)**.
@@ -29,8 +30,12 @@ real work there (photos, pricing, FAQ, cross-links). It remains true for the ren
    Wrap & Accents · PPF · Window Tint · 4-Stage Ceramic Coating). Pending Google review
    (~1 day banner shown).
    ⚠️ **GBP posts are REJECTED if the body contains a phone number** — both 10 Sep posts
-   bounced until the number was removed; use the CTA button instead. Ali still needs to
-   repost the two (Tesla, Escalade — copy is in the session log) and upload photos to GBP.
+   bounced until the number was removed; use the CTA button instead.
+   ✅ **Both posts are LIVE** (reposted 4:47pm PT, phone-free copy + **Learn more** button →
+   `/vinyl-wrap`): satin-black Tesla Model 3, gloss Nardo Gray Escalade. The button options
+   Google offers are Book / Order online / Buy / Learn more / Sign up / Call now — there is
+   **no "Get a quote"**; use **Learn more**. ⏳ Ali still owes GBP a **photo upload** (posts
+   ≠ the photo gallery) and should keep posting ~weekly.
    ✅ **The Unit A4 / Ste A4 "drift" (§10 minor) is NOT drift** — GBP stores `Ste A4`;
    Google's public panel renders it "Unit A4". Nothing to fix; do not edit the address.
    📈 **Count showed 93 at 1:09pm 10 Sep** — first batch-2 conversion ~2h after send.
@@ -70,6 +75,23 @@ real work there (photos, pricing, FAQ, cross-links). It remains true for the ren
    The genuinely unindexed content is **9 blog posts** (8 never crawled at all) plus dead
    Wix ghosts. Cross-links added from all 7 rental city pages → matching wrap pages, and
    `/luxurycarrentallosangeles` got a real 301 → `/exotic-car-rental-lax`.
+
+## ▶️ START HERE — 11 SEP AND AFTER
+**Nothing is broken and nothing is urgent.** Everything below is optional forward motion;
+do not invent work outside it (§10 closing line still governs).
+
+| # | Move | Whose | Notes |
+|---|---|---|---|
+| 1 | **Ask Ali for the GSC *Performance* screenshot** filtered to `/vinyl-wrap` (Queries tab, last 3 months) | Ali | Asked 3× on 10 Sep, still not supplied. This is the **before-picture** and it degrades as the new pricing page gets crawled — get it early or lose it. ⚠️ Not the Indexing screens; those are done (§10.1). |
+| 2 | **Ace Task 1: real photos onto the 10 wrap city pages** | Ace | The last real gap — all 10 are still 100% stock while the hub is 100% real. Brief: `ACE-PROMPT-WRAP-SEO.md`. Needs more photos from Ali first (below). |
+| 3 | **Get more wrap photos, especially BEFORE shots** | Ali | Red Tesla pre-wrap, black Escalade pre-wrap, plus a tint job and a ceramic/water-beading shot. Drop in `images/wraps/_raw/` (gitignored). Process per §2 → `images/wraps/<slug>/`. |
+| 4 | **Ace Task 3: the 2 wrap blog posts** | Ace | Cost post reuses the §WHAT-HAPPENED-8 prices **verbatim**. ⚠️ Link both prominently from the hub — 8 of 9 existing blog posts have never been crawled (§10.1), and burying these repeats that. |
+| 5 | **Four content facts for the FAQ** | Ali | Film brands stocked besides 3M · wrap warranty length · realistic ceramic lifespan · what the customer does during the 3–5 days. Asked 10 Sep, not answered. |
+| 6 | **Review count** | — | 🔴 **Do not check before 24 Sep; 27 Sep is the like-for-like read.** Scoring table in §10 item 3. Informal 93 sighting on 10 Sep is NOT the read. |
+| 7 | GBP photo upload + ~weekly post | Ali | Posts are live; the photo *gallery* is still empty of wrap work. |
+
+**If Ali asks "what moves the needle?"** — the honest answer is the photo habit (§10 closing),
+not more site work: every job = 3 photos (before / in-progress / after) + 1 GBP post.
 
 ---
 
