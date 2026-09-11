@@ -928,6 +928,15 @@ the website. **Before shots are the highest-value asset he can produce** — a r
 before/after outperforms any copy change on the page. Photos go to `images/wraps/_raw/`
 (gitignored) and get processed per §2.
 
+### 10.3 — ✅ 11 SEP: Huracan chrome wrap added (commit `e46bac0`, not yet pushed)
+Ali AirDropped 6 more photos same session (2 white before, 4 chrome after). All confirmed real
+by Ali directly, including the dry-lakebed shot (flagged first per the §15 authenticity lesson
+— Ali confirmed it's a real photo they took, not stock). `images/wraps/chrome-lamborghini-huracan/`
+now has 6 processed photos. Hub's transform-section now carries per-car labels since it holds
+two jobs (CT5-V + Huracan), plus a small unlabeled 2-up strip ("Out In Orange County") for the
+outdoor-lot and dry-lakebed shots. Two background plates (a different car in frame in two shots,
+not the subject) blurred same as before.
+
 ---
 
 ## 13. ✅ 26 AUG — THE HIGGSFIELD COPYRIGHT FILTER IS SOLVED
