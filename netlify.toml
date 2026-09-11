@@ -437,6 +437,11 @@
   force = true
 
 [[redirects]]
+  from = "/luxurycarrentallosangeles"
+  to = "/exotic-car-rental-lax"
+  status = 301
+
+[[redirects]]
   from = "/exoticcarrentalcostamesa"
   to = "/exotic-car-rental-costa-mesa"
   status = 301

@@ -752,6 +752,14 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
    ceramic added site+GBP · ✅ GBP wrap category/services added · ⏳ Ali: price ranges,
    GSC screenshot, repost 2 GBP posts, GBP photos · ⏳ Ace: city-page photo swap, pricing
    section, 2 blog posts (see ACE-PROMPT-WRAP-SEO.md).
+   ✅ **GSC DIAGNOSED 10 SEP EVENING — ALL 11 WRAP PAGES ARE INDEXED.** Neither
+   not-indexed bucket contains a single extensionless wrap URL (only the redirecting
+   `vinyl-wrap-dana-point.html` variant appears — harmless). Wrap problem = demand/
+   conversion, NOT indexing; do not Request-Index them. The actually-unindexed content is
+   **9 blog posts** (8 never crawled — weak internal linking; link Ace's 2 wrap posts
+   prominently from the hub) plus dead Wix ghosts. 404 report (6): 4 stale (rules exist),
+   `/exoticlinx` deliberate, `/luxurycarrentallosangeles` was real → 301 → `/exotic-car-rental-lax`
+   added 10 Sep. Also added: cross-links from all 7 rental city pages to wrap pages.
    Original context below still applies:
    **11 wrap pages exist:** `vinyl-wrap.html` (hub) plus 10 city pages — corona-del-mar,
    costa-mesa, dana-point, huntington-beach, irvine, laguna-beach, mission-viejo,
