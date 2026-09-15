@@ -21,8 +21,16 @@ Higgsfield video via MCP (§15); 10 Sep lead alerts rebuilt (§16) **and wrap SE
 4. **Wrap SEO started AND largely reshaped (afternoon session) — see §10 item 1 for state.**
    The audit found the pages are NOT thin doorways (unique titles/desc/H1s, ~400 words of
    city-specific copy each, 3 unique FAQs, Service+FAQPage schema). **The real finding:
-   the `wrap-quote` form has produced 1 real lead since 15 May** (2 submissions; one was
-   Ali's own Pushover test). Demand/proof problem, not a tags problem.
+   the `wrap-quote` form has produced ZERO real leads since 15 May** — corrected 15 Sep.
+   ⚠️ **The old "1 real lead" line was wrong.** Both submissions on record are Ali himself,
+   verified against the Netlify submissions API 15 Sep (not the form's summary counts):
+   #10, 27 Jul 19:30 UTC, from `/vinyl-wrap`; #16, 10 Sep 17:54 UTC, from
+   `/vinyl-wrap-costa-mesa` — the Pushover test. Demand/proof problem, not a tags problem,
+   and worse than previously recorded.
+   ⚠️ **`get-forms-for-project` is NOT evidence of a lead.** Its `last_submission_at` moves
+   for spam-filtered hits that never become verified submissions and never fire the function
+   (both wrap-quote and gift-request showed 15 Sep 12:04 UTC with no matching submission).
+   **Always pull `manage-form-submissions` → `get-submissions` before calling anything a lead.**
 5. **Ali now ALSO offers Window Tint and 4-Stage Ceramic Coating** — added 10 Sep to both
    GBP and the hub page (cards, quote-form options, serviceType schema, meta description).
 6. **GBP expanded by Ali in-browser 10 Sep:** secondary category **Vehicle wrapping
@@ -843,7 +851,8 @@ Ali pastes terminal screenshots to confirm pushes. **Read the commit hash in the
    ⚠️ **Do not re-audit, re-request-index, or rebuild the pricing/FAQ sections.** The
    remaining upside is photos on the city pages and the two blog posts, nothing else.
    📌 **Measurement plan:** wrap-quote form submissions (Pushover alerts on Ali's phone)
-   are the real scoreboard — baseline is **1 genuine lead between 15 May and 10 Sep**.
+   are the real scoreboard — baseline is **ZERO genuine leads, 15 May → 15 Sep** (corrected
+   15 Sep; the old "1 genuine lead" was Ali's own test — see §WHAT-HAPPENED item 4).
    Secondary: GSC Performance on `/vinyl-wrap` in **early Oct** vs the baseline screenshot.
    ✅ **GSC DIAGNOSED 10 SEP EVENING — ALL 11 WRAP PAGES ARE INDEXED.** Neither
    not-indexed bucket contains a single extensionless wrap URL (only the redirecting
@@ -927,6 +936,30 @@ wrap pages have ever had. Ali has the phone, the cars and the shop; the bottlene
 the website. **Before shots are the highest-value asset he can produce** — a red-to-satin-black
 before/after outperforms any copy change on the page. Photos go to `images/wraps/_raw/`
 (gitignored) and get processed per §2.
+
+### 10.6 — ✅ 15 SEP: the two missing BEFORE shots are in (Tesla + Escalade)
+Ali had them in `~/Downloads` all along. Both previewed and matched against the existing
+after-shots before filing (per the §10.2 rule — identify by sight, never by filename):
+- **Red Tesla Model 3 → satin black.** Before shot is at the FCE unit (A4 door + FC logo
+  visible), 1448×1086 — the exact same frame size as the existing `-01` after shot, so the
+  pair sits perfectly in the grid. Filed as `satin-black-tesla-model-3-05`.
+- **Gloss black Escalade → Nardo Gray.** Matched to `nardo-gray-cadillac-escalade` by the
+  wheels (identical black-and-machined multi-spoke), body generation and trim. Filed as
+  `nardo-gray-cadillac-escalade-04`. ⚠️ **This is the Nardo Gray truck, NOT
+  `satin-black-cadillac-escalade`** (the silver→satin-black one in the Process panel). The
+  two Escalade jobs stay separate — §10.2 warned about exactly this.
+No plates visible in either, so no blurring needed. Processed per §2 (q82 jpg+webp, no
+upscale — neither needed it).
+
+**`vinyl-wrap.html`:** two new before/after pairs in `.transform-section`. The Tesla pair is
+placed **first**, ahead of the CT5-V — §10's closing note calls red-to-satin-black the
+highest-value asset on the page, so it leads. The Escalade pair sits between the CT5-V and
+the Huracan. Existing pairs and the Process panel untouched.
+Verified: `<section>` balance 10/10, all **36** referenced wrap images exist on disk, hub
+still has **0** stock photos, `git status` shows only the 2 intended files + 4 new images.
+⚠️ The Escalade pair is **not a matching-angle pair** (before is a front three-quarter, after
+is a profile) — honest before/after of the same truck, but don't describe it as same-angle
+the way the CT5-V pair can be.
 
 ### 10.3 — ✅ 11 SEP: Huracan chrome wrap added (commit `e46bac0`, pushed and live)
 Ali AirDropped 6 more photos same session (2 white before, 4 chrome after). All confirmed real
