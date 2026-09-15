@@ -937,6 +937,59 @@ the website. **Before shots are the highest-value asset he can produce** — a r
 before/after outperforms any copy change on the page. Photos go to `images/wraps/_raw/`
 (gitignored) and get processed per §2.
 
+### 10.7 — 🔴 15 SEP: GSC PERFORMANCE BASELINE CAPTURED. IT IS A RANKING PROBLEM.
+Read directly from Search Console in Ali's Chrome (Browser 1) — **the property is a
+URL-prefix property, `https://www.firstclassexotics.com/`, NOT `sc-domain:`** (the domain
+form returns "you don't have access"). Filter: Page custom regex `~/vinyl-wrap`, 3 months,
+**14 Jun → 13 Sep 2026**. This is the baseline §10 asked for four times. Do not re-request it.
+
+| Metric | Value |
+|---|---|
+| Total clicks | **5** |
+| Total impressions | **1.76K** |
+| Average CTR | **0.3%** |
+| Average position | **12.8** |
+
+**Top 10 of 77 queries — every one at ZERO clicks:**
+
+| Query | Impr. | Kind |
+|---|---|---|
+| luxury car rental orange county | 137 | ❌ rental |
+| first class exotics daytona beach fl | 64 | ❌ the FL namesake (§4) |
+| exotic car rental newport beach | 26 | ❌ rental |
+| exotic car wraps | 25 | ✅ wrap |
+| car vinyl wrapping irvine | 20 | ✅ wrap |
+| newport beach car graphics | 16 | ✅ wrap |
+| car wrapping irvine | 16 | ✅ wrap |
+| orange county luxury car rentals | 15 | ❌ rental |
+| newport beach vehicle wraps | 15 | ✅ wrap |
+| orange county luxury car rental | 14 | ❌ rental |
+
+🔴 **THE CORRECTED DIAGNOSIS — this overturns the 10 Sep "demand/proof problem" call.**
+1. **Demand is real and already reaching the pages.** "car vinyl wrapping irvine", "car
+   wrapping irvine", "newport beach vehicle wraps", "newport beach car graphics" are exactly
+   the local commercial queries this business wants. People ARE searching.
+2. **The pages rank on page 2.** Average position **12.8**. Page 2 gets almost no clicks —
+   5 clicks on 1,760 impressions is what position 12.8 looks like, not a page defect.
+3. **Zero form fills is DOWNSTREAM of 5 clicks, not a conversion failure.** You cannot
+   diagnose a form from 5 visits. §10.6's "zero real leads" stays true but stops being
+   evidence about the form or the copy.
+4. **~74% of the top-10 impressions are wasted** — 192 on rental queries, 64 on the Daytona
+   Beach namesake. Google is still unsure these are wrap pages.
+
+⚠️ **So the lever is RANK, not more page content.** The remaining handoff tasks (city-page
+photos, 2 blog posts) are fine but they are not what moves 12.8 onto page 1 for a local
+service query. Ranking for "car wrapping irvine" is driven mostly by the Google Business
+Profile and by topical proof:
+- **GBP is the main lever and it is already moving** — the Vehicle wrapping service category
+  + 6 services were added 10 Sep. Photos and ~weekly posts compound from there.
+- **All 92 reviews are rental reviews. There is zero wrap social proof anywhere.** For wrap
+  queries this is the biggest single gap — ask every wrap customer for a review that says
+  the word "wrap".
+- Real photos on the 10 city pages still help, but rank them below the two items above.
+
+📌 **Re-read this same filter in early Dec** (3 months out) against the table above.
+
 ### 10.6 — ✅ 15 SEP: the two missing BEFORE shots are in (Tesla + Escalade)
 Ali had them in `~/Downloads` all along. Both previewed and matched against the existing
 after-shots before filing (per the §10.2 rule — identify by sight, never by filename):
