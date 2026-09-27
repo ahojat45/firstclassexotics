@@ -88,6 +88,16 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
    `/luxurycarrentallosangeles` got a real 301 → `/exotic-car-rental-lax`.
 
 ## ▶️ START HERE — 27 SEP AND AFTER
+
+### ✅ 26 SEP 9:30pm PT — BATCH-2 REVIEW READ DONE. COUNT 94. WORKSTREAM CLOSED.
+Read from Ali's own screenshot of the GBP panel ("5.0 ★ 94 Google reviews"), day ~16.5 after send.
+92 on 10 Sep → 93 same day (the one batch-2 conversion) → 94 on 16 Sep (Eric, a WRAP job, not the
+ask list) → **still 94 on 26 Sep. Batch 2 = 1-for-25 (4%)**, worse than batch 1's 2-for-21 (9.5%).
+Both batches: 3-for-46 (~6.5%). Per the §10 item 3 table → **STOP. Do NOT build the 2022–24
+cohorts. Do not re-check the count or send more email asks.** Review growth now comes from asking
+every wrap customer in person for a review that says "wrap" (§10.8). The review-count task is closed; do not ask Ali for the count again.
+Eric reply (§10.8) — posted status still unconfirmed as of this read.
+
 **Nothing is broken and nothing is urgent.**
 🔴 **The one live item: the batch-2 review read was due 27 Sep.** Ask Ali for the live Google
 count and score it with the §10 item 3 table. Baseline: 92 on 10 Sep when batch 2 (25 asks)
