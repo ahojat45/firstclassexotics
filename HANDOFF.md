@@ -1,15 +1,18 @@
-# First Class Exotics — handoff (10 Sep 2026)
+# First Class Exotics — handoff (27 Sep 2026)
 Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
 nothing here is carried forward on faith.
-**Last work commit `1fcf099`** (wrap hub starting prices + FAQPage schema), deployed as
-Netlify `6aa354046d6402000877cf8e` **ready/current**, tree clean, 10 Sep 6:06pm PT.
+**Last work commit `18ea2eb`** (handoff: first wrap review + GSC baseline caveat). Last
+commit that changed the SITE: `c901c2f` (Tesla/Escalade before shots), deployed as Netlify
+`6aa9b91e93c7870008490d85` **ready/current**, tree clean.
 ⚠️ **Never trust this line over git** — confirm with `git --no-optional-locks log --oneline -1`.
 ⚠️ **"Site engineering is finished" is no longer true for the wrap side** — 10 Sep opened
 real work there (photos, pricing, FAQ, cross-links). It remains true for the rental side.
 History: 22–24 Aug content (§12); 25 Aug reviews (§6); 26 Aug video (§13); 27 Aug – 7 Sep
 Higgsfield video via MCP (§15); 10 Sep lead alerts rebuilt (§16) **and wrap SEO (§10.1)**.
+15 Sep: lead baseline corrected to ZERO + Tesla/Escalade before shots (§10.6) and the GSC
+baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap review** (§10.8).
 
 ## 🔴 WHAT HAPPENED 10 SEP — read this first
 1. **Review count 92.** Batch 1 closed at **2-for-21 over 17 days (~9.5%)**.
@@ -84,8 +87,16 @@ Higgsfield video via MCP (§15); 10 Sep lead alerts rebuilt (§16) **and wrap SE
    Wix ghosts. Cross-links added from all 7 rental city pages → matching wrap pages, and
    `/luxurycarrentallosangeles` got a real 301 → `/exotic-car-rental-lax`.
 
-## ▶️ START HERE — 11 SEP AND AFTER
-**Nothing is broken and nothing is urgent.** Everything below is optional forward motion;
+## ▶️ START HERE — 27 SEP AND AFTER
+**Nothing is broken and nothing is urgent.**
+🔴 **The one live item: the batch-2 review read was due 27 Sep.** Ask Ali for the live Google
+count and score it with the §10 item 3 table. Baseline: 92 on 10 Sep when batch 2 (25 asks)
+went out; batch 1 did 2-for-21 over 17 days. ⚠️ **The count was 94 on 16 Sep, but one of
+those two is Eric's WRAP review (§10.8) — he came from a wrap job, not the ask list, so he
+does not count toward batch 2.** An agent cannot read the count; only Ali can.
+🟢 **Wrap SEO is now waiting on time, not work.** §10.7 settled that it is a ranking problem
+(position 12.8), the GBP work landed 10 Sep, and the honest read is mid-to-late Oct. **Do not
+re-audit, re-request-index, or rebuild anything on the wrap pages.** Everything below is optional forward motion;
 do not invent work outside it (§10 closing line still governs).
 
 | # | Move | Whose | Notes |
