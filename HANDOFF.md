@@ -96,7 +96,7 @@ ask list) → **still 94 on 26 Sep. Batch 2 = 1-for-25 (4%)**, worse than batch 
 Both batches: 3-for-46 (~6.5%). Per the §10 item 3 table → **STOP. Do NOT build the 2022–24
 cohorts. Do not re-check the count or send more email asks.** Review growth now comes from asking
 every wrap customer in person for a review that says "wrap" (§10.8). The review-count task is closed; do not ask Ali for the count again.
-Eric reply (§10.8) — posted status still unconfirmed as of this read.
+✅ Eric reply (§10.8) — Ali confirmed 26 Sep he already posted it. Closed.
 
 **Nothing is broken and nothing is urgent.**
 🔴 **The one live item: the batch-2 review read was due 27 Sep.** Ask Ali for the live Google
