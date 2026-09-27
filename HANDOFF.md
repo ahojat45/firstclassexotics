@@ -90,9 +90,9 @@ do not invent work outside it (§10 closing line still governs).
 
 | # | Move | Whose | Notes |
 |---|---|---|---|
-| 1 | **Ask Ali for the GSC *Performance* screenshot** filtered to `/vinyl-wrap` (Queries tab, last 3 months) | Ali | Asked 3× on 10 Sep, still not supplied. This is the **before-picture** and it degrades as the new pricing page gets crawled — get it early or lose it. ⚠️ Not the Indexing screens; those are done (§10.1). |
+| 1 | ~~Ask Ali for the GSC *Performance* screenshot~~ ✅ **DONE 15 Sep — see §10.7.** | — | **Do not ask again.** Read directly from Ali's Chrome, not screenshotted: 5 clicks / 1.76K impressions / 0.3% CTR / **position 12.8**. ⚠️ **Property is URL-prefix `https://www.firstclassexotics.com/`, NOT `sc-domain:`.** Next read: early Dec. |
 | 2 | **Ace Task 1: real photos onto the 10 wrap city pages** | Ace | Still the last real gap — all 10 are still 100% stock. Brief: `ACE-PROMPT-WRAP-SEO.md`. ⚠️ Do not pull from the new CT5-V/Escalade set (§10.2) for this — those are used on the hub already; city pages need their own shots or Ali's next batch. |
-| 3 | **Get more wrap photos, especially BEFORE shots** | Ali | ✅ First batch in 11 Sep (§10.2) — CT5-V Blackwing + Escalade. Still owed: red Tesla pre-wrap, gloss Nardo Gray Escalade pre-wrap (the *other* Escalade — see §10.2 on the naming), plus a tint job and a ceramic/water-beading shot. Drop in `images/wraps/_raw/` (gitignored). Process per §2 → `images/wraps/<slug>/`. |
+| 3 | **Get more wrap photos, especially BEFORE shots** | Ali | ✅ First batch in 11 Sep (§10.2) — CT5-V Blackwing + Escalade. ✅ **Red Tesla + gloss black Escalade before-shots came in 15 Sep (§10.6) — both live on the hub.** Still owed: a tint job and a ceramic/water-beading shot. Drop in `images/wraps/_raw/` (gitignored). Process per §2 → `images/wraps/<slug>/`. |
 | 4 | **Ace Task 3: the 2 wrap blog posts** | Ace | Cost post reuses the §WHAT-HAPPENED-8 prices **verbatim**. ⚠️ Link both prominently from the hub — 8 of 9 existing blog posts have never been crawled (§10.1), and burying these repeats that. |
 | 5 | **Four content facts for the FAQ** | Ali | Film brands stocked besides 3M · wrap warranty length · realistic ceramic lifespan · what the customer does during the 3–5 days. Asked 10 Sep, not answered. |
 | 6 | **Review count** | — | 🔴 **Do not check before 24 Sep; 27 Sep is the like-for-like read.** Scoring table in §10 item 3. Informal 93 sighting on 10 Sep is NOT the read. |
@@ -937,6 +937,27 @@ the website. **Before shots are the highest-value asset he can produce** — a r
 before/after outperforms any copy change on the page. Photos go to `images/wraps/_raw/`
 (gitignored) and get processed per §2.
 
+### 10.8 — 🟢 16 SEP: THE FIRST WRAP REVIEW LANDED. COUNT AT 94.
+Ali screenshotted the GBP Reviews tab 16 Sep. **5 stars from "Eric", posted ~15 Sep**, and it is
+the **first review in the business's history that is about a wrap rather than a rental**:
+*"I just got my car wrapped by these guys... communication was great, sent me pictures and kept
+me updated every step of the way."* **Three customer photos attached** (white/silver Escalade).
+
+**Why this matters more than the star:** §10.7 named "all 92 reviews are rental reviews, zero
+wrap social proof" as the biggest gap for wrap queries — Google reads what reviews are *about*.
+That gap is now open by one. Customer-attached photos also count toward the GBP gallery, which
+had no wrap work in it, so the photo gap is no longer at zero either.
+
+⚠️ **COUNT WAS 94 ON 16 SEP — this is NOT the batch-2 read.** 92 on 10 Sep → 94 on 16 Sep.
+Eric came from a wrap job, not the email ask list, so he must not be scored against batch 2.
+The §10 item 3 gate (27 Sep, like-for-like vs batch 1's 2-for-21) still stands on its own.
+
+📝 **Reply drafted 16 Sep, NOT confirmed posted.** Picks up his own point about communication,
+says "wrap" once naturally, names the vehicle and Costa Mesa. Check whether it went up — an
+unreplied review is a missed signal, and Google favours profiles that respond.
+→ **The standing ask: every wrap customer gets asked for a review that uses the word "wrap".**
+Ten of those beat anything left in this repo for "car wrapping irvine".
+
 ### 10.7 — 🔴 15 SEP: GSC PERFORMANCE BASELINE CAPTURED. IT IS A RANKING PROBLEM.
 Read directly from Search Console in Ali's Chrome (Browser 1) — **the property is a
 URL-prefix property, `https://www.firstclassexotics.com/`, NOT `sc-domain:`** (the domain
@@ -987,6 +1008,12 @@ Profile and by topical proof:
   queries this is the biggest single gap — ask every wrap customer for a review that says
   the word "wrap".
 - Real photos on the 10 city pages still help, but rank them below the two items above.
+
+⚠️ **THE WINDOW PREDATES THE GBP WORK — read the table accordingly.** It covers
+14 Jun → 13 Sep. Ali's GBP changes (Vehicle wrapping category + 6 services, 2 posts) landed
+**10 Sep**, three days before the window closes, and category changes take weeks to move local
+rank. **Position 12.8 is the OLD profile's number.** Nothing here measures the GBP work; that
+is the point of a baseline. First honest read on whether it moved: **mid-to-late Oct**.
 
 📌 **Re-read this same filter in early Dec** (3 months out) against the table above.
 
