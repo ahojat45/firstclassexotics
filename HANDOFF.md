@@ -98,6 +98,14 @@ cohorts. Do not re-check the count or send more email asks.** Review growth now 
 every wrap customer in person for a review that says "wrap" (§10.8). The review-count task is closed; do not ask Ali for the count again.
 ✅ Eric reply (§10.8) — Ali confirmed 26 Sep he already posted it. Closed.
 
+### ✅ 26 SEP night — ACE TASK 3 DONE BY CLAUDE: the 2 wrap blog posts
+- `/blog/car-wrap-cost-orange-county` — prices VERBATIM from the hub (script-checked: only $399/$599/$699/$2,400/$3,500/$4,500/$4,600 appear). Real jobs: Tesla red→satin black, Nardo Escalade, chrome Huracan.
+- `/blog/matte-vs-satin-vs-gloss-car-wrap` — finish guide, coastal care angle, uses Escalade/Tesla/Huracan/McLaren real photos. No new photos processed; reuses `images/wraps/` (hub set — fine for blog, the §10 item 2 ban is about the CITY pages).
+- Linked from the hub (line under the FAQ), 2 cards at top of `/blog`, sitemap +2 (lastmod 2026-09-26; `/blog` and `/vinyl-wrap` lastmod bumped). Article + BreadcrumbList JSON-LD parse; no `.html` links; GA script present.
+- ⚠️ Deliberately NOT stated (Ali never answered §10 item 5): warranty length, ceramic lifespan, film brands beyond 3M. Add when he answers.
+- Build script: `Claude outputs/wrap-posts-build.py` (untracked).
+- 🔴 **FOUND, NOT FIXED — existing blog posts are broken on phones.** `.article-img` has `aspect-ratio:16/9` but the `<img>` carries `height="1011"` etc., which wins — on a 390px phone every article photo renders as a 342×1011 vertical strip (verified in Chromium on `porsche-911-carrera-4-gts-satin-grey`). The 2 new posts avoid it with inline `style="height:auto;aspect-ratio:auto"`. Fix for the rest = add `height:auto` to the `.article-img` CSS rule in each post AND in the `blog-publisher.html` template. Awaiting Ali's OK.
+
 **Nothing is broken and nothing is urgent.**
 🔴 **The one live item: the batch-2 review read was due 27 Sep.** Ask Ali for the live Google
 count and score it with the §10 item 3 table. Baseline: 92 on 10 Sep when batch 2 (25 asks)
@@ -114,7 +122,7 @@ do not invent work outside it (§10 closing line still governs).
 | 1 | ~~Ask Ali for the GSC *Performance* screenshot~~ ✅ **DONE 15 Sep — see §10.7.** | — | **Do not ask again.** Read directly from Ali's Chrome, not screenshotted: 5 clicks / 1.76K impressions / 0.3% CTR / **position 12.8**. ⚠️ **Property is URL-prefix `https://www.firstclassexotics.com/`, NOT `sc-domain:`.** Next read: early Dec. |
 | 2 | **Ace Task 1: real photos onto the 10 wrap city pages** | Ace | Still the last real gap — all 10 are still 100% stock. Brief: `ACE-PROMPT-WRAP-SEO.md`. ⚠️ Do not pull from the new CT5-V/Escalade set (§10.2) for this — those are used on the hub already; city pages need their own shots or Ali's next batch. |
 | 3 | **Get more wrap photos, especially BEFORE shots** | Ali | ✅ First batch in 11 Sep (§10.2) — CT5-V Blackwing + Escalade. ✅ **Red Tesla + gloss black Escalade before-shots came in 15 Sep (§10.6) — both live on the hub.** Still owed: a tint job and a ceramic/water-beading shot. Drop in `images/wraps/_raw/` (gitignored). Process per §2 → `images/wraps/<slug>/`. |
-| 4 | **Ace Task 3: the 2 wrap blog posts** | Ace | Cost post reuses the §WHAT-HAPPENED-8 prices **verbatim**. ⚠️ Link both prominently from the hub — 8 of 9 existing blog posts have never been crawled (§10.1), and burying these repeats that. |
+| 4 | ✅ **DONE 26 Sep by Claude — see START HERE.** ~~Ace Task 3: the 2 wrap blog posts~~ | — | Cost post reuses the §WHAT-HAPPENED-8 prices **verbatim**. ⚠️ Link both prominently from the hub — 8 of 9 existing blog posts have never been crawled (§10.1), and burying these repeats that. |
 | 5 | **Four content facts for the FAQ** | Ali | Film brands stocked besides 3M · wrap warranty length · realistic ceramic lifespan · what the customer does during the 3–5 days. Asked 10 Sep, not answered. |
 | 6 | **Review count** | — | 🔴 **Do not check before 24 Sep; 27 Sep is the like-for-like read.** Scoring table in §10 item 3. Informal 93 sighting on 10 Sep is NOT the read. |
 | 7 | GBP photo upload + ~weekly post | Ali | Posts are live; the photo *gallery* is still empty of wrap work. |
