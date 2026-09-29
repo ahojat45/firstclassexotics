@@ -98,6 +98,20 @@ cohorts. Do not re-check the count or send more email asks.** Review growth now 
 every wrap customer in person for a review that says "wrap" (§10.8). The review-count task is closed; do not ask Ali for the count again.
 ✅ Eric reply (§10.8) — Ali confirmed 26 Sep he already posted it. Closed.
 
+### ✅ 28 SEP — GOOGLE ADS WRAP CAMPAIGN BUILT BY CLAUDE. STARTS OCT 1.
+- Campaign **"Wraps - Search - OC"**. Search Network only. Starts **Oct 1, 2026** (Ali asked for Oct 1). **$16/day** ≈ $486/mo cap. Ali's plan: ~$500 test month, then keep the winners running 2–3 months.
+- Bidding: Maximize clicks, **$8 max CPC**. Broad match OFF, AI Max OFF, auto-created assets OFF. Schedule every day 8am–9pm. Presence-only targeting on Ali's 20 cities (Newport, HB, CdM, Costa Mesa, Irvine, SA, Anaheim, FV, GG, Westminster, Buena Park, Lake Forest, MV, Ladera, Laguna Niguel, Aliso Viejo, RSM, Coto, Dana Point, SJC).
+- Ad groups (all land on /vinyl-wrap; phrase + exact keywords only, 1 RSA each with 15 headlines / 4 descriptions):
+  - ENABLED: **Car Wraps** (20 kw ×2), **PPF**, **Chrome Delete**
+  - PAUSED to protect the $500 test: **Window Tint**, **Ceramic Coating** (built, one click to turn on)
+- 90 campaign negatives (rent/rental, DIY, jobs, decals, boat, LA/SD/Riverside, xpel/suntek, etc.). Deliberately NOT negative: "free", "class" (would block "first class exotics").
+- Assets at campaign level: call (949) 294-5958; 5 sitelinks (Wrap Prices #pricing, Real Before & Afters #finishes, 2 wrap blog posts, Get a Free Quote #quote); 8 callouts; snippets Service catalog + Styles.
+- ⚠️ Google's AI helper keeps pre-filling FALSE text ("Free Delivery In Orange County", "Onsite services available", "certified", Avery/KPMF). All removed. Check every new ad before saving.
+- Google "Confirm it's you" pops on save; Ali must click Confirm himself. Skip stops working after Oct 12, 2026.
+- The $500 new-advertiser credit is NOT available (account redeemed one Feb 2022).
+- 🔴 STILL TO DO: (1) Ali pushes js/fce-analytics.js (adds `wrap_quote_submit` + `wrap_contact_click` GA4 events, tests 20/20). (2) Then mark both as GA4 key events, link GA4↔Ads, import `wrap_quote_submit` as Primary. Until then only calls from the ad count as conversions.
+- Weekly routine: check Search terms twice a week and add negatives; match leads against Pushover alerts; don't touch bids for 2 weeks; judge at 30 days / ~$486. Callback speed decides whether this pays.
+
 ### ✅ 26 SEP night — ACE TASK 3 DONE BY CLAUDE: the 2 wrap blog posts
 - `/blog/car-wrap-cost-orange-county` — prices VERBATIM from the hub (script-checked: only $399/$599/$699/$2,400/$3,500/$4,500/$4,600 appear). Real jobs: Tesla red→satin black, Nardo Escalade, chrome Huracan.
 - `/blog/matte-vs-satin-vs-gloss-car-wrap` — finish guide, coastal care angle, uses Escalade/Tesla/Huracan/McLaren real photos. No new photos processed; reuses `images/wraps/` (hub set — fine for blog, the §10 item 2 ban is about the CITY pages).

@@ -78,11 +78,18 @@
     if (lastClick[key] && now - lastClick[key] < 2000) return; // ignore rage taps
     lastClick[key] = now;
 
-    send('contact_click', {
+    var clickParams = {
       method: method,
       link_placement: placement,
       link_text: (a.textContent || a.getAttribute('title') || '').trim().slice(0, 60)
-    });
+    };
+    send('contact_click', clickParams);
+
+    // Wrap-only twin, so Google Ads can count a phone/text tap on a wrap page
+    // without also counting rental calls. Imported into Ads as a conversion.
+    if (/^\/vinyl-wrap/.test(location.pathname) && (method === 'phone' || method === 'sms')) {
+      send('wrap_contact_click', clickParams);
+    }
   }, true);
 
   /* ------------------------------------------------------------------ *
@@ -142,6 +149,9 @@
           fired = true;
           if (obs) obs.disconnect();
           send(cfg.event, params);
+          // Wrap-only twin of generate_lead: the Google Ads wrap campaign imports
+          // this one, so a rental booking can never be counted as a wrap lead.
+          if (cfg.type === 'vinyl_wrap') send('wrap_quote_submit', params);
           return true;
         }
 
