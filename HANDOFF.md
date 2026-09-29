@@ -89,6 +89,18 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
+### 🟢 29 SEP 11:30am PT — STATE AT END OF THE GOOGLE ADS SESSION (read this first)
+**Wrap Google Ads are DONE and go live on their own Thu Oct 1. Nothing is owed by Ali before then.**
+- Campaign "Wraps - Search - OC", ONE shared budget **$16/day ≈ $486/mo max** (Ali asked twice: it is NOT $16 per ad). 4 live ad groups: Car Wraps, PPF, Chrome Delete, Ceramic Coating. Window Tint paused (Ali doesn't care about tint). 2 old rental Smart campaigns in the account are NOT spending (account total = $16/day).
+- Waste controls verified 29 Sep: Search Network only; phrase+exact only; 90 negatives; presence-only 20 cities; 8am–9pm; $8 max CPC; **auto-apply recommendations all OFF (0/7, 0/14)**.
+- Conversions: calls from ads + GA4 `generate_lead` (Primary "Submit lead form"). GA4 542892966 linked to Ads.
+- 🔴 **NO WARRANTY anywhere** (ads, site, posts) unless a customer asks — Ali's order, 28 Sep.
+- ⏰ **Oct 4 (Sun) 9am PT: 3-day check** — Search terms → add negatives; spend/CPC/leads; confirm no warranty text. A reminder was scheduled into the OLD chat; **if Ali is in a new chat, do this check here when he asks (or remind him).** Keep Ali's Mac on + Chrome open for it.
+- Then: search-terms check twice a week; don't touch bids for 2 weeks; judge at 30 days (~$486). Upgrade the conversion to `wrap_quote_submit` after the first real wrap quote fires (needs analytics.google.com allowed in the Chrome extension).
+- Git: last pushed `c2e83f5`. Two sessions (iMac + MacBook) both push — **always `git pull origin main` before committing.**
+- Still open, unrelated to ads: Ace Task 1 (real photos on 10 wrap city pages); blog tall-image bug on old posts (awaiting Ali's OK); FAQ facts (film brands, ceramic lifespan, what customers do during 3–5 days — warranty now EXCLUDED).
+
+
 ### ✅ 26 SEP 9:30pm PT — BATCH-2 REVIEW READ DONE. COUNT 94. WORKSTREAM CLOSED.
 Read from Ali's own screenshot of the GBP panel ("5.0 ★ 94 Google reviews"), day ~16.5 after send.
 92 on 10 Sep → 93 same day (the one batch-2 conversion) → 94 on 16 Sep (Eric, a WRAP job, not the
@@ -142,7 +154,7 @@ Ali saw "ad strength poor" on the Overview card and asked for it to be strong be
 - 🔴 **FOUND, NOT FIXED — existing blog posts are broken on phones.** `.article-img` has `aspect-ratio:16/9` but the `<img>` carries `height="1011"` etc., which wins — on a 390px phone every article photo renders as a 342×1011 vertical strip (verified in Chromium on `porsche-911-carrera-4-gts-satin-grey`). The 2 new posts avoid it with inline `style="height:auto;aspect-ratio:auto"`. Fix for the rest = add `height:auto` to the `.article-img` CSS rule in each post AND in the `blog-publisher.html` template. Awaiting Ali's OK.
 
 **Nothing is broken and nothing is urgent.**
-🔴 **The one live item: the batch-2 review read was due 27 Sep.** Ask Ali for the live Google
+✅ ~~The one live item: the batch-2 review read was due 27 Sep.~~ **DONE 26 Sep (count 94) — ignore this paragraph.** Ask Ali for the live Google
 count and score it with the §10 item 3 table. Baseline: 92 on 10 Sep when batch 2 (25 asks)
 went out; batch 1 did 2-for-21 over 17 days. ⚠️ **The count was 94 on 16 Sep, but one of
 those two is Eric's WRAP review (§10.8) — he came from a wrap job, not the ask list, so he
