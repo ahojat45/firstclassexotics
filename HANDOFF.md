@@ -113,7 +113,7 @@ Ali saw "ad strength poor" on the Overview card and asked for it to be strong be
 - **Images added (4):** satin black Tesla Model 3 in the shop + Escalade in the hex-light shop, each landscape + square, pulled via "Website or social" scan of /vinyl-wrap and the blog. Did NOT use Google's "recent assets" suggestions (rental-fleet renders, not wrap work).
 - After all this, Recommendations page = "You don't have any recommendations for this campaign."
 - ✅ Tracking push DONE — `a9d1581` is on origin/main (js/fce-analytics.js with `wrap_quote_submit` + `wrap_contact_click`).
-- 🔴 STILL TO DO BEFORE OCT 1: in GA4 mark `wrap_quote_submit` + `wrap_contact_click` as key events → link GA4 ↔ Google Ads → import `wrap_quote_submit` as a **Primary** conversion in Ads. Until then only calls from ads count.
+- ✅ (29 SEP) Conversion hookup done a different way — see the 28 SEP block below: GA4 linked, `generate_lead` imported as Primary. Was: in GA4 mark `wrap_quote_submit` + `wrap_contact_click` as key events → link GA4 ↔ Google Ads → import `wrap_quote_submit` as a **Primary** conversion in Ads. Until then only calls from ads count.
 - Chrome/Ads quirks seen: Ads pages sit on the loading logo until you click somewhere on the page; the Claude extension dropped once mid-session (Ali fixed by clicking its icon). In the RSA editor, find a headline input by its value and scroll it to center before clicking — fixed coordinates hit the wrong field once (caught and fixed).
 
 ### ✅ 28 SEP — GOOGLE ADS WRAP CAMPAIGN BUILT BY CLAUDE. STARTS OCT 1.
@@ -126,8 +126,11 @@ Ali saw "ad strength poor" on the Overview card and asked for it to be strong be
 - Assets at campaign level: call (949) 294-5958; 5 sitelinks (Wrap Prices #pricing, Real Before & Afters #finishes, 2 wrap blog posts, Get a Free Quote #quote); 8 callouts; snippets Service catalog + Styles.
 - ⚠️ Google's AI helper keeps pre-filling FALSE text ("Free Delivery In Orange County", "Onsite services available", "certified", Avery/KPMF). All removed. Check every new ad before saving.
 - Google "Confirm it's you" pops on save; Ali must click Confirm himself. Skip stops working after Oct 12, 2026.
+- 🔴 WARRANTY: 28 SEP Ali said jobs can carry up to 5 yrs on a certain material, then 5 min later said **DO NOT mention warranty anywhere unless the customer asks.** Removed from all ads + callout deleted. Keep it out of ads, site copy and posts.
 - The $500 new-advertiser credit is NOT available (account redeemed one Feb 2022).
-- (superseded — see 28 SEP night block above) 🔴 STILL TO DO: (1) ✅ DONE a9d1581 — Ali pushes js/fce-analytics.js (adds `wrap_quote_submit` + `wrap_contact_click` GA4 events, tests 20/20). (2) Then mark both as GA4 key events, link GA4↔Ads, import `wrap_quote_submit` as Primary. Until then only calls from the ad count as conversions.
+- ✅ 29 SEP: tracking change is LIVE (a9d1581; verified the live js has `wrap_quote_submit` + `wrap_contact_click`). GA4 property **542892966** now LINKED to Google Ads (done from Ads → Conversions → setup). Imported GA4 **`generate_lead`** as a Primary "Submit lead form" conversion — account-default goal, so the wrap campaign counts it. Calls from ads already count (Phone call lead goal).
+  - Why generate_lead, not wrap_quote_submit: Ads only lists GA4 events seen in the last 28 days, and wrap_quote_submit has never fired (zero real wrap leads). generate_lead also fires for rental booking + gift forms, but the ads only land on /vinyl-wrap, so ad-attributed ones are wrap quotes in practice.
+  - 🔜 Upgrade later: once a real wrap quote fires `wrap_quote_submit`, mark it a GA4 key event and swap the import. ⚠️ analytics.google.com is NOT allowed in Ali's Claude-in-Chrome extension (site permissions) — Ali must allow it or do the key-event click himself.
 - Weekly routine: check Search terms twice a week and add negatives; match leads against Pushover alerts; don't touch bids for 2 weeks; judge at 30 days / ~$486. Callback speed decides whether this pays.
 
 ### ✅ 26 SEP night — ACE TASK 3 DONE BY CLAUDE: the 2 wrap blog posts
