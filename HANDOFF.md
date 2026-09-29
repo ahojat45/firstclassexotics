@@ -98,6 +98,24 @@ cohorts. Do not re-check the count or send more email asks.** Review growth now 
 every wrap customer in person for a review that says "wrap" (§10.8). The review-count task is closed; do not ask Ali for the count again.
 ✅ Eric reply (§10.8) — Ali confirmed 26 Sep he already posted it. Closed.
 
+### ✅ 28 SEP night — GOOGLE ADS FIX-UP DONE BY CLAUDE (from Ali's MacBook). READ BEFORE TOUCHING ADS.
+Ali saw "ad strength poor" on the Overview card and asked for it to be strong before money goes in. Done in the ads account (Chrome):
+- **Account check:** the ONLY Google Ads account is "First Class Exotics" (CID 248-826-1812), owned by **ali.hojatkashani@gmail.com**; payer name shows "Ali Hojat" (that's the "personal name" Ali saw). ali@firstclassexotics.com and ah@alphaclosersclub.com have NO Ads accounts. Campaign stays here. Optional, not done: add ali@firstclassexotics.com as admin (Admin → Access and security).
+- **Final URLs verified:** every ad lands on `/vinyl-wrap` (live). The `/car-wraps/costa-mesa`, `/ppf/costa-mesa` etc. shown in the ads are DISPLAY PATHS only — those URLs 404 on the site, but no click goes there. Never set them as final URLs.
+- **Ceramic Coating ad group ENABLED** (Ali: "push ceramic coating, makes good money"). **Window Tint stays PAUSED** (Ali doesn't care about tint). Now 4 live groups: Car Wraps, PPF, Chrome Delete, Ceramic Coating — all sharing **$16/day** (Ali didn't pick $20; kept $16).
+- **Sitelinks 5 → 9** (campaign level): added Chrome Delete From $399 (`/vinyl-wrap?service=chrome-delete#pricing`), PPF From $2,400 (`?service=ppf#pricing`), Ceramic Coating $699+ (`?service=ceramic-coating#pricing`), Costa Mesa Wrap Shop (`/vinyl-wrap-costa-mesa`). Query strings keep sitelink URLs unique. A duplicate "Before & After Photos" was added then removed (same as existing "Real Before & Afters").
+- **Headlines rewritten for keywords** (Google's "include popular keywords" flag):
+  - Car Wraps: + "Vinyl Car Wrap Orange County", "Car Wrapping in Costa Mesa", "Car Wrap Cost: See Prices", "How Much to Wrap a Car?", "Tesla Wrap in Costa Mesa", "Car Wrap Near Me - Costa Mesa" (replaced See Film Samples, Teslas to Lamborghinis, Serving All of OC, Protect Your Factory Paint, Chrome & Custom Liveries, See Real Before & Afters)
+  - PPF: + "Clear Bra in Costa Mesa", "Clear Bra Near Me - OC" (replaced Serving All of OC, Real Prices Posted Online)
+  - Chrome Delete: + "Blackout Trim in Costa Mesa", "Chrome Delete Near Me - OC", "Black Out Chrome Trim" (replaced Serving All of OC, Real Prices Posted Online, Get a Free Quote Today)
+  - Ceramic: + "Car Ceramic Coating OC", "Ceramic Coating Near Me", "Ceramic Coating for Cars" (replaced Serving All of OC, Real Prices Posted Online, Paint Wrap or PPF)
+- **Ad strength at save:** PPF, Chrome Delete, Ceramic = **Good**. Car Wraps = Average (saved before the new sitelinks; should rise). Ads list may show old ratings ~1 day while edited ads re-review. "5.0 Stars on Google" headline is true (site schema + GBP 5.0).
+- **Images added (4):** satin black Tesla Model 3 in the shop + Escalade in the hex-light shop, each landscape + square, pulled via "Website or social" scan of /vinyl-wrap and the blog. Did NOT use Google's "recent assets" suggestions (rental-fleet renders, not wrap work).
+- After all this, Recommendations page = "You don't have any recommendations for this campaign."
+- ✅ Tracking push DONE — `a9d1581` is on origin/main (js/fce-analytics.js with `wrap_quote_submit` + `wrap_contact_click`).
+- 🔴 STILL TO DO BEFORE OCT 1: in GA4 mark `wrap_quote_submit` + `wrap_contact_click` as key events → link GA4 ↔ Google Ads → import `wrap_quote_submit` as a **Primary** conversion in Ads. Until then only calls from ads count.
+- Chrome/Ads quirks seen: Ads pages sit on the loading logo until you click somewhere on the page; the Claude extension dropped once mid-session (Ali fixed by clicking its icon). In the RSA editor, find a headline input by its value and scroll it to center before clicking — fixed coordinates hit the wrong field once (caught and fixed).
+
 ### ✅ 28 SEP — GOOGLE ADS WRAP CAMPAIGN BUILT BY CLAUDE. STARTS OCT 1.
 - Campaign **"Wraps - Search - OC"**. Search Network only. Starts **Oct 1, 2026** (Ali asked for Oct 1). **$16/day** ≈ $486/mo cap. Ali's plan: ~$500 test month, then keep the winners running 2–3 months.
 - Bidding: Maximize clicks, **$8 max CPC**. Broad match OFF, AI Max OFF, auto-created assets OFF. Schedule every day 8am–9pm. Presence-only targeting on Ali's 20 cities (Newport, HB, CdM, Costa Mesa, Irvine, SA, Anaheim, FV, GG, Westminster, Buena Park, Lake Forest, MV, Ladera, Laguna Niguel, Aliso Viejo, RSM, Coto, Dana Point, SJC).
@@ -109,7 +127,7 @@ every wrap customer in person for a review that says "wrap" (§10.8). The review
 - ⚠️ Google's AI helper keeps pre-filling FALSE text ("Free Delivery In Orange County", "Onsite services available", "certified", Avery/KPMF). All removed. Check every new ad before saving.
 - Google "Confirm it's you" pops on save; Ali must click Confirm himself. Skip stops working after Oct 12, 2026.
 - The $500 new-advertiser credit is NOT available (account redeemed one Feb 2022).
-- 🔴 STILL TO DO: (1) Ali pushes js/fce-analytics.js (adds `wrap_quote_submit` + `wrap_contact_click` GA4 events, tests 20/20). (2) Then mark both as GA4 key events, link GA4↔Ads, import `wrap_quote_submit` as Primary. Until then only calls from the ad count as conversions.
+- (superseded — see 28 SEP night block above) 🔴 STILL TO DO: (1) ✅ DONE a9d1581 — Ali pushes js/fce-analytics.js (adds `wrap_quote_submit` + `wrap_contact_click` GA4 events, tests 20/20). (2) Then mark both as GA4 key events, link GA4↔Ads, import `wrap_quote_submit` as Primary. Until then only calls from the ad count as conversions.
 - Weekly routine: check Search terms twice a week and add negatives; match leads against Pushover alerts; don't touch bids for 2 weeks; judge at 30 days / ~$486. Callback speed decides whether this pays.
 
 ### ✅ 26 SEP night — ACE TASK 3 DONE BY CLAUDE: the 2 wrap blog posts
