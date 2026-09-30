@@ -89,6 +89,29 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
+### 🟣 29 SEP 5:50pm PT — SARA'S PILATES STUDIO PLAN (separate from FCE — nothing here touches the site)
+Ali asked for a business plan for his wife Sara's own reformer Pilates studio. **Done and live as a Claude doc:**
+👉 **https://claude.ai/code/artifact/22a1d075-cc45-4685-b620-a5baf716da1f** (open in Claude — edit inline or comment).
+**Word copy:** `~/Desktop/Sara Kolk Pilates Studio Business Plan.docx` on the iMac (NOT in this repo — the repo root is published, §11). If Ali is on the MacBook, re-export from the doc: click the doc title → Export → Word.
+
+**The plan (all planning estimates, not quotes):**
+- ~2,400 sq ft in Costa Mesa near Newport: **10-reformer room** (2 rows of 5), **separate mat room** (15 mats), **private room** (~12×14 ft, 1 reformer + 1 tower), front desk, **coffee lounge**, 2 restrooms, cubbies/office.
+- Equipment Sara picked: **Balanced Body Studio Reformer** (maple; 92.6"L × 26.5"W, 152 lb). 11 total (10 group + 1 private) + a tower.
+- Look: white marble (tan veining), warm whites, cream, tan, pale oak, brass; warm lighting (2700–3000K). 5 AI concept renders made in Higgsfield (reformer room, mat room, front desk, lounge, private room) — links in the doc's "Look & feel" section and in Higgsfield history.
+- **Cost:** ~$215K to open + $75K reserve = **~$290K all in** (lean version ~$172K).
+- **Monthly fixed cost:** ~$25,140 (rent ~$10,800 at $4.50/sq ft all-in, Eastside Costa Mesa) + 3% card fees. Excludes Sara's pay and loans.
+- **Pricing:** reformer unlimited $289 (includes mat), 8x $209, 4x $129, drop-in $38; founding unlimited $229 (first 50, locked 12 mo); mat unlimited $149, mat drop-in $25; privates $120 (placeholder — Sara's real rate TBD); intro 2 weeks $79.
+- **Break-even:** ~102 reformer members + 30 mat-only covers costs (~month 7); ~132 also pays Sara $6K/mo (~month 10). Year-one target 150 + 40 → ~$41.5K/mo revenue, ~$15K/mo before Sara's pay.
+- ⚠️ **Rent is ~26% of revenue — just over the 25% ceiling.** Location price is the biggest lever after how many clients follow Sara. Westside at $3.50 all-in saves ~$2,400/mo.
+- Timeline: decide/fund Oct → find space Nov–Dec → lease by mid-Jan → build-out + reformer order Jan–Mar → founding pre-sale Feb–Apr → **open ~Apr 10, 2027**.
+- Competitors checked 29 Sep: BODYROK Costa Mesa (opening Oct 2026, $119–$279/mo), The Method (17th St, new), Pilates on Purpose (17th St), Coeur (8 OC studios), Club Pilates Newport.
+
+**Name:** Ali likes **Lumière Pilates** ("bright, welcoming, community"). ⚠️ A *Lumiere Pilates* already exists in the UK (lumierepilates.co.uk). Top suggestion: **Maison Lumière** (no Pilates studio found using it). Others: Lumière Pilates House / Club / Social. Already taken — skip: The Cove (Newport), Golden Hour, Soleil, Luma, Kindred, Sunroom, Lighthouse. **Not yet done:** USPTO trademark search, CA business registry, .com + Instagram availability.
+
+**Open questions only Sara can answer** (also a checklist in the doc): current active client count + where they live · her current private rate · any non-compete where she teaches now · budget/financing · 10 reformers vs 6–8 to start · final name. There's a comment in the doc on the $120 private rate waiting for her answer.
+
+**Possible next steps if Ali asks:** check .com/Instagram/trademark for the chosen name; logo + storefront sign mockup in the marble/tan look; re-render the concept images; lease search in Costa Mesa.
+
 ### 🟢 29 SEP 11:30am PT — STATE AT END OF THE GOOGLE ADS SESSION (read this first)
 **Wrap Google Ads are DONE and go live on their own Thu Oct 1. Nothing is owed by Ali before then.**
 - Campaign "Wraps - Search - OC", ONE shared budget **$16/day ≈ $486/mo max** (Ali asked twice: it is NOT $16 per ad). 4 live ad groups: Car Wraps, PPF, Chrome Delete, Ceramic Coating. Window Tint paused (Ali doesn't care about tint). 2 old rental Smart campaigns in the account are NOT spending (account total = $16/day).
