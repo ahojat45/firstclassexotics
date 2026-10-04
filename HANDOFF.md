@@ -89,6 +89,31 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
+### 📱 2 OCT — IG UPDATE: REEL RESULTS + 5 NEW REELS FROM NEW FOOTAGE
+- **Reel 01** (POV 9am meeting cancelled, Ferrari POV), at ~19 hrs: 4,627 views (83% non-followers), 69 likes, 8 comments, 7 shares, 4 saves, +1,064 FB views. **0 follows** → reach is good, conversion to follows is weak. Next reels need a stronger "follow for…" ending + pinned comment with booking link.
+- **Reel 02** (HOA meeting, Cullinan) — Ali posted it himself Oct 2 (collab w/ @hustlinali). At 3 hrs: 2,092 views (86% non-followers), 40 likes, 4 shares, 1 follow. Faster start than Reel 01. Only comment is spam self-promo → hide/delete.
+- Comment reply drafts for Reel 01 were sent to Ali in chat (not posted — never post replies/DMs as Ali).
+- **New footage folder:** `Desktop/FC videos/NEW CAR VIDEOS - drop here/` — Ali drops raw phone clips here; Claude cuts reels from it. 19 clips added Oct 2 (Lambos, Ferraris, McLarens incl. MSO 720S, GT3 RS, Rolls Dawn, pink AMG GT, 911 Cab, pro "Exotic_Cars_Justin_3" footage).
+- **5 new reels made + AirDropped to Ali Oct 2** — saved in `Desktop/FC videos/Reels to post/New - Oct 2/`:
+  - FCE_09_Pickup_Day (pull-out montage, 8 cars) — ⚠️ drivers' faces briefly visible in 2 black Huracán clips; waiting on Ali OK or swap.
+  - FCE_10_Pick_Your_Ferrari (numbered 1–4, "comment your number")
+  - FCE_11_Pick_Your_Lambo (numbered 1–4)
+  - FCE_12_Weekend_Lineup (pro footage montage)
+  - FCE_13_Wait_For_Interior (MSO 720S blue interior reveal)
+  - Recommended posting order: 13, 10, then 11/12/09. Captions sent to Ali in chat. Reels have car audio only → Ali adds trending audio in-app.
+- **Waiting on Ali's OK before cutting:** IMG_7741 (kid climbing into yellow Lambo — needs parent OK) and IMG_9712 (guy detailing black Huracán in shop — is it Ali/team?).
+- Reel build scripts live in `Desktop/FC videos/_cut/new/` (seg.sh, end.sh, final.sh — end card uses FC logo on black + firstclassexotics.com). Overlay text: no emojis (font can't render them).
+- Posting is still phone-only (IG web video upload hangs) → AirDrop via Finder is the delivery route.
+
+### 📱 1 OCT — INSTAGRAM GROWTH WORKSTREAM STARTED (@1stclassexotics)
+- Plan doc: "FCE Instagram Growth Plan" https://claude.ai/code/artifact/47f32dd7-b68f-4b37-b459-831133652904 — audit, Monza/Jungle breakdown, 30-day calendar Oct 5–Nov 3 (1 post/day: 4 reels Mon/Wed/Fri/Sun + 3 photo posts Tue/Thu/Sat + daily stories), captions, hooks.
+- Baseline (Insights, 30 days to 1 Oct): 22,220 views, 63.7% non-followers, 6,991 reached, 432 profile visits, 22 link taps, 15,185 followers. Followers most active 9am–3pm → post 11am–1pm.
+- Lesson from competitors: car-only reels cap at 2–4K everywhere; Monza/Jungle millions come from text-hook story/humor/POV reels.
+- Reels made from existing footage in Desktop/FC videos: FCE_Reel_01_POV_Meeting_Cancelled.mp4 (POSTED by Ali 1 Oct ~3:15pm), FCE_Reel_02_HOA_Meeting.mp4 (Cullinan, Ali posts 2 Oct). Drafts/cuts in FC videos/_cut/oct/.
+- ⛔ POSTING LIMITS: instagram.com web uploader hangs on ANY video uploaded via Claude in Chrome (photos fine). business.facebook.com now allowed in the extension but pages never finished loading for the agent (screenshot/read timeouts). WORKING ROUTE: AirDrop from Finder (computer use) to "Ali Hojat" iPhone → Ali posts reels from phone with captions sent in chat.
+- Scheduled task "FCE Instagram weekly prep" runs Sundays 4:48pm PT (needs this Mac on + Chrome open).
+- Not yet: Ali's personal account @hustlinali plan (phase 2). Sara's Pilates plan follow-ups still open (below).
+
 ### 🟣 29 SEP 5:50pm PT — SARA'S PILATES STUDIO PLAN (separate from FCE — nothing here touches the site)
 Ali asked for a business plan for his wife Sara's own reformer Pilates studio. **Done and live as a Claude doc:**
 👉 **https://claude.ai/code/artifact/22a1d075-cc45-4685-b620-a5baf716da1f** (open in Claude — edit inline or comment).
