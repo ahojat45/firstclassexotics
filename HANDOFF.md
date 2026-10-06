@@ -89,6 +89,13 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
+### ✅ 6 OCT 9:55am — WRAP ADS ARE LIVE
+- Google support's backend fix worked. **Today so far (Oct 6, by ~9:50am PT):** 56 impressions · 5 clicks · 8.9% CTR · avg CPC $5.03 · spend $25.14 · 0 conversions yet. (Google can spend up to 2× the $16 daily budget on busy days; monthly cap ≈ $16 × 30.4.)
+- By ad: Car Wraps original ad 5 clicks/13 impr (38% CTR); Ceramic 21 impr; Car Wraps new ad 18 impr; Chrome Delete 4 impr; PPF 0 so far.
+- Good search terms: "car wrap", "tesla wrap colors", "car wrap near me", "how much to wrap a tesla model 3", "how much does car wrap cost", "c8 wrap cost".
+- **Negatives added Oct 6:** spray (broad), headlight (broad), "quick acting" (phrase), "glass coating" (phrase) — blocking DIY ceramic-spray/headlight shoppers.
+- Watch: ceramic group pulling product/DIY searches; CPC ~$5; no conversions tracked yet (conversion tracking card still says not reporting). Next check: weekly Sunday ads task.
+
 ### 🏠 5 OCT 6pm — WORK-FROM-HOME QUICK START (read this first on the MacBook)
 **Open items (priority order):**
 1. **Wrap ads ("Wraps - Search - OC", acct 248-826-1812, campaign 24298777862)** — 0 impressions Oct 1–5. Ali completed advertiser verification + called Google support Oct 5; rep did a backend fix, expects serving by Tue Oct 6. Claude scheduled check Tue Oct 6 9:52am PT (runs on the SHOP iMac — needs it on + Claude app open). If still 0 → call 1-866-246-6453 again, reference Oct 5 case. Details in the 4 OCT + 5 OCT sections below.
