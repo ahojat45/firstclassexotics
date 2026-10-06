@@ -95,6 +95,7 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 - Good search terms: "car wrap", "tesla wrap colors", "car wrap near me", "how much to wrap a tesla model 3", "how much does car wrap cost", "c8 wrap cost".
 - **Negatives added Oct 6:** spray (broad), headlight (broad), "quick acting" (phrase), "glass coating" (phrase) — blocking DIY ceramic-spray/headlight shoppers.
 - Watch: ceramic group pulling product/DIY searches; CPC ~$5; no conversions tracked yet (conversion tracking card still says not reporting). Next check: weekly Sunday ads task.
+- **6 OCT ~2pm — Ali paused 3 of 5 ads on Google support's advice** ("competing with yourself"). Per Ali's screenshot 2:21pm: **ENABLED = Car Wraps ORIGINAL ad (17 impr / 2 clicks) + Ceramic Coating ad (10 impr / 1 click).** **PAUSED = Car Wraps 2nd ad, PPF ad, Chrome Delete ad.** ⚠️ PPF and Chrome Delete each had only that one ad → those two ad groups are now NOT serving at all; the whole $16/day goes to Car Wraps + Ceramic. Ali's call: run it like this a couple of days, then compare. Do NOT re-enable without Ali.
 
 ### 🏠 5 OCT 6pm — WORK-FROM-HOME QUICK START (read this first on the MacBook)
 **Open items (priority order):**
