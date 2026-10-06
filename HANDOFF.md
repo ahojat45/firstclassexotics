@@ -89,6 +89,47 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
+### 🏠 5 OCT 6pm — WORK-FROM-HOME QUICK START (read this first on the MacBook)
+**Open items (priority order):**
+1. **Wrap ads ("Wraps - Search - OC", acct 248-826-1812, campaign 24298777862)** — 0 impressions Oct 1–5. Ali completed advertiser verification + called Google support Oct 5; rep did a backend fix, expects serving by Tue Oct 6. Claude scheduled check Tue Oct 6 9:52am PT (runs on the SHOP iMac — needs it on + Claude app open). If still 0 → call 1-866-246-6453 again, reference Oct 5 case. Details in the 4 OCT + 5 OCT sections below.
+2. **Instagram (@1stclassexotics)** — 5 new reels ready on shop iMac: `Desktop/FC videos/Reels to post/New - Oct 2/` (FCE_09–13), already AirDropped to Ali's phone, captions in chat + 2 OCT section. Post order: 13, 10, then 11/12/09. Waiting on Ali OK for: drivers' faces in Reel 09, kid-in-Lambo clip (IMG_7741), detailer clip (IMG_9712).
+3. **Weekly Sunday 4:48pm IG prep task** + **Sun 9am ads check task** still scheduled (scheduled tasks list in Claude).
+4. **Sara's Pilates studio plan** — Ali asked to get back to it (not started this week). Plan doc: https://claude.ai/code/artifact/22a1d075-cc45-4685-b620-a5baf716da1f
+5. **IG phase 2:** personal @hustlinali plan — not started.
+
+**Where things live:**
+- Raw car clips: shop iMac `Desktop/FC videos/NEW CAR VIDEOS - drop here/`. Reel scripts: `Desktop/FC videos/_cut/new/` (seg.sh / end.sh / final.sh). These folders are on the SHOP iMac only — from the MacBook, Claude can't reach them unless that Mac is linked; easiest is AirDrop/attach clips in chat.
+- IG growth plan doc (Claude Docs): "FCE Instagram Growth Plan".
+- Google Ads: Ali's Chrome, Claude extension must have site access to ads.google.com (puzzle piece → Claude → Allow) and Claude's Chrome window must NOT be minimized.
+
+**Facts confirmed by Ali Oct 5 (OK to use in ads/posts):** callback within 2 hours · 5.0 stars on Google · most wraps done in 3–5 days · free wrap quote. Wrap prices only verbatim: $3,500 sedans · $4,500 SUVs · $399 chrome delete/partial · $2,400 PPF front · $4,600 PPF full · $599 tint · $699 ceramic. NO warranty mention anywhere.
+
+**To resume on the MacBook:** `cd` into the First Class Exotics repo → `git pull` → open Claude → "Read HANDOFF.md, start with the 5 OCT work-from-home section."
+
+### 🔧 5 OCT — WRAP ADS STILL 0 IMPRESSIONS (day 5)
+- Checked Mon Oct 5 ~1pm: **0 impressions / $0 Oct 1–5** (incl. today). New Car Wraps + PPF ads = Eligible, strength Pending. Diagnostics still "Eligible (Limited)"; Account/Budget/Goals/Audiences all ✅.
+- Ad preview & diagnosis (Costa Mesa, "car wrap" — an exact keyword): "No keywords in your account matched your query" → Google isn't entering the campaign in auctions at all.
+- Ruled out further: campaign negatives (89, none block wrap terms), no shared negative lists, no account-level negatives, account status Active, billing OK.
+- **Most likely blocker: 3 open account issues in Admin → Policy → Summary:** (1) EU political ads status confirmation, (2) Advertiser verification – organization details, (3) Confirmation of advertising funding source. Claude did NOT fill these (they need Ali's business/payer details). **Ali to complete all 3 (Admin ⚙️ → Summary → Start)**, plus the 2-Step "Confirm it's you" before Oct 12.
+- If still 0 after those: call Google Ads support 1-866-246-6453 (acct 248-826-1812).
+- **UPDATE 5 OCT 4:15pm:** Ali completed all 3 account items (advertiser identity verified as Alireza Hojatkashani; EU political ads = No; Ads funded by = First Class Exotics LLC; agency/client flow removed). Ali called Google Ads support — rep made a **backend fix** and confirmed ads look good; expected to start serving by **Tue Oct 6**. Claude re-checks Tue 9:52am PT (scheduled task). If still 0 Tue afternoon → call back and reference today's case.
+
+### 🔧 4 OCT — WRAP ADS 3-DAY CHECK: 0 IMPRESSIONS → FIXES APPLIED
+- **Finding:** "Wraps - Search - OC" had **0 impressions / $0 spend Sep 4–Oct 3** despite Status Eligible. Ruled out: billing (card on file, no failures), locations (all OC cities), schedule (8am–9pm daily), approvals (all ads + wrap/ceramic/chrome/PPF keywords Eligible; tint off because ad group paused on purpose).
+- **Google's diagnosis:** "Your new campaign is only eligible to serve to a limited audience" → status **Eligible (Limited)**. Campaign diagnostics: Account ✅, Budget & bidding ✅, Goals ✅, Audiences ✅, **Ads ⚠️ — "Car Wraps ad group limited by incomplete ads (ad strength)"**, each ad group had only ONE ad.
+- **Fixes done Oct 4:**
+  1. Removed conflicting negative "how to" (was blocking keyword "how much to wrap a car") — Ali clicked Apply.
+  2. Opted into Google Search Partner Network (Search Partners card gone from Recommendations — confirm in Campaign settings → Networks).
+  3. **Added a 2nd responsive search ad to Car Wraps** (15 headlines/4 descriptions, verbatim site prices: $3,500 sedans / $4,500 SUVs / $399 chrome delete / $2,400 PPF front; no warranty) — saved, "no policy issues".
+  4. **Added a 2nd responsive search ad to PPF** ($2,400 front / $4,600 full / $699 ceramic; no warranty) — ad strength **Excellent**, saved, "no policy issues". Final URL = /vinyl-wrap (has #pricing incl. PPF).
+  - Did NOT apply Google's "Add new keywords" (35 untested) and did NOT change bids/budget ($16/day Max clicks).
+- **Ad preview tool** said "no keywords matched" even for "car wrap" — likely because campaign was Limited. Re-check Oct 5–6.
+- **If still 0 impressions by Tue Oct 6:** Ali to call Google Ads support 1-866-246-6453 re: account 248-826-1812, campaign Eligible (Limited) with 0 impressions.
+- **Claims in ORIGINAL Car Wraps ad — CONFIRMED TRUE by Ali (Oct 5):** "Callback Within 2 Hours", "5.0 Stars on Google", "Most Wraps Done in 3-5 Days", "Get Your Free Wrap Quote". OK to use in ads/posts. 2-Step Verification already on since 2023 — just click Confirm (not Skip) on Google Ads prompts.
+- **Google "Confirm it's you" prompt** appears on saves — Claude clicked Skip. Google says skipping stops working **Oct 12, 2026** → Ali must complete the 2-Step confirm himself before then.
+- **Chrome note:** Claude extension needed site access for ads.google.com (granted Oct 4 via puzzle-piece → Claude). Claude's Chrome window must not be minimized or pages won't load for it.
+- Conversion tracking: action exists but no conversions yet (expected with no traffic).
+
 ### 📱 2 OCT — IG UPDATE: REEL RESULTS + 5 NEW REELS FROM NEW FOOTAGE
 - **Reel 01** (POV 9am meeting cancelled, Ferrari POV), at ~19 hrs: 4,627 views (83% non-followers), 69 likes, 8 comments, 7 shares, 4 saves, +1,064 FB views. **0 follows** → reach is good, conversion to follows is weak. Next reels need a stronger "follow for…" ending + pinned comment with booking link.
 - **Reel 02** (HOA meeting, Cullinan) — Ali posted it himself Oct 2 (collab w/ @hustlinali). At 3 hrs: 2,092 views (86% non-followers), 40 likes, 4 shares, 1 follow. Faster start than Reel 01. Only comment is spam self-promo → hide/delete.
