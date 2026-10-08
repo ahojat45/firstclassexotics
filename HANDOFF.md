@@ -89,6 +89,14 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
+### 💎 8 OCT — GOLDLINX JEWELRY STRIP: MOCKUP ONLY, NOT IN THE REPO
+- Idea: help Nic (Goldlinx, jeweler working out of the shop, site **goldlinxjewelry.com**, by appointment) get clients from FCE traffic. Ali wants a mockup before anything touches the live site.
+- Mockup (private artifact): https://claude.ai/artifact/Pak1MamjoWFvv3equYBUpe — 3 add-ons: (1) one line on the Occasions → Birthdays card about proposals/rings, (2) a "Goldlinx Private Jeweler" strip with 4 photos (FC initials, SPARQ, prosthetic leg, dagger) placed just ABOVE the "Find Us / Come See Us in Costa Mesa" section, button "Book a Private Appointment", (3) footer link "Partners: Goldlinx Jewelry" under Navigate. Photos in Claude's scratch only — not yet in the repo.
+- ✅ Ali confirmed 8 Oct: referral code **FCE26 = 10% off, NOT valid on watches.**
+- Tracking plan: links to goldlinxjewelry.com carry `utm_source=firstclassexotics&utm_medium=referral&utm_campaign=occasions|shop_strip|footer`; add a `goldlinx_click` GA4 event in `js/fce-analytics.js`; FCE26 redemptions = proven sales.
+- Rules: keep Goldlinx OFF the nav, hero, booking and `/vinyl-wrap` (ads landing page). `/exoticlinx` stays a 404 (old collab). Nothing goes live until Ali says "push it."
+- Open: Ali reviewing mockup; video loop optional (6–10s, muted) if Nic sends footage.
+
 ### ✅ 6 OCT 9:55am — WRAP ADS ARE LIVE
 - Google support's backend fix worked. **Today so far (Oct 6, by ~9:50am PT):** 56 impressions · 5 clicks · 8.9% CTR · avg CPC $5.03 · spend $25.14 · 0 conversions yet. (Google can spend up to 2× the $16 daily budget on busy days; monthly cap ≈ $16 × 30.4.)
 - By ad: Car Wraps original ad 5 clicks/13 impr (38% CTR); Ceramic 21 impr; Car Wraps new ad 18 impr; Chrome Delete 4 impr; PPF 0 so far.
