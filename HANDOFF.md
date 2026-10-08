@@ -89,6 +89,12 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
+### 📞 8 OCT 2:35pm — ADS CONVERSION TRACKING: SITE PHONE/TEXT TAPS NOW COUNT
+- Checked: account **Call reporting = ON**; "Calls from ads" (call button on the ad) already Primary in the Phone call leads goal. Quote form = GA4 `generate_lead` (Primary).
+- ✅ Added: GA4 key event **`contact_click`** (every tel:/sms:/mailto:/wa.me tap on the site, fired by `js/fce-analytics.js`) imported into Google Ads as **"First Class Exotics (web) contact_click"**, goal **Contact** (account-default, Primary), count **One** per click, 90-day window. So an ad click → site → tap to call now counts as a lead.
+- Status as of Oct 8: all actions "No recent conversions" (0 leads so far, ~14 clicks / $67.90 Oct 1–7). Do NOT click Google's "Optimize performance" or "Fix ads" (PPF + Chrome Delete paused on purpose).
+- Claude Chrome extension had logged out after the Mac restart ("sign in needed") — that was the cause of the morning disconnects. Ali signed back in 2:28pm.
+
 ### 💎 8 OCT — GOLDLINX JEWELRY STRIP: MOCKUP ONLY, NOT IN THE REPO
 - Idea: help Nic (Goldlinx, jeweler working out of the shop, site **goldlinxjewelry.com**, by appointment) get clients from FCE traffic. Ali wants a mockup before anything touches the live site.
 - Mockup (private artifact): https://claude.ai/artifact/Pak1MamjoWFvv3equYBUpe — 3 add-ons: (1) one line on the Occasions → Birthdays card about proposals/rings, (2) a "Goldlinx Private Jeweler" strip with 4 photos (FC initials, SPARQ, prosthetic leg, dagger) placed just ABOVE the "Find Us / Come See Us in Costa Mesa" section, button "Book a Private Appointment", (3) footer link "Partners: Goldlinx Jewelry" under Navigate. Photos in Claude's scratch only — not yet in the repo.
