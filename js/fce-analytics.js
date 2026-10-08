@@ -93,6 +93,16 @@
   }, true);
 
   /* ------------------------------------------------------------------ *
+   * 1b. Goldlinx partner links  ->  goldlinx_click
+   *     Counts referrals we send to Nic's site (goldlinxjewelry.com).
+   * ------------------------------------------------------------------ */
+  document.addEventListener('click', function (e) {
+    var a = e.target && e.target.closest && e.target.closest('a[href*="goldlinxjewelry.com"]');
+    if (!a) return;
+    send('goldlinx_click', { link_placement: a.getAttribute('data-gl') || placementOf(a) });
+  }, true);
+
+  /* ------------------------------------------------------------------ *
    * 2. Lead forms  →  generate_lead / newsletter_signup
    *
    *    Every form on the site posts by fetch, then hides itself and reveals

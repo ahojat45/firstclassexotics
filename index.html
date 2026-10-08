@@ -244,6 +244,26 @@ button{font-family:var(--ff-body);cursor:none}
 .cursor-ring{position:fixed;width:34px;height:34px;border:1px solid rgba(212,175,55,.45);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:all .1s var(--ease)}
 body:has(a:hover) .cursor,.cursor.hover{width:16px;height:16px;background:var(--gold-2)}
 body:has(a:hover) .cursor-ring,.cursor-ring.hover{width:54px;height:54px;border-color:var(--gold-2);opacity:.5}
+/* Goldlinx partner strip (8 Oct 2026) */
+.gl-section{background:var(--dark);border-top:1px solid var(--dark-4);border-bottom:1px solid var(--dark-4)}
+.gl-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:2.5rem;align-items:end;margin-bottom:2.6rem}
+.gl-title{margin:1.2rem 0 0;display:grid;gap:1rem;font-weight:400}
+.gl-logo{width:min(100%,26rem);height:auto;display:block;background:transparent}
+.gl-sub{font-family:var(--ff-title);font-size:clamp(1.6rem,2.6vw,2.4rem);letter-spacing:.08em;color:var(--white);line-height:1}
+.gl-head p{color:var(--gray-3);margin:0;max-width:44ch;font-size:1rem;line-height:1.7}
+.gl-head em{font-family:var(--ff-serif);font-style:italic;font-size:1.25rem;color:var(--white)}
+.gl-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
+.gl-tile{position:relative;overflow:hidden;aspect-ratio:1/1;background:var(--dark-3);margin:0}
+.gl-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s var(--ease)}
+.gl-tile:hover img{transform:scale(1.05)}
+.gl-tile figcaption{position:absolute;left:0;right:0;bottom:0;padding:2.4rem .9rem .8rem;background:linear-gradient(transparent,rgba(5,5,5,.88));font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white)}
+.gl-foot{display:flex;flex-wrap:wrap;gap:1.2rem 2rem;align-items:center;margin-top:2.2rem}
+.gl-code{font-size:.85rem;color:var(--gray-3)}
+.gl-code strong{font-family:var(--ff-title);font-size:1.35rem;letter-spacing:.08em;color:var(--gold-2);font-weight:400;margin:0 .25rem}
+.gl-code small{color:var(--gray-2);font-size:.8rem}
+.occ-gl{margin:2.2rem 0 0;text-align:center;font-size:.95rem;color:var(--gray-3)}
+.occ-gl a{color:var(--gold-2);border-bottom:1px solid rgba(212,175,55,.4)}
+@media(max-width:820px){.gl-head{grid-template-columns:minmax(0,1fr);gap:1.2rem}.gl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gl-tile figcaption{font-size:.58rem;letter-spacing:.12em;padding:2rem .6rem .6rem}}
 @media(max-width:768px),(pointer:coarse){#cur,#curR,.cursor,.cursor-ring{display:none!important}body,button{cursor:auto!important}}
 
 /* ── TOP TICKER ── */
@@ -864,6 +884,8 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
       </div>
     </a>
   </div>
+
+  <p class="occ-gl reveal">Planning a proposal? Pull up in a Lamborghini with the ring from <a href="https://goldlinxjewelry.com/?utm_source=firstclassexotics&amp;utm_medium=referral&amp;utm_campaign=occasions" target="_blank" rel="noopener" data-gl="occasions">Goldlinx Jewelry</a>, the private jeweler inside our Costa Mesa shop.</p>
 </section>
 
 <!-- FLEET -->
@@ -2100,6 +2122,27 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
   <div class="elfsight-app-2c1fd891-04c1-41e3-b373-10268396653b" data-elfsight-app-lazy></div>
 </section>
 
+<!-- GOLDLINX PARTNER STRIP -->
+<section class="gl-section section" id="goldlinx">
+  <div class="gl-head">
+    <div>
+      <div class="s-eyebrow reveal">Inside Our Shop &middot; By Appointment</div>
+      <h2 class="gl-title reveal delay-1"><picture><source srcset="/images/goldlinx/goldlinx-logo.webp" type="image/webp"><img class="gl-logo" width="856" height="222" loading="lazy" src="/images/goldlinx/goldlinx-logo.png" alt="Goldlinx Jewelry"></picture><span class="gl-sub">Private Jeweler &middot; Costa Mesa</span></h2>
+    </div>
+    <p class="reveal delay-2"><em>Built on faith. Built on trust.</em><br>Custom pendants, engagement rings, watches and one-of-one pieces, with wholesale pricing and private service. Goldlinx works out of the same Costa Mesa shop as our fleet, so book a private appointment or stop by when you pick up your car.</p>
+  </div>
+  <div class="gl-grid">
+    <figure class="gl-tile"><picture><source srcset="/images/goldlinx/goldlinx-fc.webp" type="image/webp"><img width="720" height="720" loading="lazy" src="/images/goldlinx/goldlinx-fc.jpg" alt="Custom iced-out FC initials pendant with red stone accent by Goldlinx Jewelry" onerror="this.style.background='#1C1C1C'"></picture><figcaption>Custom initials</figcaption></figure>
+    <figure class="gl-tile"><picture><source srcset="/images/goldlinx/goldlinx-sparq.webp" type="image/webp"><img width="720" height="720" loading="lazy" src="/images/goldlinx/goldlinx-sparq.jpg" alt="Custom iced-out SPARQ name pendant by Goldlinx Jewelry" onerror="this.style.background='#1C1C1C'"></picture><figcaption>Name pieces</figcaption></figure>
+    <figure class="gl-tile"><picture><source srcset="/images/goldlinx/goldlinx-leg.webp" type="image/webp"><img width="720" height="720" loading="lazy" src="/images/goldlinx/goldlinx-leg.jpg" alt="One-of-one iced-out prosthetic leg pendant in black and white stones by Goldlinx Jewelry" onerror="this.style.background='#1C1C1C'"></picture><figcaption>One-of-one</figcaption></figure>
+    <figure class="gl-tile"><picture><source srcset="/images/goldlinx/goldlinx-dagger.webp" type="image/webp"><img width="720" height="720" loading="lazy" src="/images/goldlinx/goldlinx-dagger.jpg" alt="Iced-out dagger pendant on a franco chain by Goldlinx Jewelry" onerror="this.style.background='#1C1C1C'"></picture><figcaption>Pendants &amp; chains</figcaption></figure>
+  </div>
+  <div class="gl-foot">
+    <a class="btn-gold" href="https://goldlinxjewelry.com/?utm_source=firstclassexotics&amp;utm_medium=referral&amp;utm_campaign=shop_strip" target="_blank" rel="noopener" data-gl="shop_strip">Book a Private Appointment &rarr;</a>
+    <span class="gl-code">FCE customers: use code<strong>FCE26</strong>for 10% off at your appointment <small>(excludes watches)</small></span>
+  </div>
+</section>
+
 <!-- FIND US -->
 <section id="find-us" style="background:#0a0a0a; padding:5rem 2rem; text-align:center; min-height:600px;">
   <p style="color:#c9a84c; font-size:0.75rem; letter-spacing:0.15em; margin-bottom:1rem;">FIND US</p>
@@ -2150,7 +2193,7 @@ footer{background:var(--dark-2);border-top:1px solid rgba(155,0,6,.1);padding:6.
     </div>
     <div>
       <div class="footer-col-title">Navigate</div>
-      <ul class="footer-links"><li><a href="#fleet">Fleet</a></li><li><a href="#occasions">Occasions</a></li><li><a href="#family">Our Story</a></li><li><a href="#how">How It Works</a></li><li><a href="#faq">FAQ</a></li><li><a href="/gift">Gift Cards</a></li><li><a href="/vinyl-wrap">Vinyl Wraps</a></li><li><a href="/blog">Blog</a></li></ul>
+      <ul class="footer-links"><li><a href="#fleet">Fleet</a></li><li><a href="#occasions">Occasions</a></li><li><a href="#family">Our Story</a></li><li><a href="#how">How It Works</a></li><li><a href="#faq">FAQ</a></li><li><a href="/gift">Gift Cards</a></li><li><a href="/vinyl-wrap">Vinyl Wraps</a></li><li><a href="/blog">Blog</a></li><li><a href="https://goldlinxjewelry.com/?utm_source=firstclassexotics&amp;utm_medium=referral&amp;utm_campaign=footer" target="_blank" rel="noopener" data-gl="footer">Partners: Goldlinx Jewelry</a></li></ul>
     </div>
     <div>
       <div class="footer-col-title">Locations</div>

@@ -101,7 +101,9 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 - ✅ Ali confirmed 8 Oct: referral code **FCE26 = 10% off, NOT valid on watches.**
 - Tracking plan: links to goldlinxjewelry.com carry `utm_source=firstclassexotics&utm_medium=referral&utm_campaign=occasions|shop_strip|footer`; add a `goldlinx_click` GA4 event in `js/fce-analytics.js`; FCE26 redemptions = proven sales.
 - Rules: keep Goldlinx OFF the nav, hero, booking and `/vinyl-wrap` (ads landing page). `/exoticlinx` stays a 404 (old collab). Nothing goes live until Ali says "push it."
-- Open: Ali reviewing mockup; video loop optional (6–10s, muted) if Nic sends footage.
+- ✅ BUILT INTO index.html 8 Oct ~3:50pm (Ali: "add this to the site"): `#goldlinx` section just above `<!-- FIND US -->` (logo + 4 tiles, images in `images/goldlinx/` jpg+webp), `.occ-gl` line under the Occasions grid, footer Navigate link "Partners: Goldlinx Jewelry". CSS block "Goldlinx partner strip" sits just above the cursor `@media` rule. New GA4 event `goldlinx_click` (param `link_placement` = occasions|shop_strip|footer) in `js/fce-analytics.js`. Sitemap homepage lastmod → 2026-10-08. Links are normal (followed) — Ali hasn't said Nic pays referrals; if he ever does, add `rel="sponsored"`.
+- After Ali pushes: request indexing for the homepage only in Search Console (one URL).
+- Video loop optional (6–10s, muted) if Nic sends footage.
 
 ### ✅ 6 OCT 9:55am — WRAP ADS ARE LIVE
 - Google support's backend fix worked. **Today so far (Oct 6, by ~9:50am PT):** 56 impressions · 5 clicks · 8.9% CTR · avg CPC $5.03 · spend $25.14 · 0 conversions yet. (Google can spend up to 2× the $16 daily budget on busy days; monthly cap ≈ $16 × 30.4.)
