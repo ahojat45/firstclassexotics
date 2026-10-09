@@ -89,6 +89,13 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
+### 🌙 8 OCT 4:45pm — END OF DAY. START HERE NEXT SESSION.
+- **Live today:** Goldlinx partner strip + Occasions proposal line + footer link (cc1c314); Orange County city-card fix (cc84e0f); homepage recrawl requested. Site checked live — all good.
+- **Ads:** running on Car Wraps + Ceramic only (Ali's 2-ad test). Oct 1–7: 136 impr, ~14 clicks, $67.90, 0 leads. Tracking now covers ad calls + quote form + site phone/text taps. Rule of thumb: worry only if ~$250 spent with zero calls/quotes. Sunday ads check task still scheduled. ⚠️ Google Ads "Confirm it's you" deadline Oct 12.
+- **Goldlinx open items:** Nic's engagement-ring photo (swap for dagger tile), optional 6–10s jewelry video loop, ask Nic to add Goldlinx GA4 + Costa Mesa/address/phone/schema to goldlinxjewelry.com. Relit photo of Nic: `Desktop/FC videos/Goldlinx/nic_relit.jpg`. Mockup: https://claude.ai/artifact/Pak1MamjoWFvv3equYBUpe
+- **Still pending from before:** consent on kid/detailer/customer-face clips; Sara's IG handle + studio name for her reel end cards.
+- **Chrome:** after any Mac restart, click the Claude extension and sign in (it logs out → "sign in needed" → constant disconnects). Keep Claude's Chrome window visible, not buried.
+
 ### 📞 8 OCT 2:35pm — ADS CONVERSION TRACKING: SITE PHONE/TEXT TAPS NOW COUNT
 - Checked: account **Call reporting = ON**; "Calls from ads" (call button on the ad) already Primary in the Phone call leads goal. Quote form = GA4 `generate_lead` (Primary).
 - ✅ Added: GA4 key event **`contact_click`** (every tel:/sms:/mailto:/wa.me tap on the site, fired by `js/fce-analytics.js`) imported into Google Ads as **"First Class Exotics (web) contact_click"**, goal **Contact** (account-default, Primary), count **One** per click, 90-day window. So an ad click → site → tap to call now counts as a lead.
@@ -102,7 +109,8 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 - Tracking plan: links to goldlinxjewelry.com carry `utm_source=firstclassexotics&utm_medium=referral&utm_campaign=occasions|shop_strip|footer`; add a `goldlinx_click` GA4 event in `js/fce-analytics.js`; FCE26 redemptions = proven sales.
 - Rules: keep Goldlinx OFF the nav, hero, booking and `/vinyl-wrap` (ads landing page). `/exoticlinx` stays a 404 (old collab). Nothing goes live until Ali says "push it."
 - ✅ BUILT INTO index.html 8 Oct ~3:50pm (Ali: "add this to the site"): `#goldlinx` section just above `<!-- FIND US -->` (logo + 4 tiles, images in `images/goldlinx/` jpg+webp), `.occ-gl` line under the Occasions grid, footer Navigate link "Partners: Goldlinx Jewelry". CSS block "Goldlinx partner strip" sits just above the cursor `@media` rule. New GA4 event `goldlinx_click` (param `link_placement` = occasions|shop_strip|footer) in `js/fce-analytics.js`. Sitemap homepage lastmod → 2026-10-08. Links are normal (followed) — Ali hasn't said Nic pays referrals; if he ever does, add `rel="sponsored"`.
-- After Ali pushes: request indexing for the homepage only in Search Console (one URL).
+- ✅ LIVE 8 Oct 3:50pm (cc1c314). ✅ Homepage recrawl requested by Ali 8 Oct 3:59pm ("Indexing requested"). Do not resubmit.
+- 🔧 Also fixed 8 Oct (cc84e0f): homepage "We Come to You" Orange County card had links nested inside a link (since 793898d, 24 Jul) → card rendered broken/shifted. Outer `<a>` is now a `<div>`; "Orange County" title is the link. Never put `<a>` inside `.city-card` links again.
 - Video loop optional (6–10s, muted) if Nic sends footage.
 
 ### ✅ 6 OCT 9:55am — WRAP ADS ARE LIVE
