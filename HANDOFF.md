@@ -1,4 +1,4 @@
-# First Class Exotics — handoff (27 Sep 2026)
+# First Class Exotics — handoff (27 Sep 2026, latest section 14 Oct)
 Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
@@ -88,6 +88,23 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
    `/luxurycarrentallosangeles` got a real 301 → `/exotic-car-rental-lax`.
 
 ## ▶️ START HERE — 27 SEP AND AFTER
+
+### 🧭 14 OCT 2pm — END OF SESSION (covers 12–14 Oct). START HERE.
+- **Ads check 12 Oct ~1pm (read-only, nothing changed):** "Wraps - Search - OC" running, Maximize clicks / $16/day. Both rules ran on schedule ("Re-enable morning" 7:46am, "Pause at $16/day" hourly). Oct 5–11: 468 impr / 38 clicks / 8.1% CTR / $120.79 (~$17/day), **0 conversions** (11 actions set up, none recorded yet). Billing: balance $77.27, next auto-pay Nov 1, Visa ••6616.
+- ⚠️ Old Smart campaign "#1 Exotic Rental Company" still has a **$20/day** budget (not serving). If ever re-enabled it breaks Ali's $16 limit — lower it or leave it off.
+- Google flags: wrap ad strength **poor**; "2 ad groups have no ads" = PPF + Chrome Delete (paused on purpose — leave).
+- ❓ Google Ads **"Confirm it's you"** (deadline was Oct 12) — still NOT confirmed done. Ask Ali / check the bell.
+- **Next on ads:** clicks but no leads → review the landing page the ads send to + rewrite ad text (strength "poor").
+- **Site check 12 Oct:** homepage loads, all 24 internal links 200, sitemap/robots/fce-analytics.js 200, gtag running, Goldlinx strip + all 5 images (jpg+webp) 200. Only console error was a crypto-wallet Chrome extension, not the site.
+- **Goldlinx on Google Maps (12 Oct):** listing EXISTS and is public — "Goldlinx Jewelry", Jewelry store, 2060 Placentia Ave, Costa Mesa 92627, goldlinxjewelry.com, (949) 467-4136, 7 photos, **no hours, no reviews**. Nic was struggling to set up a profile → told him NOT to make a new one (duplicate risk); sign in at business.google.com with the right Google account, or claim via Maps "Own this business?" + video verification; then add hours (by appointment), description, photos, ask for reviews. Unknown whether Nic has ownership yet.
+- **Sara's studio (12 Oct, investor meeting day):** made 3 printable PDFs in chat — reformer room equipment/space, full business-plan summary (7 pages, updated with Sara's real equipment quote), retail rent by city (Costa Mesa / Newport / Irvine / Tustin / Santa Ana). **Kept out of the repo on purpose** (personal docs). The Claude Doc business plan has NOT been updated with the new equipment numbers yet — offer to do that.
+- **Git:** this file + the Oct 9/10 handoff edits are local-only until Ali pushes.
+
+
+### 🔧 9 OCT 10:25am — BIDDING WAS SWITCHED TO "MAXIMIZE CONVERSIONS" → ADS NEARLY STOPPED. FIXED.
+- Change history: Oct 6 1:52pm (Ali's login, during the Google support call) bidding changed Maximize clicks → **Maximize conversions**. With 0 recorded conversions, serving collapsed: Oct 8 = 40 impr / 1 click / $1.18; Oct 9 morning 2 impr.
+- ✅ Ali reset it 9 Oct ~10:25am: **Maximize clicks, $8 max CPC, $16/day** (verified by Claude). Switch to Maximize conversions only after ~15–30 real conversions.
+- Ali: "I don't want to spend a lot yet" — wants ≤$16/day. Google can spend up to 2× daily budget on single days; monthly cap ≈ $486. ✅ DONE 10 Oct 10:46am (Ali: "do it yourself"): 2 automated rules in Tools → Bulk actions → Rules. **"Pause at $16/day"** (ID 62144511): pause campaigns where name contains "Wraps - Search - OC" AND Cost > $15.99, hourly, data from today. **"Re-enable morning"** (ID 62124553): enable same campaign daily 7–8am. Cost data lags 1–3h so a day can land ~$17–20. ⚠️ To truly stop the ads, pause BOTH the campaign and the "Re-enable morning" rule. Oct 9 after bid fix: 73 impr / 4 clicks / $16.83.
 
 ### 🌙 8 OCT 4:45pm — END OF DAY. START HERE NEXT SESSION.
 - **Live today:** Goldlinx partner strip + Occasions proposal line + footer link (cc1c314); Orange County city-card fix (cc84e0f); homepage recrawl requested. Site checked live — all good.
