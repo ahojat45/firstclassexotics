@@ -67,7 +67,8 @@ exports.handler = async function handler(event) {
       body +=
         line('Car', data.vehicle) +
         line('Dates', [data['start-date'], data['end-date']].filter(Boolean).join(' to ')) +
-        line('Delivery', data.delivery);
+        line('Delivery', data.delivery) +
+        line('Referred by', data['referred-by']);
     } else if (formName === 'gift-request') {
       body +=
         line('For', data['recipient-name']) +
@@ -99,7 +100,7 @@ exports.handler = async function handler(event) {
       fullName,
       email: data.email || null,
       phone: data.phone || null,
-      notes: data.message || null,
+      notes: [data['referred-by'] ? `Referred by: ${data['referred-by']}` : '', data.message || ''].filter(Boolean).join('\n') || null,
       source: 'Website',
       requestedVehicle: data.vehicle || null,
       requestedStartDate: data['start-date'] || null,

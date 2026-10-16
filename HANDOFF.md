@@ -1,4 +1,4 @@
-# First Class Exotics — handoff (27 Sep 2026, latest section 14 Oct)
+# First Class Exotics — handoff (27 Sep 2026, latest section 16 Oct)
 Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
@@ -88,6 +88,23 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
    `/luxurycarrentallosangeles` got a real 301 → `/exotic-car-rental-lax`.
 
 ## ▶️ START HERE — 27 SEP AND AFTER
+
+### 🤝 16 OCT 12:20pm — REFERRAL PROGRAM LAUNCHED (49 emails sent from ali@firstclassexotics.com)
+- Diagnosis first: Google ranking is fine (#1 Maps Costa Mesa, ~#2 organic "exotic car rental Orange County"). Website leads steady (~30 Jul / 29 Aug / 19 Sep / 10 Oct 1–14). Ali texts every lead himself. **Square is NOT the revenue source** — use Adobe Sign contracts (`from:adobesign.com subject:"is Signed and Filed"`) to count rentals: ~15 Jul / 11 Aug / ~16 Sep / 6 Oct 1–15. Big dependence on repeat clients (Juan Aldana 7, Kevin Hernandez 7, Lilli G 4, Anthony Fletcher 3).
+- Banner "starting at $799/day" already exists (index.html ~line 805); no per-car prices.
+- **Offer (Ali approved $150):** referrer gets **$150 off next rental per friend who books, no limit**; friend gets **15% off first rental** (same as FIRSTCLASS15) by mentioning the referrer's name.
+- Sent 16 Oct ~12:20pm: subject "Something just for my regulars" → 11 regulars; "A thank-you from First Class Exotics" → 38 past clients (all contract signers May–Oct; joint contracts got one email to both). 0 bounces at send time.
+- ✅ 16 Oct: added optional **"Referred By"** field (`name="referred-by"`) to the booking form in index.html, just above Occasion. submission-created.js now puts it in the Pushover alert ("Referred by: X") and prepends it to FCE OS lead notes (source stays 'Website'). Netlify picks up the new field on deploy. **Local until Ali pushes.** Credit tracker not built.
+
+### 📊 15 OCT 10:30am — ADS REVIEWED (read-only). BIDDING IS MAXIMIZE CONVERSIONS — ALI'S CHOICE, LEAVE IT.
+- Oct 14 changes (Ali's login, during/after Google support call): 1:21pm bidding → **Maximize conversions** (learning); 1:35pm 1 negative phrase kw (Car Wraps); 1:39pm 2 ad groups paused; 1:43pm applied recommendation rewrote Car Wraps RSA; 1:54pm 1 phrase kw paused (Ceramic); 2:03pm **10 broad + 8 exact kws added** to Car Wraps (from the 14 Oct keyword list).
+- Optimization score 74%→93% = from accepting recommendations, not performance.
+- Oct 8–14: 631 impr / 43 clicks / $94.35 / avg CPC $2.19 / **1 conversion (first ever, ~Oct 12)**. Budget $16/day + both rules intact. Old Smart campaigns still paused.
+- ⚠️ Ali: the Google rep told him NOT to switch back; he wants to watch a few days. **Do not change bidding unless Ali says so.** Monday Oct 19 9:45am check scheduled. Watch for impressions <~20/day (Oct 8 collapse pattern).
+- "Confirm it's you" = just a pop-up on save; click Confirm + approve on phone. Not a pending task.
+- Goldlinx: Nic's profile is VERIFIED and live on Maps (hours, phone, site, photo). To do for Nic: description, 10+ photos, ask for reviews; website link appears twice.
+- Made 2 fillable estimate PDFs for wraps (FC Wraps logo) in chat: detailed Model X version + simple version modeled on Street Driven Garage invoice. Not in repo.
+- Chrome note: Google Ads pages time out for the Claude extension's page reading; workaround = navigate with the extension + read the screen via computer-use (Chrome, read-only).
 
 ### 🧭 14 OCT 2pm — END OF SESSION (covers 12–14 Oct). START HERE.
 - **Ads check 12 Oct ~1pm (read-only, nothing changed):** "Wraps - Search - OC" running, Maximize clicks / $16/day. Both rules ran on schedule ("Re-enable morning" 7:46am, "Pause at $16/day" hourly). Oct 5–11: 468 impr / 38 clicks / 8.1% CTR / $120.79 (~$17/day), **0 conversions** (11 actions set up, none recorded yet). Billing: balance $77.27, next auto-pay Nov 1, Visa ••6616.
