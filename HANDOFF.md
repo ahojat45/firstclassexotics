@@ -89,6 +89,25 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
+### ✈️ ALI TRAVELING WED 21 – SUN 25 OCT — MACBOOK ONLY. START HERE.
+**To resume on the MacBook:** open Terminal → `cd` into the First Class Exotics repo (it may be `~/Desktop/First Class Exotics` or `~/fce-tmp` — check with `find ~ -maxdepth 3 -type d -name "First Class Exotics" -o -maxdepth 3 -type d -name fce-tmp`) → `git pull origin main` → in Claude: "Read HANDOFF.md, start with the TRAVELING section." If the repo isn't on the MacBook: `cd ~/Desktop && git clone https://github.com/ahojat45/firstclassexotics.git "First Class Exotics"`.
+**Before leaving, leave the SHOP iMac ON, plugged in, awake, with Chrome + the Claude desktop app open** — scheduled tasks (lead calendar sync, inbox monitors, watchdog) only run there, and remote access to the iMac's files/Chrome needs it awake.
+
+**Done 19 Oct (all pushed, live, verified):**
+- 3 blog posts live + indexing requested in GSC for all 3 (holiday rentals, PPF vs ceramic vs wrap, Tesla Roadster w/ real Tesla photo).
+- Wrap FAQ complete (10 Qs, HTML + FAQPage schema): rental while wrapping · film brands (3M, Avery Dennison, Inozetek, KPMF, Oracal; PPF XPEL, STEK — Ali OK'd for SEO) · ceramic lasts 2/3/4 yrs by stage · warranty on select films, ask which (NO lengths).
+- WeddingPro (The Knot) sales call ACCEPTED: **Tue 27 Oct 10–10:30am**, Vivian Yorke, Meet link in calendar. Printed question sheet: `~/Desktop/WeddingPro_Call_Questions.pdf` on the iMac (NOT in repo). Advice given: fact-finding only, no 12-month lock, don't sign on the call.
+
+**Ads status 19 Oct:**
+- Bidding still Maximize Conversions (Ali's choice after Google rep call — leave it; check scheduled for Mon 26 Oct).
+- $16/day pause rule fired today at 9:44am PT — the day's budget was spent by mid-morning, so ads were off the rest of the day. Watch whether that repeats; if it does, ads only run ~2–3 hrs/day.
+- **First real wrap lead from the site: Devin Fitzgerald, 19 Oct 8:59am, 2024 Hyundai Kona SE, matte black** (wrap-quote form). Ali emailed an estimate 10:52am. Follow up if no reply.
+- Couldn't read impressions/clicks/cost today: ads.google.com and search.google.com hang in the Claude Chrome extension (script injection times out). Workaround: Ali puts the Ads tab in front, Claude reads it with computer-use screenshots (Chrome is view-only for computer-use).
+
+**Small flag:** Ali's email signature says "Ste 4A"; GBP and site say "Ste A4". Ali to decide which is right.
+
+**Open items (priority):** 1) Follow up Devin. 2) WeddingPro call 27 Oct. 3) Ads check 26 Oct. 4) GBP photo upload + weekly post (still owed). 5) Real photos on the 10 wrap city pages (Ace Task 1).
+
 ### 📝 19 OCT 12:30pm — 3 NEW BLOG POSTS (built, NOT pushed until Ali runs the git command)
 - `/blog/holiday-exotic-car-rental-orange-county`: Thanksgiving→NYE rental guide. Uses only FAQ facts (25+, insurance verified by us, same-day before noon, 20–35% multi-day, FIRSTCLASS15, from $799/day, /gift).
 - `/blog/ppf-vs-ceramic-coating-vs-vinyl-wrap`: prices verbatim from the hub. No warranty, no ceramic lifespan, no film brands beyond 3M.
@@ -183,7 +202,7 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 - End cards carry NO handle/brand — Sara's IG handle + studio name still TBD.
 - AirDrop: ✅ delivered 2:56pm after a retry. **AirDrop recipe (computer use, Finder):** window 1 = reels folder (select all), window 2 = Go → AirDrop (⌘⇧R; if 'No People Found', click another sidebar item then ⌘⇧R again to rescan while Ali's phone is unlocked). Then ONE `left_click_drag` from a selected file onto 'Ali Hojat' → shows 'Waiting…' → Ali taps Accept. Manual mouse_down/move/up drags often fail silently.
 
-### 🏠 5 OCT 6pm — WORK-FROM-HOME QUICK START (read this first on the MacBook)
+### 🏠 5 OCT 6pm — WORK-FROM-HOME QUICK START (SUPERSEDED by the 19 OCT TRAVELING section above)
 **Open items (priority order):**
 1. **Wrap ads ("Wraps - Search - OC", acct 248-826-1812, campaign 24298777862)** — 0 impressions Oct 1–5. Ali completed advertiser verification + called Google support Oct 5; rep did a backend fix, expects serving by Tue Oct 6. Claude scheduled check Tue Oct 6 9:52am PT (runs on the SHOP iMac — needs it on + Claude app open). If still 0 → call 1-866-246-6453 again, reference Oct 5 case. Details in the 4 OCT + 5 OCT sections below.
 2. **Instagram (@1stclassexotics)** — 5 new reels ready on shop iMac: `Desktop/FC videos/Reels to post/New - Oct 2/` (FCE_09–13), already AirDropped to Ali's phone, captions in chat + 2 OCT section. Post order: 13, 10, then 11/12/09. Waiting on Ali OK for: drivers' faces in Reel 09, kid-in-Lambo clip (IMG_7741), detailer clip (IMG_9712).
