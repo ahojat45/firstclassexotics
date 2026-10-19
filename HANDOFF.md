@@ -95,6 +95,7 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 - `/blog/tesla-roadster-2026-unveiling`: Oct 15 Roadster event (sources: CBS News, Fox Business; cited in post). Deposit amounts left out on purpose because the sources disagree. Pivots to SF90/750S/SVJ rentals + Tesla wraps.
 - 3 cards at top of `/blog`, sitemap +3 (`/blog` + `/vinyl-wrap` lastmod 2026-10-19), PPF post linked from the hub guide line.
 - ⚠️ `chrome-lamborghini-huracan-02` and `-04` are the WHITE before shots, not chrome. Use 01/03/05 for chrome.
+- 12:55pm: Tesla post hero/og/card swapped to the actual Roadster photo Ali supplied (`images/blog/tesla-roadster-2026/`, credited "Photo: Tesla").
 - Build script: `Claude outputs/build-oct19-posts.py` (untracked).
 
 ### 🤝 16 OCT 12:20pm — REFERRAL PROGRAM LAUNCHED (49 emails sent from ali@firstclassexotics.com)
