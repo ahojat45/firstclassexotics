@@ -89,6 +89,14 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
+### 📝 19 OCT 12:30pm — 3 NEW BLOG POSTS (built, NOT pushed until Ali runs the git command)
+- `/blog/holiday-exotic-car-rental-orange-county`: Thanksgiving→NYE rental guide. Uses only FAQ facts (25+, insurance verified by us, same-day before noon, 20–35% multi-day, FIRSTCLASS15, from $799/day, /gift).
+- `/blog/ppf-vs-ceramic-coating-vs-vinyl-wrap`: prices verbatim from the hub. No warranty, no ceramic lifespan, no film brands beyond 3M.
+- `/blog/tesla-roadster-2026-unveiling`: Oct 15 Roadster event (sources: CBS News, Fox Business; cited in post). Deposit amounts left out on purpose because the sources disagree. Pivots to SF90/750S/SVJ rentals + Tesla wraps.
+- 3 cards at top of `/blog`, sitemap +3 (`/blog` + `/vinyl-wrap` lastmod 2026-10-19), PPF post linked from the hub guide line.
+- ⚠️ `chrome-lamborghini-huracan-02` and `-04` are the WHITE before shots, not chrome. Use 01/03/05 for chrome.
+- Build script: `Claude outputs/build-oct19-posts.py` (untracked).
+
 ### 🤝 16 OCT 12:20pm — REFERRAL PROGRAM LAUNCHED (49 emails sent from ali@firstclassexotics.com)
 - Diagnosis first: Google ranking is fine (#1 Maps Costa Mesa, ~#2 organic "exotic car rental Orange County"). Website leads steady (~30 Jul / 29 Aug / 19 Sep / 10 Oct 1–14). Ali texts every lead himself. **Square is NOT the revenue source** — use Adobe Sign contracts (`from:adobesign.com subject:"is Signed and Filed"`) to count rentals: ~15 Jul / 11 Aug / ~16 Sep / 6 Oct 1–15. Big dependence on repeat clients (Juan Aldana 7, Kevin Hernandez 7, Lilli G 4, Anthony Fletcher 3).
 - Banner "starting at $799/day" already exists (index.html ~line 805); no per-car prices.
