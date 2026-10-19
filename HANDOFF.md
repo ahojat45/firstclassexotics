@@ -96,6 +96,8 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 - 3 cards at top of `/blog`, sitemap +3 (`/blog` + `/vinyl-wrap` lastmod 2026-10-19), PPF post linked from the hub guide line.
 - ⚠️ `chrome-lamborghini-huracan-02` and `-04` are the WHITE before shots, not chrome. Use 01/03/05 for chrome.
 - 12:55pm: Tesla post hero/og/card swapped to the actual Roadster photo Ali supplied (`images/blog/tesla-roadster-2026/`, credited "Photo: Tesla").
+- 1:15pm: Ali: "what customers do during the 3–5 days" is NOT a FAQ. Instead added wrap FAQ "Can I rent a car while mine is being wrapped?" → yes, from our fleet (HTML + FAQPage schema on /vinyl-wrap). Also added "What film brands do you use?" (Ali: access to pretty much any material, prefers the best films; only 3M named). Remaining FAQ facts: ceramic lifespan, warranty.
+- 1:11pm: All 3 posts pushed (263362f) and Ali requested indexing for all 3 in Search Console.
 - Build script: `Claude outputs/build-oct19-posts.py` (untracked).
 
 ### 🤝 16 OCT 12:20pm — REFERRAL PROGRAM LAUNCHED (49 emails sent from ali@firstclassexotics.com)
