@@ -1,4 +1,4 @@
-# First Class Exotics — handoff (27 Sep 2026, latest section 16 Oct)
+# First Class Exotics — handoff (27 Sep 2026, latest section 20 Oct — read START HERE)
 Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
@@ -89,24 +89,33 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
-### ✈️ ALI TRAVELING WED 21 – SUN 25 OCT — MACBOOK ONLY. START HERE.
-**To resume on the MacBook:** open Terminal → `cd` into the First Class Exotics repo (it may be `~/Desktop/First Class Exotics` or `~/fce-tmp` — check with `find ~ -maxdepth 3 -type d -name "First Class Exotics" -o -maxdepth 3 -type d -name fce-tmp`) → `git pull origin main` → in Claude: "Read HANDOFF.md, start with the TRAVELING section." If the repo isn't on the MacBook: `cd ~/Desktop && git clone https://github.com/ahojat45/firstclassexotics.git "First Class Exotics"`.
-**Before leaving, leave the SHOP iMac ON, plugged in, awake, with Chrome + the Claude desktop app open** — scheduled tasks (lead calendar sync, inbox monitors, watchdog) only run there, and remote access to the iMac's files/Chrome needs it awake.
+### ✈️ START HERE — HANDOFF 20 OCT 11:30am. ALI TRAVELING WED 21 – SUN 25 OCT (MACBOOK ONLY)
+**New chat, first message:** "Read HANDOFF.md in the First Class Exotics repo and start with the START HERE section."
+**Where the repo is:** shop iMac `~/Desktop/First Class Exotics` · MacBook `~/firstclassexotics` (branch `main`, verified synced 19 Oct). Before any work: `git pull origin main`. Ali pushes from Terminal himself — give him the full copy-paste command (cd → `rm -f .git/index.lock` → `git pull origin main` → `git add <files>` → commit → push).
+**While traveling:** the shop iMac stays ON, awake, with Chrome + the Claude desktop app open. Scheduled tasks (lead calendar sync, inbox monitors, watchdog) only run there. A Claude chat opened on the MacBook can still reach the iMac's files (tested 19 Oct 4:32pm ✅). Both Chromes have the Claude extension (Browser 1 = MacBook, Browser 2 = iMac).
 
-**Done 19 Oct (all pushed, live, verified):**
-- 3 blog posts live + indexing requested in GSC for all 3 (holiday rentals, PPF vs ceramic vs wrap, Tesla Roadster w/ real Tesla photo).
-- Wrap FAQ complete (10 Qs, HTML + FAQPage schema): rental while wrapping · film brands (3M, Avery Dennison, Inozetek, KPMF, Oracal; PPF XPEL, STEK — Ali OK'd for SEO) · ceramic lasts 2/3/4 yrs by stage · warranty on select films, ask which (NO lengths).
-- WeddingPro (The Knot) sales call ACCEPTED: **Tue 27 Oct 10–10:30am**, Vivian Yorke, Meet link in calendar. Printed question sheet: `~/Desktop/WeddingPro_Call_Questions.pdf` on the iMac (NOT in repo). Advice given: fact-finding only, no 12-month lock, don't sign on the call.
+**Ali's working rules (still in force):** do the work, don't ask permission step by step · drafts only, never send email/texts as Ali · never touch Wix DNS · prices only verbatim from the hub · warranty: OK to say "available on select films — ask which", NEVER a length · no faces/plates in content without consent.
 
-**Ads status 19 Oct:**
-- Bidding still Maximize Conversions (Ali's choice after Google rep call — leave it; check scheduled for Mon 26 Oct).
-- $16/day pause rule fired today at 9:44am PT — the day's budget was spent by mid-morning, so ads were off the rest of the day. Watch whether that repeats; if it does, ads only run ~2–3 hrs/day.
-- **First real wrap lead from the site: Devin Fitzgerald, 19 Oct 8:59am, 2024 Hyundai Kona SE, matte black** (wrap-quote form). Ali emailed an estimate 10:52am. Follow up if no reply.
-- Couldn't read impressions/clicks/cost today: ads.google.com and search.google.com hang in the Claude Chrome extension (script injection times out). Workaround: Ali puts the Ads tab in front, Claude reads it with computer-use screenshots (Chrome is view-only for computer-use).
+**Done 19–20 Oct (all pushed + live unless noted):**
+- 3 blog posts live, indexing requested in Search Console for all 3: `/blog/holiday-exotic-car-rental-orange-county`, `/blog/ppf-vs-ceramic-coating-vs-vinyl-wrap`, `/blog/tesla-roadster-2026-unveiling` (hero = real Roadster photo Ali supplied, "Photo: Tesla").
+- `/vinyl-wrap` FAQ complete at 10 Qs (HTML + FAQPage schema): rental while wrapping · film brands (3M, Avery Dennison, Inozetek, KPMF, Oracal; PPF XPEL, STEK) · ceramic coating lasts 2/3/4 yrs by stage · warranty on select films.
+- Google Business Profile post LIVE 19 Oct 5:23pm (PPF vs ceramic vs wrap, chrome Huracan photo, Learn more → blog). 10 wrap photos for the gallery are in iMac `~/Desktop/GBP photos - wraps/` (also sent in the 19 Oct chat).
+- WeddingPro / The Knot sales call ACCEPTED: **Tue 27 Oct 10–10:30am**, Vivian Yorke (vyorke@theknotww.com), Meet link in Ali's calendar; she emailed a pre-meeting deck 19 Oct. Printed question sheet = iMac `~/Desktop/WeddingPro_Call_Questions.pdf/.docx` (not in repo). Advice: fact-finding only, get real OC Transportation lead counts, no 12-month lock, don't sign on the call. They have a class action + heavy vendor complaints about fake leads.
 
-**Small flag:** Ali's email signature says "Ste 4A"; GBP and site say "Ste A4". Ali to decide which is right.
+**Google Ads (Wraps - Search - OC, acct 248-826-1812):**
+- Bidding = Maximize Conversions (Ali's choice after the Google rep call — leave it). Ads review already scheduled Mon 26 Oct.
+- 🔴 **Pattern, 2 days running:** "Re-enable morning" turns ads on ~7:45am, "Pause at $16/day" fires ~9:44am (19 + 20 Oct). **Ads only show ~2 hours a day.** Decision for Ali (not made): raise the daily cap, or keep $16 and spread it (ad schedule / Maximize Clicks with the $8 CPC cap). Bring it up at the 26 Oct review.
+- **Lead from the site:** Devin Fitzgerald, 19 Oct 8:59am, 2024 Hyundai Kona SE, matte black (wrap-quote form). Ali emailed an estimate 19 Oct 10:52am. **No reply as of 20 Oct 11:30am** → draft a follow-up for Ali if still quiet.
+- Claude can't load ads.google.com / search.google.com / business.google.com through the Chrome extension (hangs). Workarounds: read Ads numbers from the Google Ads alert emails in Gmail, or Ali brings the Ads tab to the front and Claude reads it via computer-use screenshot (Chrome is view-only). Google actions = Ali clicks, Claude gives the exact steps/copy.
 
-**Open items (priority):** 1) Follow up Devin. 2) WeddingPro call 27 Oct. 3) Ads check 26 Oct. 4) GBP photo upload + weekly post (still owed). 5) Real photos on the 10 wrap city pages (Ace Task 1).
+**Open items (priority):**
+1. Follow up Devin if no reply.
+2. GBP photo gallery upload (10 photos ready) — Ali.
+3. Ads review Mon 26 Oct + the 2-hours-a-day budget decision.
+4. WeddingPro call Tue 27 Oct.
+5. Next GBP post (week of 26 Oct) = holiday rentals blog; no phone number in post text (Google rejects it), button = Learn more.
+6. Real wrap photos on the 10 `vinyl-wrap-*` city pages (still stock) — Ace Task 1.
+7. Small: Ali's email signature says "Ste 4A"; GBP + site say "Ste A4". Ali to confirm.
 
 ### 📝 19 OCT 12:30pm — 3 NEW BLOG POSTS (built, NOT pushed until Ali runs the git command)
 - `/blog/holiday-exotic-car-rental-orange-county`: Thanksgiving→NYE rental guide. Uses only FAQ facts (25+, insurance verified by us, same-day before noon, 20–35% multi-day, FIRSTCLASS15, from $799/day, /gift).
