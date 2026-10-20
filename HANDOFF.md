@@ -109,7 +109,7 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 - Claude can't load ads.google.com / search.google.com / business.google.com through the Chrome extension (hangs). Workarounds: read Ads numbers from the Google Ads alert emails in Gmail, or Ali brings the Ads tab to the front and Claude reads it via computer-use screenshot (Chrome is view-only). Google actions = Ali clicks, Claude gives the exact steps/copy.
 
 **Open items (priority):**
-1. Follow up Devin if no reply.
+1. Follow up Devin — ✅ 20 Oct 11:30am no reply yet; follow-up DRAFT sits in Gmail as a reply in his "Estimate" thread (signed plainly, no signature, so no Ste 4A). Ali to review + send.
 2. GBP photo gallery upload (10 photos ready) — Ali.
 3. Ads review Mon 26 Oct + the 2-hours-a-day budget decision.
 4. WeddingPro call Tue 27 Oct.
