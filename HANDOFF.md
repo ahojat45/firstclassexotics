@@ -109,13 +109,13 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 - Claude can't load ads.google.com / search.google.com / business.google.com through the Chrome extension (hangs). Workarounds: read Ads numbers from the Google Ads alert emails in Gmail, or Ali brings the Ads tab to the front and Claude reads it via computer-use screenshot (Chrome is view-only). Google actions = Ali clicks, Claude gives the exact steps/copy.
 
 **Open items (priority):**
-1. Follow up Devin — ✅ 20 Oct 11:30am no reply yet; follow-up DRAFT sits in Gmail as a reply in his "Estimate" thread (signed plainly, no signature, so no Ste 4A). Ali to review + send.
-2. GBP photo gallery upload (10 photos ready) — Ali.
+1. ✅ Devin: Ali is talking to him directly (20 Oct 2:22pm). Follow-up draft in Gmail is unneeded — Ali to delete it. Closed.
+2. ✅ 20 Oct 2:22pm: Ali uploaded the wrap photos to the GBP gallery (satin Tesla, McLaren, Escalades, etc.) — showing PENDING Google review. Nothing to do; check they went live in a day or two.
 3. Ads review Mon 26 Oct + the 2-hours-a-day budget decision.
 4. WeddingPro call Tue 27 Oct.
 5. Next GBP post (week of 26 Oct) = holiday rentals blog; no phone number in post text (Google rejects it), button = Learn more.
-6. Real wrap photos on the 10 `vinyl-wrap-*` city pages (still stock) — Ace Task 1.
-7. Small: Ali's email signature says "Ste 4A"; GBP + site say "Ste A4". Ali to confirm.
+6. Real wrap photos on the 10 `vinyl-wrap-*` city pages (still stock) — Ace Task 1. **Ali decided 20 Oct: do NOT reuse hub/GBP photos — wants fresh, different shots per page.** Waiting on new job photos from Ali (drop in `images/wraps/_raw/`). ✅ 20 Oct 5:52pm: first 12 in — `_raw/matte-black-bentley-continental-gt/` (7: front 3/4 marina sunset, mirror detail, rear 3/4 ×2, door open/interior, side 3/4 by fence, head-on) + `_raw/color-shift-purple-corvette-c8/` (5: front 3/4 ×3, rear-quarter detail, rear 3/4 at jetty). IMG_4486 plate BLURRED. Bentley rear shots show a 'Luxury Auto Leasing' dealer plate frame (no plate number) — crop or blur before use. Not yet processed/placed; no before shots yet.
+7. ✅ 20 Oct 12:26pm: Ali fixed his email signature to match GBP + site ("Ste A4"). Closed.
 
 ### 📝 19 OCT 12:30pm — 3 NEW BLOG POSTS (built, NOT pushed until Ali runs the git command)
 - `/blog/holiday-exotic-car-rental-orange-county`: Thanksgiving→NYE rental guide. Uses only FAQ facts (25+, insurance verified by us, same-day before noon, 20–35% multi-day, FIRSTCLASS15, from $799/day, /gift).
