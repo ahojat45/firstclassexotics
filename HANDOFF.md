@@ -1,4 +1,4 @@
-# First Class Exotics — handoff (27 Sep 2026, latest section 20 Oct — read START HERE)
+# First Class Exotics — handoff (27 Sep 2026, latest section 27 Oct — read START HERE)
 Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
@@ -88,6 +88,28 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
    `/luxurycarrentallosangeles` got a real 301 → `/exotic-car-rental-lax`.
 
 ## ▶️ START HERE — 27 SEP AND AFTER
+
+### ▶️ START HERE — HANDOFF 27 OCT 11:45am (Ali back from travel; supersedes the 20 OCT section below)
+**New chat, first message:** "Read HANDOFF.md in the First Class Exotics folder on my Desktop and start with the START HERE section."
+**Setup each session:** request folder access to `/Users/firstclassexotics/Desktop/First Class Exotics` (iMac) — MacBook repo is `~/firstclassexotics`. Repo: HEAD `c7a84db`, clean, synced with origin (verified 27 Oct). Ali pushes from **Terminal** himself (not by typing git into a Claude chat — that runs in a sandbox that can't reach GitHub). Give him: cd → `rm -f .git/index.lock` → `git pull origin main` → `git add <files>` → commit → push.
+**Ali's rules (still in force):** do the work, don't ask step by step · drafts only, never send email/texts as Ali · never touch Wix DNS · wrap prices only verbatim from the hub · warranty: "available on select films — ask which", never a length · no faces/plates in content (blur them).
+
+**What happened 20–27 Oct (from Gmail + repo, checked 27 Oct):**
+- No site commits since 20 Oct. Nothing broken known.
+- Devin Fitzgerald (Kona wrap lead): Ali is talking to him directly — closed. ⚠️ The follow-up DRAFT may still sit in Gmail drafts; Ali was told to delete it.
+- Ali fixed his email signature to "Ste A4" (20 Oct) — closed.
+- GBP wrap photo gallery uploaded by Ali 20 Oct (showed PENDING) — confirm they went live.
+- Rental booking-form leads while traveling: Aaron Kramer (23 Oct, orange 750S, 23–24 Oct), Brandon Hirtler (24 Oct, 911 C4 GTS, starts 23 Nov), Hasan Ali (24 Oct, Range Rover SV LWB, 24–31 Oct). Contracts signed: 1 on 27 Oct (capriishome@). **No new wrap-quote leads** since Devin (19 Oct).
+- 🔴 **WeddingPro / The Knot call Tue 27 Oct 10am looks MISSED** — Vivian Yorke sent "Our meeting is soon!" then **"We missed you"**. Ask Ali whether to reschedule; if yes, draft a reply (don't send). Question sheet still at iMac `~/Desktop/WeddingPro_Call_Questions.pdf`. Advice unchanged: fact-finding only, real OC lead counts, no 12-month lock, don't sign on the call.
+- Google Ads sent "Create a passkey" (26 Oct) — Ali's action, low priority.
+
+**Open items (priority):**
+1. **Ads budget decision — still NOT made.** "Re-enable morning" ~7:45am + "Pause at $16/day" ~9:44am ⇒ ads only show ~2h/day. Options: raise the cap (e.g. $25–30/day) or keep $16 and spread it (ad schedule, or Maximize Clicks with $8 CPC cap). Bidding = Maximize Conversions is Ali's choice — don't change it unless he says. The 26 Oct ads review: no record it happened — do it with Ali (read Ads numbers via alert emails or computer-use screenshot; Claude can't load ads.google.com in the extension).
+2. WeddingPro: reschedule or drop (above).
+3. **Wrap city pages (Ace Task 1):** Ali wants FRESH, different photos per page — do NOT reuse hub/GBP photos. In `images/wraps/_raw/` (gitignored): `matte-black-bentley-continental-gt/` (7) + `color-shift-purple-corvette-c8/` (5; IMG_4486 plate already blurred). Bentley rear shots (4398, 4400) show a "Luxury Auto Leasing" dealer plate frame — crop/blur before use. Ali is shooting more (before shots wanted). When there's enough for unique photos per page: process per §2 (q82 jpg+webp, ≤1448px, `<picture>`), place, give Ali the push command.
+4. Next GBP post = holiday rentals blog (`/blog/holiday-exotic-car-rental-orange-county`); no phone number in text; button = Learn more.
+5. Referral program: "Referred By" field is live; credit tracker NOT built.
+6. Follow up the 3 rental leads above if Ali wants (he usually texts leads himself — ask).
 
 ### ✈️ START HERE — HANDOFF 20 OCT 11:30am. ALI TRAVELING WED 21 – SUN 25 OCT (MACBOOK ONLY)
 **New chat, first message:** "Read HANDOFF.md in the First Class Exotics repo and start with the START HERE section."
