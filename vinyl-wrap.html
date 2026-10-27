@@ -111,6 +111,9 @@ nav{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);z-index:1000;w
 .price-note{font-size:.82rem;line-height:1.8;color:var(--gray-2);margin-top:.8rem}
 .price-factors{max-width:820px;margin-top:2.5rem;font-size:.88rem;line-height:1.9;color:var(--gray-2)}
 .price-factors strong{color:var(--white);letter-spacing:.06em}
+.price-cta{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem}
+.hero-price{font-size:.95rem;letter-spacing:.06em;color:var(--white);font-weight:600;margin-top:.4rem}
+.opt{font-weight:400;opacity:.6;text-transform:none;letter-spacing:0}
 .wrapfaq-section{background:var(--black);padding-left:1.5rem;padding-right:1.5rem}
 .wrapfaq-list{max-width:900px;margin-top:1rem}
 .wrapfaq-item{border-bottom:1px solid rgba(255,255,255,.08);padding:1.4rem 0}
@@ -267,10 +270,11 @@ footer{background:var(--dark-2);padding:3rem 6rem;border-top:1px solid rgba(255,
   <div class="wrap-hero-content">
     <div class="hero-eyebrow">First Class Exotics &mdash; Premium Vinyl Wrap Services</div>
     <h1>VINYL WRAPS<br>ORANGE <span>COUNTY.</span></h1>
-    <p>From matte black to satin pearl, our certified wrap specialists deliver flawless finishes on every exotic and luxury vehicle — with the same white-glove care we bring to every rental.</p>
+    <p>From matte black to satin pearl, our certified wrap specialists deliver flawless finishes on everything from daily drivers to exotics — with the same white-glove care we bring to every rental.</p>
+    <p class="hero-price">Full color change from $3,500 &nbsp;&middot;&nbsp; Chrome delete from $399</p>
     <div class="hero-actions">
       <a href="#quote" class="btn-gold">Get a Free Quote</a>
-      <a href="#finishes" class="btn-ghost">View Finishes</a>
+      <a href="#pricing" class="btn-ghost">See Pricing</a>
     </div>
   </div>
 </section>
@@ -492,6 +496,10 @@ footer{background:var(--dark-2);padding:3rem 6rem;border-top:1px solid rgba(255,
     </div>
   </div>
   <p class="price-factors reveal"><strong>What changes the price:</strong> vehicle size and panel complexity, the film you choose (standard cast vinyl versus color-shift, chrome, or textured specialty films), whether the paint needs correction before we start, and whether you are adding paint protection film underneath the wrap. We quote every car individually and the number we give you is the number you pay.</p>
+  <div class="price-cta reveal">
+    <a href="#quote" class="btn-gold">Get My Exact Price</a>
+    <a href="sms:9492945958" class="btn-ghost">Text Us a Photo of Your Car</a>
+  </div>
 </section>
 
 <!-- FAQ -->
@@ -574,11 +582,11 @@ footer{background:var(--dark-2);padding:3rem 6rem;border-top:1px solid rgba(255,
       <form class="form-grid" id="wrapForm" name="wrap-quote" data-netlify="true" onsubmit="submitWrap(event)">
         <input type="hidden" name="form-name" value="wrap-quote"/>
         <div class="fg"><label>First Name</label><input type="text" name="first-name" placeholder="Your first name" required/></div>
-        <div class="fg"><label>Last Name</label><input type="text" name="last-name" placeholder="Your last name" required/></div>
+        <div class="fg"><label>Last Name <span class="opt">(optional)</span></label><input type="text" name="last-name" placeholder="Your last name"/></div>
         <div class="fg"><label>Phone</label><input type="tel" name="phone" placeholder="(949) 000-0000" required/></div>
-        <div class="fg"><label>Email</label><input type="email" name="email" placeholder="you@email.com" required/></div>
+        <div class="fg"><label>Email <span class="opt">(optional)</span></label><input type="email" name="email" placeholder="you@email.com"/></div>
         <div class="fg"><label>Vehicle Year</label><input type="text" name="year" placeholder="e.g. 2023"/></div>
-        <div class="fg"><label>Make &amp; Model</label><input type="text" name="vehicle" placeholder="e.g. Lamborghini Huracan" required/></div>
+        <div class="fg"><label>Make &amp; Model</label><input type="text" name="vehicle" placeholder="e.g. Tesla Model 3" required/></div>
         <div class="fg">
           <label>Finish You&rsquo;re Interested In</label>
           <select name="finish">
