@@ -1,4 +1,4 @@
-# First Class Exotics — handoff (27 Sep 2026, latest section 27 Oct — read START HERE)
+# First Class Exotics — handoff (27 Sep 2026, latest section 30 Oct — read START HERE)
 Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
@@ -88,6 +88,35 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
    `/luxurycarrentallosangeles` got a real 301 → `/exotic-car-rental-lax`.
 
 ## ▶️ START HERE — 27 SEP AND AFTER
+
+### ▶️ START HERE — HANDOFF 30 OCT 7pm (supersedes the 27 OCT section below; read both)
+**New chat, first message:** "Read HANDOFF.md in my First Class Exotics folder and start with the START HERE section."
+**Where:** iMac repo `~/Desktop/First Class Exotics` · MacBook repo `~/firstclassexotics`. HEAD `8b9f25e` (27 Oct, "Cap multi-day discount at 20-25% sitewide"), synced with GitHub, tree clean (verified 30 Oct). **On the MacBook, first run in Terminal:** `cd ~/firstclassexotics && git pull origin main`. Claude's shell on the MacBook can't reach GitHub — Ali runs every pull/push in Terminal himself.
+**Rules unchanged** (see 27 Oct section): just do the work · drafts only, never send as Ali · never touch Wix DNS · prices verbatim · warranty "select films, ask which", never a length · blur faces/plates.
+
+**🆕 WeddingPro / The Knot — Ali SIGNED UP 30 Oct (after a call with Vivian Yorke):**
+- 12-month **Featured** tier, Wedding Limos/Transportation, **Orange County**, on The Knot + WeddingWire, plus a Spotlight Banner on The Knot LA.
+- Contract **$1,871.28** total (TK Featured $1,038 + WW Featured $828 + banner $5.28), term **30 Oct 2026 – 29 Oct 2027**. **Auto-renews yearly** unless cancelled in the WeddingPro dashboard **at least 10 days before the term ends (by ~19 Oct 2027)**. No lead guarantee; payments non-refundable. Billing errors → payments@weddingpro.com within 30 days of the charge.
+- Optional: opt out of the arbitration clause by emailing arbitrationtop@theknotww.com **by 29 Nov 2026** (name, email, mailing address, statement). Ali's call — not raised with him yet.
+- Free 1-on-1 strategy session: calendly.com/weddingpro-strategy-team/30-minute-strategy-session-with-weddingpro (book one).
+- **Storefront setup IN PROGRESS** (weddingpro.com/onboarding; Claude can't operate it — extension has no site access; Ali clicks, Claude writes copy). Done: business description, attributes (Price **$$$$ Luxury**, Transportation **Classic & Exotic Cars**, others "does not apply"), photos (16 from iMac `~/Desktop/WeddingPro photos`, Ghost photos removed — no Ghost in fleet; Cullinan = cover). FAQ step had no questions/was stuck — skipped. **Now on Pricing → Packages.** Each feature = its own box, max 50 chars, up to 8:
+  - **Rolls-Royce Cullinan Wedding Day** — $1,599, 24 hrs: Full-day Cullinan, white or Black Badge · Delivered to your venue or getting-ready suite · Hand-detailed and photo-ready · Timed to your planner's schedule · Extra time for photo stops · Pickup at the end of the night
+  - **Exotic Getaway Car** — $1,200: Full-day Lamborghini, Ferrari or McLaren · The grand exit or first-look photos · Delivered to your venue · Hand-detailed and photo-ready · Pickup at the end of the night
+  - **Wedding Weekend** — $1,299: Rehearsal dinner through the wedding · 20–25% off the daily rate · Maybach, Escalade, G63 or any fleet car · Delivery anywhere in Orange County and LA
+  - Then: Reviews step → finish onboarding. WeddingPro's content team does an SEO audit after setup.
+- **Track ROI from day 1:** log every WeddingPro/Knot lead (date, couple, car, booked y/n, $). Break-even ≈ 1 wedding booking. Vendor complaints about fake/spam leads are common — note suspect ones.
+- Cleanup: two unsent reschedule drafts to Vivian may still be in Gmail drafts ("Re: We missed you", "Re: Meeting … Fri Oct 30") — delete them.
+
+**Other work 27–30 Oct (done in the "Studio X resume update" chat):**
+- Ads review 27 Oct + wrap hub changes — see the 27 Oct section below. Multi-day discount capped at 20–25% sitewide (`8b9f25e`).
+- Sara's resume: built as a Claude Docs doc "Sara Kolk — Resume". Studio X research: no public lawsuit or closure found (OC Superior Court civil search not checked).
+
+**Open items (priority):**
+1. Finish the WeddingPro storefront (packages → reviews), then start the lead log.
+2. Ads check ~Mon 3 Nov: Overview, Search terms, Landing pages, last 7 days — did the 27 Oct page changes produce wrap-quote leads?
+3. GBP holiday rentals post (copy ready in the 27 Oct chat; button Learn more → `/blog/holiday-exotic-car-rental-orange-county`) — confirm whether Ali posted it.
+4. The 3 rental leads from the travel week (Aaron, Brandon 23 Nov, Hasan) — Ali usually texts them himself; ask.
+5. Wrap city pages need fresh photos per page (27 Oct section, item 3).
 
 ### ▶️ START HERE — HANDOFF 27 OCT 11:45am (Ali back from travel; supersedes the 20 OCT section below)
 **New chat, first message:** "Read HANDOFF.md in the First Class Exotics folder on my Desktop and start with the START HERE section."
