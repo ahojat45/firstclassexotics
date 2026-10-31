@@ -118,6 +118,11 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 4. The 3 rental leads from the travel week (Aaron, Brandon 23 Nov, Hasan) — Ali usually texts them himself; ask.
 5. Wrap city pages need fresh photos per page (27 Oct section, item 3).
 
+**30 OCT 7:05pm — follow-up check (Gmail):**
+- 🟢 **NEW WRAP LEAD — Danny Castillo**, wrap-quote form 30 Oct 1:02pm PT: 2021 Toyota Corolla, **matte black full wrap**, (714) 905-4060. First wrap-quote since Devin (19 Oct) and the first after the 27 Oct page changes (`c0b216b`) — count it in the ~3 Nov ads check. No email reply from Ali found; **draft reply in Gmail** ("Your matte black Corolla wrap quote": sedans from $3,500, send photos or come by, 3–5 days). Ali may text him instead — if so, delete the draft.
+- ✅ WeddingPro checkout completed ("Checkout Completed by Vendor" email) — the "Action Required … billing tab" email is superseded.
+- ✅ The two reschedule drafts to Vivian are already gone (0 drafts to vyorke@). Closed.
+
 ### ▶️ START HERE — HANDOFF 27 OCT 11:45am (Ali back from travel; supersedes the 20 OCT section below)
 **New chat, first message:** "Read HANDOFF.md in the First Class Exotics folder on my Desktop and start with the START HERE section."
 **Setup each session:** request folder access to `/Users/firstclassexotics/Desktop/First Class Exotics` (iMac) — MacBook repo is `~/firstclassexotics`. Repo: HEAD `c7a84db`, clean, synced with origin (verified 27 Oct). Ali pushes from **Terminal** himself (not by typing git into a Claude chat — that runs in a sandbox that can't reach GitHub). Give him: cd → `rm -f .git/index.lock` → `git pull origin main` → `git add <files>` → commit → push.
