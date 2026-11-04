@@ -1,4 +1,4 @@
-# First Class Exotics — handoff (27 Sep 2026, latest section 30 Oct — read START HERE)
+# First Class Exotics — handoff (27 Sep 2026, latest section 4 Nov — read START HERE)
 Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
@@ -89,6 +89,22 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 
 ## ▶️ START HERE — 27 SEP AND AFTER
 
+### ▶️ START HERE — HANDOFF 4 NOV 11am (supersedes the 30 OCT section below; read both)
+**New chat, first message:** "Read HANDOFF.md in my First Class Exotics folder and start with the START HERE section."
+
+**Done 3–4 Nov (AI visibility):**
+- ✅ `ea2f1db` deployed (Netlify `6aeb78097b0f598f2a849bf8`, ready/current, 108 redirect rules, 4 Nov 10:23am PT). Verified in Chrome: `firstclassexotics.netlify.app/vinyl-wrap` → `www.firstclassexotics.com/vinyl-wrap`. The netlify.app mirror was what AI web search was indexing/citing.
+- ✅ `/llms.txt` live in the deploy (Chrome extension can't read plain-text pages, so content not eyeballed in prod — Ali to open it once; should start "# First Class Exotics").
+- ✅ Trustpilot claimed + verified (free plan) — details in the 4 NOV 10:45am note below. Public page: https://www.trustpilot.com/review/firstclassexotics.com (Ali to eyeball once; Chrome stalled on it). 0 reviews.
+- robots.txt already allows all AI crawlers; schema (AutoRental + FAQPage) already in index.html. No change needed.
+
+**Open items (priority):**
+1. ❓ **Ali to answer:** homepage banner says "FREE DELIVERY IN ORANGE COUNTY" but `/blog/exotic-car-rental-cost-orange-county` says OC delivery is a flat fee by distance. Which is true? Fix the wrong page, then add delivery to llms.txt. (Google Ads asset "Free Delivery In OC" was previously rejected as false — 27 Oct.)
+2. **Reviews = the main lever.** Ali texts the Trustpilot link to 5–10 past renters/day (start with Yelp reviewers), asks every renter for a Google review at drop-off, replies to every review. Never incentivize. Text template: "Hey [name], it's Ali from First Class Exotics. Thanks again for renting with us! If you have 30 seconds, a quick review would mean a lot to our family business: https://www.trustpilot.com/review/firstclassexotics.com 🙏"
+3. **Off-site mentions:** claim TripAdvisor; pitch Visit Anaheim, Travel Costa Mesa, Newport Beach tourism "luxury things to do" guides. Keep NAP identical to Google: 2060 Placentia Ave Ste A4, Costa Mesa, CA 92627 · (949) 294-5958 · daily 8am–10pm.
+4. **~1–3 Dec: rerun the AI test** — WebSearch "best exotic car rental Orange County", "Lamborghini rental Costa Mesa Newport Beach", "firstclassexotics.com". 3 Nov baseline: FCE appeared only via netlify.app blog URLs; competitors surfacing = Platinum Exotics (Trustpilot, 0 reviews), Peacock Rentals, Instant Luxury Rentals, Newport Drip, Cardezvous. Report what appeared and which sources were cited — no "score". Expectation set with Ali: 30–60 days, no guarantee of ranking first.
+5. Still open from 30 Oct: WeddingPro Reviews step; Danny Castillo wrap lead (Gmail draft or Ali texts); ads check (was due ~3 Nov — not yet done).
+
 ### ▶️ START HERE — HANDOFF 30 OCT 7pm (supersedes the 27 OCT section below; read both)
 **New chat, first message:** "Read HANDOFF.md in my First Class Exotics folder and start with the START HERE section."
 **Where:** iMac repo `~/Desktop/First Class Exotics` · MacBook repo `~/firstclassexotics`. HEAD `8b9f25e` (27 Oct, "Cap multi-day discount at 20-25% sitewide"), synced with GitHub, tree clean (verified 30 Oct). **On the MacBook, first run in Terminal:** `cd ~/firstclassexotics && git pull origin main`. Claude's shell on the MacBook can't reach GitHub — Ali runs every pull/push in Terminal himself.
@@ -129,6 +145,8 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 - Added `/llms.txt` (facts only from the site's own schema/FAQ + hub prices verbatim). robots.txt already allows all AI crawlers — no change.
 - ⚠️ Fact conflict for Ali: homepage banner says "FREE DELIVERY IN ORANGE COUNTY" but the cost blog post says OC delivery is a flat fee by distance. Left out of llms.txt until Ali says which is true.
 - Off-site gap: AI answers lean on Yelp (FCE has 53 reviews), Trustpilot, TripAdvisor, visit-OC/travel blogs. Competitors (Platinum Exotics, Peacock, Instant Luxury Rentals) show up there. Recheck the AI test early Dec.
+
+**4 NOV 10:45am — TRUSTPILOT SET UP (free plan):** profile claimed + verified via Google Business sync, name "First Class Exotics", logo (Desktop/FCE-Trustpilot-logo.png), 246-word description, categories: Car Rental Agency (primary), Car Detailing, Window Tinting, Car Accessories Store, Car Service. 0 reviews. Declined Plus trial twice — stay on Free. Next: text past renters the review link (trustpilot.com/review/firstclassexotics.com); never offer discounts for reviews. 3 Nov netlify.app redirect + llms.txt pushed as `ea2f1db` — ✅ live (see 4 NOV START HERE).
 
 ### ▶️ START HERE — HANDOFF 27 OCT 11:45am (Ali back from travel; supersedes the 20 OCT section below)
 **New chat, first message:** "Read HANDOFF.md in the First Class Exotics folder on my Desktop and start with the START HERE section."
