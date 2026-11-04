@@ -123,6 +123,13 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 - ✅ WeddingPro checkout completed ("Checkout Completed by Vendor" email) — the "Action Required … billing tab" email is superseded.
 - ✅ The two reschedule drafts to Vivian are already gone (0 drafts to vyorke@). Closed.
 
+**3 NOV 5:50pm — AI VISIBILITY ("show up in ChatGPT/Claude"):**
+- Found: AI web search indexes **firstclassexotics.netlify.app** (full mirror of the site, every link stays on netlify.app) instead of www. Canonicals point to www, but AI tools cite the netlify.app URLs.
+- Fix (local until Ali pushes): first `[[redirects]]` in `netlify.toml` = host-qualified 301 `https://firstclassexotics.netlify.app/*` → `https://www.firstclassexotics.com/:splat`. ⚠️ This is the ONE splat rule, deliberately — it only matches the netlify.app host so it cannot shadow www routes. Deploy previews use other hostnames and are unaffected.
+- Added `/llms.txt` (facts only from the site's own schema/FAQ + hub prices verbatim). robots.txt already allows all AI crawlers — no change.
+- ⚠️ Fact conflict for Ali: homepage banner says "FREE DELIVERY IN ORANGE COUNTY" but the cost blog post says OC delivery is a flat fee by distance. Left out of llms.txt until Ali says which is true.
+- Off-site gap: AI answers lean on Yelp (FCE has 53 reviews), Trustpilot, TripAdvisor, visit-OC/travel blogs. Competitors (Platinum Exotics, Peacock, Instant Luxury Rentals) show up there. Recheck the AI test early Dec.
+
 ### ▶️ START HERE — HANDOFF 27 OCT 11:45am (Ali back from travel; supersedes the 20 OCT section below)
 **New chat, first message:** "Read HANDOFF.md in the First Class Exotics folder on my Desktop and start with the START HERE section."
 **Setup each session:** request folder access to `/Users/firstclassexotics/Desktop/First Class Exotics` (iMac) — MacBook repo is `~/firstclassexotics`. Repo: HEAD `c7a84db`, clean, synced with origin (verified 27 Oct). Ali pushes from **Terminal** himself (not by typing git into a Claude chat — that runs in a sandbox that can't reach GitHub). Give him: cd → `rm -f .git/index.lock` → `git pull origin main` → `git add <files>` → commit → push.

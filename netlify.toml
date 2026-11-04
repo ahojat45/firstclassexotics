@@ -4,6 +4,14 @@
 [functions."blog-publisher"]
   timeout = 26
 
+# Send the netlify.app copy of the site to the real domain (it was being indexed by AI search).
+# Host-qualified: only matches firstclassexotics.netlify.app, cannot shadow any www route.
+[[redirects]]
+  from = "https://firstclassexotics.netlify.app/*"
+  to = "https://www.firstclassexotics.com/:splat"
+  status = 301
+  force = true
+
 [[redirects]]
   from = "/blog"
   to = "/blog.html"
