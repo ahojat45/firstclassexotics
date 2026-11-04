@@ -105,6 +105,15 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
 4. **~1–3 Dec: rerun the AI test** — WebSearch "best exotic car rental Orange County", "Lamborghini rental Costa Mesa Newport Beach", "firstclassexotics.com". 3 Nov baseline: FCE appeared only via netlify.app blog URLs; competitors surfacing = Platinum Exotics (Trustpilot, 0 reviews), Peacock Rentals, Instant Luxury Rentals, Newport Drip, Cardezvous. Report what appeared and which sources were cited — no "score". Expectation set with Ali: 30–60 days, no guarantee of ranking first.
 5. Still open from 30 Oct: WeddingPro Reviews step; Danny Castillo wrap lead (Gmail draft or Ali texts); ads check (was due ~3 Nov — not yet done).
 
+**4 NOV 11:30am — session check (Gmail + repo):**
+- Repo: HEAD `bf4748d`, only `Claude outputs/` untracked. Nothing to push.
+- 🟢 **NEW WRAP LEAD — Melissa (melissaflagg@mac.com, 949-533-7876)**, wrap-quote form **1 Nov 9:23pm PT**: 2020 Range Rover, **matte black full wrap**, prefers morning calls (8–11am). Still UNREAD in Gmail. A draft reply exists (2 Nov 9:04am) that says "I'll call you tomorrow morning" — now stale. Ali: call her, then delete or fix the draft. Count her in the ads check (2nd wrap-quote since the 27 Oct page changes).
+- Danny Castillo: no reply from Ali in email; **TWO unsent drafts** to him ("Your matte black Corolla wrap quote" + "Your Matte Black Wrap Quote – 2021 Toyota Corolla"). Ali sends one or texts him; delete the other.
+- Rental booking leads since 30 Oct: Ashley Archuleta (SF90, OC delivery, 2 Nov), Alexandria Duron (Maybach GLS 600, self pickup, 2–3 Nov) — both unread; Ali usually texts leads himself.
+- Delivery conflict confirmed: index.html line 764 (hero) + 805 (banner) say "Free Delivery in Orange County"; `blog-exotic-car-rental-cost-orange-county.html` line 194 says OC delivery is a flat fee by distance. llms.txt says "same-day delivery" only (no price) — consistent with both. Still waiting on Ali's answer.
+- Ads check: still not done — no Google Ads emails since 27 Oct; needs Ali's screen.
+- ⏰ Scheduled task **"FCE AI visibility recheck"** created for **Tue 1 Dec 9:15am PT** (cloud, auto-approve, push notification) — open item 4 is covered.
+
 ### ▶️ START HERE — HANDOFF 30 OCT 7pm (supersedes the 27 OCT section below; read both)
 **New chat, first message:** "Read HANDOFF.md in my First Class Exotics folder and start with the START HERE section."
 **Where:** iMac repo `~/Desktop/First Class Exotics` · MacBook repo `~/firstclassexotics`. HEAD `8b9f25e` (27 Oct, "Cap multi-day discount at 20-25% sitewide"), synced with GitHub, tree clean (verified 30 Oct). **On the MacBook, first run in Terminal:** `cd ~/firstclassexotics && git pull origin main`. Claude's shell on the MacBook can't reach GitHub — Ali runs every pull/push in Terminal himself.
