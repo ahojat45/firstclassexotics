@@ -1,4 +1,4 @@
-# First Class Exotics — handoff (27 Sep 2026, latest section 4 Nov — read START HERE)
+# First Class Exotics — handoff (27 Sep 2026, latest section 12 Nov — read START HERE)
 Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
@@ -88,6 +88,41 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
    `/luxurycarrentallosangeles` got a real 301 → `/exotic-car-rental-lax`.
 
 ## ▶️ START HERE — 27 SEP AND AFTER
+
+### ▶️ START HERE — HANDOFF 12 NOV 11:45am (supersedes the 4 NOV section below; read both)
+**New chat, first message:** "Read HANDOFF.md in my First Class Exotics folder and start with the START HERE section. I want to brainstorm First Class Exotics and the wraps."
+**Ali's ask for the next chat: BRAINSTORM the business — rentals + wraps.** Not site maintenance. Start from the facts below; ask Ali what he wants out of it (more rental bookings? grow wraps into a real second income line? both?).
+**Where:** iMac repo `~/Desktop/First Class Exotics` (request folder access to `/Users/firstclassexotics/Desktop` — the grant on the parent works). HEAD `5564d3b` ("Free OC delivery (10 mi) + favicon"), pushed, live, verified 6 Nov. Only this HANDOFF edit is unpushed.
+**Rules unchanged:** just do the work · drafts only, never send as Ali · never touch Wix DNS · wrap prices verbatim from the hub · warranty "select films, ask which", never a length · blur faces/plates · Ali pushes from Terminal himself.
+
+**Done 4–7 Nov (all live):**
+- ✅ **Delivery settled (Ali, 4 Nov): FREE in OC up to a 10-mile radius** from the shop; farther = flat fee by distance. Display rule: big "FREE DELIVERY IN OC" + small "(up to a 10-mile radius)". Live on homepage hero + banner + delivery FAQ (HTML + schema), F8 page, cost blog, blog page, llms.txt.
+- ✅ Favicon added (was 404 → blank globe in Google results): `favicon.ico`, `apple-touch-icon.png`, icon tags on 61 pages.
+- ✅ Site health check 6 Nov: forms, gtag, phone links all working; ~200 real homepage visits/day; 404s are bots.
+- ✅ Scheduled task **"FCE AI visibility recheck"** runs **Tue 1 Dec 9:15am PT** (cloud) — don't redo by hand.
+- ✅ Google reviews **96** (was 94 late Sep). Trustpilot: first 5-star review 6 Nov.
+
+**FACTS FOR THE BRAINSTORM (checked 12 Nov, Gmail + Netlify):**
+- **Rental web leads have slowed since ~20 Oct.** Booking-form leads per week: Sep ≈4/wk (8 in wk of Sep 22) · Oct 13–19: 6 · Oct 20–26: 3 · Oct 27–Nov 2: 2 · Nov 3–9: 1 (Dane Dipalma, Cullinan Black Badge, OC delivery, 8 Nov — Ali handled it, email is in Trash) · Nov 10–12: 0. Site is NOT broken (form count 109→110 with Dane). Seasonal pre-Thanksgiving lull is part of it.
+- **Contracts (Adobe Sign):** Oct 1–15: 6 · Oct 16–31: 2 · Nov 1–12: 4 (Ashley A 2 Nov — web lead, SF90; Waqas Qazi 3 Nov; Juan Aldana 7 Nov — repeat; Leora S 8 Nov). Repeat clients remain the backbone (Juan Aldana again).
+- **Wraps:** ad campaign "Wraps - Search - OC" ($16/day cap) produced 2 wrap-quote leads after the 27 Oct page changes: Danny Castillo (30 Oct, Corolla, matte black) and **Melissa (1 Nov, 2020 Range Rover) → BOOKED, satin black full wrap, drop-off was Sat 7 Nov.** First ad lead to become a job. No wrap-quote leads since 1 Nov.
+- **Ads — status uncertain, CHECK FIRST:** "Pause at $16/day" fired Thu 5 Nov 4:44pm. The next "Re-enable morning" email is **Wed 11 Nov 7:46am** — nothing for 6–10 Nov. So the campaign may have sat PAUSED ~5 days (Ali was walked to the Campaigns screen on 7 Nov but never confirmed the status). No pause email since 11 Nov → should be running now. Ask Ali / read his screen: status, and whether the "Re-enable morning" rule is reliable. The pause rule fired only once between 26 Oct and 5 Nov → the campaign usually doesn't reach $16; limit is search volume, not budget (don't raise budget).
+- **Google Ads consultation happened Mon 9 Nov 1pm** (Ramanpreet Kaur, Google). Outcome unknown — ask Ali what she recommended and whether anything was changed in the account. Standing advice: no AI Max, no broad match, no "add 11 keywords".
+- Google Ads view on 7 Nov still showed Oct 20–26 landing-page data (/vinyl-wrap 17 clicks, #pricing 6, cost blog 2). No fresh click/CPC numbers — Claude's extension can't read ads.google.com; computer-use on Chrome is view-only (Ali must bring the tab to the front).
+- WeddingPro/The Knot: paid $1,871 (30 Oct). Storefront was mid-setup (packages → reviews). No WeddingPro lead emails seen yet. Lead log not started. Arbitration opt-out deadline **29 Nov** (Ali's call, not raised).
+- Wrap city pages (10) still use stock photos. Unused real photos in `images/wraps/_raw/`: Bentley Continental GT matte black (7), purple colour-shift Corvette C8 (5). Melissa's Range Rover = chance for before/during/after shots — ask Ali if he took them.
+
+**Brainstorm starting points (ideas, nothing decided):**
+1. Rentals: holiday push to regulars (the $150 referral credit, sent 16 Oct — any redemptions?), gift cards for the holidays (`/gift`), Thanksgiving–NYE GBP post (was it ever posted?), wedding packages via WeddingPro.
+2. Wraps: what does a wrap job actually net vs a rental day? Capacity (how many cars/week can the shop wrap)? Cross-sell: every rental customer and every Goldlinx visitor sees the wrap offer; "rent while we wrap" is already an FAQ. Fleet/commercial wraps (business vans) vs personal colour changes. Tint + ceramic as lower-ticket entry jobs ($599/$699).
+3. Follow-up speed: Danny got no reply for 2 weeks (two drafts still unsent); Melissa's "I'll call you" draft also still in Drafts. A lead-response routine may be worth more than more ad spend. (Ali was pricing a phone-answering service 5 Nov — Sebastian, lowlandsai — 40–50 calls/month.)
+4. Reviews: Trustpilot link to past renters; ask every wrap customer in person for a Google review that says "wrap".
+
+**Open items (small):**
+- Stale Gmail drafts to delete or send: Melissa (2 Nov), Danny ×2 (30 Oct), Hasan Ali (28 Oct), Devin (20 Oct).
+- WeddingPro: finish storefront, start lead log, decide on arbitration opt-out by 29 Nov.
+- Ads: confirm campaign status + get last-14-days numbers (Overview, Search terms, Landing pages).
+- Sara's studio plan doc still has the old equipment numbers (from 14 Oct).
 
 ### ▶️ START HERE — HANDOFF 4 NOV 11am (supersedes the 30 OCT section below; read both)
 **New chat, first message:** "Read HANDOFF.md in my First Class Exotics folder and start with the START HERE section."
