@@ -1,4 +1,4 @@
-# First Class Exotics — handoff (27 Sep 2026, latest section 12 Nov — read START HERE)
+# First Class Exotics — handoff (27 Sep 2026, latest section 19 Nov — read START HERE)
 Paste this whole file into a new Claude session to restore context.
 **`HANDOFF.md` is the authoritative copy.** The dated files are historical snapshots.
 Verified against the repo, production, or Gmail on the date each item is stamped —
@@ -88,6 +88,50 @@ baseline captured — **it is a ranking problem** (§10.7). 16 Sep: **first wrap
    `/luxurycarrentallosangeles` got a real 301 → `/exotic-car-rental-lax`.
 
 ## ▶️ START HERE — 27 SEP AND AFTER
+
+### ▶️ START HERE — HANDOFF 19 NOV 5:40pm (supersedes the 12 NOV section below; read both)
+**New chat, first message:** "Read HANDOFF.md in my First Class Exotics folder and start with the START HERE section."
+**Context:** 12–19 Nov chat "First Class Exotics ads review". Ali is pausing FCE work to start a NEW project — pick this back up when he returns. HEAD `d81b338`, tree clean (only `Claude outputs/` untracked). No site changes this session; only this HANDOFF edit is new (Ali pushes from Terminal).
+
+**🆕 HOW CLAUDE CAN NOW OPERATE GOOGLE ADS ITSELF (read this before touching ads):**
+- Claude-in-Chrome extension HANGS on ads.google.com (script injection never completes) — confirmed again 12 Nov, 4 tries. Don't retry it.
+- Computer use on Chrome is READ-only (browser tier) — can screenshot Ali's Ads tab but not click.
+- ✅ **What works: the Claude desktop app's BUILT-IN BROWSER** (`mcp__remote-devices__Claude_Browser__*`). ads.google.com is allowed there permanently ("site" scope). It loaded the full account and Claude read keywords, ads, change history fine (collapse the left menu — the pane is narrow, ~800px; use get_page_text).
+- ⚠️ **It needs Ali signed in to Google inside that pane.** 12 Nov he used "Import cookies" from Chrome → worked ~4 hrs, then signed out. Still signed out on 16 + 18 Nov. Fix: Ali opens Claude app → Cmd+Shift+B (or globe icon) → types ali@firstclassexotics.com + password himself → "Stay signed in". Claude can't enter passwords.
+
+**ADS FINDINGS 12 Nov ("Wraps - Search - OC", $16/day, Maximize conversions):**
+- Last 30 days (Oct 13–Nov 11): 116 clicks, 2,015 impr, **6 conversions** (2 `generate_lead` = Danny + Melissa wrap forms; 4 `contact_click` phone/text taps), **~$80/conversion**. Tracking WORKS — "Awaiting conversions" is just Google's status label. Melissa's satin-black Range Rover wrap alone paid for months of ads.
+- Nov 5–11: 26 clicks / $121 / 0 conv; clicks −44% wk/wk (small numbers + slow week).
+- Status "Eligible (Limited) — limited by search volume" (not budget). Search terms all real OC wrap shoppers — no negatives needed.
+- Competitor: **thediamondautosalon.com** impression share 8%→23% in a week, bidding on the same terms ("pearl car wrap"). FCE share 21%→27%.
+- **Google rep call 9 Nov:** no changes were made to the account (change history shows only the automated rules). She emailed "please join the meeting" at 1:07pm — Ali may have missed it again. Nothing to undo.
+- **Change history: "Pause at $16/day" rule shuts the campaign off early afternoon** (12:44pm Nov 10, 1:44pm Nov 9, 3:44pm Nov 6) until "Re-enable morning" at 7:46am → ads dark every afternoon/evening = the biggest problem.
+
+**CHANGES MADE 12 Nov (all by Ali's clicks, verified by Claude):**
+- ✅ **PPF ad group ENABLED** + both PPF RSAs enabled (Eligible). Keywords fine (clear bra / ppf / paint protection film + near me, phrase + exact). Final URL = /vinyl-wrap (the /ppf/costa-mesa shown is a display path only). Prices in ads ($2,400 front / $4,600 full) match the hub.
+- ✅ Ceramic keyword **"car ceramic coating" (phrase) re-enabled** (was paused Oct 14).
+- Window Tint + Chrome Delete ad groups still paused.
+
+**🔴 DECIDED BUT NOT DONE — DO FIRST WHEN ALI IS SIGNED IN:**
+- **Ali chose (12 Nov, 4:49pm): DELETE the "Pause at $16/day" rule (ID 62144511) AND "Re-enable morning" (ID 62124553)**; keep budget $16/day, run on Google's monthly cap (~$486 = $16 × 30.4; some days up to $32, never more than that per month, Google credits overage). Ali's worry: "don't charge me a lot" — confirm budget still $16/day and campaign ENABLED after deleting (if the pause rule fired that day, the campaign will be paused — re-enable it). Path: Tools → Bulk actions → Rules (`/aw/bulk/rules`).
+
+**CERAMIC COATING — why it barely serves (56 impr / 1 click in 30 days):**
+- "ceramic coating near me" keywords = **Eligible (Limited) — Rarely shown (low Quality Score)**. Ceramic ad is fine (Eligible, strength Good, "From $699"). Cause: ceramic searchers land on /vinyl-wrap (a wrap page; ceramic is one card).
+- **Plan: build a dedicated `/ceramic-coating` page** (2/3/4-year stages, before/afters, FAQ, quote form + tel/sms with the existing tracking, schema) and point the ceramic ad's final URL there. **BLOCKED on Ali: real prices for the 2-, 3- and 4-year stages** (only "from $699" is confirmed). Photos: use coated Tesla/Escalade shots unless Ali sends ceramic before/afters.
+
+**OTHER 12–19 Nov:**
+- ⭐ **New 5-star Google review (15 Nov) from Arash Salahshour — truck WRAP, with photos.** Google count now **98**. Reply drafted in chat (not posted — Ali to paste): "Thank you so much, Arash! It was a pleasure wrapping your truck, and we're thrilled the finished product exceeded your expectations. Thanks for trusting First Class Exotics in Costa Mesa. Enjoy the new look, and we're here anytime you need PPF, ceramic coating or anything else for it. — Ali". Ask whether it was an ad lead.
+- Google suggests **Click-to-SMS (message) asset** on the ads — fits Ali (texts every lead). Offered, not set up.
+- Ali asked about **Grok Bot** (xAI agent app, bundled with SuperGrok/Cursor plans): told him he doesn't need it — same capabilities he already has here, still needs him for logins. The **GrokBot crawler** is already allowed by robots.txt.
+
+**STILL OPEN (priority):**
+1. Ali signs in to Google in the built-in browser → Claude deletes both rules, verifies $16/day + campaign enabled.
+2. Ceramic prices → build /ceramic-coating page → repoint ceramic ad.
+3. Lead follow-up within 2 hrs (Danny still unanswered; stale drafts: Melissa 2 Nov, Danny ×2 30 Oct, Hasan Ali 28 Oct, Devin 20 Oct).
+4. Holiday push to past renters ($150 referral credit, /gift cards) — offered to draft the text.
+5. WeddingPro: finish storefront, start lead log; **arbitration opt-out deadline 29 Nov** (Ali's call).
+6. Recheck ads ~1 week after the rule deletion: impressions by hour, PPF serving, ceramic QS.
+7. Brainstorm questions still unanswered by Ali: rentals vs wraps priority; wrap net per job vs rental day; shop wrap capacity per week.
 
 ### ▶️ START HERE — HANDOFF 12 NOV 11:45am (supersedes the 4 NOV section below; read both)
 **New chat, first message:** "Read HANDOFF.md in my First Class Exotics folder and start with the START HERE section. I want to brainstorm First Class Exotics and the wraps."
